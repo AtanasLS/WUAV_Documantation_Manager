@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2a200066-6b8f-4949-a977-8fc62f8eeb2b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/io_github_palexdev_materialfx.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mssql_jdbc_11_2_1_jre8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/WUAV_Document_Manager.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dal/dao/DAOInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +22,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -47,7 +49,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Program Files/Java/sqljdbc_11.2/enu/mssql-jdbc-11.2.1.jre18.jar",
+    "last_opened_file_path": "/Users/dimitar/Desktop/WUAV_Documantation_Manager",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2"
@@ -67,7 +69,7 @@
       <module name="WUAV_Document_Manager" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.java.dal.*" />
+          <option name="PATTERN" value="main.java.dal.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
