@@ -1,8 +1,10 @@
 package main.java.dal.dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.java.be.Picture;
-import main.java.be.User;
 import main.java.dal.DataAccessManager;
+import main.java.dal.interfaces.DAOInterface;
 
 import java.awt.*;
 import java.sql.PreparedStatement;
@@ -26,12 +28,12 @@ public class PictureDAO implements DAOInterface<Picture> {
     }
 
     @Override
-    public List<Picture> getAllFromDatabase() throws SQLException {
+    public ObservableList<Picture> getAllFromDatabase() throws SQLException {
         String query="SELECT * FROM picture;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
-        return this.getAllDataFromResultSet(resultSet);
+        return (ObservableList<Picture>) this.getAllDataFromResultSet(resultSet);
 
     }
 
@@ -89,8 +91,8 @@ public class PictureDAO implements DAOInterface<Picture> {
     }
 
     @Override
-    public List<Picture> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
-        List<Picture> listOfPicture=new ArrayList<>();
+    public ObservableList<Picture> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+        ObservableList<Picture> listOfPicture= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
 

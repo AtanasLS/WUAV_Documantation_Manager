@@ -1,8 +1,11 @@
 package main.java.dal.dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import main.java.be.Customer;
 import main.java.be.Document;
-import main.java.be.User;
 import main.java.dal.DataAccessManager;
+import main.java.dal.interfaces.DAOInterface;
 
 import java.awt.*;
 import java.sql.Date;
@@ -26,12 +29,12 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public List<Document> getAllFromDatabase() throws SQLException {
+    public ObservableList<Document> getAllFromDatabase() throws SQLException {
         String query="SELECT * FROM document;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
-        return this.getAllDataFromResultSet(resultSet);
+        return (ObservableList<Document>) this.getAllDataFromResultSet(resultSet);
     }
 
     @Override
@@ -92,8 +95,8 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public List<Document> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
-        List<Document> listOfDocuments=new ArrayList<>();
+    public ObservableList<Document> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+        ObservableList<Document> listOfDocuments= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
 
@@ -103,5 +106,6 @@ public class DocumentDAO implements DAOInterface<Document> {
             listOfDocuments.add(new Document(layoutDrawing,description,date));
         }
 
-        return listOfDocuments;    }
+        return listOfDocuments;
+    }
 }

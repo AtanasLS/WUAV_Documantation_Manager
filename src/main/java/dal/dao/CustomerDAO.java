@@ -1,8 +1,10 @@
 package main.java.dal.dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.java.be.Customer;
-import main.java.be.User;
 import main.java.dal.DataAccessManager;
+import main.java.dal.interfaces.DAOInterface;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,12 +26,12 @@ public class CustomerDAO implements DAOInterface<Customer> {
     }
 
     @Override
-    public List<Customer> getAllFromDatabase() throws SQLException {
+    public ObservableList<Customer> getAllFromDatabase() throws SQLException {
         String query="SELECT * FROM customer;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
-        return this.getAllDataFromResultSet(resultSet);
+        return (ObservableList<Customer>) this.getAllDataFromResultSet(resultSet);
     }
 
     @Override
@@ -109,8 +111,8 @@ public class CustomerDAO implements DAOInterface<Customer> {
     }
 
     @Override
-    public List<Customer> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
-        List<Customer> listOfCustomers=new ArrayList<>();
+    public ObservableList<Customer> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+        ObservableList<Customer> listOfCustomers= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
 

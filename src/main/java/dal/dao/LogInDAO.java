@@ -1,8 +1,10 @@
 package main.java.dal.dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.java.be.LogIns;
-import main.java.be.User;
 import main.java.dal.DataAccessManager;
+import main.java.dal.interfaces.DAOInterface;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,12 +27,12 @@ public class LogInDAO implements DAOInterface<LogIns> {
     }
 
     @Override
-    public List<LogIns> getAllFromDatabase() throws SQLException {
+    public ObservableList<LogIns> getAllFromDatabase() throws SQLException {
         String query="SELECT * FROM logIns;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
-        return this.getAllDataFromResultSet(resultSet);
+        return (ObservableList<LogIns>) this.getAllDataFromResultSet(resultSet);
     }
 
     @Override
@@ -82,8 +84,8 @@ public class LogInDAO implements DAOInterface<LogIns> {
     }
 
     @Override
-    public List<LogIns> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
-        List<LogIns> listOfLogIns=new ArrayList<>();
+    public ObservableList<LogIns> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+        ObservableList<LogIns> listOfLogIns= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
 
