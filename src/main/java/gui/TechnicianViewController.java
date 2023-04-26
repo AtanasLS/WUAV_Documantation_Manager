@@ -1,4 +1,18 @@
 package main.java.gui;
 
-public class TechnicianViewController {
+import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class TechnicianViewController implements Initializable {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    public void handleClicks(ActionEvent actionEvent) {
+
+    }
 }
