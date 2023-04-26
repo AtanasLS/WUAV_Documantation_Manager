@@ -1,8 +1,10 @@
 package main.java.dal.dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.java.be.Project;
-import main.java.be.User;
 import main.java.dal.DataAccessManager;
+import main.java.dal.interfaces.DAOInterface;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProjectDAO implements DAOInterface<Project>{
+public class ProjectDAO implements DAOInterface<Project> {
     DataAccessManager dataAccessManager = new DataAccessManager();
 
     @Override
@@ -24,12 +26,12 @@ public class ProjectDAO implements DAOInterface<Project>{
     }
 
     @Override
-    public List<Project> getAllFromDatabase() throws SQLException {
+    public ObservableList<Project> getAllFromDatabase() throws SQLException {
         String query="SELECT * FROM project;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
-        return this.getAllDataFromResultSet(resultSet);
+        return (ObservableList<Project>) this.getAllDataFromResultSet(resultSet);
     }
 
     @Override
@@ -83,8 +85,8 @@ public class ProjectDAO implements DAOInterface<Project>{
     }
 
     @Override
-    public List<Project> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
-        List<Project> listOfProjects=new ArrayList<>();
+    public ObservableList<Project> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+        ObservableList<Project> listOfProjects= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
 

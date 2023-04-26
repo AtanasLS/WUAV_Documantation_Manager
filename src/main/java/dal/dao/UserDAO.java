@@ -1,7 +1,10 @@
 package main.java.dal.dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.java.be.User;
 import main.java.dal.DataAccessManager;
+import main.java.dal.interfaces.DAOInterface;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO implements DAOInterface<User>{
+public class UserDAO implements DAOInterface<User> {
     DataAccessManager dataAccessManager = new DataAccessManager();
 
     @Override
@@ -23,12 +26,12 @@ public class UserDAO implements DAOInterface<User>{
     }
 
     @Override
-    public List<User> getAllFromDatabase() throws SQLException {
+    public ObservableList<User> getAllFromDatabase() throws SQLException {
         String query="SELECT * FROM user;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
-        return this.getAllDataFromResultSet(resultSet);
+        return (ObservableList<User>) this.getAllDataFromResultSet(resultSet);
 
     }
 
@@ -103,9 +106,9 @@ public class UserDAO implements DAOInterface<User>{
     }
 
     @Override
-    public List<User> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+    public ObservableList<User> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
 
-        List<User> listOfUsers=new ArrayList<>();
+        ObservableList<User> listOfUsers= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
 
