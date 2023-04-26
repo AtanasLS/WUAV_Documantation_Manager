@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/LoginPageView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/view/AdminMainView.fxml"));
         primaryStage.setTitle("EventTicketManager - Please Log In");
         // primaryStage.setFullScreen(true);
         primaryStage.setResizable(false);

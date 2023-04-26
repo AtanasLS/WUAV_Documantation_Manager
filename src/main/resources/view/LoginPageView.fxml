@@ -4,15 +4,27 @@
 <?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="315.0" prefWidth="485.0" styleClass="stage" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.LoginPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="617.0" style="-fx-background-color: white;" styleClass="stage" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.LoginPageController">
 
     <top>
-        <VBox prefHeight="69.0" prefWidth="486.0" BorderPane.alignment="CENTER" />
+        <VBox prefHeight="153.0" prefWidth="618.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../Skrivebord/336641289_220318183973717_8151346193879795210_n.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="175.0" top="25.0" />
+               </VBox.margin>
+            </ImageView>
+         </children></VBox>
     </top>
     <left>
         <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
@@ -28,39 +40,40 @@
             <children>
                 <HBox prefHeight="80.0" prefWidth="286.0">
                     <children>
-                        <MFXTextField fx:id="usernameField" floatMode="ABOVE" prefHeight="50.0" prefWidth="282.0" promptText="Username">
+                        <MFXTextField fx:id="usernameField" floatMode="ABOVE" prefHeight="50.0" prefWidth="282.0" promptText="Username" style="-fx-background-color: #F2F2F2;">
                             <font>
                                 <Font size="17.0" />
                             </font>
+                     <HBox.margin>
+                        <Insets left="75.0" top="20.0" />
+                     </HBox.margin>
                         </MFXTextField>
                     </children>
                 </HBox>
                 <HBox prefHeight="62.0" prefWidth="286.0">
                     <children>
-                        <MFXPasswordField fx:id="passwordField" floatMode="ABOVE" prefHeight="55.0" prefWidth="284.0" promptText="Password">
+                        <MFXPasswordField fx:id="passwordField" floatMode="ABOVE" prefHeight="55.0" prefWidth="284.0" promptText="Password" style="-fx-background-color: #F2F2F2;">
                             <font>
                                 <Font size="17.0" />
                             </font>
+                     <HBox.margin>
+                        <Insets left="75.0" />
+                     </HBox.margin>
                         </MFXPasswordField>
                     </children>
                 </HBox>
                 <HBox layoutX="10.0" layoutY="73.0" prefHeight="72.0" prefWidth="286.0">
                     <children>
-                        <HBox prefHeight="58.0" prefWidth="155.0">
-                            <children>
-                                <MFXButton fx:id="signInBtn" prefHeight="37.0" prefWidth="80.0" styleClass="button" text="Sign In">
-                                    <HBox.margin>
-                                        <Insets left="30.0" top="10.0" />
-                                    </HBox.margin>
-                                </MFXButton>
-                            </children>
-                        </HBox>
+                        <HBox prefHeight="58.0" prefWidth="155.0" />
                         <HBox prefHeight="58.0" prefWidth="146.0">
                             <children>
-                                <MFXButton fx:id="logInBtn" onAction="#logIn" prefHeight="40.0" prefWidth="74.0" styleClass="button" text="Log In">
+                                <MFXButton fx:id="logInBtn" onAction="#logIn" prefHeight="47.0" prefWidth="122.0" style="-fx-background-color: #17273A; -fx-text-alignment: bold;" styleClass="button" text="Log In" textFill="#fffefe">
                                     <HBox.margin>
-                                        <Insets left="30.0" top="10.0" />
+                                        <Insets left="10.0" top="25.0" />
                                     </HBox.margin>
+                           <font>
+                              <Font name="Arial Bold" size="23.0" />
+                           </font>
                                 </MFXButton>
                             </children>
                         </HBox>
