@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2a200066-6b8f-4949-a977-8fc62f8eeb2b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/DAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/interfaces/DAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/LoginPageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/LoginPageView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -63,7 +59,7 @@
       <recent name="C:\Users\Atanas Stoyanov\OneDrive - Erhvervsakademi Sydvest\Dokumenter\GitHub\WUAV_Document_Manager\src\main\resources\view" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DataAccessManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="DataAccessManager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.dal.DataAccessManager" />
       <module name="WUAV_Document_Manager" />
@@ -92,8 +88,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DataAccessManager" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.DataAccessManager" />
       </list>
     </recent_temporary>
   </component>
@@ -106,7 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682450103878</updated>
       <workItem from="1682450105483" duration="3655000" />
-      <workItem from="1682524325771" duration="8446000" />
+      <workItem from="1682524325771" duration="12743000" />
     </task>
     <servers />
   </component>
