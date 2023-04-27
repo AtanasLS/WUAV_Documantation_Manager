@@ -22,13 +22,17 @@ public class DocumentController implements Initializable {
                 final int j = i;
                 nodes[i] = FXMLLoader.load(getClass().getResource("/view/Item.fxml"));
 
-                //give the items some effect
+                //give the items some effect TODO - NEED TO BE FIXED
+                 /*
+
                 nodes[i].setOnMouseEntered(event -> {
-                    nodes[j].setStyle("-fx-background-color : #0A0E3F");
+                    nodes[j].setStyle("-fx-background-color : grey");
                 });
+
                 nodes[i].setOnMouseExited(event -> {
-                    nodes[j].setStyle("-fx-background-color : #02030A");
+                    nodes[j].setStyle("-fx-background-color : #grey");
                 });
+                 */
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
