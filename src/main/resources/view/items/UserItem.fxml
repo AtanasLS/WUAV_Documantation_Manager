@@ -9,21 +9,26 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="788.0" spacing="80.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="788.0" spacing="100.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../images/docs.png" />
+                <Image url="@../../images/users.png" />
             </image>
             <HBox.margin>
                 <Insets left="10.0" />
             </HBox.margin>
         </ImageView>
-        <Label text="Document  Name" textFill="WHITE">
+        <Label text="Username" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-        <Label text="customer" textFill="WHITE">
+      <Label layoutX="161.0" layoutY="26.0" text="First Name" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+        <Label text="password" textFill="WHITE">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
@@ -31,23 +36,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
         </Label>
-        <Label text="date" textFill="WHITE">
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-        </Label>
-        <Label text="price" textFill="WHITE">
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-        </Label>
-        <Button mnemonicParsing="false" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="view" textFill="WHITE">
+        <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="93.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="more info" textFill="WHITE">
             <HBox.margin>
                 <Insets />
             </HBox.margin>

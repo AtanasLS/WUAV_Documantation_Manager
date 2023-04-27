@@ -1,4 +1,4 @@
-package main.java.gui;
+package main.java.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,17 +10,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class DocumentController implements Initializable {
+public class OrderController implements Initializable {
 
     @FXML
     VBox pnItems = null;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Node[] nodes = new Node[10];
         for (int i = 0; i < nodes.length; i++) {
             try {
                 final int j = i;
-                nodes[i] = FXMLLoader.load(getClass().getResource("/view/Item.fxml"));
+                nodes[i] = FXMLLoader.load(getClass().getResource("/view/items/OrderItem.fxml"));
 
                 //give the items some effect TODO - NEED TO BE FIXED
                  /*
