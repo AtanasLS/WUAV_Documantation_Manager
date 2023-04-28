@@ -4,11 +4,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.java.be.*;
 import main.java.dal.dao.*;
-import main.java.dal.interfaces.DAOInterface;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 public class DataManagerFacade {
 
@@ -61,33 +58,33 @@ public class DataManagerFacade {
 
         return o;
     }
+    //getting all the customers
+    public ObservableList<Customer> getAllCustomersFromDatabase() throws SQLException {
+        return customerDAO.getAllFromDatabase();
 
-    public ObservableList<Object> getAllFromDatabase(String type) throws SQLException {
-        ObservableList<Object> objects = FXCollections.observableArrayList();
-
-        switch (type) {
-            case "User":
-                objects.addAll(userDAO.getAllFromDatabase());
-                break;
-            case "Customer":
-                objects.addAll(customerDAO.getAllFromDatabase());
-                break;
-            case "Document":
-                objects.addAll(documentDAO.getAllFromDatabase());
-                break;
-            case "LogIn":
-                objects.addAll(logInDAO.getAllFromDatabase());
-                break;
-            case "Picture":
-                objects.addAll(pictureDAO.getAllFromDatabase());
-                break;
-            case "Project":
-                objects.addAll(projectDAO.getAllFromDatabase());
-                break;
-
-        }
-        return objects;
     }
+    //getting all the users
+    public ObservableList<User> getAllUsersFromDatabase() throws SQLException {
+        return userDAO.getAllFromDatabase();
+    }
+    //getting all the documents
+    public ObservableList<Document> getAllDocumentsFromDatabase() throws SQLException {
+        return documentDAO.getAllFromDatabase();
+    }
+    //getting all the logIns
+    public ObservableList<LogIns> getAllLogInsFromDatabase() throws SQLException {
+        return logInDAO.getAllFromDatabase();
+    }
+    //getting all the pictures
+    public ObservableList<Picture> getAllPicturesFromDatabase() throws SQLException {
+        return pictureDAO.getAllFromDatabase();
+    }
+    //getting all the projects
+    public ObservableList<Project> getAllProjectsFromDatabase() throws SQLException {
+        return projectDAO.getAllFromDatabase();
+
+    }
+
 
     public String insertIntoDatabase(Object object, String type) throws SQLException {
         String output = "";

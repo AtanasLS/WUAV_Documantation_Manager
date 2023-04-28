@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import main.java.gui.controllers.pageController.DocumentController;
 
 import java.io.IOException;
 import java.net.URL;
