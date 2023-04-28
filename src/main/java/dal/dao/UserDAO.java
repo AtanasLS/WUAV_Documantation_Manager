@@ -113,8 +113,8 @@ public class UserDAO implements DAOInterface<User> {
         while (resultSet.next()) {
 
             String username = resultSet.getString("username");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
             String email = resultSet.getString("email");
             String password = resultSet.getString("password");
             String type = resultSet.getString("type");

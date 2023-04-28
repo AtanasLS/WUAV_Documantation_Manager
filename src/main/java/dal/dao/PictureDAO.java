@@ -97,8 +97,8 @@ public class PictureDAO implements DAOInterface<Picture> {
         while (resultSet.next()) {
 
             String name=resultSet.getString("name");
-            Image installationPhoto=resultSet.getObject("installationPhoto",Image.class);
-            int documentationID=resultSet.getInt("documentationID");
+            Image installationPhoto=resultSet.getObject("img",Image.class);
+            int documentationID=resultSet.getInt("documentation_id");
             listOfPicture.add(new Picture(name,installationPhoto,documentationID));
         }
 

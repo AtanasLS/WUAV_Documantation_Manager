@@ -100,7 +100,7 @@ public class DocumentDAO implements DAOInterface<Document> {
 
         while (resultSet.next()) {
 
-            Image layoutDrawing=resultSet.getObject("layoutDrawing", Image.class);
+            Image layoutDrawing=resultSet.getObject("layout-drawing", Image.class);
             String description=resultSet.getString("description");
             Date date=resultSet.getDate("date");
             listOfDocuments.add(new Document(layoutDrawing,description,date));

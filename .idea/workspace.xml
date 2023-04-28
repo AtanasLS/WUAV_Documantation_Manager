@@ -5,25 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a200066-6b8f-4949-a977-8fc62f8eeb2b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/AdminViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AdminViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/DocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/SellerViewController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/TechnicianManagerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/TechnicianManagerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/AdminMainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AdminMainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/CustomersVIew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/DocumentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/DocumentItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/LogInsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/LoginPageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/LoginPageView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/OrdersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/ProjectsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianManagerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianManagerView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianPageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/UsersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bll/AppLogicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/AppLogicManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/DataManagerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/DataManagerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/CustomerItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/CustomerItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +122,7 @@
       <updated>1682450103878</updated>
       <workItem from="1682450105483" duration="3655000" />
       <workItem from="1682524325771" duration="16814000" />
-      <workItem from="1682595327885" duration="4579000" />
+      <workItem from="1682595327885" duration="14450000" />
     </task>
     <servers />
   </component>

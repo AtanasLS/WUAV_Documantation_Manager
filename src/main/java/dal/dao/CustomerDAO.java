@@ -27,7 +27,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
 
     @Override
     public ObservableList<Customer> getAllFromDatabase() throws SQLException {
-        String query="SELECT * FROM customer;";
+        String query="SELECT * FROM  [WUAV_Documentation_System].[dbo].[customer]";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
@@ -116,13 +116,13 @@ public class CustomerDAO implements DAOInterface<Customer> {
 
         while (resultSet.next()) {
 
-            String firstName=resultSet.getString("firstName");
-            String lastName=resultSet.getString("lastName");
+            String firstName=resultSet.getString("first_name");
+            String lastName=resultSet.getString("last_name");
             String email=resultSet.getString("email");
             String address=resultSet.getString("address");
             String address2=resultSet.getString("address2");
             String phone=resultSet.getString("phone");
-            int consumptionNumber=resultSet.getInt("consumptionNumber");
+            int consumptionNumber=resultSet.getInt("consumption_number");
             listOfCustomers.add(new Customer(firstName,lastName,email,address,address2,phone,consumptionNumber));
         }
 
