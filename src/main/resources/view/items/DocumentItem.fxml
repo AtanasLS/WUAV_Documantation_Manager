@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="788.0" spacing="55.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="788.0" spacing="55.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.itemController.DocumentItemController">
     <children>
         <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -19,14 +19,14 @@
                 <Insets left="10.0" />
             </HBox.margin>
         </ImageView>
-        <Label text="Document  Name" textFill="WHITE">
+        <Label fx:id="documentName" text="Document  Name" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
          <HBox.margin>
             <Insets />
          </HBox.margin></Label>
-        <Label text="creator" textFill="WHITE">
+        <Label fx:id="creator" text="creator" textFill="WHITE">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
@@ -34,7 +34,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
         </Label>
-        <Label text="date" textFill="WHITE">
+        <Label fx:id="date" text="date" textFill="WHITE">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
@@ -42,7 +42,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
         </Label>
-        <Label text="project" textFill="WHITE">
+        <Label fx:id="project" text="project" textFill="WHITE">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
@@ -50,7 +50,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
         </Label>
-      <Label text="customer" textFill="WHITE">
+      <Label fx:id="customer" text="customer" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

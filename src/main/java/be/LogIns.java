@@ -4,12 +4,17 @@ public class LogIns {
 
     private String username;
     private String password;
+    private String project;
 
 
 
-    public LogIns(String username, String password){
+
+
+
+    public LogIns(String username, String password) {
         this.username = username;
         this.password = password;
+        this.project = "project";
     }
 
     public String getUsername() {
@@ -26,5 +31,13 @@ public class LogIns {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getProject() {
+        return project;
+    }
+
+    public void setProject(String project) {
+        this.project = project;
     }
 }

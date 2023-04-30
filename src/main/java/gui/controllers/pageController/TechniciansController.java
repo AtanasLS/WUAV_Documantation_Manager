@@ -5,16 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import main.java.gui.controllers.itemController.DocumentItemController;
 import main.java.gui.controllers.itemController.OrderItemController;
+import main.java.gui.controllers.itemController.TechnicianItemController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class OrderController implements Initializable {
-
+public class TechniciansController implements Initializable {
     @FXML
     VBox pnItems = null;
 
@@ -28,12 +27,12 @@ public class OrderController implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        Node[] nodes = new Node[model.getAllOrders().size()];
+        Node[] nodes = new Node[model.getAllTech().size()];
         for (int i = 1; i < nodes.length; i++) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/OrderItem.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/TechniciansItem.fxml"));
                 nodes[i] = loader.load();
-                OrderItemController controller = loader.getController();
+                TechnicianItemController controller = loader.getController();
 
                 controller.setLabels(i);
 

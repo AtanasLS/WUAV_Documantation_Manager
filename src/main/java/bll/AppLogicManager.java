@@ -89,4 +89,12 @@ public class AppLogicManager {
             throw new RuntimeException(e);
         }
     }
+
+    public ObservableList<User> getAllTechnicians() {
+        return null;
+    }
+
+    public ObservableList<Order> getAllOrdersFromDatabas() {
+        return null;
+    }
 }

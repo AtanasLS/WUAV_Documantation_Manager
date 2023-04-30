@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="788.0" spacing="120.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="788.0" spacing="120.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.itemController.ProjectItemController">
     <children>
         <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -19,11 +19,11 @@
                 <Insets left="10.0" />
             </HBox.margin>
         </ImageView>
-        <Label text="Type" textFill="WHITE">
+        <Label fx:id="type" text="Type" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Label>
-        <Label text="Customer" textFill="WHITE">
+        <Label fx:id="customer" text="Customer" textFill="WHITE">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
@@ -31,7 +31,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
         </Label>
-      <Label text="Price" textFill="WHITE">
+      <Label fx:id="price" text="Price" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

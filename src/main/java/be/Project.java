@@ -5,9 +5,12 @@ public class Project {
     private String type;
     private double price;
 
+    private String customer;
+
     public Project(String type, double price){
         this.type = type;
         this.price = price;
+        this.customer="customer";
     }
 
     public String getType() {
@@ -24,5 +27,13 @@ public class Project {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
     }
 }
