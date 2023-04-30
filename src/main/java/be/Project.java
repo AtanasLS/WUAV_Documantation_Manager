@@ -6,11 +6,15 @@ public class Project {
     private double price;
 
     private String customer;
+    private int customerId;
 
-    public Project(String type, double price){
+
+
+    public Project(String type, double price, String customer, int customerId){
         this.type = type;
         this.price = price;
-        this.customer="customer";
+        this.customer=customer;
+        this.customerId=customerId;
     }
 
     public String getType() {
@@ -31,6 +35,13 @@ public class Project {
 
     public String getCustomer() {
         return customer;
+    }
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public void setCustomer(String customer) {

@@ -18,7 +18,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public LogIns getFromDatabase(int id) throws SQLException {
-        String query="SELECT * FROM logIns WHERE id=?;";
+        String query="SELECT * FROM log_ins LEFT JOIN project ON  log_ins.projectId=project.id WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
@@ -28,7 +28,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public ObservableList<LogIns> getAllFromDatabase() throws SQLException {
-        String query="SELECT * FROM logIns;";
+        String query="SELECT * FROM log_ins LEFT JOIN project ON  log_ins.projectId=project.id;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
@@ -39,11 +39,14 @@ public class LogInDAO implements DAOInterface<LogIns> {
     public String insertIntoDatabase(LogIns object) throws SQLException {
         String username=object.getUsername();
         String password=object.getPassword();
+        int project=object.getProjectId();
 
-        String query="INSERT INTO logIns VALUES (?, ?);";
+
+        String query="INSERT INTO logIns VALUES (?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,password);
+        stmt.setInt(3,project);
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -64,12 +67,14 @@ public class LogInDAO implements DAOInterface<LogIns> {
     public String updateDatabase(LogIns object, int id) throws SQLException {
         String username=object.getUsername();
         String password=object.getPassword();
+        int projectId=object.getProjectId();
 
-        String query="INSERT INTO logIns VALUES (?, ?) WHERE id = ?;";
+        String query="INSERT INTO logIns VALUES (?, ?, ?) WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,password);
-        stmt.setInt(3,id);
+        stmt.setInt(3,projectId);
+        stmt.setInt(4,id);
 
         ResultSet resultSet =stmt.executeQuery();
 
@@ -80,7 +85,10 @@ public class LogInDAO implements DAOInterface<LogIns> {
     public LogIns getDataFromResultSet(ResultSet resultSet) throws SQLException {
         String username=resultSet.getString("username");
         String password=resultSet.getString("password");
-        return  new LogIns(username,password);
+        String project=resultSet.getString("type");
+        int projectId=resultSet.getInt("projectId");
+
+        return  new LogIns(username,password,project,projectId);
     }
 
     @Override
@@ -91,8 +99,13 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
             String username=resultSet.getString("username");
             String password=resultSet.getString("password");
+            String project=resultSet.getString("type");
+            int projectId=resultSet.getInt("projectId");
 
-            listOfLogIns.add(new LogIns(username,password));
+
+
+
+            listOfLogIns.add(new LogIns(username,password,project,projectId));
         }
 
         return listOfLogIns;
