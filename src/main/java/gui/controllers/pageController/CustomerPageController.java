@@ -24,7 +24,7 @@ public class CustomerPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         try {
-            model.loadInfo();
+            model.loadCustomers();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -40,9 +40,11 @@ public class CustomerPageController implements Initializable {
                 nodes[i] = loader.load();
 
                                  */
-                FXMLLoader loader = new FXMLLoader();
-                nodes [i] = loader.load(getClass().getResource("/view/items/CustomerItem.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/CustomerItem.fxml"));
+               // nodes [i] = loader.load(getClass().getResource("/view/items/CustomerItem.fxml"));
+                nodes[i] = loader.load();
                 CustomerItemController controller = loader.getController();
+
                 controller.setLabels(i);
 
                // nodes[i] = FXMLLoader.load(getClass().getResource("/view/items/CustomerItem.fxml"));
