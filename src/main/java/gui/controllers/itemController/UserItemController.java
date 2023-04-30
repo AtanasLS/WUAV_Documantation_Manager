@@ -17,7 +17,7 @@ public class UserItemController implements Initializable,Items {
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         try {
-            this.model.loadTech();
+            this.model.loadUsers();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
