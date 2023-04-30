@@ -91,8 +91,20 @@ public class AppLogicManager {
     }
 
     public ObservableList<User> getAllTechnicians() {
-        return null;
+        try {
+            return DataManagerFacade.getInstance().getAllTechniciansFromDatabase();
+        }catch (SQLException e){
+            throw new RuntimeException();
+        }
     }
+
+    public User getTechnician(int id) {
+        try {
+            return DataManagerFacade.getInstance().getTechnicianFromDatabase(id);
+        }catch (SQLException e){
+            throw new RuntimeException();
+        }    }
+
 
     public ObservableList<Order> getAllOrdersFromDatabas() {
         return null;

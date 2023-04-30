@@ -67,6 +67,14 @@ public class DataManagerFacade {
     public ObservableList<User> getAllUsersFromDatabase() throws SQLException {
         return userDAO.getAllFromDatabase();
     }
+
+    public ObservableList<User> getAllTechniciansFromDatabase() throws SQLException {
+        return userDAO.getAllTechniciansFromDatabase();
+    }
+
+    public User getTechnicianFromDatabase(int id) throws SQLException {
+        return userDAO.getTechnicianFromDatabase(id);
+    }
     //getting all the documents
     public ObservableList<Document> getAllDocumentsFromDatabase() throws SQLException {
         return documentDAO.getAllFromDatabase();

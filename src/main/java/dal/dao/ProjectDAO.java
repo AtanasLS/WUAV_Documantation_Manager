@@ -17,7 +17,7 @@ public class ProjectDAO implements DAOInterface<Project> {
 
     @Override
     public Project getFromDatabase(int id) throws SQLException {
-        String query="SELECT * FROM project WHERE id=?;";
+        String query="SELECT * from project LEFT JOIN customer ON customer.id=project.customerId WHERE project.id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
@@ -27,7 +27,8 @@ public class ProjectDAO implements DAOInterface<Project> {
 
     @Override
     public ObservableList<Project> getAllFromDatabase() throws SQLException {
-        String query="SELECT * FROM project;";
+        //String query="SELECT * FROM project LEFT JOIN projectToUser ON  projectToUser.projectId=project.id LEFT JOIN users ON users.id=projectToUser.userId;";
+        String query="SELECT * from project LEFT JOIN customer ON customer.id=project.customerId;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
@@ -38,11 +39,15 @@ public class ProjectDAO implements DAOInterface<Project> {
     public String insertIntoDatabase(Project object) throws SQLException {
         String type=object.getType();
         double price=object.getPrice();
+        int customerId=object.getCustomerId();
 
-        String query="INSERT INTO project VALUES (?, ?);";
+
+        String query="INSERT INTO project VALUES (?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,type);
         stmt.setDouble(2,price);
+        stmt.setInt(3,customerId);
+
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -63,12 +68,14 @@ public class ProjectDAO implements DAOInterface<Project> {
     public String updateDatabase(Project object, int id) throws SQLException {
         String type=object.getType();
         double price=object.getPrice();
+        int customerId=object.getCustomerId();
 
-        String query="INSERT INTO project VALUES (?, ?) WHERE id = ?;";
+        String query="INSERT INTO project VALUES (?, ?, ?) WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,type);
         stmt.setDouble(2,price);
-        stmt.setInt(3,id);
+        stmt.setInt(3,customerId);
+        stmt.setInt(4,id);
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -80,7 +87,10 @@ public class ProjectDAO implements DAOInterface<Project> {
     public Project getDataFromResultSet(ResultSet resultSet) throws SQLException {
         String type=resultSet.getString("type");
         double price=resultSet.getDouble("price");
-        return  new Project(type,price);
+        String customer=resultSet.getString("first_name");
+        int customerId=resultSet.getInt("id");
+
+        return  new Project(type,price,customer,customerId);
 
     }
 
@@ -92,7 +102,10 @@ public class ProjectDAO implements DAOInterface<Project> {
 
             String type=resultSet.getString("type");
             double price=resultSet.getDouble("price");
-            listOfProjects.add(new Project(type,price));
+            String customer=resultSet.getString("first_name");
+            int customerId=resultSet.getInt("id");
+
+            listOfProjects.add(new Project(type,price,customer,customerId));
         }
 
         return listOfProjects;    }
