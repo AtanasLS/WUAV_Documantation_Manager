@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.controllers.itemController.UserItemController;
@@ -16,12 +17,13 @@ import java.util.ResourceBundle;
 public class UserController implements Initializable {
     @FXML
     VBox pnItems = null;
-
     MainModel model;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.model = new MainModel();
+    }
+    public void setMainModel(MainModel mvm){
+        this.model = mvm ;
         try {
             model.loadUsers();
         } catch (Exception e) {
@@ -35,7 +37,8 @@ public class UserController implements Initializable {
                 nodes[i] = loader.load();
 
                 UserItemController controller = loader.getController();
-                controller.setLabels(i);
+                controller.setLabels(i, model);
+
 
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {

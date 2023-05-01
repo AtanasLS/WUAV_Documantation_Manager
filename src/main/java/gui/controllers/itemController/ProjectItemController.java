@@ -9,6 +9,7 @@ import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ProjectItemController implements Initializable,Items {
@@ -37,7 +38,7 @@ public class ProjectItemController implements Initializable,Items {
     }
 
     @Override
-    public void setLabels(int numberOfElement) {
+    public void setLabels(int numberOfElement, MainModel model) {
 
         this.currentProject=this.model.getAllProjects().get(numberOfElement);
 
@@ -49,7 +50,7 @@ public class ProjectItemController implements Initializable,Items {
 
     }
 
-    public void editProject(ActionEvent actionEvent){
+    public void editProject(ActionEvent actionEvent) throws SQLException {
         this.editModel.updateDatabaseElement(new Object(),"username","Project");
 
     }

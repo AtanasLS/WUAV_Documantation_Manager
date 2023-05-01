@@ -133,6 +133,17 @@ public class MainModel {
     public Customer getSelectedCustomer(){
         return selectedCustomer;
     }
+
+    public void updateUsers(Object selectedObject, String id) throws SQLException {
+        User userToRemove = null;
+        for (User u: getAllUsers()) {
+            if (u.getUsername().equals(id)){
+                userToRemove = u;
+            }
+        }
+        this.allUsers.remove(userToRemove);
+        this.allUsers.add((User) selectedObject);
+    }
     public void setSelectedCustomer(Customer customer){
         this.selectedCustomer = customer;
     }

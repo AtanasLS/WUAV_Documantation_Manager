@@ -11,6 +11,7 @@ import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CustomerEditController implements Initializable {
@@ -51,7 +52,7 @@ public class CustomerEditController implements Initializable {
          */
     }
 
-    public void handleSave(ActionEvent actionEvent) {
+    public void handleSave(ActionEvent actionEvent) throws SQLException {
         Customer editedCustomer = new Customer(firstName.getText(), lastName.getText(), email.getText(), address1.getText(),
                 address2.getText(), phoneNum.getText(), selectedCustomerConsNum );
         System.out.println(id);

@@ -42,7 +42,8 @@ public class LoginPageController implements Initializable {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminMainView.fxml"));
                     Parent root = loader.load();
-
+                    AdminViewController controller = loader.getController();
+                    controller.setMainModel(model);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setFullScreen(false);

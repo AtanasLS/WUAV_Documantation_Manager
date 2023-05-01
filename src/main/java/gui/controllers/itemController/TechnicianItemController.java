@@ -22,8 +22,8 @@ public class TechnicianItemController implements Initializable,Items {
     }
 
     @Override
-    public void setLabels(int numberOfElement) {
-
+    public void setLabels(int numberOfElement, MainModel model) {
+        this.model = model;
         username.setText(this.model.getAllTech().get(numberOfElement).getUsername());
         firstName.setText(this.model.getAllTech().get(numberOfElement).getFirstName());
         lastName.setText(this.model.getAllTech().get(numberOfElement).getLastName());

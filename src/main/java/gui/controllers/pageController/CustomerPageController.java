@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 import main.java.be.Customer;
 import main.java.gui.controllers.itemController.CustomerItemController;
+import main.java.gui.controllers.itemController.UserItemController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -35,7 +36,27 @@ public class CustomerPageController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/CustomerItem.fxml"));
                 nodes[i] = loader.load();
                 CustomerItemController controller = loader.getController();
-                controller.setLabels(i);
+                controller.setLabels(i, model);
+                pnItems.getChildren().add(nodes[i]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void setMainModel(MainModel mvm){
+        this.model = mvm ;
+        try {
+            model.loadCustomers();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        Node[] nodes = new Node[model.getAllCustomers().size()];
+        for (int i = 0; i < nodes.length; i++) {
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/CustomerItem.fxml"));
+                nodes[i] = loader.load();
+                CustomerItemController controller = loader.getController();
+                controller.setLabels(i, model);
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
