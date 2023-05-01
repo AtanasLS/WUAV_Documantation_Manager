@@ -99,7 +99,7 @@ public class UserDAO implements DAOInterface<User> {
         String password= object.getPassword();
         String type=object.getType();
 
-        String query="INSERT INTO user VALUES (?, ?, ?, ?, ?, ?) WHERE username = ?;";
+        String query="UPDATE users set username = ?,first_name = ?,last_name = ?,email = ?,password = ?,type = ? WHERE username = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,firstName);
@@ -109,9 +109,13 @@ public class UserDAO implements DAOInterface<User> {
         stmt.setString(6,type);
         stmt.setString(7,id);
 
-        ResultSet resultSet =stmt.executeQuery();
-
-        return resultSet.toString();
+        try {
+            ResultSet resultSet = stmt.executeQuery();
+            //System.out.println(resultSet.toString());
+        }catch (RuntimeException e){
+            System.out.println(e);
+        }
+        return "Work!";
     }
 
     @Override

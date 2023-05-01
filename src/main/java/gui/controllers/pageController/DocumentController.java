@@ -36,7 +36,7 @@ public class DocumentController implements Initializable {
                 nodes[i] = loader.load();
                 DocumentItemController controller = loader.getController();
 
-                controller.setLabels(i);
+               // controller.setLabels(i);
 
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {

@@ -34,7 +34,7 @@ public class ProjectController implements Initializable{
                 nodes[i] = loader.load();
                 ProjectItemController controller = loader.getController();
 
-                controller.setLabels(i);
+                //controller.setLabels(i);
 
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {

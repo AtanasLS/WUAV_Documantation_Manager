@@ -35,7 +35,7 @@ public class OrderController implements Initializable {
                 nodes[i] = loader.load();
                 OrderItemController controller = loader.getController();
 
-                controller.setLabels(i);
+               // controller.setLabels(i);
 
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {

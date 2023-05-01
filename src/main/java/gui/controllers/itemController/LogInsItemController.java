@@ -10,6 +10,7 @@ import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class LogInsItemController implements Initializable,Items {
@@ -38,7 +39,7 @@ public class LogInsItemController implements Initializable,Items {
     }
 
     @Override
-    public void setLabels(int numberOfElement) {
+    public void setLabels(int numberOfElement, MainModel model) {
 
         username.setText(this.model.getAllLogIns().get(numberOfElement).getUsername() );
         password.setText(this.model.getAllLogIns().get(numberOfElement).getPassword());
@@ -48,7 +49,7 @@ public class LogInsItemController implements Initializable,Items {
 
     }
 
-    public void editLogIN(ActionEvent actionEvent){
+    public void editLogIN(ActionEvent actionEvent) throws SQLException {
         this.editModel.updateDatabaseElement(new Object(),"username","LogIn");
 
     }

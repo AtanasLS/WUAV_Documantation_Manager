@@ -22,22 +22,8 @@ public class CustomerItemController implements Initializable,Items {
 
     private Customer currentCustomer;
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        this.model = new MainModel();
-        try {
-            this.model.loadCustomers();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public void initialize(URL location, ResourceBundle resources) {}
 
-    }
-    public void setLabels(int numberOfCustomer){
-        model.setSelectedCustomer(model.getAllCustomers().get(numberOfCustomer));
-        firstNameLabel.setText(this.model.getAllCustomers().get(numberOfCustomer ).getFirstName());
-        lastNameLabel.setText(this.model.getAllCustomers().get(numberOfCustomer).getLastName());
-        emailLabel.setText(this.model.getAllCustomers().get(numberOfCustomer ).getEmail());
-        adress1Label.setText(this.model.getAllCustomers().get(numberOfCustomer ).getAddress());
-    }
 
 
     public void infoBtnHandle(ActionEvent actionEvent) throws IOException {
@@ -53,4 +39,18 @@ public class CustomerItemController implements Initializable,Items {
         stage.show();
     }
 
+    @Override
+    public void setLabels(int numberOfElement, MainModel model) {
+        this.model = model;
+        try {
+            this.model.loadCustomers();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        model.setSelectedCustomer(model.getAllCustomers().get(numberOfElement));
+        firstNameLabel.setText(this.model.getSelectedCustomer().getFirstName());
+        lastNameLabel.setText(this.model.getSelectedCustomer().getLastName());
+        emailLabel.setText(this.model.getSelectedCustomer().getEmail());
+        adress1Label.setText(this.model.getSelectedCustomer().getAddress());
+    }
 }

@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.gui.controllers.pageController.DocumentController;
+import main.java.gui.controllers.pageController.UserController;
+import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,23 +26,13 @@ public class AdminViewController implements Initializable {
     @FXML
     private Stage primaryStage;
 
-
-
-
-
-
+    private MainModel model;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        try {
-            FXMLLoader loader = new FXMLLoader();
-           // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-            painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/DocumentsPage.fxml")));
-            DocumentController controller = loader.getController();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    }
+    public void setMainModel(MainModel mvm){
+        this.model = mvm ;
 
     }
 
@@ -50,7 +42,7 @@ public class AdminViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader();
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/LogInsView.fxml")));
-                LoginPageController controller = loader.getController();
+
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -86,9 +78,11 @@ public class AdminViewController implements Initializable {
             }
         }else if (actionEvent.getSource() == btnUsers){
             try {
-                FXMLLoader loader = new FXMLLoader();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/UsersView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-                painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/UsersView.fxml")));
+                painnnnn.getChildren().setAll((Node) loader.load());
+                UserController controller = loader.getController();
+                controller.setMainModel(model);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
