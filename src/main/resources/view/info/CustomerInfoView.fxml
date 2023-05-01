@@ -76,7 +76,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button layoutX="521.0" layoutY="280.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="52.0" prefWidth="94.0" text="Edit" />
-      <Button layoutX="648.0" layoutY="280.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="94.0" text="Delete" />
+      <Button layoutX="516.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleEdit" prefHeight="46.0" prefWidth="87.0" text="Edit" />
+      <Button layoutX="642.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="46.0" prefWidth="87.0" text="Delete" />
    </children>
 </AnchorPane>

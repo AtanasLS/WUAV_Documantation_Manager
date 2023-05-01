@@ -41,7 +41,7 @@ public class CustomerItemController implements Initializable,Items {
 
 
     public void infoBtnHandle(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CustomerInfoView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/info/CustomerInfoView.fxml"));
         Parent root = loader.load();
         CustomerInfoController customerInfoController = loader.getController();
         customerInfoController.setMainModel(model);
@@ -51,6 +51,6 @@ public class CustomerItemController implements Initializable,Items {
         stage.setFullScreen(false);
         stage.setResizable(false);
         stage.show();
-        System.out.println(currentCustomer.getEmail());
     }
+
 }

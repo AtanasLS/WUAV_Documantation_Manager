@@ -2,6 +2,8 @@ package main.java.gui.controllers.infoPageController;
 
 import main.java.gui.model.MainModel;
 
+import java.awt.event.ActionEvent;
+
 public interface Info {
 
 
@@ -10,6 +12,6 @@ public interface Info {
 
     public String delete(String id);
 
-    public void edit();
+    public void edit(ActionEvent actionEvent);
 
 }

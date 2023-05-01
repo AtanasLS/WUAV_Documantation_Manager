@@ -47,7 +47,7 @@ public class LoginPageController implements Initializable {
                     stage.setScene(new Scene(root));
                     stage.setFullScreen(false);
                     stage.setResizable(false);
-                    stage.setTitle("Event Ticket Manager Beta");
+
                     stage.show();
 
                     ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();                   //w ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
@@ -69,7 +69,6 @@ public class LoginPageController implements Initializable {
                     // controller.setLoggedInUser(loggedInUser.getUsername(), loggedInUser.getType());
                     stage.setFullScreen(false);
                     stage.setResizable(false);
-                    stage.setTitle("Event Ticket Manager Beta");
                     stage.show();
 
                     ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
@@ -88,7 +87,7 @@ public class LoginPageController implements Initializable {
                     // controller.setLoggedInUser(loggedInUser.getUsername(), loggedInUser.getType());
                     stage.setFullScreen(false);
                     stage.setResizable(false);
-                    stage.setTitle("Event Ticket Manager Beta");
+
                     stage.show();
 
                     ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
@@ -107,7 +106,6 @@ public class LoginPageController implements Initializable {
                     // controller.setLoggedInUser(loggedInUser.getUsername(), loggedInUser.getType());
                     stage.setFullScreen(false);
                     stage.setResizable(false);
-                    stage.setTitle("Event Ticket Manager Beta");
                     stage.show();
 
                     ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();

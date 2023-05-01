@@ -86,7 +86,8 @@ public class AppLogicManager {
         try {
             return DataManagerFacade.getInstance().updateDatabase(object, id, type);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
+            return null;
         }
     }
 

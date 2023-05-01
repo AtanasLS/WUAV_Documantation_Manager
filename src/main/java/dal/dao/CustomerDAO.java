@@ -82,7 +82,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
 
 
 
-        String query="INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?) WHERE email = ?;";
+        String query="UPDATE customer set first_name = ?,last_name = ?,email = ?,address = ?,address2 = ?,phone = ? WHERE email = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,firstName);
         stmt.setString(2,lastName);
@@ -90,12 +90,17 @@ public class CustomerDAO implements DAOInterface<Customer> {
         stmt.setString(4,address);
         stmt.setString(5,address2);
         stmt.setString(6,phone);
-        stmt.setInt(7,consumptionNumber);
-        stmt.setString(8,id);
+        // stmt.setInt(7,consumptionNumber);
+        stmt.setString(7,id);
 
-        ResultSet resultSet =stmt.executeQuery();
+        try {
+            ResultSet resultSet = stmt.executeQuery();
+            //System.out.println(resultSet.toString());
+        }catch (RuntimeException e){
+            System.out.println(e);
+        }
+        return "Work!";
 
-        return resultSet.toString();
     }
 
     @Override

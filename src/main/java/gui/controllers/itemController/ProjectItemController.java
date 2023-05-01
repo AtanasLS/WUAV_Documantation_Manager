@@ -27,7 +27,7 @@ public class ProjectItemController implements Initializable,Items {
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         this.deleteModel=new DeleteModel();
-        this.editModel=new EditModel();
+        this.editModel=new EditModel(model);
         try {
             this.model.loadProjects();
         } catch (Exception e) {

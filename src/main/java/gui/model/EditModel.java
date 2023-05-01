@@ -4,8 +4,9 @@ import main.java.bll.AppLogicManager;
 
 public class EditModel {
     private AppLogicManager appLogicManager;
-
-    public EditModel(){
+    private MainModel model;
+    public EditModel(MainModel model){
+        this.model = model;
         this.appLogicManager=new AppLogicManager();
     }
 

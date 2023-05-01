@@ -6,6 +6,7 @@ import main.java.gui.model.DeleteModel;
 import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -19,13 +20,14 @@ public class OrderINfoController implements Initializable,Info
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.editModel=new EditModel();
+        this.editModel=new EditModel(model);
         this.deleteModel=new DeleteModel();
     }
 
     @Override
     public void setMainModel(MainModel mvm) {
        this.model=mvm;
+       this.deleteModel=new DeleteModel();
 
 
     }
@@ -48,7 +50,9 @@ public class OrderINfoController implements Initializable,Info
     }
 
     @Override
-    public void edit() {
+    public void edit(ActionEvent actionEvent) {
 
     }
+
+
 }
