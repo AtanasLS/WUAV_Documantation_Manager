@@ -29,7 +29,7 @@ public class OrderController implements Initializable {
             throw new RuntimeException(e);
         }
         Node[] nodes = new Node[model.getAllOrders().size()];
-        for (int i = 1; i < nodes.length; i++) {
+        for (int i = 0; i < nodes.length; i++) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/OrderItem.fxml"));
                 nodes[i] = loader.load();

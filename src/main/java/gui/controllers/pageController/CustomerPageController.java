@@ -30,25 +30,12 @@ public class CustomerPageController implements Initializable {
         }
         //System.out.println(model.getAllCustomers());
         Node[] nodes = new Node[model.getAllCustomers().size()];
-        for (int i = 1; i < nodes.length; i++) {
-            try {
-                                /*
-
+        for (int i = 0; i < nodes.length; i++) {
+            try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/CustomerItem.fxml"));
-                CustomerItemController controller = loader.getController();
-                controller.setLabels(i);
-                nodes[i] = loader.load();
-
-                                 */
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/CustomerItem.fxml"));
-               // nodes [i] = loader.load(getClass().getResource("/view/items/CustomerItem.fxml"));
                 nodes[i] = loader.load();
                 CustomerItemController controller = loader.getController();
-
                 controller.setLabels(i);
-
-               // nodes[i] = FXMLLoader.load(getClass().getResource("/view/items/CustomerItem.fxml"));
-
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();

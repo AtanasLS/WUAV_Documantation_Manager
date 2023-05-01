@@ -89,7 +89,6 @@ public class AdminViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader();
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/UsersView.fxml")));
-                LoginPageController controller = loader.getController();
 
             } catch (IOException e) {
                 throw new RuntimeException(e);

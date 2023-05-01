@@ -30,7 +30,7 @@ public class DocumentController implements Initializable {
         }
         //System.out.println(model.getAllCustomers());
         Node[] nodes = new Node[model.getAllDocuments().size()];
-        for (int i = 1; i < nodes.length; i++) {
+        for (int i = 0; i < nodes.length; i++) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/DocumentItem.fxml"));
                 nodes[i] = loader.load();
