@@ -6,6 +6,7 @@ import main.java.be.*;
 import main.java.bll.AppLogicManager;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class MainModel {
 
@@ -23,9 +24,9 @@ public class MainModel {
 
     private final ObservableList<User> allTech;
 
+    private User loggedInUser;
 
-
-
+    private Customer selectedCustomer;
 
 
 
@@ -40,9 +41,8 @@ public class MainModel {
         this.allProjects=FXCollections.observableArrayList();
         this.allUsers=FXCollections.observableArrayList();
         this.allTech=FXCollections.observableArrayList();
-
-
-
+        this.loggedInUser = null;
+        this.selectedCustomer = null;
 
     }
 
@@ -116,6 +116,30 @@ public class MainModel {
         return this.allTech;
     }
 
-
+    public boolean checkIfUserExist(String username, String password){
+        List<User> users = this.getAllUsers();
+        for (User u: users ) {
+            if (u.getUsername().equals(username) && u.getPassword().equals(password)){
+                loggedInUser = u;
+                return true;
+            }
+        }
+            return false;
+    }
+    public Customer getSelectedCustomer(){
+        return selectedCustomer;
+    }
+    public void setSelectedCustomer(Customer customer){
+        this.selectedCustomer = customer;
+    }
+    public User getUser(String username) throws Exception {
+        List<User> allUsers = getAllUsers();
+        for (User u:allUsers) {
+            if (u.getUsername().equals(username)){
+                return u;
+            }
+        }
+        return null;
+    }
 
 }

@@ -17,7 +17,7 @@ public class UserItemController implements Initializable,Items {
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         try {
-            this.model.loadTech();
+            this.model.loadUsers();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -25,11 +25,10 @@ public class UserItemController implements Initializable,Items {
 
     @Override
     public void setLabels(int numberOfElement) {
+
         username.setText(this.model.getAllUsers().get(numberOfElement).getUsername());
         firstName.setText(this.model.getAllUsers().get(numberOfElement).getFirstName());
         password.setText(this.model.getAllUsers().get(numberOfElement).getPassword());
-
-
 
     }
 }

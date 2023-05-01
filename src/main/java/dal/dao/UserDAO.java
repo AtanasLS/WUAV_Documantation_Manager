@@ -38,7 +38,7 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public ObservableList<User> getAllFromDatabase() throws SQLException {
-        String query="SELECT * FROM user;";
+        String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[users];";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 

@@ -28,7 +28,7 @@
       </ImageView>
       <ScrollPane layoutY="198.0" prefHeight="391.0" prefWidth="794.0" stylesheets="@../../css/stylesheet.css">
          <content>
-            <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="744.0" spacing="5.0" style="-fx-background-color: ;">
+            <VBox fx:id="pnItems" prefHeight="391.0" prefWidth="793.0" spacing="5.0" >
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
