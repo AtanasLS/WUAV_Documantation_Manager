@@ -9,7 +9,7 @@ import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerInfoController implements Initializable {
+public class CustomerInfoController implements Initializable , Info{
     @FXML
     public Label infoFirstNameLabel,getInfoLastNameLabel,infoPhoneNumLabel1,infoEmailLabel,infoFirstAddrssLabel,infoAddrssLabel,infoCosnuptionLabel;
     private MainModel model;
@@ -28,6 +28,16 @@ public class CustomerInfoController implements Initializable {
         infoFirstAddrssLabel.setText(model.getSelectedCustomer().getAddress());
         infoAddrssLabel.setText(model.getSelectedCustomer().getAddress2());
         infoCosnuptionLabel.setText(String.valueOf(model.getSelectedCustomer().getConsumptionNumber()));
+
+    }
+
+    @Override
+    public String delete(String id) {
+        return null;
+    }
+
+    @Override
+    public void edit() {
 
     }
 }

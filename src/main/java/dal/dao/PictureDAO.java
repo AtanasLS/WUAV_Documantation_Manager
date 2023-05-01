@@ -56,16 +56,16 @@ public class PictureDAO implements DAOInterface<Picture> {
     }
 
     @Override
-    public String deleteFromDatabase(int id) throws SQLException {
+    public String deleteFromDatabase(String id) throws SQLException {
         String query="DELETE FROM picture WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
+        stmt.setString(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Picture object, int id) throws SQLException {
+    public String updateDatabase(Picture object, String id) throws SQLException {
         String name=object.getName();
         Image installationPhoto=object.getInstallationPhoto();
         int documentationID=object.getDocumentationID();
@@ -75,7 +75,7 @@ public class PictureDAO implements DAOInterface<Picture> {
         stmt.setString(1,name);
         stmt.setObject(2,installationPhoto);
         stmt.setInt(3,documentationID);
-        stmt.setInt(4,id);
+        stmt.setString(4,id);
 
         ResultSet resultSet =stmt.executeQuery();
 

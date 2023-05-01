@@ -60,17 +60,17 @@ public class CustomerDAO implements DAOInterface<Customer> {
     }
 
     @Override
-    public String deleteFromDatabase(int id) throws SQLException {
+    public String deleteFromDatabase(String id) throws SQLException {
 
-        String query="DELETE FROM customer WHERE id=?;";
+        String query="DELETE FROM customer WHERE email=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
+        stmt.setString(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Customer object, int id) throws SQLException {
+    public String updateDatabase(Customer object, String id) throws SQLException {
 
         String firstName=object.getFirstName();
         String lastName=object.getLastName();
@@ -82,7 +82,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
 
 
 
-        String query="INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?) WHERE id = ?;";
+        String query="INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?) WHERE email = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,firstName);
         stmt.setString(2,lastName);
@@ -91,7 +91,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
         stmt.setString(5,address2);
         stmt.setString(6,phone);
         stmt.setInt(7,consumptionNumber);
-        stmt.setInt(8,id);
+        stmt.setString(8,id);
 
         ResultSet resultSet =stmt.executeQuery();
 

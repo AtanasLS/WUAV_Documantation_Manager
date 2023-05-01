@@ -23,6 +23,7 @@ public class OrderItemController implements Initializable,Items {
 
     @Override
     public void setLabels(int numberOfElement) {
+        model.setSelectedOrder(this.model.getAllOrders().get(numberOfElement));
         oName.setText(this.model.getAllOrders().get(numberOfElement).getName());
         pName.setText(this.model.getAllOrders().get(numberOfElement).getProject());
         customer.setText(this.model.getAllOrders().get(numberOfElement ).getCustomer());

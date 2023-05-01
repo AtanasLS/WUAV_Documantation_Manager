@@ -56,25 +56,25 @@ public class LogInDAO implements DAOInterface<LogIns> {
     }
 
     @Override
-    public String deleteFromDatabase(int id) throws SQLException {
-        String query="DELETE FROM logIns WHERE id=?;";
+    public String deleteFromDatabase(String id) throws SQLException {
+        String query="DELETE FROM logIns WHERE username=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
+        stmt.setString(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();    }
 
     @Override
-    public String updateDatabase(LogIns object, int id) throws SQLException {
+    public String updateDatabase(LogIns object, String id) throws SQLException {
         String username=object.getUsername();
         String password=object.getPassword();
         int projectId=object.getProjectId();
 
-        String query="INSERT INTO logIns VALUES (?, ?, ?) WHERE id = ?;";
+        String query="INSERT INTO logIns VALUES (?, ?, ?) WHERE username = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,password);
         stmt.setInt(3,projectId);
-        stmt.setInt(4,id);
+        stmt.setString(4,id);
 
         ResultSet resultSet =stmt.executeQuery();
 
