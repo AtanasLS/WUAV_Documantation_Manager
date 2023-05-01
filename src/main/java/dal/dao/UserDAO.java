@@ -1,7 +1,10 @@
 package main.java.dal.dao;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.java.be.User;
 import main.java.dal.DataAccessManager;
+import main.java.dal.interfaces.DAOInterface;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO implements DAOInterface<User>{
+public class UserDAO implements DAOInterface<User> {
     DataAccessManager dataAccessManager = new DataAccessManager();
 
     @Override
@@ -22,13 +25,34 @@ public class UserDAO implements DAOInterface<User>{
        return this.getDataFromResultSet(resultSet);
     }
 
+    public User getTechnicianFromDatabase(int id) throws SQLException {
+        String query="SELECT * FROM user WHERE id=? AND type=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,id);
+        stmt.setString(2,"technician");
+
+        ResultSet resultSet =stmt.executeQuery();
+
+        return this.getDataFromResultSet(resultSet);
+    }
+
     @Override
-    public List<User> getAllFromDatabase() throws SQLException {
-        String query="SELECT * FROM user;";
+    public ObservableList<User> getAllFromDatabase() throws SQLException {
+        String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[users];";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
-        return this.getAllDataFromResultSet(resultSet);
+        return (ObservableList<User>) this.getAllDataFromResultSet(resultSet);
+
+    }
+
+    public ObservableList<User> getAllTechniciansFromDatabase() throws SQLException {
+        String query="SELECT * FROM user WHERE type=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setString(1,"technician");
+        ResultSet resultSet =stmt.executeQuery();
+
+        return (ObservableList<User>) this.getAllDataFromResultSet(resultSet);
 
     }
 
@@ -57,17 +81,17 @@ public class UserDAO implements DAOInterface<User>{
     }
 
     @Override
-    public String deleteFromDatabase(int id) throws SQLException {
+    public String deleteFromDatabase(String id) throws SQLException {
 
-        String query="DELETE FROM user WHERE id=?;";
+        String query="DELETE FROM user WHERE username=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
+        stmt.setString(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(User object , int id) throws SQLException {
+    public String updateDatabase(User object , String id) throws SQLException {
         String username=object.getUsername();
         String firstName=object.getFirstName();
         String lastName=object.getLastName();
@@ -75,7 +99,7 @@ public class UserDAO implements DAOInterface<User>{
         String password= object.getPassword();
         String type=object.getType();
 
-        String query="INSERT INTO user VALUES (?, ?, ?, ?, ?, ?) WHERE id = ?;";
+        String query="INSERT INTO user VALUES (?, ?, ?, ?, ?, ?) WHERE username = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,firstName);
@@ -83,7 +107,7 @@ public class UserDAO implements DAOInterface<User>{
         stmt.setString(4,email);
         stmt.setString(5,password);
         stmt.setString(6,type);
-        stmt.setInt(7,id);
+        stmt.setString(7,id);
 
         ResultSet resultSet =stmt.executeQuery();
 
@@ -98,20 +122,21 @@ public class UserDAO implements DAOInterface<User>{
         String email=resultSet.getString("email");
         String password=resultSet.getString("password");
         String type=resultSet.getString("type");
+        String customer=resultSet.getString("type");
         return  new User(username,firstName,lastName,email,password,type);
 
     }
 
     @Override
-    public List<User> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+    public ObservableList<User> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
 
-        List<User> listOfUsers=new ArrayList<>();
+        ObservableList<User> listOfUsers= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
 
             String username = resultSet.getString("username");
-            String firstName = resultSet.getString("firstName");
-            String lastName = resultSet.getString("lastName");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
             String email = resultSet.getString("email");
             String password = resultSet.getString("password");
             String type = resultSet.getString("type");
@@ -120,4 +145,7 @@ public class UserDAO implements DAOInterface<User>{
 
         return listOfUsers;
     }
+
+
+
 }
