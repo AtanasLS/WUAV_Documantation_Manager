@@ -19,14 +19,14 @@ public class OrderINfoController implements Initializable,Info
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        this.editModel=new EditModel();
+        this.deleteModel=new DeleteModel();
     }
 
     @Override
     public void setMainModel(MainModel mvm) {
        this.model=mvm;
-       this.editModel=new EditModel();
-       this.deleteModel=new DeleteModel();
+
 
     }
 

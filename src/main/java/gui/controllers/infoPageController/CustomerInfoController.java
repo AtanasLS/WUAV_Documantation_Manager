@@ -3,6 +3,8 @@ package main.java.gui.controllers.infoPageController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import main.java.gui.model.DeleteModel;
+import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
 import java.awt.*;
@@ -13,8 +15,12 @@ public class CustomerInfoController implements Initializable , Info{
     @FXML
     public Label infoFirstNameLabel,getInfoLastNameLabel,infoPhoneNumLabel1,infoEmailLabel,infoFirstAddrssLabel,infoAddrssLabel,infoCosnuptionLabel;
     private MainModel model;
+    private DeleteModel deleteModel;
+    private EditModel editModel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.editModel=new EditModel();
+        this.deleteModel=new DeleteModel();
 
     }
     public void setMainModel(MainModel mvm){
@@ -33,7 +39,7 @@ public class CustomerInfoController implements Initializable , Info{
 
     @Override
     public String delete(String id) {
-        return null;
+        return this.deleteModel.deleteFromDatabase(id,"Customer");
     }
 
     @Override
