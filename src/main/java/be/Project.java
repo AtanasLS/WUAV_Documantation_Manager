@@ -1,6 +1,7 @@
 package main.java.be;
 
 public class Project {
+    private int projectId;
 
     private String type;
     private double price;
@@ -10,7 +11,8 @@ public class Project {
 
 
 
-    public Project(String type, double price, String customer, int customerId){
+    public Project(int projectId,String type, double price, String customer, int customerId){
+        this.projectId=projectId;
         this.type = type;
         this.price = price;
         this.customer=customer;
@@ -46,5 +48,13 @@ public class Project {
 
     public void setCustomer(String customer) {
         this.customer = customer;
+    }
+
+    public int getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
     }
 }

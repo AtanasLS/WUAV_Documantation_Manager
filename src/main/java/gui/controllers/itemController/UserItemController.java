@@ -26,6 +26,7 @@ public class UserItemController implements Initializable,Items {
     @Override
     public void setLabels(int numberOfElement) {
 
+        this.model.setSelectedUser(this.model.getAllUsers().get(numberOfElement));
         username.setText(this.model.getAllUsers().get(numberOfElement).getUsername());
         firstName.setText(this.model.getAllUsers().get(numberOfElement).getFirstName());
         password.setText(this.model.getAllUsers().get(numberOfElement).getPassword());

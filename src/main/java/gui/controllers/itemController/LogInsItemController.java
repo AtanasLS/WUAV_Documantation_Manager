@@ -44,6 +44,8 @@ public class LogInsItemController implements Initializable,Items {
         password.setText(this.model.getAllLogIns().get(numberOfElement).getPassword());
         project.setText(this.model.getAllLogIns().get(numberOfElement).getProject());
 
+        this.currentLogIn=this.model.getAllLogIns().get(numberOfElement);
+
     }
 
     public void editLogIN(ActionEvent actionEvent){

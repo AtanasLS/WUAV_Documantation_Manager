@@ -49,10 +49,10 @@ public class DataManagerFacade {
                 o = this.logInDAO.getFromDatabase(id);
                 break;
             case "Picture":
-                o = this.pictureDAO.deleteFromDatabase(id);
+                o = this.pictureDAO.getFromDatabase(id);
                 break;
             case "Project":
-                o = this.projectDAO.deleteFromDatabase(id);
+                o = this.projectDAO.getFromDatabase(id);
                 break;
         }
 

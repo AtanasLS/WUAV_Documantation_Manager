@@ -85,12 +85,14 @@ public class ProjectDAO implements DAOInterface<Project> {
 
     @Override
     public Project getDataFromResultSet(ResultSet resultSet) throws SQLException {
+        int id=resultSet.getInt("[project]id");
+
         String type=resultSet.getString("type");
         double price=resultSet.getDouble("price");
         String customer=resultSet.getString("first_name");
-        int customerId=resultSet.getInt("id");
+        int customerId=resultSet.getInt("[customer]id");
 
-        return  new Project(type,price,customer,customerId);
+        return  new Project(id,type,price,customer,customerId);
 
     }
 
@@ -100,12 +102,14 @@ public class ProjectDAO implements DAOInterface<Project> {
 
         while (resultSet.next()) {
 
+            int id=resultSet.getInt("[project]id");
+
             String type=resultSet.getString("type");
             double price=resultSet.getDouble("price");
             String customer=resultSet.getString("first_name");
-            int customerId=resultSet.getInt("id");
+            int customerId=resultSet.getInt("[customer]id");
 
-            listOfProjects.add(new Project(type,price,customer,customerId));
+            listOfProjects.add(new Project(id,type,price,customer,customerId));
         }
 
         return listOfProjects;    }
