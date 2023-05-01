@@ -28,7 +28,7 @@ public class LogInsController implements Initializable {
                 throw new RuntimeException(e);
             }
             Node[] nodes = new Node[model.getAllLogIns().size()];
-            for (int i = 1; i < nodes.length; i++) {
+            for (int i = 0; i < nodes.length; i++) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/LogIns.fxml"));
                     nodes[i] = loader.load();

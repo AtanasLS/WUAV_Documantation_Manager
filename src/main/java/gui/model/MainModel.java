@@ -26,7 +26,7 @@ public class MainModel {
 
     private User loggedInUser;
 
-
+    private Customer selectedCustomer;
 
 
 
@@ -42,8 +42,7 @@ public class MainModel {
         this.allUsers=FXCollections.observableArrayList();
         this.allTech=FXCollections.observableArrayList();
         this.loggedInUser = null;
-
-
+        this.selectedCustomer = null;
 
     }
 
@@ -127,6 +126,12 @@ public class MainModel {
         }
             return false;
     }
+    public Customer getSelectedCustomer(){
+        return selectedCustomer;
+    }
+    public void setSelectedCustomer(Customer customer){
+        this.selectedCustomer = customer;
+    }
     public User getUser(String username) throws Exception {
         List<User> allUsers = getAllUsers();
         for (User u:allUsers) {
@@ -136,4 +141,5 @@ public class MainModel {
         }
         return null;
     }
+
 }

@@ -23,17 +23,18 @@ public class UserController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         try {
-            model.loadCustomers();
+            model.loadUsers();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        System.out.println(model.getAllUsers());
         Node[] nodes = new Node[model.getAllUsers().size()];
-        for (int i = 1; i < nodes.length; i++) {
+        for (int i = 0; i < nodes.length; i++) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/UserItem.fxml"));
                 nodes[i] = loader.load();
-                UserItemController controller = loader.getController();
 
+                UserItemController controller = loader.getController();
                 controller.setLabels(i);
 
                 pnItems.getChildren().add(nodes[i]);
