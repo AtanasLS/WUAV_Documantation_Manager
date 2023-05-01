@@ -16,13 +16,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AdminViewController implements Initializable {
+public class AdminViewController implements Initializable, UserViewInterface {
     @FXML
     public Button btnLogIns, btnOrders, btnDocuments, btnUsers, btnCustomers, btnProjects, btnSignout;
     @FXML
     AnchorPane painnnnn;
     @FXML
     private Stage primaryStage;
+
+    private String selected;
 
 
 
@@ -44,12 +46,37 @@ public class AdminViewController implements Initializable {
 
     }
 
+    public void newObject(ActionEvent actionEvent){
+
+        switch (selected.toLowerCase()){
+            case "logins":
+                //open log in create fxml
+                break;
+            case "users":
+                //open user in create fxml
+                break;
+            case "orders":
+                //open order in create fxml
+                break;
+            case "customers":
+                //open lcustomerog in create fxml
+                break;
+            case "projects":
+                //open project in create fxml
+                break;
+            case "documents":
+                //open document in create fxml
+                break;
+        }
+    }
+
     public void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnLogIns) {
             try {
                 FXMLLoader loader = new FXMLLoader();
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/LogInsView.fxml")));
+                this.selected="LogIns";
                 LoginPageController controller = loader.getController();
 
             } catch (IOException e) {
@@ -60,7 +87,7 @@ public class AdminViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader();
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/DocumentsPage.fxml")));
-
+                this.selected="Documents";
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -70,6 +97,7 @@ public class AdminViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader();
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/OrdersView.fxml")));
+                this.selected="Orders";
                 LoginPageController controller = loader.getController();
 
             } catch (IOException e) {
@@ -80,6 +108,7 @@ public class AdminViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader();
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/ProjectsView.fxml")));
+                this.selected="Projects";
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -89,8 +118,12 @@ public class AdminViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader();
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/UsersView.fxml")));
+<<<<<<< Updated upstream
                 LoginPageController controller = loader.getController();
 
+=======
+                this.selected="Users";
+>>>>>>> Stashed changes
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -100,7 +133,7 @@ public class AdminViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/CustomersView.fxml")));
                 LoginPageController controller = loader.getController();
-
+                this.selected="Customers";
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

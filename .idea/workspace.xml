@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="2a200066-6b8f-4949-a977-8fc62f8eeb2b" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/libraries/microsoft_sqlserver_mssql_jdbc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/libraries/openjfx_20_0_1_osx_x64_bin_sdk.xml" afterDir="false" />
@@ -20,6 +21,23 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" afterDir="false" />
+=======
+    <list default="true" id="0dbebccb-b197-4464-94c9-5e0eeaf3ad00" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/UserViewInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/DocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/SellerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/SellerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/TechnicianManagerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/TechnicianManagerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/AdminMainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AdminMainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +50,7 @@
         <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>

@@ -26,9 +26,9 @@
             <Image url="@../../images/wuavLogo.png" />
          </image>
       </ImageView>
-      <ScrollPane layoutX="23.0" layoutY="198.0" prefHeight="320.0" prefWidth="746.0" stylesheets="@../../css/stylesheet.css">
+      <ScrollPane layoutY="198.0" prefHeight="320.0" prefWidth="793.0" stylesheets="@../../css/stylesheet.css">
          <content>
-            <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="744.0" spacing="5.0" >
+            <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="740.0" spacing="5.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>

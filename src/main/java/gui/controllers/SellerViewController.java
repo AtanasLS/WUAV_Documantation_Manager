@@ -6,9 +6,14 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SellerViewController implements Initializable {
+public class SellerViewController implements Initializable, UserViewInterface {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+    }
+
+    @Override
+    public void newObject(ActionEvent actionEvent) {
 
     }
 
