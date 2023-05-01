@@ -81,17 +81,17 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     @Override
-    public String deleteFromDatabase(int id) throws SQLException {
+    public String deleteFromDatabase(String id) throws SQLException {
 
-        String query="DELETE FROM user WHERE id=?;";
+        String query="DELETE FROM user WHERE username=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
+        stmt.setString(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(User object , int id) throws SQLException {
+    public String updateDatabase(User object , String id) throws SQLException {
         String username=object.getUsername();
         String firstName=object.getFirstName();
         String lastName=object.getLastName();
@@ -99,7 +99,7 @@ public class UserDAO implements DAOInterface<User> {
         String password= object.getPassword();
         String type=object.getType();
 
-        String query="INSERT INTO user VALUES (?, ?, ?, ?, ?, ?) WHERE id = ?;";
+        String query="INSERT INTO user VALUES (?, ?, ?, ?, ?, ?) WHERE username = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,firstName);
@@ -107,7 +107,7 @@ public class UserDAO implements DAOInterface<User> {
         stmt.setString(4,email);
         stmt.setString(5,password);
         stmt.setString(6,type);
-        stmt.setInt(7,id);
+        stmt.setString(7,id);
 
         ResultSet resultSet =stmt.executeQuery();
 

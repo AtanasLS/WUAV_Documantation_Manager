@@ -75,14 +75,14 @@ public class AppLogicManager {
             throw new RuntimeException(e);
         }
     }
-    public String deleteFromDatabase (int id, String type){
+    public String deleteFromDatabase (String id, String type){
         try {
-            return  DataManagerFacade.getInstance().insertIntoDatabase(id, type);
+            return  DataManagerFacade.getInstance().deleteFromDatabase(id, type);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    public String updateDatabase (Object object , int id, String type){
+    public String updateDatabase (Object object , String id, String type){
         try {
             return DataManagerFacade.getInstance().updateDatabase(object, id, type);
         } catch (SQLException e) {

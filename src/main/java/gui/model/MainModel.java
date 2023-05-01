@@ -28,6 +28,8 @@ public class MainModel {
 
     private Customer selectedCustomer;
 
+    private Order selectedOrder;
+
 
 
 
@@ -132,6 +134,15 @@ public class MainModel {
     public void setSelectedCustomer(Customer customer){
         this.selectedCustomer = customer;
     }
+
+    public Order getSelectedOrder() {
+        return selectedOrder;
+    }
+
+    public void setSelectedOrder(Order selectedOrder) {
+        this.selectedOrder = selectedOrder;
+    }
+
     public User getUser(String username) throws Exception {
         List<User> allUsers = getAllUsers();
         for (User u:allUsers) {

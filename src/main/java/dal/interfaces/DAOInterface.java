@@ -12,8 +12,8 @@ public interface DAOInterface<T> {
     T getFromDatabase( int id) throws SQLException;
     ObservableList<T> getAllFromDatabase() throws SQLException;
     String insertIntoDatabase(T object) throws SQLException;
-    String deleteFromDatabase(int id) throws SQLException;
-    String updateDatabase(T object , int id) throws SQLException;
+    String deleteFromDatabase(String id) throws SQLException;
+    String updateDatabase(T object , String id) throws SQLException;
 
     T getDataFromResultSet(ResultSet resultSet) throws SQLException;
 

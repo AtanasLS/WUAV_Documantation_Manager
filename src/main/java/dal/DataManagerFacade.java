@@ -119,7 +119,7 @@ public class DataManagerFacade {
         return output;
     }
 
-    public String deleteFromDatabase(int id, String type) throws SQLException{
+    public String deleteFromDatabase(String id, String type) throws SQLException{
         String output = "";
 
         switch (type){
@@ -144,7 +144,7 @@ public class DataManagerFacade {
         }
         return output;
     }
-    public String updateDatabase(Object object , int id, String type) throws SQLException{
+    public String updateDatabase(Object object , String id, String type) throws SQLException{
         String output = "";
 
 

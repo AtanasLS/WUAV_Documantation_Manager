@@ -56,16 +56,16 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public String deleteFromDatabase(int id) throws SQLException {
+    public String deleteFromDatabase(String id) throws SQLException {
         String query="DELETE FROM document WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
+        stmt.setString(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Document object, int id) throws SQLException {
+    public String updateDatabase(Document object, String id) throws SQLException {
 
         Image layoutDrawing=object.getLayoutDrawing();
         String description=object.getDescription();
@@ -76,7 +76,7 @@ public class DocumentDAO implements DAOInterface<Document> {
         stmt.setObject(1,layoutDrawing);
         stmt.setString(2,description);
         stmt.setObject(3,date);
-        stmt.setInt(4,id);
+        stmt.setString(4,id);
 
 
         ResultSet resultSet =stmt.executeQuery();

@@ -59,16 +59,16 @@ public class OrderDAO implements DAOInterface<Order> {
     }
 
     @Override
-    public String deleteFromDatabase(int id) throws SQLException {
-        String query="DELETE FROM [order] WHERE id=?;";
+    public String deleteFromDatabase(String id) throws SQLException {
+        String query="DELETE FROM [order] WHERE name=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
+        stmt.setString(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Order object, int id) throws SQLException {
+    public String updateDatabase(Order object, String id) throws SQLException {
         int userId=object.getUserID();
         int projectID=object.getProjectID();
         String name=object.getName();
@@ -76,7 +76,7 @@ public class OrderDAO implements DAOInterface<Order> {
         Date date= (Date) object.getDate();
         Double price=object.getPrice();
 
-        String query="INSERT INTO [order] VALUES (?, ?, ?, ?, ?, ?) WHERE id = ?;";
+        String query="INSERT INTO [order] VALUES (?, ?, ?, ?, ?, ?) WHERE name = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,userId);
         stmt.setInt(2,projectID);
@@ -84,7 +84,7 @@ public class OrderDAO implements DAOInterface<Order> {
         stmt.setInt(4,customer);
         stmt.setDate(5,date);
         stmt.setDouble(6,price);
-        stmt.setInt(7,id);
+        stmt.setString(7,id);
 
 
         ResultSet resultSet =stmt.executeQuery();
