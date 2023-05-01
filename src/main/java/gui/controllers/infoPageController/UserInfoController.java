@@ -10,49 +10,47 @@ import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class OrderINfoController implements Initializable,Info
-{
+public class UserInfoController implements Initializable, Info {
 
-    public Label name,user,project,customer,date,price;
+    public Label firstName,lastName,username,email,password,type;
+
     private MainModel model;
     private DeleteModel deleteModel;
     private EditModel editModel;
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle){
         this.editModel=new EditModel(model);
         this.deleteModel=new DeleteModel();
-    }
+}
 
     @Override
     public void setMainModel(MainModel mvm) {
-       this.model=mvm;
-       this.deleteModel=new DeleteModel();
+        this.model=mvm;
 
 
     }
-
     @Override
     public void setInfoLabels() {
-        this.customer.setText(model.getSelectedOrder().getCustomer());
-        this.name.setText(model.getSelectedOrder().getName());
-        this.user.setText(model.getSelectedOrder().getUserName());
-        this.project.setText(model.getSelectedOrder().getProject());
-        this.price.setText(String.valueOf(model.getSelectedOrder().getPrice()));
-        this.date.setText(String.valueOf(model.getSelectedOrder().getDate()));
+        firstName.setText(this.model.getSelectedUser().getFirstName());
+        lastName.setText(this.model.getSelectedUser().getLastName());
+        username.setText(this.model.getSelectedUser().getUsername());
+        email.setText(this.model.getSelectedUser().getEmail());
+        password.setText(this.model.getSelectedUser().getPassword());
+        type.setText(this.model.getSelectedUser().getType());
+
 
 
     }
 
     @Override
     public String delete(String id) {
-        return this.deleteModel.deleteFromDatabase(id,"Order");
+        return this.deleteModel.deleteFromDatabase(this.model.getSelectedUser().getUsername(),"User");
+
     }
 
     @Override
     public void edit(ActionEvent actionEvent) {
 
     }
-
-
 }

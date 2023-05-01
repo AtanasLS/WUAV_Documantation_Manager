@@ -30,6 +30,8 @@ public class MainModel {
 
     private Order selectedOrder;
 
+    private User selectedUser;
+
 
 
 
@@ -153,4 +155,11 @@ public class MainModel {
         return null;
     }
 
+    public User getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
+    }
 }

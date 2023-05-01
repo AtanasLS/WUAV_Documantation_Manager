@@ -11,6 +11,8 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.java.gui.controllers.CustomerEditController;
 import main.java.gui.controllers.LoginPageController;
+import main.java.gui.model.DeleteModel;
+import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
 import java.awt.*;
@@ -23,8 +25,12 @@ public class CustomerInfoController implements Initializable , Info{
     public Label infoFirstNameLabel,getInfoLastNameLabel,infoPhoneNumLabel1,infoEmailLabel,infoFirstAddrssLabel,infoAddrssLabel,infoCosnuptionLabel;
 
     private MainModel model;
+    private DeleteModel deleteModel;
+    private EditModel editModel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.editModel=new EditModel(model);
+        this.deleteModel=new DeleteModel();
 
     }
         public void setMainModel(MainModel mvm){
@@ -59,7 +65,7 @@ public class CustomerInfoController implements Initializable , Info{
 
     @Override
     public String delete(String id) {
-        return null;
+        return this.deleteModel.deleteFromDatabase(id,"Customer");
     }
 
     @Override
