@@ -1,4 +1,4 @@
-package main.java.gui.controllers;
+package main.java.gui.controllers.editController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,6 +27,7 @@ public class UserEditController implements Initializable {
     private EditModel model;
 
     private String id;
+    private int userID;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -41,10 +42,11 @@ public class UserEditController implements Initializable {
         password.setText(mvm.getSelectedUser().getPassword());
         type.setText(mvm.getSelectedUser().getType());
         this.id = mvm.getSelectedUser().getUsername();
+        this.userID = mvm.getSelectedUser().getId();
     }
 
     public void handleSave(ActionEvent actionEvent) throws SQLException {
-        User editedCustomer = new User(username.getText(), firstName.getText(), lastName.getText(), email.getText()
+        User editedCustomer = new User( username.getText(), firstName.getText(), lastName.getText(), email.getText()
                 ,password.getText(), type.getText());
 
         model.updateDatabaseElement(editedCustomer, this.id ,"User");

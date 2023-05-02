@@ -135,6 +135,7 @@ public class MainModel {
     }
 
     public void updateUsers(Object selectedObject, String id) throws SQLException {
+
         User userToRemove = null;
         for (User u: getAllUsers()) {
             if (u.getUsername().equals(id)){

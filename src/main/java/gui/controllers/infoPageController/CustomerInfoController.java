@@ -9,13 +9,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import main.java.gui.controllers.CustomerEditController;
-import main.java.gui.controllers.LoginPageController;
+import main.java.gui.controllers.editController.CustomerEditController;
 import main.java.gui.model.DeleteModel;
 import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

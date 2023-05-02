@@ -2,6 +2,7 @@ package main.java.dal.dao;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
 import main.java.be.Customer;
 import main.java.be.Document;
 import main.java.dal.DataAccessManager;
@@ -12,6 +13,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +41,9 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public String insertIntoDatabase(Document object) throws SQLException {
-        Image layoutDrawing=object.getLayoutDrawing();
+        javafx.scene.image.Image layoutDrawing=object.getLayoutDrawing();
         String description=object.getDescription();
-        Date date= (Date) object.getDate();
+        LocalDate date =  object.getDate();
 
         String query="INSERT INTO document VALUES (?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
@@ -69,7 +71,7 @@ public class DocumentDAO implements DAOInterface<Document> {
 
         Image layoutDrawing=object.getLayoutDrawing();
         String description=object.getDescription();
-        Date date= (Date) object.getDate();
+        LocalDate date=  object.getDate();
 
         String query="INSERT INTO document VALUES (?, ?, ?) WHERE id = ?;;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
@@ -87,11 +89,11 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public Document getDataFromResultSet(ResultSet resultSet) throws SQLException {
-        Image layoutDrawing=resultSet.getObject("layoutDrawing", Image.class);
+        javafx.scene.image.Image layoutDrawing= (javafx.scene.image.Image) resultSet.getObject("layoutDrawing");
         String description=resultSet.getString("description");
         Date date=resultSet.getDate("date");
 
-        return  new Document(layoutDrawing,description,date);
+        return  new Document(layoutDrawing,description, date.toLocalDate());
     }
 
     @Override
@@ -100,10 +102,10 @@ public class DocumentDAO implements DAOInterface<Document> {
 
         while (resultSet.next()) {
 
-            Image layoutDrawing=resultSet.getObject("layout-drawing", Image.class);
+            javafx.scene.image.Image layoutDrawing= (javafx.scene.image.Image) resultSet.getObject("layout-drawing");
             String description=resultSet.getString("description");
             Date date=resultSet.getDate("date");
-            listOfDocuments.add(new Document(layoutDrawing,description,date));
+            listOfDocuments.add(new Document(layoutDrawing,description, date.toLocalDate()));
         }
 
         return listOfDocuments;

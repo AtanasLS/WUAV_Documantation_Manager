@@ -65,7 +65,7 @@ public class UserDAO implements DAOInterface<User> {
         String password= object.getPassword();
         String type=object.getType();
 
-        String query="INSERT INTO user VALUES (?, ?, ?, ?, ?, ?);";
+        String query="INSERT INTO [WUAV_Documentation_System].[dbo].[users] VALUES (?, ?, ?, ?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,firstName);
@@ -74,10 +74,13 @@ public class UserDAO implements DAOInterface<User> {
         stmt.setString(5,password);
         stmt.setString(6,type);
 
-        ResultSet resultSet =stmt.executeQuery();
-
-        return resultSet.toString();
-
+        try {
+            ResultSet resultSet = stmt.executeQuery();
+            //System.out.println(resultSet.toString());
+        }catch (RuntimeException e){
+            System.out.println(e);
+        }
+        return "Work!";
     }
 
     @Override
@@ -120,6 +123,7 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public User getDataFromResultSet(ResultSet resultSet) throws SQLException {
+
         String username=resultSet.getString("username");
         String firstName=resultSet.getString("firstName");
         String lastName=resultSet.getString("lastName");
@@ -137,7 +141,7 @@ public class UserDAO implements DAOInterface<User> {
         ObservableList<User> listOfUsers= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
-
+            int id = resultSet.getInt("id");
             String username = resultSet.getString("username");
             String firstName = resultSet.getString("first_name");
             String lastName = resultSet.getString("last_name");

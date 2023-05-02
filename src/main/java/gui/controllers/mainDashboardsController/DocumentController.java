@@ -1,4 +1,4 @@
-package main.java.gui.controllers;
+package main.java.gui.controllers.mainDashboardsController;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

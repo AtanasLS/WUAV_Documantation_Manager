@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="346.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.editController.UserEditController">
+<AnchorPane prefHeight="346.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.createController.UserCreateController">
     <children>
         <Label fx:id="infoFirstNameLabel52" layoutX="15.0" layoutY="8.0" prefHeight="36.0" prefWidth="94.0" text="First Name">
             <font>
@@ -45,6 +46,6 @@
         <TextField fx:id="email" layoutX="310.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
         <TextField fx:id="username" layoutX="15.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
         <TextField fx:id="password" layoutX="15.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
-        <TextField fx:id="type" layoutX="310.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
+      <ComboBox fx:id="typeBox" layoutX="310.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
     </children>
 </AnchorPane>

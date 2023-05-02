@@ -54,9 +54,13 @@ public class CustomerDAO implements DAOInterface<Customer> {
         stmt.setString(6,phone);
         stmt.setInt(7,consumptionNumber);
 
-        ResultSet resultSet =stmt.executeQuery();
-
-        return resultSet.toString();
+        try {
+            ResultSet resultSet = stmt.executeQuery();
+            //System.out.println(resultSet.toString());
+        }catch (RuntimeException e){
+            System.out.println(e);
+        }
+        return "Work!";
     }
 
     @Override

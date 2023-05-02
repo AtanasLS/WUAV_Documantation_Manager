@@ -72,7 +72,8 @@ public class AppLogicManager {
         try {
             return DataManagerFacade.getInstance().insertIntoDatabase(object, type);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println(e);
+            return null;
         }
     }
     public String deleteFromDatabase (String id, String type){

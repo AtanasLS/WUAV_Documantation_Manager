@@ -1,6 +1,9 @@
 package main.java.be;
 
+import javafx.scene.image.Image;
+
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Document {
@@ -13,11 +16,11 @@ public class Document {
     private String customer;
     private String creator;
 
-    private Image layoutDrawing;
+    private javafx.scene.image.Image layoutDrawing;
     private String description;
-    private Date date;
+    private LocalDate date;
 
-    public Document(Image layoutDrawing, String description, Date date){
+    public Document(javafx.scene.image.Image layoutDrawing, String description, LocalDate date){
         this.name="name";
         this.layoutDrawing = layoutDrawing;
         this.description = description;
@@ -28,7 +31,7 @@ public class Document {
 
     }
 
-    public Image getLayoutDrawing() {
+    public javafx.scene.image.Image getLayoutDrawing() {
         return layoutDrawing;
     }
 
@@ -44,11 +47,11 @@ public class Document {
         this.description = description;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
     public String getCreator() {
