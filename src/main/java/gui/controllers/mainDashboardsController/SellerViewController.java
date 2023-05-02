@@ -1,4 +1,4 @@
-package main.java.gui.controllers;
+package main.java.gui.controllers.mainDashboardsController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -6,10 +6,10 @@ import javafx.fxml.Initializable;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TechnicianManagerViewController implements Initializable {
+public class SellerViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+
     }
 
     public void handleClicks(ActionEvent actionEvent) {

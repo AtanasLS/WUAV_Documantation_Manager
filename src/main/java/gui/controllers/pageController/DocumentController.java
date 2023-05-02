@@ -1,11 +1,15 @@
 package main.java.gui.controllers.pageController;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
-import main.java.gui.controllers.itemController.CustomerItemController;
+import javafx.stage.Stage;
+import main.java.gui.controllers.createController.CreateDocumentController;
 import main.java.gui.controllers.itemController.DocumentItemController;
 import main.java.gui.model.MainModel;
 
@@ -43,5 +47,16 @@ public class DocumentController implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void createDocument(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/create/CreateDocumentView.fxml"));
+        Parent root = loader.load();
+        CreateDocumentController controller = loader.getController();
+        controller.setModel(model);
+        //controller.setInformation();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }

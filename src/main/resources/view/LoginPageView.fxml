@@ -67,7 +67,7 @@
                         <HBox prefHeight="58.0" prefWidth="155.0" />
                         <HBox prefHeight="58.0" prefWidth="146.0">
                             <children>
-                                <MFXButton fx:id="logInBtn" onAction="#logIn" prefHeight="47.0" prefWidth="122.0" style="-fx-background-color: #17273A; -fx-text-alignment: bold;" styleClass="button" text="Log In" textFill="#fffefe">
+                                <MFXButton fx:id="logInBtn" onAction="#logIn" prefHeight="47.0" prefWidth="122.0" style="-fx-background-color: #17273A;" styleClass="button" text="Log In" textFill="#fffefe">
                                     <HBox.margin>
                                         <Insets left="10.0" top="25.0" />
                                     </HBox.margin>

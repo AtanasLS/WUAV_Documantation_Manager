@@ -11,11 +11,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import main.java.Main;
 import main.java.be.User;
+import main.java.gui.controllers.mainDashboardsController.AdminViewController;
 import main.java.gui.model.MainModel;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
