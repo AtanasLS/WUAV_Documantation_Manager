@@ -48,7 +48,7 @@ public class CreateOrderController implements Initializable,CreateController {
         Customer customer1= (Customer) this.customer.getSelectionModel().getSelectedItem();
         double price= Double.parseDouble(this.price.getText());
 
-        Order order=new Order(user1.getId(),project1.getProjectId(),this.name.getText(),user1.getUsername(),project1.getType(),customer1.getFirstName(),customer1.getId(),this.date.getValue(),price);
+        //Order order=new Order(user1.getId(),project1.getProjectId(),this.name.getText(),user1.getUsername(),project1.getType(),customer1.getFirstName(),customer1.getId(),this.date.getValue(),price);
 
     }
 
