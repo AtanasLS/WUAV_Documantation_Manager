@@ -28,7 +28,9 @@ public class LoginPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         model = new MainModel();
         try {
+            model.loadCustomers();
             model.loadUsers();
+            model.loadTech();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

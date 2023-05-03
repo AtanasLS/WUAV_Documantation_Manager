@@ -24,10 +24,10 @@ public class DocumentItemController implements Initializable,Items {
     @Override
     public void setLabels(int numberOfElement, MainModel model) {
         documentName.setText(this.model.getAllDocuments().get(numberOfElement).getName());
-        creator.setText(this.model.getAllDocuments().get(numberOfElement).getCreator());
+       // creator.setText(this.model.getAllDocuments().get(numberOfElement).getCreator());
         date.setText(this.model.getAllDocuments().get(numberOfElement ).getDate().toString());
-        project.setText(this.model.getAllDocuments().get(numberOfElement).getProject());
-        customer.setText(this.model.getAllDocuments().get(numberOfElement ).getCustomer());
+        //project.setText(this.model.getAllDocuments().get(numberOfElement).getProject());
+        //customer.setText(this.model.getAllDocuments().get(numberOfElement ).getCustomer());
 
     }
 }

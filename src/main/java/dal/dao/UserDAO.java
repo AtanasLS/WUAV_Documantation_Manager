@@ -47,9 +47,9 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     public ObservableList<User> getAllTechniciansFromDatabase() throws SQLException {
-        String query="SELECT * FROM user WHERE type=?;";
+        String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[users] WHERE type=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,"technician");
+        stmt.setString(1,"Technician");
         ResultSet resultSet =stmt.executeQuery();
 
         return (ObservableList<User>) this.getAllDataFromResultSet(resultSet);

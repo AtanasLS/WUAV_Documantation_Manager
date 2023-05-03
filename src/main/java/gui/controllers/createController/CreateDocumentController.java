@@ -22,6 +22,7 @@ import main.java.gui.model.MainModel;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -41,21 +42,38 @@ public class CreateDocumentController implements Initializable {
 
     private CreateModel createModel;
 
+    private Image layoutDrawing;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
-    public void setModel(MainModel mainModel){
+    public void setModel(MainModel mainModel) throws SQLException {
         createModel = new CreateModel(mainModel);
+        mainModel.loadTech();
+        mainModel.loadLogIns();
+        mainModel.loadProjects();
         loginBox.setItems(mainModel.getAllLogIns());
         customerBox.setItems(mainModel.getAllCustomers());
         technicianBox.setItems(mainModel.getAllTech());
+        System.out.println(mainModel.getAllTech().toString());
         projectBox.setItems(mainModel.getAllProjects());
 
 
     }
-    public void createDrawing(ActionEvent actionEvent) {
+    public void createDrawing(ActionEvent actionEvent) throws IOException {
+        FileChooser layoutDrawingChooser = new FileChooser();
+        Stage stage = new Stage();
+        File selectedFile = layoutDrawingChooser.showOpenDialog(stage);
+        Image layoutDrawing = new Image(selectedFile.getPath());
+        Node node;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/PhotoItem.fxml"));
+        node = loader.load();
+        PhotoItemController controller = loader.getController();
+        controller.setItems(layoutDrawing, selectedFile.getName());
+        items.getChildren().add(node);
+        this.layoutDrawing = layoutDrawing;
 
     }
 

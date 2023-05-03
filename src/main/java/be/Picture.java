@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class Picture {
 
+    private int id;
     private String name;
     private Image installationPhoto;
     private int documentationID;
@@ -13,6 +14,17 @@ public class Picture {
         this.installationPhoto = installationPhoto;
         this.documentationID = documentationID;
 
+    }
+
+    public Picture(int id, String name, Image installationPhoto, int documentationID) {
+        this.id = id;
+        this.name = name;
+        this.installationPhoto = installationPhoto;
+        this.documentationID = documentationID;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -38,4 +50,6 @@ public class Picture {
     public void setDocumentationID(int documentationID) {
         this.documentationID = documentationID;
     }
+
+
 }

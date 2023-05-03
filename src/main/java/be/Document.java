@@ -8,27 +8,49 @@ import java.util.Date;
 
 public class Document {
 
+
+    private int id;
     private String name;
-    private String project;
+    private int project;
+    private int loginId;
 
 
-
-    private String customer;
-    private String creator;
+    private int customer;
+    private int user;
 
     private javafx.scene.image.Image layoutDrawing;
     private String description;
     private LocalDate date;
 
-    public Document(javafx.scene.image.Image layoutDrawing, String description, LocalDate date){
-        this.name="name";
+    public Document(Image layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
+        this.name = name;
+        this.project = project;
+        this.loginId = loginId;
+        this.customer = customer;
+        this.user = user;
         this.layoutDrawing = layoutDrawing;
         this.description = description;
         this.date = date;
-        this.creator="srs";
-        this.project="project";
-        this.customer="customer";
+        //layoutDrawing,description, loginID, name, userID, customerID, projectID, date
+    }
 
+    public Document(int id,Image layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
+        this.id = id;
+        this.name = name;
+        this.project = project;
+        this.customer = customer;
+        this.user = user;
+        this.layoutDrawing = layoutDrawing;
+        this.description = description;
+        this.date = date;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getUser() {
+        return user;
     }
 
     public javafx.scene.image.Image getLayoutDrawing() {
@@ -54,12 +76,12 @@ public class Document {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    public String getCreator() {
-        return creator;
+    public int getCreator() {
+        return user;
     }
 
-    public void setCreator(String creator) {
-        this.creator = creator;
+    public void setCreator(int creator) {
+        this.user = creator;
     }
 
     public String getName() {
@@ -70,19 +92,24 @@ public class Document {
         this.name = name;
     }
 
-    public String getProject() {
+    public int getProject() {
         return project;
     }
 
-    public void setProject(String project) {
+    public void setProject(int project) {
         this.project = project;
     }
 
-    public String getCustomer() {
+    public int getCustomer() {
         return customer;
     }
 
-    public void setCustomer(String customer) {
+    public void setCustomer(int customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }
