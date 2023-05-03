@@ -71,13 +71,10 @@ public class MainModel {
     public void loadOrders() throws SQLException {
         this.allOrders.clear();
         this.allOrders.addAll(appLogicManager.getAllOrdersFromDatabas());
-
     }
-
     public void loadProjects() throws SQLException {
         this.allProjects.clear();
         this.allProjects.addAll(appLogicManager.getAllProjectsFromDatabase());
-
     }
 
     public void loadUsers() throws SQLException {
@@ -134,7 +131,7 @@ public class MainModel {
         return selectedCustomer;
     }
 
-    public void updateUsers(Object selectedObject, String id) throws SQLException {
+    public void updateUsers(Object selectedObject, String id)  {
 
         User userToRemove = null;
         for (User u: getAllUsers()) {
@@ -144,6 +141,9 @@ public class MainModel {
         }
         this.allUsers.remove(userToRemove);
         this.allUsers.add((User) selectedObject);
+    }
+    public void addObject(Object selectedObject, String id) {
+
     }
     public void setSelectedCustomer(Customer customer){
         this.selectedCustomer = customer;

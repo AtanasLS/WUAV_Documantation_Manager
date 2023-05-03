@@ -21,6 +21,16 @@ public class User {
 
     }
 
+    public User(int id, String username, String firstName, String lastName, String email, String password, String type) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }
@@ -71,5 +81,10 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return username + " Type: " + type;
     }
 }

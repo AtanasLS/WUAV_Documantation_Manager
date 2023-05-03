@@ -9,15 +9,21 @@ public class Project {
     private String customer;
     private int customerId;
 
+    public Project(String type, double price, String customer, int customerId) {
+        this.type = type;
+        this.price = price;
+        this.customer = customer;
+        this.customerId = customerId;
+    }
 
-
-    public Project(int projectId,String type, double price, String customer, int customerId){
+    public Project(int projectId, String type, double price, String customer, int customerId){
         this.projectId=projectId;
         this.type = type;
         this.price = price;
         this.customer=customer;
         this.customerId=customerId;
     }
+
 
     public String getType() {
         return type;
@@ -56,5 +62,10 @@ public class Project {
 
     public void setProjectId(int projectId) {
         this.projectId = projectId;
+    }
+
+    @Override
+    public String toString() {
+        return "Type: " + type + " To customer: " + customer;
     }
 }

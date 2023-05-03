@@ -3,6 +3,8 @@ package main.java.be;
 import java.util.Date;
 
 public class Order {
+
+    private int id;
     private int userID;
     private int projectID;
 
@@ -30,6 +32,24 @@ public class Order {
         this.customerID = customerID;
         this.date = date;
         this.price = price;
+    }
+
+    public Order(int id, int userID, int projectID, String name, String userName,
+                 String project, String customer, int customerID, Date date, double price) {
+        this.id = id;
+        this.userID = userID;
+        this.projectID = projectID;
+        this.name = name;
+        this.userName = userName;
+        this.project = project;
+        this.customer = customer;
+        this.customerID = customerID;
+        this.date = date;
+        this.price = price;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public int getUserID() {
@@ -101,5 +121,10 @@ public class Order {
 
     public void setCustomerID(int customerID) {
         this.customerID = customerID;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + project;
     }
 }

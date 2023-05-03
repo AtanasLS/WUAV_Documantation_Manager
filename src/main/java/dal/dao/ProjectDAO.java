@@ -102,12 +102,11 @@ public class ProjectDAO implements DAOInterface<Project> {
 
         while (resultSet.next()) {
 
-            int id=resultSet.getInt("[project]id");
-
+            int id=resultSet.getInt("id");
             String type=resultSet.getString("type");
             double price=resultSet.getDouble("price");
             String customer=resultSet.getString("first_name");
-            int customerId=resultSet.getInt("[customer]id");
+            int customerId=resultSet.getInt("customerId");
 
             listOfProjects.add(new Project(id,type,price,customer,customerId));
         }

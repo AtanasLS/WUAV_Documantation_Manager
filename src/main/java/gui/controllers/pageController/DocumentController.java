@@ -15,6 +15,7 @@ import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DocumentController implements Initializable {
@@ -49,7 +50,7 @@ public class DocumentController implements Initializable {
         }
     }
 
-    public void createDocument(ActionEvent actionEvent) throws IOException {
+    public void createDocument(ActionEvent actionEvent) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/create/CreateDocumentView.fxml"));
         Parent root = loader.load();
         CreateDocumentController controller = loader.getController();

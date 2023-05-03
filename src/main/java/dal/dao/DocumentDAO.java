@@ -89,11 +89,17 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public Document getDataFromResultSet(ResultSet resultSet) throws SQLException {
-        javafx.scene.image.Image layoutDrawing= (javafx.scene.image.Image) resultSet.getObject("layoutDrawing");
-        String description=resultSet.getString("description");
-        Date date=resultSet.getDate("date");
 
-        return  new Document(layoutDrawing,description, date.toLocalDate());
+        Image layoutDrawing = (Image) resultSet.getObject("layout_drawing");
+        String description = resultSet.getString("description");
+        int loginID = resultSet.getInt("login_id");
+        LocalDate date = resultSet.getDate("date").toLocalDate();
+        int userID = resultSet.getInt("userId");
+        int customerID = resultSet.getInt("customerId");
+        int projectID = resultSet.getInt("projectId");
+        String name = resultSet.getString("name");
+
+        return new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date);
     }
 
     @Override
@@ -102,10 +108,22 @@ public class DocumentDAO implements DAOInterface<Document> {
 
         while (resultSet.next()) {
 
+            /*
             javafx.scene.image.Image layoutDrawing= (javafx.scene.image.Image) resultSet.getObject("layout-drawing");
             String description=resultSet.getString("description");
             Date date=resultSet.getDate("date");
-            listOfDocuments.add(new Document(layoutDrawing,description, date.toLocalDate()));
+
+             */
+            Image layoutDrawing = (Image) resultSet.getObject("layout_drawing");
+            String description = resultSet.getString("description");
+            int loginID = resultSet.getInt("login_id");
+            LocalDate date = resultSet.getDate("date").toLocalDate();
+            int userID = resultSet.getInt("userId");
+            int customerID = resultSet.getInt("customerId");
+            int projectID = resultSet.getInt("projectId");
+            String name = resultSet.getString("name");
+
+            listOfDocuments.add(new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date));
         }
 
         return listOfDocuments;
