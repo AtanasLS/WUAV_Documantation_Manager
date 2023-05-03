@@ -62,7 +62,7 @@ public class CustomerInfoController implements Initializable , Info{
     }
 
     @Override
-    public String delete(String id) {
+    public String delete(int id) {
         return this.deleteModel.deleteFromDatabase(id,"Customer");
     }
 

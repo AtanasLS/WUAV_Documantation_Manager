@@ -26,7 +26,7 @@ public class UserEditController implements Initializable {
 
     private EditModel model;
 
-    private String id;
+    private int id;
     private int userID;
 
     @Override
@@ -41,7 +41,7 @@ public class UserEditController implements Initializable {
         email.setText(mvm.getSelectedUser().getEmail());
         password.setText(mvm.getSelectedUser().getPassword());
         type.setText(mvm.getSelectedUser().getType());
-        this.id = mvm.getSelectedUser().getUsername();
+        this.id = mvm.getSelectedUser().getId();
         this.userID = mvm.getSelectedUser().getId();
     }
 
@@ -49,7 +49,7 @@ public class UserEditController implements Initializable {
         User editedCustomer = new User( username.getText(), firstName.getText(), lastName.getText(), email.getText()
                 ,password.getText(), type.getText());
 
-        model.updateDatabaseElement(editedCustomer, this.id ,"User");
+        model.updateDatabaseElement(editedCustomer,"User", this.id );
 
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         stage.close();

@@ -56,25 +56,26 @@ public class LogInDAO implements DAOInterface<LogIns> {
     }
 
     @Override
-    public String deleteFromDatabase(String id) throws SQLException {
-        String query="DELETE FROM logIns WHERE username=?;";
+    public String deleteFromDatabase(int id) throws SQLException {
+        String query="DELETE FROM logIns WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,id);
+        stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();    }
 
     @Override
-    public String updateDatabase(LogIns object, String id) throws SQLException {
+    public String updateDatabase(LogIns object) throws SQLException {
+        int id=object.getId();
         String username=object.getUsername();
         String password=object.getPassword();
         int projectId=object.getProjectId();
 
-        String query="INSERT INTO logIns VALUES (?, ?, ?) WHERE username = ?;";
+        String query="INSERT INTO logIns VALUES (?, ?, ?) WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,password);
         stmt.setInt(3,projectId);
-        stmt.setString(4,id);
+        stmt.setInt(4,id);
 
         ResultSet resultSet =stmt.executeQuery();
 
@@ -83,12 +84,13 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public LogIns getDataFromResultSet(ResultSet resultSet) throws SQLException {
+        int id=resultSet.getInt("id");
         String username=resultSet.getString("username");
         String password=resultSet.getString("password");
         String project=resultSet.getString("type");
         int projectId=resultSet.getInt("projectId");
 
-        return  new LogIns(username,password,project,projectId);
+        return  new LogIns(id,username,password,project,projectId);
     }
 
     @Override
@@ -96,6 +98,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
         ObservableList<LogIns> listOfLogIns= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
+            int id=resultSet.getInt("id");
 
             String username=resultSet.getString("username");
             String password=resultSet.getString("password");
@@ -105,7 +108,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
 
 
-            listOfLogIns.add(new LogIns(username,password,project,projectId));
+            listOfLogIns.add(new LogIns(id,username,password,project,projectId));
         }
 
         return listOfLogIns;

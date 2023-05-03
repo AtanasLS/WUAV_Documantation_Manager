@@ -51,12 +51,12 @@ public class ProjectItemController implements Initializable,Items {
     }
 
     public void editProject(ActionEvent actionEvent) throws SQLException {
-        this.editModel.updateDatabaseElement(new Object(),"username","Project");
+        this.editModel.updateDatabaseElement(new Object(),"Project",this.currentProject.getProjectId());
 
     }
 
     public void deleteProject(ActionEvent actionEvent){
-        this.deleteModel.deleteFromDatabase(String.valueOf(this.currentProject.getProjectId()),"Project");
+        this.deleteModel.deleteFromDatabase(this.currentProject.getProjectId(),"Project");
 
     }
 }

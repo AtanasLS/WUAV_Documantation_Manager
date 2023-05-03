@@ -56,16 +56,17 @@ public class ProjectDAO implements DAOInterface<Project> {
     }
 
     @Override
-    public String deleteFromDatabase(String id) throws SQLException {
+    public String deleteFromDatabase(int id) throws SQLException {
         String query="DELETE FROM project WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,id);
+        stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Project object, String id) throws SQLException {
+    public String updateDatabase(Project object) throws SQLException {
+        int id=object.getProjectId();
         String type=object.getType();
         double price=object.getPrice();
         int customerId=object.getCustomerId();
@@ -75,7 +76,7 @@ public class ProjectDAO implements DAOInterface<Project> {
         stmt.setString(1,type);
         stmt.setDouble(2,price);
         stmt.setInt(3,customerId);
-        stmt.setString(4,id);
+        stmt.setInt(4,id);
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -85,6 +86,7 @@ public class ProjectDAO implements DAOInterface<Project> {
 
     @Override
     public Project getDataFromResultSet(ResultSet resultSet) throws SQLException {
+
         int id=resultSet.getInt("[project]id");
 
         String type=resultSet.getString("type");

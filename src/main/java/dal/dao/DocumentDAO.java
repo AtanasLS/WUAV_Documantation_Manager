@@ -9,6 +9,7 @@ import main.java.dal.DataAccessManager;
 import main.java.dal.interfaces.DAOInterface;
 
 import java.awt.*;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +22,7 @@ public class DocumentDAO implements DAOInterface<Document> {
     DataAccessManager dataAccessManager = new DataAccessManager();
 
     @Override
-    public Document getFromDatabase(int id) throws SQLException {
+    public Document getFromDatabase(int id) throws SQLException, IOException {
         String query="SELECT * FROM document WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
@@ -31,7 +32,7 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public ObservableList<Document> getAllFromDatabase() throws SQLException {
+    public ObservableList<Document> getAllFromDatabase() throws SQLException, IOException {
         String query="SELECT * FROM document;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
@@ -41,7 +42,7 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public String insertIntoDatabase(Document object) throws SQLException {
-        javafx.scene.image.Image layoutDrawing=object.getLayoutDrawing();
+        String layoutDrawing=object.getLayoutDrawing();
         String description=object.getDescription();
         LocalDate date =  object.getDate();
 
@@ -58,18 +59,19 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public String deleteFromDatabase(String id) throws SQLException {
+    public String deleteFromDatabase(int id) throws SQLException {
         String query="DELETE FROM document WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,id);
+        stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Document object, String id) throws SQLException {
+    public String updateDatabase(Document object) throws SQLException {
 
-        Image layoutDrawing=object.getLayoutDrawing();
+        int id=object.getId();
+        String layoutDrawing=object.getLayoutDrawing();
         String description=object.getDescription();
         LocalDate date=  object.getDate();
 
@@ -78,7 +80,7 @@ public class DocumentDAO implements DAOInterface<Document> {
         stmt.setObject(1,layoutDrawing);
         stmt.setString(2,description);
         stmt.setObject(3,date);
-        stmt.setString(4,id);
+        stmt.setInt(4,id);
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -88,9 +90,10 @@ public class DocumentDAO implements DAOInterface<Document> {
 
 
     @Override
-    public Document getDataFromResultSet(ResultSet resultSet) throws SQLException {
+    public Document getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
+        int id=resultSet.getInt("id");
 
-        Image layoutDrawing = (Image) resultSet.getObject("layout_drawing");
+        String layoutDrawing =  resultSet.getObject("layout_drawing").toString();
         String description = resultSet.getString("description");
         int loginID = resultSet.getInt("login_id");
         LocalDate date = resultSet.getDate("date").toLocalDate();
@@ -99,11 +102,11 @@ public class DocumentDAO implements DAOInterface<Document> {
         int projectID = resultSet.getInt("projectId");
         String name = resultSet.getString("name");
 
-        return new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date);
+        return new Document(id,layoutDrawing,description, loginID, name, userID, customerID, projectID, date);
     }
 
     @Override
-    public ObservableList<Document> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+    public ObservableList<Document> getAllDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
         ObservableList<Document> listOfDocuments= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
@@ -114,7 +117,8 @@ public class DocumentDAO implements DAOInterface<Document> {
             Date date=resultSet.getDate("date");
 
              */
-            Image layoutDrawing = (Image) resultSet.getObject("layout_drawing");
+            int id=resultSet.getInt("id");
+            String layoutDrawing =  resultSet.getObject("layout_drawing").toString();
             String description = resultSet.getString("description");
             int loginID = resultSet.getInt("login_id");
             LocalDate date = resultSet.getDate("date").toLocalDate();
@@ -123,7 +127,7 @@ public class DocumentDAO implements DAOInterface<Document> {
             int projectID = resultSet.getInt("projectId");
             String name = resultSet.getString("name");
 
-            listOfDocuments.add(new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date));
+            listOfDocuments.add(new Document(id,layoutDrawing,description, loginID, name, userID, customerID, projectID, date));
         }
 
         return listOfDocuments;

@@ -13,8 +13,8 @@ public class EditModel {
         this.appLogicManager=new AppLogicManager();
     }
 
-    public String updateDatabaseElement(Object object,String id,String type) throws SQLException {
-        model.updateUsers(object, id);
-        return this.appLogicManager.updateDatabase(object,id,type);
+    public String updateDatabaseElement(Object object,String type,int id) throws SQLException {
+        model.updateUsers(object,id);
+        return this.appLogicManager.updateDatabase(object,type);
     }
 }

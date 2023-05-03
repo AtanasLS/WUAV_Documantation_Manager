@@ -51,8 +51,8 @@ public class UserInfoController implements Initializable, Info {
     }
 
     @Override
-    public String delete(String id) {
-        return this.deleteModel.deleteFromDatabase(this.model.getSelectedUser().getUsername(),"User");
+    public String delete(int id) {
+        return this.deleteModel.deleteFromDatabase(this.model.getSelectedUser().getId(),"User");
 
     }
 
