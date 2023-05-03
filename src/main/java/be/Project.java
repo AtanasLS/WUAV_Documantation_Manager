@@ -19,6 +19,13 @@ public class Project {
         this.customerId=customerId;
     }
 
+    public Project(String type, double price, String customer, int customerId) {
+        this.type = type;
+        this.price = price;
+        this.customer = customer;
+        this.customerId = customerId;
+    }
+
     public String getType() {
         return type;
     }

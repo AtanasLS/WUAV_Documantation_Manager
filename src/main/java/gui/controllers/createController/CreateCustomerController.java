@@ -15,7 +15,7 @@ import main.java.gui.model.MainModel;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreateCustomerController implements Initializable {
+public class CreateCustomerController implements Initializable, CreateController {
     public TextField firstName , lastName, email, phoneNum, address1, address2;
     public Button saveBtn, cancelBtn;
 

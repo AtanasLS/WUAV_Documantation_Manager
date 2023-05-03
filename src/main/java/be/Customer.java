@@ -4,6 +4,8 @@ import java.awt.*;
 
 public class Customer {
 
+    private int id;
+
     private String firstName;
     private String lastName;
     private String email;
@@ -78,5 +80,13 @@ public class Customer {
 
     public void setConsumptionNumber(int consumptionNumber) {
         this.consumptionNumber = consumptionNumber;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -16,7 +16,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class UserCreateController implements Initializable {
+public class UserCreateController implements Initializable ,CreateController{
     public TextField firstName , lastName, email, username, password;
     public ComboBox typeBox;
 
