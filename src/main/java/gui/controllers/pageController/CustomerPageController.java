@@ -21,11 +21,9 @@ public class CustomerPageController implements Initializable {
     VBox pnItems = null;
 
     MainModel model;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-    }
-    public void setMainModel(){
         this.model = new MainModel() ;
         try {
             model.loadCustomers();
@@ -46,5 +44,9 @@ public class CustomerPageController implements Initializable {
             }
         }
     }
+
+    public void setMainModel() {
+
     }
+}
 

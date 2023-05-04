@@ -117,10 +117,15 @@ public class AppLogicManager {
             return DataManagerFacade.getInstance().getTechnicianFromDatabase(id);
         }catch (SQLException e){
             throw new RuntimeException();
-        }    }
+        }
+    }
 
 
     public ObservableList<Order> getAllOrdersFromDatabas() {
-        return null;
+        try {
+            return DataManagerFacade.getInstance().getAllOrderFromDatabase();
+        }catch (SQLException e){
+            throw new RuntimeException();
+        }
     }
 }

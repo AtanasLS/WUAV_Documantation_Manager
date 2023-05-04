@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import main.java.be.Customer;
 import main.java.be.User;
 import main.java.gui.model.CreateModel;
@@ -35,9 +36,13 @@ public class CreateCustomerController implements Initializable {
         Customer newCustomer = new Customer(firstName.getText(), lastName.getText(),email.getText(),address1.getText()
                 , address2.getText(),phoneNum.getText(), 1);
         createModel.createInDatabase(newCustomer, "Customer");
+
+        Stage currentStage = (Stage) saveBtn.getScene().getWindow();
+        currentStage.close();
     }
 
     public void handleCancel(ActionEvent actionEvent) {
-
+        Stage currentStage = (Stage) cancelBtn.getScene().getWindow();
+        currentStage.close();
     }
 }

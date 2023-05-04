@@ -41,10 +41,9 @@ public class LogInsItemController implements Initializable,Items {
     @Override
     public void setLabels(int numberOfElement, MainModel model) {
 
-        username.setText(this.model.getAllLogIns().get(numberOfElement).getUsername() );
+        username.setText(this.model.getAllLogIns().get(numberOfElement).getUsername());
         password.setText(this.model.getAllLogIns().get(numberOfElement).getPassword());
         project.setText(this.model.getAllLogIns().get(numberOfElement).getProject());
-
         this.currentLogIn=this.model.getAllLogIns().get(numberOfElement);
 
     }

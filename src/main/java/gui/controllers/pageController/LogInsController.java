@@ -23,7 +23,8 @@ public class LogInsController implements Initializable {
         public void initialize(URL location, ResourceBundle resources) {
             this.model = new MainModel();
             try {
-                model.loadCustomers();
+                model.loadLogIns();
+
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -33,8 +34,7 @@ public class LogInsController implements Initializable {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/LogIns.fxml"));
                     nodes[i] = loader.load();
                     LogInsItemController controller = loader.getController();
-
-                   // controller.setLabels(i);
+                   controller.setLabels(i, model);
 
                     pnItems.getChildren().add(nodes[i]);
                 } catch (IOException e) {
