@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class UserItemController implements Initializable,Items {
+public class UserItemController implements Initializable {
 
     public Label username, firstName, password;
     private MainModel model ;
@@ -27,9 +27,9 @@ public class UserItemController implements Initializable,Items {
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    @Override
-    public void setLabels(int numberOfElement, MainModel model) {
-        this.model = model;
+    //@Override
+    public void setLabels(int numberOfElement) {
+        this.model = new MainModel();
         try {
             this.model.loadUsers();
         } catch (Exception e) {

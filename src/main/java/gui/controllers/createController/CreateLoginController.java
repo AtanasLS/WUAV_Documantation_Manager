@@ -1,5 +1,6 @@
 package main.java.gui.controllers.createController;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -11,6 +12,7 @@ import main.java.gui.model.CreateModel;
 import main.java.gui.model.MainModel;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CreateLoginController implements Initializable, CreateController {
@@ -23,7 +25,14 @@ public class CreateLoginController implements Initializable, CreateController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         model=new MainModel();
+        this.projects = FXCollections.observableArrayList();
+        try {
+            model.loadProjects();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.projects.addAll(model.getAllProjects());
+        this.project.setItems(projects);
     }
 
     @Override

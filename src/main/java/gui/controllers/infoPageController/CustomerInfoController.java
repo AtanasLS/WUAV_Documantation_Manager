@@ -27,14 +27,19 @@ public class CustomerInfoController implements Initializable , Info{
     private EditModel editModel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        /*
         this.editModel=new EditModel(model);
         this.deleteModel=new DeleteModel();
 
+         */
+        this.model = new MainModel();
+
     }
-        public void setMainModel(MainModel mvm){
+       public void setMainModel(MainModel mvm){
         model = mvm ;
         }
         public void setInfoLabels(){
+
         infoFirstNameLabel.setText(model.getSelectedCustomer().getFirstName());
         getInfoLastNameLabel.setText(model.getSelectedCustomer().getLastName());
         infoPhoneNumLabel1.setText((model.getSelectedCustomer().getPhone()));
@@ -62,7 +67,7 @@ public class CustomerInfoController implements Initializable , Info{
     }
 
     @Override
-    public String delete(String id) {
+    public String delete(int id) {
         return this.deleteModel.deleteFromDatabase(id,"Customer");
     }
 
