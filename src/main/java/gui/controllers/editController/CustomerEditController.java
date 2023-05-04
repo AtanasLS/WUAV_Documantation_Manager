@@ -22,7 +22,7 @@ public class CustomerEditController implements Initializable {
     // private MainModel model;
     private EditModel model;
     private int selectedCustomerConsNum;
-    private String id;
+    private int id;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -37,7 +37,7 @@ public class CustomerEditController implements Initializable {
         address1.setText(mvm.getSelectedCustomer().getAddress());
         address2.setText(mvm.getSelectedCustomer().getAddress2());
         selectedCustomerConsNum = mvm.getSelectedCustomer().getConsumptionNumber();
-        this.id = mvm.getSelectedCustomer().getEmail();
+        this.id = mvm.getSelectedCustomer().getId();
     }
 
     public void setInformation(){
@@ -56,7 +56,7 @@ public class CustomerEditController implements Initializable {
         Customer editedCustomer = new Customer(firstName.getText(), lastName.getText(), email.getText(), address1.getText(),
                 address2.getText(), phoneNum.getText(), selectedCustomerConsNum );
         System.out.println(id);
-        model.updateDatabaseElement(editedCustomer, this.id ,"Customer");
+        model.updateDatabaseElement(editedCustomer, "Customer",this.id );
 
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         stage.close();

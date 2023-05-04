@@ -10,7 +10,7 @@ public interface Info {
     public void setMainModel(MainModel mvm);
     public void setInfoLabels();
 
-    public String delete(String id);
+    public String delete(int id);
 
     public void edit(ActionEvent actionEvent);
 

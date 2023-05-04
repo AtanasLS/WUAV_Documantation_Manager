@@ -131,11 +131,11 @@ public class MainModel {
         return selectedCustomer;
     }
 
-    public void updateUsers(Object selectedObject, String id)  {
+    public void updateUsers(Object selectedObject,int id)  {
 
         User userToRemove = null;
         for (User u: getAllUsers()) {
-            if (u.getUsername().equals(id)){
+            if (u.getId()==id){
                 userToRemove = u;
             }
         }

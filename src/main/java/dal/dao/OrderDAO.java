@@ -11,7 +11,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class OrderDAO implements DAOInterface<Order> {
     DataAccessManager dataAccessManager = new DataAccessManager();
@@ -60,32 +59,33 @@ public class OrderDAO implements DAOInterface<Order> {
     }
 
     @Override
-    public String deleteFromDatabase(String id) throws SQLException {
-        String query="DELETE FROM [order] WHERE name=?;";
+    public String deleteFromDatabase(int id) throws SQLException {
+        String query="DELETE FROM [order] WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,id);
+        stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Order object, String id) throws SQLException {
+    public String updateDatabase(Order object) throws SQLException {
+        int id=object.getId();
         int userId=object.getUserID();
         int projectID=object.getProjectID();
         String name=object.getName();
         int customer=object.getCustomerID();
-        LocalDate date= object.getDate();
+        Date date= Date.valueOf(object.getDate());
         Double price=object.getPrice();
 
-        String query="INSERT INTO [order] VALUES (?, ?, ?, ?, ?, ?) WHERE name = ?;";
+        String query="INSERT INTO [order] VALUES (?, ?, ?, ?, ?, ?) WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,userId);
         stmt.setInt(2,projectID);
         stmt.setString(3,name);
         stmt.setInt(4,customer);
-        stmt.setDate(5, Date.valueOf(date));
+        stmt.setDate(5,date);
         stmt.setDouble(6,price);
-        stmt.setString(7,id);
+        stmt.setInt(7,id);
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -95,6 +95,7 @@ public class OrderDAO implements DAOInterface<Order> {
 
     @Override
     public Order getDataFromResultSet(ResultSet resultSet) throws SQLException {
+        int id=resultSet.getInt("id");
         int userID=resultSet.getInt("UserId");
         int projectID=resultSet.getInt("ProjectId");
         String name=resultSet.getString("name");
@@ -105,7 +106,7 @@ public class OrderDAO implements DAOInterface<Order> {
         Date date=resultSet.getDate("date");
         double price=resultSet.getDouble("price");
 
-        return new Order(userID,projectID,name,user,project,customer,customerId, date.toLocalDate(),price);
+        return new Order(id,userID,projectID,name,user,project,customer,customerId, date.toLocalDate(),price);
 
     }
 
@@ -115,6 +116,7 @@ public class OrderDAO implements DAOInterface<Order> {
 
         while (resultSet.next()) {
 
+            int id=resultSet.getInt("id");
             int userID=resultSet.getInt("UserId");
             int projectID=resultSet.getInt("ProjectId");
             String name=resultSet.getString("name");
@@ -125,7 +127,7 @@ public class OrderDAO implements DAOInterface<Order> {
             Date date=resultSet.getDate("date");
             double price=resultSet.getDouble("price");
 
-            listOfOrders.add(new Order(userID,projectID,name,user,project,customer,customerId, date.toLocalDate(),price));
+            listOfOrders.add(new Order(id,userID,projectID,name,user,project,customer,customerId, date.toLocalDate(),price));
         }
 
         return listOfOrders;    }
