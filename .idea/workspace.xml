@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+
     <list default="true" id="259a3272-de1f-428d-9f25-1759498f8cec" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
@@ -30,6 +31,18 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/DeleteModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/DeleteModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/EditModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/EditModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" afterDir="false" />
+
+    <list default="true" id="495878de-ae51-4de0-9e10-940beee90027" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateOrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/infoPageController/CustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/infoPageController/CustomerInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/CustomerItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/CustomerItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/EditModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/EditModel.java" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +51,18 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="TaskManager">
+
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="495878de-ae51-4de0-9e10-940beee90027" name="Changes" comment="" />
+      <created>1682964924272</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682964924272</updated>
+      <workItem from="1683026517201" duration="15762000" />
+      <workItem from="1683097569702" duration="8279000" />
+      <workItem from="1683152661154" duration="4334000" />
+    </task>
+
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
