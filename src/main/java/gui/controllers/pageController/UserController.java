@@ -22,8 +22,8 @@ public class UserController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
-    public void setMainModel(MainModel mvm){
-        this.model = mvm ;
+    public void setMainModel(){
+        this.model = new MainModel() ;
         try {
             model.loadUsers();
         } catch (Exception e) {
@@ -37,7 +37,7 @@ public class UserController implements Initializable {
                 nodes[i] = loader.load();
 
                 UserItemController controller = loader.getController();
-                controller.setLabels(i, model);
+                controller.setLabels(i);
 
 
                 pnItems.getChildren().add(nodes[i]);

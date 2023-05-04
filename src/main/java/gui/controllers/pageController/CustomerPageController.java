@@ -23,28 +23,7 @@ public class CustomerPageController implements Initializable {
     MainModel model;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       /*
-        this.model = new MainModel();
-        try {
-            model.loadCustomers();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        //System.out.println(model.getAllCustomers());
-        Node[] nodes = new Node[model.getAllCustomers().size()];
-        for (int i = 0; i < nodes.length; i++) {
-            try{
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/CustomerItem.fxml"));
-                nodes[i] = loader.load();
-                CustomerItemController controller = loader.getController();
-                controller.setLabels(i, model);
-                pnItems.getChildren().add(nodes[i]);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
 
-        */
     }
     public void setMainModel(){
         this.model = new MainModel() ;

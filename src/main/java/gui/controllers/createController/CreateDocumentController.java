@@ -1,5 +1,6 @@
 package main.java.gui.controllers.createController;
 
+import com.itextpdf.text.DocumentException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,10 +11,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.be.Document;
 import main.java.be.LogIns;
+import main.java.bll.AppLogicManager;
+import main.java.bll.PDFGenerator;
 import main.java.gui.controllers.itemController.CustomerItemController;
 import main.java.gui.controllers.itemController.PhotoItemController;
 import main.java.gui.model.CreateModel;
@@ -46,7 +50,8 @@ public class CreateDocumentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        documentDescription.appendText("\n");
+        documentDescription.setPrefColumnCount(20);
     }
 
     public void setModel(MainModel mainModel) throws SQLException {
@@ -93,8 +98,16 @@ public class CreateDocumentController implements Initializable {
     }
 
 
-    public void createDocument(ActionEvent actionEvent) {
-        System.out.println(customerBox.getSelectionModel().getSelectedItem());
+    public void createDocument(ActionEvent actionEvent) throws DocumentException, IOException {
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+       // directoryChooser.setInitialDirectory(new File("src"));
+        Stage stage = new Stage();
+        File selectedDirectory = directoryChooser.showDialog(stage);
+        PDFGenerator pdfGenerator = new PDFGenerator();
+        System.out.println(selectedDirectory.getPath());
+        String path = selectedDirectory.getPath();
+        pdfGenerator.generatePDF(path, documentName.getText(), documentDescription.getText(), layoutDrawing.getUrl());
         //Document newDocument = new Document(allImages.get(0), documentDescription.getText(), date.getValue());
         //createModel.createInDatabase(document, "Document");
 

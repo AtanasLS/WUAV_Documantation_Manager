@@ -12,6 +12,7 @@ public class CreateModel {
     }
 
     public String createInDatabase(Object object, String type){
+        model.addObject(object, type);
         return this.appLogicManager.insertIntoDatabase(object,type);
     }
 }
