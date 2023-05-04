@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import main.java.be.*;
 import main.java.dal.dao.*;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -18,7 +19,6 @@ public class DataManagerFacade {
     PictureDAO pictureDAO;
     ProjectDAO projectDAO;
     UserDAO userDAO;
-    OrderDAO orderDAO;
 
     private DataManagerFacade() {
         userDAO = new UserDAO();
@@ -27,7 +27,6 @@ public class DataManagerFacade {
         logInDAO = new LogInDAO();
         pictureDAO = new PictureDAO();
         projectDAO = new ProjectDAO();
-        this.orderDAO = new OrderDAO();
     }
 
     public static DataManagerFacade getInstance() {
@@ -87,7 +86,7 @@ public class DataManagerFacade {
         return logInDAO.getAllFromDatabase();
     }
     //getting all the pictures
-    public ObservableList<Picture> getAllPicturesFromDatabase() throws SQLException {
+    public ObservableList<Picture> getAllPicturesFromDatabase() throws SQLException, IOException {
         return pictureDAO.getAllFromDatabase();
     }
     //getting all the projects
@@ -103,35 +102,32 @@ public class DataManagerFacade {
 
 
 
-    public String insertIntoDatabase(Object object, String type) throws SQLException {
+    public String insertIntoDatabase(Object object, String type) throws SQLException, FileNotFoundException {
         String output = "";
         switch (type) {
             case "User":
                 output = userDAO.insertIntoDatabase((User) object);
-                break;
+            break;
             case "Customer":
                 output = customerDAO.insertIntoDatabase((Customer) object);
-                break;
+            break;
             case "Document":
                 output = documentDAO.insertIntoDatabase((Document) object);
-                break;
+            break;
             case "LogIn":
                 output = logInDAO.insertIntoDatabase((LogIns) object);
-                break;
+            break;
             case "Picture":
                 output = pictureDAO.insertIntoDatabase((Picture) object);
-                break;
+            break;
             case "Project":
                 output = projectDAO.insertIntoDatabase((Project) object);
-                break;
-            case "Order":
-                output = orderDAO.insertIntoDatabase((Order) object);
-                break;
+            break;
         }
         return output;
     }
 
-    public String deleteFromDatabase(int id, String type) throws SQLException{
+    public String deleteFromDatabase(String id, String type) throws SQLException{
         String output = "";
 
         switch (type){
@@ -156,28 +152,28 @@ public class DataManagerFacade {
         }
         return output;
     }
-    public String updateDatabase(Object object ,  String type) throws SQLException{
+    public String updateDatabase(Object object , String id, String type) throws SQLException, FileNotFoundException {
         String output = "";
 
 
         switch (type){
             case "User":
-                output = userDAO.updateDatabase((User) object);
+                output = userDAO.updateDatabase((User) object, id);
                 break;
             case "Customer":
-                output = customerDAO.updateDatabase((Customer) object);
+                output = customerDAO.updateDatabase((Customer) object,id);
                 break;
             case "Document":
-                output = documentDAO.updateDatabase((Document) object);
+                output = documentDAO.updateDatabase((Document) object,id);
                 break;
             case "LogIn":
-                output = logInDAO.updateDatabase((LogIns) object);
+                output = logInDAO.updateDatabase((LogIns) object,id);
                 break;
             case "Picture":
-                output = pictureDAO.updateDatabase((Picture) object);
+                output = pictureDAO.updateDatabase((Picture) object,id);
                 break;
             case "Project":
-                output = projectDAO.updateDatabase((Project) object);
+                output = projectDAO.updateDatabase((Project) object,id);
                 break;
         }
         return output;

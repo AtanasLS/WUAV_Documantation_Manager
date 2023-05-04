@@ -5,6 +5,7 @@ import main.java.be.*;
 import main.java.dal.DataManagerFacade;
 import main.java.dal.interfaces.DAOInterface;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -61,6 +62,8 @@ public class AppLogicManager {
             return DataManagerFacade.getInstance().getAllPicturesFromDatabase();
         }catch (SQLException e){
             throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     //getting all the projects
@@ -79,21 +82,25 @@ public class AppLogicManager {
         } catch (SQLException e) {
             System.out.println(e);
             return null;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
-    public String deleteFromDatabase (int id, String type){
+    public String deleteFromDatabase (String id, String type){
         try {
             return  DataManagerFacade.getInstance().deleteFromDatabase(id, type);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    public String updateDatabase (Object object ,  String type){
+    public String updateDatabase (Object object , String id, String type){
         try {
-            return DataManagerFacade.getInstance().updateDatabase(object, type);
+            return DataManagerFacade.getInstance().updateDatabase(object, id, type);
         } catch (SQLException e) {
             System.out.println(e);
             return null;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

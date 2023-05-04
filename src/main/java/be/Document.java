@@ -2,12 +2,7 @@ package main.java.be;
 
 import javafx.scene.image.Image;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -23,40 +18,31 @@ public class Document {
     private int customer;
     private int user;
 
-    private byte[] drawing;
+    private String layoutDrawing;
     private String description;
     private LocalDate date;
 
-    public void setImage(String imgPAth) throws IOException {
-        BufferedImage bImage = ImageIO.read(new File(imgPAth));
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        ImageIO.write(bImage, "jpg", bos );
-        this.drawing = bos.toByteArray();
-    }
-
-
-    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) throws IOException {
+    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
         this.name = name;
         this.project = project;
         this.loginId = loginId;
         this.customer = customer;
         this.user = user;
+        this.layoutDrawing = layoutDrawing;
         this.description = description;
         this.date = date;
-        this.setImage(layoutDrawing);
         //layoutDrawing,description, loginID, name, userID, customerID, projectID, date
     }
 
-    public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) throws IOException {
+    public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
         this.id = id;
         this.name = name;
         this.project = project;
         this.customer = customer;
         this.user = user;
+        this.layoutDrawing = layoutDrawing;
         this.description = description;
         this.date = date;
-        this.setImage(layoutDrawing);
-
     }
 
     public int getId() {
@@ -67,6 +53,13 @@ public class Document {
         return user;
     }
 
+    public String getLayoutDrawing() {
+        return layoutDrawing;
+    }
+
+    public void setLayoutDrawing(String layoutDrawing) {
+        this.layoutDrawing = layoutDrawing;
+    }
 
     public String getDescription() {
         return description;
@@ -113,30 +106,6 @@ public class Document {
 
     public void setCustomer(int customer) {
         this.customer = customer;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getLoginId() {
-        return loginId;
-    }
-
-    public void setLoginId(int loginId) {
-        this.loginId = loginId;
-    }
-
-    public void setUser(int user) {
-        this.user = user;
-    }
-
-    public byte[] getDrawing() {
-        return drawing;
-    }
-
-    public void setDrawing(byte[] drawing) {
-        this.drawing = drawing;
     }
 
     @Override
