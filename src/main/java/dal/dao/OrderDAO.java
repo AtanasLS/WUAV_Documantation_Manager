@@ -75,7 +75,6 @@ public class OrderDAO implements DAOInterface<Order> {
         int projectID=object.getProjectID();
         String name=object.getName();
         int customer=object.getCustomerID();
-
         LocalDate date= object.getDate();
         Double price=object.getPrice();
 

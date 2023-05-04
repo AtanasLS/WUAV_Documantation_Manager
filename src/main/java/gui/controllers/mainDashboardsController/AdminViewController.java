@@ -147,7 +147,7 @@ public class AdminViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 UserController controller = loader.getController();
-                controller.setMainModel(model);
+                controller.setMainModel();
                 selected = "Users";
             } catch (IOException e) {
                 throw new RuntimeException(e);

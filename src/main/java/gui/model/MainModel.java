@@ -142,7 +142,15 @@ public class MainModel {
         this.allUsers.remove(userToRemove);
         this.allUsers.add((User) selectedObject);
     }
-    public void addObject(Object selectedObject, String id) {
+    public void addObject(Object selectedObject, String type) {
+        switch (type.toLowerCase()) {
+            case "user" -> this.allUsers.add((User) selectedObject);
+            case "customer" -> this.allCustomers.add((Customer) selectedObject);
+            case "project" -> this.allProjects.add((Project) selectedObject);
+            case "order" -> this.allOrders.add((Order) selectedObject);
+            case "document" -> this.allDocuments.add((Document) selectedObject);
+            case "login" -> this.allLogIns.add((LogIns) selectedObject);
+        }
 
     }
     public void setSelectedCustomer(Customer customer){
