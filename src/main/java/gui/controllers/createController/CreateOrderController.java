@@ -69,6 +69,7 @@ public class CreateOrderController implements Initializable,CreateController {
                 customer1.getFirstName(),customer1.getId(),this.date.getValue(),price);
         createModel.createInDatabase(order, "Order");
 
+
     }
 
     @Override
