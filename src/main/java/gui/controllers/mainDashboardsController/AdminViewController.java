@@ -11,14 +11,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.gui.controllers.LoginPageController;
-import main.java.gui.controllers.createController.CreateCustomerController;
-import main.java.gui.controllers.createController.CreateDocumentController;
-import main.java.gui.controllers.createController.UserCreateController;
+import main.java.gui.controllers.createController.*;
+import main.java.gui.controllers.pageController.CustomerPageController;
 import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class AdminViewController implements Initializable {
@@ -40,52 +40,65 @@ public class AdminViewController implements Initializable {
         this.model = mvm ;
 
     }
-    public void newObject(ActionEvent actionEvent) throws IOException {
+    public void newObject(ActionEvent actionEvent) throws IOException, SQLException {
 
         switch (selected.toLowerCase()){
             case "logins":
-                //open log in create fxml
+                FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("/view/create/CreateLogin.fxml"));
+                Parent loginsRoot = loginLoader.load();
+                CreateLoginController loginController = loginLoader.getController();
+                loginController.setModel(model);
+                //
+                Stage loginStage = new Stage();
+                loginStage.setScene(new Scene(loginsRoot));
+                loginStage.show();
                 break;
             case "users":
                 FXMLLoader userLoader = new FXMLLoader(getClass().getResource("/view/create/UserCreate.fxml"));
                 Parent root = userLoader.load();
                 UserCreateController controller = userLoader.getController();
                 controller.setModel(model);
-                //controller.setInformation();
+                //
                 Stage userStage = new Stage();
                 userStage.setScene(new Scene(root));
                 userStage.show();
                 break;
             case "orders":
-                //open order in create fxml
-                break;
+                FXMLLoader ordersLoader = new FXMLLoader(getClass().getResource("/view/create/CreateOrder.fxml"));
+                Parent ordersRoot = ordersLoader.load();
+                CreateOrderController createOrderController = ordersLoader.getController();
+                createOrderController.setModel(model);
+                Stage orderStage = new Stage();
+                orderStage.setScene(new Scene(ordersRoot));
+                orderStage.show();                break;
             case "customers":
 
                 FXMLLoader customerLoader = new FXMLLoader(getClass().getResource("/view/create/CustomerCreate.fxml"));
                 Parent customerRoot = customerLoader.load();
                 CreateCustomerController createCustomerController = customerLoader.getController();
                 createCustomerController.setModel(model);
-                //controller.setInformation();
                 Stage customerStage = new Stage();
                 customerStage.setScene(new Scene(customerRoot));
                 customerStage.show();
                 break;
             case "projects":
-                //open project in create fxml
+                FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/view/create/CreateProject.fxml"));
+                Parent projectsRoot = projectLoader.load();
+                CreateProjectController createProjectController = projectLoader.getController();
+                createProjectController.setModel(model);
+                Stage projectStage = new Stage();
+                projectStage.setScene(new Scene(projectsRoot));
+                projectStage.show();
                 break;
             case "documents":
-                /*
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/create/CreateDocumentView.fxml"));
-                Parent root = loader.load();
-                CreateDocumentController controller = loader.getController();
-                controller.setModel(model);
+                FXMLLoader documentsLoader = new FXMLLoader(getClass().getResource("/view/create/CreateDocumentView.fxml"));
+                Parent documentsRoot = documentsLoader.load();
+                CreateDocumentController createDocumentController = documentsLoader.getController();
+                createDocumentController.setModel(model);
                 //controller.setInformation();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-
-                 */
-
+                Stage documentsStage = new Stage();
+                documentsStage.setScene(new Scene(documentsRoot));
+                documentsStage.show();
                 break;
         }
     }
@@ -141,10 +154,11 @@ public class AdminViewController implements Initializable {
             }
         }else if (actionEvent.getSource() == btnCustomers){
             try {
-                FXMLLoader loader = new FXMLLoader();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/CustomersView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-                painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/CustomersView.fxml")));
-                LoginPageController controller = loader.getController();
+                painnnnn.getChildren().setAll((Node) loader.load());
+                CustomerPageController controller = loader.getController();
+                controller.setMainModel();
                 selected = "Customers";
             } catch (IOException e) {
                 throw new RuntimeException(e);

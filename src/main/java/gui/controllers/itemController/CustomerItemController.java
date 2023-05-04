@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerItemController implements Initializable,Items {
+public class CustomerItemController implements Initializable {
     public Label firstNameLabel, lastNameLabel, emailLabel, adress1Label;
     public Label infoNameLabel;
     private MainModel model ;
@@ -25,6 +25,20 @@ public class CustomerItemController implements Initializable,Items {
     public void initialize(URL location, ResourceBundle resources) {}
 
 
+
+    public void setLabels(int numberOfElement) {
+        this.model = new MainModel();
+        try {
+            this.model.loadCustomers();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        model.setSelectedCustomer(model.getAllCustomers().get(numberOfElement));
+        firstNameLabel.setText(this.model.getSelectedCustomer().getFirstName());
+        lastNameLabel.setText(this.model.getSelectedCustomer().getLastName());
+        emailLabel.setText(this.model.getSelectedCustomer().getEmail());
+        adress1Label.setText(this.model.getSelectedCustomer().getAddress());
+    }
 
     public void infoBtnHandle(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/info/CustomerInfoView.fxml"));
@@ -39,18 +53,5 @@ public class CustomerItemController implements Initializable,Items {
         stage.show();
     }
 
-    @Override
-    public void setLabels(int numberOfElement, MainModel model) {
-        this.model = model;
-        try {
-            this.model.loadCustomers();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        model.setSelectedCustomer(model.getAllCustomers().get(numberOfElement));
-        firstNameLabel.setText(this.model.getSelectedCustomer().getFirstName());
-        lastNameLabel.setText(this.model.getSelectedCustomer().getLastName());
-        emailLabel.setText(this.model.getSelectedCustomer().getEmail());
-        adress1Label.setText(this.model.getSelectedCustomer().getAddress());
-    }
+
 }

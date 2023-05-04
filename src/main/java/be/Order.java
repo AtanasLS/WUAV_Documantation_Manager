@@ -1,5 +1,6 @@
 package main.java.be;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Order {
@@ -18,11 +19,11 @@ public class Order {
 
 
 
-    private Date date;
+    private LocalDate date;
     private double price;
 
 
-    public Order(int userID, int projectID, String name, String userName, String project, String customer, int customerID, Date date, double price) {
+    public Order(int userID, int projectID, String name, String userName, String project, String customer, int customerID, LocalDate date, double price) {
         this.userID = userID;
         this.projectID = projectID;
         this.name = name;
@@ -35,7 +36,7 @@ public class Order {
     }
 
     public Order(int id, int userID, int projectID, String name, String userName,
-                 String project, String customer, int customerID, Date date, double price) {
+                 String project, String customer, int customerID, LocalDate date, double price) {
         this.id = id;
         this.userID = userID;
         this.projectID = projectID;
@@ -92,11 +93,11 @@ public class Order {
         this.customer = customer;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
