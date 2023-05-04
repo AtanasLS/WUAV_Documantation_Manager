@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public class OrderDAO implements DAOInterface<Order> {
     DataAccessManager dataAccessManager = new DataAccessManager();
@@ -39,7 +40,7 @@ public class OrderDAO implements DAOInterface<Order> {
         int projectID=object.getProjectID();
         String name=object.getName();
         int customer=object.getCustomerID();
-        Date date= (Date) object.getDate();
+        Date date= Date.valueOf(object.getDate());
         Double price=object.getPrice();
 
 
@@ -73,7 +74,7 @@ public class OrderDAO implements DAOInterface<Order> {
         int projectID=object.getProjectID();
         String name=object.getName();
         int customer=object.getCustomerID();
-        Date date= (Date) object.getDate();
+        LocalDate date= object.getDate();
         Double price=object.getPrice();
 
         String query="INSERT INTO [order] VALUES (?, ?, ?, ?, ?, ?) WHERE name = ?;";
@@ -82,7 +83,7 @@ public class OrderDAO implements DAOInterface<Order> {
         stmt.setInt(2,projectID);
         stmt.setString(3,name);
         stmt.setInt(4,customer);
-        stmt.setDate(5,date);
+        stmt.setDate(5, Date.valueOf(date));
         stmt.setDouble(6,price);
         stmt.setString(7,id);
 
@@ -104,7 +105,7 @@ public class OrderDAO implements DAOInterface<Order> {
         Date date=resultSet.getDate("date");
         double price=resultSet.getDouble("price");
 
-        return new Order(userID,projectID,name,user,project,customer,customerId,date,price);
+        return new Order(userID,projectID,name,user,project,customer,customerId, date.toLocalDate(),price);
 
     }
 
@@ -124,7 +125,7 @@ public class OrderDAO implements DAOInterface<Order> {
             Date date=resultSet.getDate("date");
             double price=resultSet.getDouble("price");
 
-            listOfOrders.add(new Order(userID,projectID,name,user,project,customer,customerId,date,price));
+            listOfOrders.add(new Order(userID,projectID,name,user,project,customer,customerId, date.toLocalDate(),price));
         }
 
         return listOfOrders;    }

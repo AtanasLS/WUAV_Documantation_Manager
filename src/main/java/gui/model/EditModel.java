@@ -14,7 +14,7 @@ public class EditModel {
     }
 
     public String updateDatabaseElement(Object object,String id,String type) throws SQLException {
-        model.updateUsers(object, id);
+     //   model.updateUsers(object, id);
         return this.appLogicManager.updateDatabase(object,id,type);
     }
 }
