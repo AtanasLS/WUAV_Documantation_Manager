@@ -56,16 +56,17 @@ public class PictureDAO implements DAOInterface<Picture> {
     }
 
     @Override
-    public String deleteFromDatabase(String id) throws SQLException {
+    public String deleteFromDatabase(int id) throws SQLException {
         String query="DELETE FROM picture WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,id);
+        stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Picture object, String id) throws SQLException {
+    public String updateDatabase(Picture object) throws SQLException {
+        int id=object.getId();
         String name=object.getName();
         Image installationPhoto=object.getInstallationPhoto();
         int documentationID=object.getDocumentationID();
@@ -75,7 +76,7 @@ public class PictureDAO implements DAOInterface<Picture> {
         stmt.setString(1,name);
         stmt.setObject(2,installationPhoto);
         stmt.setInt(3,documentationID);
-        stmt.setString(4,id);
+        stmt.setInt(4,id);
 
         ResultSet resultSet =stmt.executeQuery();
 
@@ -83,11 +84,12 @@ public class PictureDAO implements DAOInterface<Picture> {
 
     @Override
     public Picture getDataFromResultSet(ResultSet resultSet) throws SQLException {
+        int id=resultSet.getInt("id");
         String name=resultSet.getString("name");
         Image installationPhoto=resultSet.getObject("installationPhoto",Image.class);
         int documentationID=resultSet.getInt("documentationID");
 
-        return  new Picture(name,installationPhoto,documentationID);
+        return  new Picture(id,name,installationPhoto,documentationID);
     }
 
     @Override
@@ -96,10 +98,11 @@ public class PictureDAO implements DAOInterface<Picture> {
 
         while (resultSet.next()) {
 
+            int id=resultSet.getInt("id");
             String name=resultSet.getString("name");
             Image installationPhoto=resultSet.getObject("img",Image.class);
             int documentationID=resultSet.getInt("documentation_id");
-            listOfPicture.add(new Picture(name,installationPhoto,documentationID));
+            listOfPicture.add(new Picture(id,name,installationPhoto,documentationID));
         }
 
         return listOfPicture;    }

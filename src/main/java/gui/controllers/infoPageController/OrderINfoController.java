@@ -45,7 +45,7 @@ public class OrderINfoController implements Initializable,Info
     }
 
     @Override
-    public String delete(String id) {
+    public String delete(int id) {
         return this.deleteModel.deleteFromDatabase(id,"Order");
     }
 

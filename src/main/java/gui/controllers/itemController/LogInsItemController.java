@@ -50,12 +50,12 @@ public class LogInsItemController implements Initializable,Items {
     }
 
     public void editLogIN(ActionEvent actionEvent) throws SQLException {
-        this.editModel.updateDatabaseElement(new Object(),"username","LogIn");
+        this.editModel.updateDatabaseElement(new Object(),"LogIn",this.currentLogIn.getId());
 
     }
 
     public void deleteLogIn(ActionEvent actionEvent){
-        this.deleteModel.deleteFromDatabase(this.currentLogIn.getUsername(),"LogIn");
+        this.deleteModel.deleteFromDatabase(this.currentLogIn.getId(),"LogIn");
 
     }
 }

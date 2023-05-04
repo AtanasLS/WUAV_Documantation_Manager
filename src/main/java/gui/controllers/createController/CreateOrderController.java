@@ -1,5 +1,6 @@
 package main.java.gui.controllers.createController;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
@@ -14,6 +15,7 @@ import main.java.gui.model.CreateModel;
 import main.java.gui.model.MainModel;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CreateOrderController implements Initializable,CreateController {
@@ -29,9 +31,23 @@ public class CreateOrderController implements Initializable,CreateController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         model=new MainModel();
+        this.customers = FXCollections.observableArrayList();
+        this.projects = FXCollections.observableArrayList();
+        this.users =  FXCollections.observableArrayList();
+
+        try {
+            model.loadProjects();
+            model.loadCustomers();
+            model.loadUsers();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         this.customers.addAll(model.getAllCustomers());
         this.projects.addAll(model.getAllProjects());
         this.users.addAll(model.getAllUsers());
+        this.user.setItems(users);
+        this.customer.setItems(customers);
+        this.project.setItems(projects);
     }
 
     @Override
@@ -51,6 +67,8 @@ public class CreateOrderController implements Initializable,CreateController {
         Order order=new Order(user1.getId(),project1.getProjectId(),
                 this.name.getText(),user1.getUsername(),project1.getType(),
                 customer1.getFirstName(),customer1.getId(),this.date.getValue(),price);
+        createModel.createInDatabase(order, "Order");
+
 
     }
 
