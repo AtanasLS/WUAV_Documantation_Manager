@@ -24,7 +24,8 @@ public class OrderController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         try {
-            model.loadCustomers();
+            model.loadOrders();
+            System.out.println(model.getAllOrders());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -34,8 +35,7 @@ public class OrderController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/OrderItem.fxml"));
                 nodes[i] = loader.load();
                 OrderItemController controller = loader.getController();
-
-               // controller.setLabels(i);
+                controller.setLabels(i);
 
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {

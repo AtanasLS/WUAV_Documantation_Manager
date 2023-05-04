@@ -95,6 +95,12 @@ public class DataManagerFacade {
         return projectDAO.getAllFromDatabase();
 
     }
+    //getting all order
+    public ObservableList<Order> getAllOrderFromDatabase() throws SQLException {
+        return orderDAO.getAllFromDatabase();
+    }
+
+
 
 
     public String insertIntoDatabase(Object object, String type) throws SQLException {

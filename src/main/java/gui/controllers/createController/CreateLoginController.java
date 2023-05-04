@@ -4,8 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import main.java.be.LogIns;
 import main.java.be.Project;
 import main.java.gui.model.CreateModel;
@@ -18,6 +20,7 @@ import java.util.ResourceBundle;
 public class CreateLoginController implements Initializable, CreateController {
     public TextField username, password;
     public ComboBox project;
+    public Button saveBtn, cancelBtn;
 
     private CreateModel createModel;
     private MainModel model;
@@ -48,10 +51,14 @@ public class CreateLoginController implements Initializable, CreateController {
 
         LogIns logIns=new LogIns(this.username.getText(),this.password.getText(),selectedProject.getType(),selectedProject.getProjectId());
         createModel.createInDatabase(logIns,"LogIn");
+
+        Stage stage = (Stage) saveBtn.getScene().getWindow();
+        stage.close();
     }
 
     @Override
     public void handleCancel(ActionEvent actionEvent) {
-
+        Stage stage = (Stage) cancelBtn.getScene().getWindow();
+        stage.close();
     }
 }

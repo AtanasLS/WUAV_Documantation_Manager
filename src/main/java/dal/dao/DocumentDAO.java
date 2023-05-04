@@ -33,7 +33,7 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public ObservableList<Document> getAllFromDatabase() throws SQLException, IOException {
-        String query="SELECT * FROM document;";
+        String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[documentation];";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 

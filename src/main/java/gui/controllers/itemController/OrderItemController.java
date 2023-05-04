@@ -7,7 +7,7 @@ import main.java.gui.model.MainModel;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class OrderItemController implements Initializable,Items {
+public class OrderItemController implements Initializable {
 
     public Label oName, pName, customer,date,price;
     private MainModel model ;
@@ -21,8 +21,8 @@ public class OrderItemController implements Initializable,Items {
         }
     }
 
-    @Override
-    public void setLabels(int numberOfElement, MainModel model) {
+    //@Override
+    public void setLabels(int numberOfElement) {
         model.setSelectedOrder(this.model.getAllOrders().get(numberOfElement));
         oName.setText(this.model.getAllOrders().get(numberOfElement).getName());
         pName.setText(this.model.getAllOrders().get(numberOfElement).getProject());

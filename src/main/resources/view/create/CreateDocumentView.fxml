@@ -47,7 +47,7 @@
       <ComboBox fx:id="customerBox" layoutX="14.0" layoutY="233.0" prefHeight="34.0" prefWidth="170.0" promptText="Set Customer" />
       <ComboBox fx:id="technicianBox" layoutX="14.0" layoutY="298.0" prefHeight="34.0" prefWidth="170.0" promptText="Set Technicians" />
       <ComboBox fx:id="projectBox" layoutX="14.0" layoutY="361.0" prefHeight="34.0" prefWidth="170.0" promptText="Set Project" />
-      <Button layoutX="7.0" layoutY="535.0" mnemonicParsing="false" onAction="#createDocument" prefHeight="46.0" prefWidth="101.0" text="Create" />
-      <Button layoutX="133.0" layoutY="535.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="101.0" text="Cancel" />
+      <Button fx:id="createBtn" layoutX="7.0" layoutY="535.0" mnemonicParsing="false" onAction="#createDocument" prefHeight="46.0" prefWidth="101.0" text="Create" />
+      <Button fx:id="cancelBtn" layoutX="133.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="46.0" prefWidth="101.0" text="Cancel" />
    </children>
 </AnchorPane>
