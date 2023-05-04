@@ -5,6 +5,8 @@ import javafx.collections.ObservableList;
 import main.java.be.*;
 import main.java.dal.dao.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class DataManagerFacade {
@@ -32,7 +34,7 @@ public class DataManagerFacade {
     }
 
 
-    public Object getFromDatabase(int id, String type) throws SQLException {
+    public Object getFromDatabase(int id, String type) throws SQLException, IOException {
         Object o = null;
 
         switch (type) {
@@ -76,7 +78,7 @@ public class DataManagerFacade {
         return userDAO.getTechnicianFromDatabase(id);
     }
     //getting all the documents
-    public ObservableList<Document> getAllDocumentsFromDatabase() throws SQLException {
+    public ObservableList<Document> getAllDocumentsFromDatabase() throws SQLException, IOException {
         return documentDAO.getAllFromDatabase();
     }
     //getting all the logIns
@@ -84,7 +86,7 @@ public class DataManagerFacade {
         return logInDAO.getAllFromDatabase();
     }
     //getting all the pictures
-    public ObservableList<Picture> getAllPicturesFromDatabase() throws SQLException {
+    public ObservableList<Picture> getAllPicturesFromDatabase() throws SQLException, IOException {
         return pictureDAO.getAllFromDatabase();
     }
     //getting all the projects
@@ -94,7 +96,7 @@ public class DataManagerFacade {
     }
 
 
-    public String insertIntoDatabase(Object object, String type) throws SQLException {
+    public String insertIntoDatabase(Object object, String type) throws SQLException, FileNotFoundException {
         String output = "";
         switch (type) {
             case "User":
@@ -144,7 +146,7 @@ public class DataManagerFacade {
         }
         return output;
     }
-    public String updateDatabase(Object object , String id, String type) throws SQLException{
+    public String updateDatabase(Object object , String id, String type) throws SQLException, FileNotFoundException {
         String output = "";
 
 

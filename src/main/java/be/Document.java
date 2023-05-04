@@ -18,11 +18,11 @@ public class Document {
     private int customer;
     private int user;
 
-    private javafx.scene.image.Image layoutDrawing;
+    private String layoutDrawing;
     private String description;
     private LocalDate date;
 
-    public Document(Image layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
+    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
         this.name = name;
         this.project = project;
         this.loginId = loginId;
@@ -34,7 +34,7 @@ public class Document {
         //layoutDrawing,description, loginID, name, userID, customerID, projectID, date
     }
 
-    public Document(int id,Image layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
+    public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
         this.id = id;
         this.name = name;
         this.project = project;
@@ -53,11 +53,11 @@ public class Document {
         return user;
     }
 
-    public javafx.scene.image.Image getLayoutDrawing() {
+    public String getLayoutDrawing() {
         return layoutDrawing;
     }
 
-    public void setLayoutDrawing(Image layoutDrawing) {
+    public void setLayoutDrawing(String layoutDrawing) {
         this.layoutDrawing = layoutDrawing;
     }
 

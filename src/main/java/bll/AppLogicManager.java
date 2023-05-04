@@ -5,6 +5,8 @@ import main.java.be.*;
 import main.java.dal.DataManagerFacade;
 import main.java.dal.interfaces.DAOInterface;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class AppLogicManager {
@@ -14,6 +16,8 @@ public class AppLogicManager {
         try {
             return DataManagerFacade.getInstance().getFromDatabase(id,type);
         } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -40,6 +44,8 @@ public class AppLogicManager {
             return DataManagerFacade.getInstance().getAllDocumentsFromDatabase();
         }catch (SQLException e){
             throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     //getting all the logIns
@@ -56,6 +62,8 @@ public class AppLogicManager {
             return DataManagerFacade.getInstance().getAllPicturesFromDatabase();
         }catch (SQLException e){
             throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     //getting all the projects
@@ -74,6 +82,8 @@ public class AppLogicManager {
         } catch (SQLException e) {
             System.out.println(e);
             return null;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     public String deleteFromDatabase (String id, String type){
@@ -89,6 +99,8 @@ public class AppLogicManager {
         } catch (SQLException e) {
             System.out.println(e);
             return null;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 

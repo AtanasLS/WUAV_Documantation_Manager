@@ -9,6 +9,7 @@ import main.java.dal.DataAccessManager;
 import main.java.dal.interfaces.DAOInterface;
 
 import java.awt.*;
+import java.io.*;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +22,7 @@ public class DocumentDAO implements DAOInterface<Document> {
     DataAccessManager dataAccessManager = new DataAccessManager();
 
     @Override
-    public Document getFromDatabase(int id) throws SQLException {
+    public Document getFromDatabase(int id) throws SQLException, IOException {
         String query="SELECT * FROM document WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
@@ -31,7 +32,7 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public ObservableList<Document> getAllFromDatabase() throws SQLException {
+    public ObservableList<Document> getAllFromDatabase() throws SQLException, IOException {
         String query="SELECT * FROM document;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
@@ -40,14 +41,15 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public String insertIntoDatabase(Document object) throws SQLException {
-        javafx.scene.image.Image layoutDrawing=object.getLayoutDrawing();
+    public String insertIntoDatabase(Document object) throws SQLException, FileNotFoundException {
+        File file = new File(object.getLayoutDrawing());
+        FileInputStream input = new FileInputStream(file);
         String description=object.getDescription();
         LocalDate date =  object.getDate();
 
         String query="INSERT INTO document VALUES (?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setObject(1,layoutDrawing);
+        stmt.setBinaryStream(1,input);
         stmt.setString(2,description);
         stmt.setObject(3,date);
 
@@ -67,15 +69,15 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public String updateDatabase(Document object, String id) throws SQLException {
-
-        Image layoutDrawing=object.getLayoutDrawing();
+    public String updateDatabase(Document object, String id) throws SQLException, FileNotFoundException {
+        File file = new File(object.getLayoutDrawing());
+        FileInputStream input = new FileInputStream(file);
         String description=object.getDescription();
         LocalDate date=  object.getDate();
 
         String query="INSERT INTO document VALUES (?, ?, ?) WHERE id = ?;;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setObject(1,layoutDrawing);
+        stmt.setBinaryStream(1,input);
         stmt.setString(2,description);
         stmt.setObject(3,date);
         stmt.setString(4,id);
@@ -88,9 +90,8 @@ public class DocumentDAO implements DAOInterface<Document> {
 
 
     @Override
-    public Document getDataFromResultSet(ResultSet resultSet) throws SQLException {
+    public Document getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
 
-        Image layoutDrawing = (Image) resultSet.getObject("layout_drawing");
         String description = resultSet.getString("description");
         int loginID = resultSet.getInt("login_id");
         LocalDate date = resultSet.getDate("date").toLocalDate();
@@ -99,11 +100,21 @@ public class DocumentDAO implements DAOInterface<Document> {
         int projectID = resultSet.getInt("projectId");
         String name = resultSet.getString("name");
 
+        File file = new File(name+ ".png");
+        String layoutDrawing= name+ ".png";
+        FileOutputStream output = new FileOutputStream(file);
+
+        InputStream input = resultSet.getBinaryStream("layout_drawing");
+        byte[] buffer = new byte[1024];
+        while (input.read(buffer) > 0) {
+            output.write(buffer);
+        }
+
         return new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date);
     }
 
     @Override
-    public ObservableList<Document> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+    public ObservableList<Document> getAllDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
         ObservableList<Document> listOfDocuments= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
@@ -114,7 +125,6 @@ public class DocumentDAO implements DAOInterface<Document> {
             Date date=resultSet.getDate("date");
 
              */
-            Image layoutDrawing = (Image) resultSet.getObject("layout_drawing");
             String description = resultSet.getString("description");
             int loginID = resultSet.getInt("login_id");
             LocalDate date = resultSet.getDate("date").toLocalDate();
@@ -122,6 +132,15 @@ public class DocumentDAO implements DAOInterface<Document> {
             int customerID = resultSet.getInt("customerId");
             int projectID = resultSet.getInt("projectId");
             String name = resultSet.getString("name");
+            File file = new File(name+ ".png");
+            String layoutDrawing= name+ ".png";
+            FileOutputStream output = new FileOutputStream(file);
+
+            InputStream input = resultSet.getBinaryStream("layout_drawing");
+            byte[] buffer = new byte[1024];
+            while (input.read(buffer) > 0) {
+                output.write(buffer);
+            }
 
             listOfDocuments.add(new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date));
         }
