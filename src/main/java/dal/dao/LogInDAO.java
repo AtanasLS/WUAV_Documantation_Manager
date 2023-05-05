@@ -65,7 +65,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public String updateDatabase(LogIns object) throws SQLException {
-        int id=object.getId();
+       // int id=object.getId();
         String username=object.getUsername();
         String password=object.getPassword();
         int projectId=object.getProjectId();
@@ -75,7 +75,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
         stmt.setString(1,username);
         stmt.setString(2,password);
         stmt.setInt(3,projectId);
-        stmt.setInt(4,id);
+        stmt.setInt(4,projectId);
 
         ResultSet resultSet =stmt.executeQuery();
 

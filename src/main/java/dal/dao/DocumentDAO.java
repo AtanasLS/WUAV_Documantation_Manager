@@ -60,27 +60,28 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public String deleteFromDatabase(String id) throws SQLException {
+    public String deleteFromDatabase(int id) throws SQLException {
         String query="DELETE FROM document WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,id);
+        stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Document object, String id) throws SQLException, FileNotFoundException {
+    public String updateDatabase(Document object) throws SQLException, FileNotFoundException {
         File file = new File(object.getLayoutDrawing());
         FileInputStream input = new FileInputStream(file);
         String description=object.getDescription();
         LocalDate date=  object.getDate();
+        int id = object.getId();
 
         String query="INSERT INTO document VALUES (?, ?, ?) WHERE id = ?;;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setBinaryStream(1,input);
         stmt.setString(2,description);
         stmt.setObject(3,date);
-        stmt.setString(4,id);
+        stmt.setInt(4,id);
 
 
         ResultSet resultSet =stmt.executeQuery();

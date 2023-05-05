@@ -14,8 +14,8 @@ public interface DAOInterface<T> {
     T getFromDatabase( int id) throws SQLException, IOException;
     ObservableList<T> getAllFromDatabase() throws SQLException, IOException;
     String insertIntoDatabase(T object) throws SQLException, FileNotFoundException;
-    String deleteFromDatabase(String id) throws SQLException;
-    String updateDatabase(T object , String id) throws SQLException, FileNotFoundException;
+    String deleteFromDatabase(int id) throws SQLException;
+    String updateDatabase(T object ) throws SQLException, FileNotFoundException;
 
     T getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException;
 

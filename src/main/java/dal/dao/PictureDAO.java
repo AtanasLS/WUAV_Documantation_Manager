@@ -58,27 +58,28 @@ public class PictureDAO implements DAOInterface<Picture> {
     }
 
     @Override
-    public String deleteFromDatabase(String id) throws SQLException {
+    public String deleteFromDatabase(int id) throws SQLException {
         String query="DELETE FROM picture WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,id);
+        stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Picture object, String id) throws SQLException, FileNotFoundException {
+    public String updateDatabase(Picture object) throws SQLException, FileNotFoundException {
         String name=object.getName();
         File file = new File(object.getInstallationPhoto());
         FileInputStream installationPhoto = new FileInputStream(file);
         int documentationID=object.getDocumentationID();
+        int id = object.getId();
 
         String query="INSERT INTO picture VALUES (?, ?, ?) WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,name);
         stmt.setBinaryStream(2,installationPhoto);
         stmt.setInt(3,documentationID);
-        stmt.setString(4,id);
+        stmt.setInt(4,id);
 
         ResultSet resultSet =stmt.executeQuery();
 

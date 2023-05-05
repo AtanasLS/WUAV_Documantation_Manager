@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import main.java.be.User;
 import main.java.gui.controllers.mainDashboardsController.AdminViewController;
+import main.java.gui.controllers.mainDashboardsController.SellerViewController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -79,7 +80,7 @@ public class LoginPageController implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
                     alert.showAndWait();
                 }
-            }else if (loggedInUser.getType().equals("Technician Manager")){
+            }else if (loggedInUser.getType().equals("TechnicianManager")){
                 try {
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TechnicianManagerView.fxml"));
@@ -105,6 +106,7 @@ public class LoginPageController implements Initializable {
                     Parent root = loader.load();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
+                    SellerViewController controller = loader.getController();
                     // controller.setLoggedInUser(loggedInUser.getUsername(), loggedInUser.getType());
                     stage.setFullScreen(false);
                     stage.setResizable(false);
