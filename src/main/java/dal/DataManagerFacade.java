@@ -119,7 +119,16 @@ public class DataManagerFacade {
         return output;
     }
 
+<<<<<<< Updated upstream
     public String deleteFromDatabase(String id, String type) throws SQLException{
+=======
+    public  Project getTheMostSaledProject() throws SQLException {
+        return this.projectDAO.getProjectWithMostSales();
+    }
+
+
+    public String deleteFromDatabase(int id, String type) throws SQLException{
+>>>>>>> Stashed changes
         String output = "";
 
         switch (type){

@@ -109,4 +109,8 @@ public class AppLogicManager {
     public ObservableList<Order> getAllOrdersFromDatabas() {
         return null;
     }
-}
+
+
+public Project getMostSelledProject() throws SQLException {
+        return DataManagerFacade.getInstance().getTheMostSaledProject();
+}}

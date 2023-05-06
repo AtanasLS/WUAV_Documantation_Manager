@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="0dbebccb-b197-4464-94c9-5e0eeaf3ad00" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/AdminViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/CustomerItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/CustomerItemController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/UserItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/UserItemController.java" afterDir="false" />
@@ -17,6 +21,27 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/CustomerItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/CustomerItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/Document.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bll/AppLogicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/AppLogicManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/DataManagerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/DataManagerFacade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/interfaces/DAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/interfaces/DAOInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/TechnicianViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/TechnicianViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/SellerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/SellerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianManagerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianManagerViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianManagerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianManagerView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
