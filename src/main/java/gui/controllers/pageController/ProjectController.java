@@ -23,7 +23,7 @@ public class ProjectController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         try {
-            model.loadCustomers();
+            model.loadProjects();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -34,7 +34,7 @@ public class ProjectController implements Initializable{
                 nodes[i] = loader.load();
                 ProjectItemController controller = loader.getController();
 
-                //controller.setLabels(i);
+                controller.setLabels(i, model);
 
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {

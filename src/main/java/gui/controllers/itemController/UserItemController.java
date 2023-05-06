@@ -28,19 +28,32 @@ public class UserItemController implements Initializable {
     }
 
     //@Override
-    public void setLabels(int numberOfElement) {
+    public void setLabels(int numberOfElement,String type) {
         this.model = new MainModel();
-        try {
-            this.model.loadUsers();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        this.model.setSelectedUser(this.model.getAllUsers().get(numberOfElement));
-        //System.out.println(model.getSelectedUser().getFirstName());
-        username.setText(this.model.getSelectedUser().getUsername());
-        firstName.setText(this.model.getSelectedUser().getFirstName());
-        password.setText(this.model.getSelectedUser().getPassword());
+        if (type.equals("Users")) {
 
+            try {
+                this.model.loadUsers();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            this.model.setSelectedUser(this.model.getAllUsers().get(numberOfElement));
+            //System.out.println(model.getSelectedUser().getFirstName());
+            username.setText(this.model.getSelectedUser().getUsername());
+            firstName.setText(this.model.getSelectedUser().getFirstName());
+            password.setText(this.model.getSelectedUser().getPassword());
+        }else if (type.equals("Technician")){
+            try {
+                this.model.loadTech();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            this.model.setSelectedUser(this.model.getAllTech().get(numberOfElement));
+            //System.out.println(model.getSelectedUser().getFirstName());
+            username.setText(this.model.getSelectedUser().getUsername());
+            firstName.setText(this.model.getSelectedUser().getFirstName());
+            password.setText(this.model.getSelectedUser().getPassword());
+        }
     }
     public void infoBtnHandle(ActionEvent actionEvent) throws IOException {
 

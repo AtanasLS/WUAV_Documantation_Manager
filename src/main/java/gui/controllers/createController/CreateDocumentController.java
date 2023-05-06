@@ -36,6 +36,7 @@ public class CreateDocumentController implements Initializable {
     public AnchorPane mainPane;
     public ImageView imageView;
     public VBox items;
+    public Button createBtn, cancelBtn;
 
     public ArrayList<Image> allImages = new ArrayList<>();
     @FXML
@@ -111,5 +112,14 @@ public class CreateDocumentController implements Initializable {
         //Document newDocument = new Document(allImages.get(0), documentDescription.getText(), date.getValue());
         //createModel.createInDatabase(document, "Document");
 
+        Stage currentStage = (Stage) createBtn.getScene().getWindow();
+        currentStage.close();
+
+
+    }
+
+    public void handleCancel(ActionEvent actionEvent) {
+        Stage currentStage = (Stage) cancelBtn.getScene().getWindow();
+        currentStage.close();
     }
 }

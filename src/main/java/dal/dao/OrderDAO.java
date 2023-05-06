@@ -18,7 +18,7 @@ public class OrderDAO implements DAOInterface<Order> {
 
     @Override
     public Order getFromDatabase(int id) throws SQLException {
-        String query="SELECT * from \"order\" LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId WHERE order.id=?;";
+        String query="SELECT * from order LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId WHERE order.id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
@@ -28,11 +28,12 @@ public class OrderDAO implements DAOInterface<Order> {
 
     @Override
     public ObservableList<Order> getAllFromDatabase() throws SQLException {
-        String query="SELECT * from \"order\" LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId;";
+        String query="SELECT * from [order] LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
-        return (ObservableList<Order>) this.getAllDataFromResultSet(resultSet);    }
+        return (ObservableList<Order>) this.getAllDataFromResultSet(resultSet);
+    }
 
     @Override
     public String insertIntoDatabase(Order object) throws SQLException {

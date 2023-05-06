@@ -39,9 +39,8 @@ public class ProjectItemController implements Initializable,Items {
 
     @Override
     public void setLabels(int numberOfElement, MainModel model) {
-
+        System.out.println(model.getAllProjects().size());
         this.currentProject=this.model.getAllProjects().get(numberOfElement);
-
         type.setText(this.model.getAllProjects().get(numberOfElement).getType());
         customer.setText(this.model.getAllProjects().get(numberOfElement).getCustomer());
         price.setText(String.valueOf(this.model.getAllProjects().get(numberOfElement).getPrice()));

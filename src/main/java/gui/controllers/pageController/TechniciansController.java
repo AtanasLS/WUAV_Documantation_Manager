@@ -23,7 +23,7 @@ public class TechniciansController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         try {
-            model.loadCustomers();
+            model.loadTech();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

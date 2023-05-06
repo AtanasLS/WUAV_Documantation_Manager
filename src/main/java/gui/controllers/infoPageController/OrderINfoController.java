@@ -8,6 +8,7 @@ import main.java.gui.model.MainModel;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class OrderINfoController implements Initializable,Info
@@ -22,6 +23,7 @@ public class OrderINfoController implements Initializable,Info
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.editModel=new EditModel(model);
         this.deleteModel=new DeleteModel();
+
     }
 
     @Override

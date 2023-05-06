@@ -75,14 +75,14 @@ public class CustomerDAO implements DAOInterface<Customer> {
 
     @Override
     public String updateDatabase(Customer object) throws SQLException {
-
+        int id = object.getId();
         String firstName=object.getFirstName();
         String lastName=object.getLastName();
         String email=object.getEmail();
         String address=object.getAddress();
         String address2=object.getAddress2();
         String phone=object.getPhone();
-        int id=object.getConsumptionNumber();
+        int consumptionNumber=object.getConsumptionNumber();
 
 
 
