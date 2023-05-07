@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.gui.controllers.pageController.CustomerPageController;
+import main.java.gui.controllers.pageController.DocumentController;
 import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.MainModel;
 
@@ -46,8 +47,9 @@ public class TechnicianManagerViewController implements Initializable {
         }else if (actionEvent.getSource() == btnDocuments){
             try {
                 FXMLLoader loader = new FXMLLoader((getClass().getResource("/view/pages/DocumentsPage.fxml")));
-                // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
+                DocumentController documentController = loader.getController();
+                documentController.setPnItems("Users");
                 selected = "Documents";
 
             } catch (IOException e) {

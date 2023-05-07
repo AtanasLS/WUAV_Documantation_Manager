@@ -30,7 +30,7 @@ public class UserItemController implements Initializable {
     //@Override
     public void setLabels(int numberOfElement,String type) {
         this.model = new MainModel();
-        if (type.equals("Users")) {
+        if (type.equals("User")) {
 
             try {
                 this.model.loadUsers();

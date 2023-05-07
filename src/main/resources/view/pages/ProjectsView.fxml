@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -28,12 +29,17 @@
       </ImageView>
       <ScrollPane layoutX="23.0" layoutY="198.0" prefHeight="320.0" prefWidth="746.0" stylesheets="@../../css/stylesheet.css">
          <content>
-            <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="744.0" spacing="5.0" >
+            <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="744.0" spacing="5.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
          </content>
       </ScrollPane>
+      <Label fx:id="mostSoldProduct" layoutX="30.0" layoutY="134.0" prefHeight="47.0" prefWidth="383.0">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
