@@ -30,13 +30,11 @@ public class MainModel {
 
     private Order selectedOrder;
 
-<<<<<<< Updated upstream
-=======
+
     private User selectedUser;
 
     private Project mostSelled;
 
->>>>>>> Stashed changes
 
 
 
@@ -80,13 +78,10 @@ public class MainModel {
     public void loadOrders() throws SQLException {
         this.allOrders.clear();
         this.allOrders.addAll(appLogicManager.getAllOrdersFromDatabas());
-
     }
-
     public void loadProjects() throws SQLException {
         this.allProjects.clear();
         this.allProjects.addAll(appLogicManager.getAllProjectsFromDatabase());
-
     }
 
     public void loadUsers() throws SQLException {
@@ -142,6 +137,29 @@ public class MainModel {
     public Customer getSelectedCustomer(){
         return selectedCustomer;
     }
+
+    public void updateUsers(Object selectedObject,int id)  {
+
+        User userToRemove = null;
+        for (User u: getAllUsers()) {
+            if (u.getId()==id){
+                userToRemove = u;
+            }
+        }
+        this.allUsers.remove(userToRemove);
+        this.allUsers.add((User) selectedObject);
+    }
+    public void addObject(Object selectedObject, String type) {
+        switch (type.toLowerCase()) {
+            case "user" -> this.allUsers.add((User) selectedObject);
+            case "customer" -> this.allCustomers.add((Customer) selectedObject);
+            case "project" -> this.allProjects.add((Project) selectedObject);
+            case "order" -> this.allOrders.add((Order) selectedObject);
+            case "document" -> this.allDocuments.add((Document) selectedObject);
+            case "login" -> this.allLogIns.add((LogIns) selectedObject);
+        }
+
+    }
     public void setSelectedCustomer(Customer customer){
         this.selectedCustomer = customer;
     }
@@ -164,4 +182,11 @@ public class MainModel {
         return null;
     }
 
+    public User getSelectedUser() {
+        return selectedUser;
+    }
+
+    public void setSelectedUser(User selectedUser) {
+        this.selectedUser = selectedUser;
+    }
 }

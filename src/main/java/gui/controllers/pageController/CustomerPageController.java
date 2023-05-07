@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 import main.java.be.Customer;
 import main.java.gui.controllers.itemController.CustomerItemController;
+import main.java.gui.controllers.itemController.UserItemController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -20,15 +21,16 @@ public class CustomerPageController implements Initializable {
     VBox pnItems = null;
 
     MainModel model;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.model = new MainModel();
+        this.model = new MainModel() ;
         try {
             model.loadCustomers();
+            System.out.println(model.getAllCustomers());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        //System.out.println(model.getAllCustomers());
         Node[] nodes = new Node[model.getAllCustomers().size()];
         for (int i = 0; i < nodes.length; i++) {
             try{
@@ -42,5 +44,9 @@ public class CustomerPageController implements Initializable {
             }
         }
     }
+
+    public void setMainModel() {
+
     }
+}
 

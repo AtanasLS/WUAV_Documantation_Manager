@@ -54,24 +54,28 @@ public class CustomerDAO implements DAOInterface<Customer> {
         stmt.setString(6,phone);
         stmt.setInt(7,consumptionNumber);
 
-        ResultSet resultSet =stmt.executeQuery();
-
-        return resultSet.toString();
+        try {
+            ResultSet resultSet = stmt.executeQuery();
+            //System.out.println(resultSet.toString());
+        }catch (RuntimeException e){
+            System.out.println(e);
+        }
+        return "Work!";
     }
 
     @Override
-    public String deleteFromDatabase(String id) throws SQLException {
+    public String deleteFromDatabase(int id) throws SQLException {
 
-        String query="DELETE FROM customer WHERE email=?;";
+        String query="DELETE FROM customer WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,id);
+        stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
         return resultSet.toString();
     }
 
     @Override
-    public String updateDatabase(Customer object, String id) throws SQLException {
-
+    public String updateDatabase(Customer object) throws SQLException {
+        int id = object.getId();
         String firstName=object.getFirstName();
         String lastName=object.getLastName();
         String email=object.getEmail();
@@ -82,7 +86,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
 
 
 
-        String query="INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?) WHERE email = ?;";
+        String query="UPDATE customer set first_name = ?,last_name = ?,email = ?,address = ?,address2 = ?,phone = ? WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,firstName);
         stmt.setString(2,lastName);
@@ -90,16 +94,21 @@ public class CustomerDAO implements DAOInterface<Customer> {
         stmt.setString(4,address);
         stmt.setString(5,address2);
         stmt.setString(6,phone);
-        stmt.setInt(7,consumptionNumber);
-        stmt.setString(8,id);
+        stmt.setInt(7,id);
 
-        ResultSet resultSet =stmt.executeQuery();
+        try {
+            ResultSet resultSet = stmt.executeQuery();
+            //System.out.println(resultSet.toString());
+        }catch (RuntimeException e){
+            System.out.println(e);
+        }
+        return "Work!";
 
-        return resultSet.toString();
     }
 
     @Override
     public Customer getDataFromResultSet(ResultSet resultSet) throws SQLException {
+        int id=resultSet.getInt("id");
         String firstName=resultSet.getString("firstName");
         String lastName=resultSet.getString("lastName");
         String email=resultSet.getString("email");
@@ -107,7 +116,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
         String address2=resultSet.getString("address2");
         String phone=resultSet.getString("phone");
         int consumptionNumber=resultSet.getInt("consumptionNumber");
-        return  new Customer(firstName,lastName,email,address,address2,phone,consumptionNumber);
+        return  new Customer(id,firstName,lastName,email,address,address2,phone,consumptionNumber);
     }
 
     @Override
@@ -115,6 +124,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
         ObservableList<Customer> listOfCustomers= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
+            int id=resultSet.getInt("id");
 
             String firstName=resultSet.getString("first_name");
             String lastName=resultSet.getString("last_name");
@@ -123,7 +133,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
             String address2=resultSet.getString("address2");
             String phone=resultSet.getString("phone");
             int consumptionNumber=resultSet.getInt("consumption_number");
-            listOfCustomers.add(new Customer(firstName,lastName,email,address,address2,phone,consumptionNumber));
+            listOfCustomers.add(new Customer(id,firstName,lastName,email,address,address2,phone,consumptionNumber));
         }
 
         return listOfCustomers;

@@ -23,7 +23,7 @@ public class TechniciansController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
         try {
-            model.loadCustomers();
+            model.loadTech();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -34,7 +34,7 @@ public class TechniciansController implements Initializable {
                 nodes[i] = loader.load();
                 TechnicianItemController controller = loader.getController();
 
-                controller.setLabels(i);
+               // controller.setLabels(i);
 
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {

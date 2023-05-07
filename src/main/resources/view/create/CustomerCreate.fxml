@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="346.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.createController.CreateCustomerController">
+    <children>
+        <Label fx:id="infoFirstNameLabel52" layoutX="15.0" layoutY="8.0" prefHeight="36.0" prefWidth="94.0" text="First Name">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoFirstNameLabel53" layoutX="310.0" layoutY="8.0" prefHeight="36.0" prefWidth="142.0" text="Last Name">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoFirstNameLabel521" layoutX="15.0" layoutY="70.0" prefHeight="36.0" prefWidth="94.0" text="Phone Num">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoFirstNameLabel522" layoutX="310.0" layoutY="70.0" prefHeight="36.0" prefWidth="94.0" text="Email">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoAddress1Label" layoutX="15.0" layoutY="146.0" prefHeight="36.0" prefWidth="94.0" text="Address 1">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoAddress2Label" layoutX="310.0" layoutY="146.0" prefHeight="36.0" prefWidth="94.0" text="Address 2">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Button fx:id="saveBtn" layoutX="516.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="46.0" prefWidth="87.0" text="Create" />
+        <Button fx:id="cancelBtn" layoutX="642.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="46.0" prefWidth="87.0" text="Cancel" />
+      <TextField fx:id="firstName" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="235.0" />
+      <TextField fx:id="lastName" layoutX="310.0" layoutY="40.0" prefHeight="30.0" prefWidth="235.0" />
+      <TextField fx:id="email" layoutX="310.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
+      <TextField fx:id="phoneNum" layoutX="15.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
+      <TextField fx:id="address1" layoutX="15.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
+      <TextField fx:id="address2" layoutX="310.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
+    </children>
+</AnchorPane>

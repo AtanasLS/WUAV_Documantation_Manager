@@ -1,7 +1,6 @@
-package main.java.gui.controllers;
+package main.java.gui.controllers.mainDashboardsController;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -10,96 +9,88 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import main.java.gui.controllers.pageController.DocumentController;
+import main.java.gui.controllers.pageController.CustomerPageController;
+import main.java.gui.controllers.pageController.UserController;
+import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AdminViewController implements Initializable {
-    @FXML
-    public Button btnLogIns, btnOrders, btnDocuments, btnUsers, btnCustomers, btnProjects, btnSignout;
-    @FXML
-    AnchorPane painnnnn;
-    @FXML
-    private Stage primaryStage;
+public class TechnicianManagerViewController implements Initializable {
 
 
+    public Button btnOrders, btnDocuments, btnTechnicians, btnCustomers, btnProjects, btnLogIns, btnSignout;
 
-
-
-
+    public AnchorPane painnnnn;
+    private MainModel model;
+    private String selected;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        
+    }
 
-        try {
-            FXMLLoader loader = new FXMLLoader();
-           // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-            painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/DocumentsPage.fxml")));
-            DocumentController controller = loader.getController();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
+    public void setMainModel(MainModel mvm){
+        this.model = mvm ;
     }
 
     public void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnLogIns) {
             try {
-                FXMLLoader loader = new FXMLLoader();
-                // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-                painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/LogInsView.fxml")));
-                LoginPageController controller = loader.getController();
-
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/LogInsView.fxml"));
+                painnnnn.getChildren().setAll((Node) loader.load());
+                selected = "LogIns";
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }else if (actionEvent.getSource() == btnDocuments){
             try {
-                FXMLLoader loader = new FXMLLoader();
+                FXMLLoader loader = new FXMLLoader((getClass().getResource("/view/pages/DocumentsPage.fxml")));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-                painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/DocumentsPage.fxml")));
-
+                painnnnn.getChildren().setAll((Node) loader.load());
+                selected = "Documents";
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }else if (actionEvent.getSource() == btnOrders){
             try {
-                FXMLLoader loader = new FXMLLoader();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-                painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/OrdersView.fxml")));
-                LoginPageController controller = loader.getController();
+                painnnnn.getChildren().setAll((Node) loader.load());
 
+                selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }else if (actionEvent.getSource() == btnProjects){
             try {
-                FXMLLoader loader = new FXMLLoader();
-                // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-                painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/ProjectsView.fxml")));
-
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
+                painnnnn.getChildren().setAll((Node) loader.load());
+                selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }else if (actionEvent.getSource() == btnUsers){
+        }else if (actionEvent.getSource() == btnTechnicians){
             try {
-                FXMLLoader loader = new FXMLLoader();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/UsersView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-                painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/UsersView.fxml")));
-
+                painnnnn.getChildren().setAll((Node) loader.load());
+                UserController controller = loader.getController();
+                controller.setMainModel("Technician");
+                //controller
+                selected = "Users";
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }else if (actionEvent.getSource() == btnCustomers){
             try {
-                FXMLLoader loader = new FXMLLoader();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/CustomersView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
-                painnnnn.getChildren().setAll((Node) loader.load(getClass().getResource("/view/pages/CustomersView.fxml")));
-                LoginPageController controller = loader.getController();
-
+                painnnnn.getChildren().setAll((Node) loader.load());
+                CustomerPageController controller = loader.getController();
+                controller.setMainModel();
+                selected = "Customers";
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

@@ -11,11 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import main.java.Main;
 import main.java.be.User;
+import main.java.gui.controllers.mainDashboardsController.AdminViewController;
+import main.java.gui.controllers.mainDashboardsController.SellerViewController;
 import main.java.gui.model.MainModel;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,7 +29,9 @@ public class LoginPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         model = new MainModel();
         try {
+            model.loadCustomers();
             model.loadUsers();
+            model.loadTech();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -42,12 +44,13 @@ public class LoginPageController implements Initializable {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AdminMainView.fxml"));
                     Parent root = loader.load();
-
+                    AdminViewController controller = loader.getController();
+                    controller.setMainModel(model);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setFullScreen(false);
                     stage.setResizable(false);
-                    stage.setTitle("Event Ticket Manager Beta");
+
                     stage.show();
 
                     ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();                   //w ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
@@ -69,7 +72,6 @@ public class LoginPageController implements Initializable {
                     // controller.setLoggedInUser(loggedInUser.getUsername(), loggedInUser.getType());
                     stage.setFullScreen(false);
                     stage.setResizable(false);
-                    stage.setTitle("Event Ticket Manager Beta");
                     stage.show();
 
                     ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
@@ -78,7 +80,7 @@ public class LoginPageController implements Initializable {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
                     alert.showAndWait();
                 }
-            }else if (loggedInUser.getType().equals("Technician Manager")){
+            }else if (loggedInUser.getType().equals("TechnicianManager")){
                 try {
 
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/TechnicianManagerView.fxml"));
@@ -88,7 +90,7 @@ public class LoginPageController implements Initializable {
                     // controller.setLoggedInUser(loggedInUser.getUsername(), loggedInUser.getType());
                     stage.setFullScreen(false);
                     stage.setResizable(false);
-                    stage.setTitle("Event Ticket Manager Beta");
+
                     stage.show();
 
                     ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
@@ -104,10 +106,10 @@ public class LoginPageController implements Initializable {
                     Parent root = loader.load();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
+                    SellerViewController controller = loader.getController();
                     // controller.setLoggedInUser(loggedInUser.getUsername(), loggedInUser.getType());
                     stage.setFullScreen(false);
                     stage.setResizable(false);
-                    stage.setTitle("Event Ticket Manager Beta");
                     stage.show();
 
                     ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
