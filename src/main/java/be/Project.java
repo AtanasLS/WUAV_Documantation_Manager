@@ -9,6 +9,8 @@ public class Project {
     private String customer;
     private int customerId;
 
+    private int salesCount;
+
     public Project(String type, double price, int customerId) {
         this.type = type;
         this.price = price;
@@ -23,6 +25,10 @@ public class Project {
         this.customerId=customerId;
     }
 
+    public Project(String type, int salesCount) {
+        this.type = type;
+        this.salesCount = salesCount;
+    }
 
     public String getType() {
         return type;

@@ -22,42 +22,9 @@ public class Document {
     private String description;
     private LocalDate date;
 
-    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
-        this.name = name;
-        this.project = project;
-        this.loginId = loginId;
-        this.customer = customer;
-        this.user = user;
-        this.layoutDrawing = layoutDrawing;
-        this.description = description;
-        this.date = date;
-        //layoutDrawing,description, loginID, name, userID, customerID, projectID, date
-    }
-
-
-    public Document(Image layoutDrawing, String description, Date date){
-        this.name="name";
-
-    public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
-        this.id = id;
-        this.name = name;
-        this.project = project;
-        this.customer = customer;
-        this.user = user;
-        this.layoutDrawing = layoutDrawing;
-        this.description = description;
-        this.date = date;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Image getLayoutDrawing() {}
-
     private int type;
 
-    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
+    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date, int type) {
         this.name = name;
         this.project = project;
         this.loginId = loginId;
@@ -162,4 +129,11 @@ public class Document {
         this.type = type;
     }
 
+    public int getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(int loginId) {
+        this.loginId = loginId;
+    }
 }

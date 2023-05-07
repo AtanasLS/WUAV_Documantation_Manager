@@ -108,15 +108,18 @@ public class CustomerDAO implements DAOInterface<Customer> {
 
     @Override
     public Customer getDataFromResultSet(ResultSet resultSet) throws SQLException {
-        int id=resultSet.getInt("id");
-        String firstName=resultSet.getString("firstName");
-        String lastName=resultSet.getString("lastName");
-        String email=resultSet.getString("email");
-        String address=resultSet.getString("address");
-        String address2=resultSet.getString("address2");
-        String phone=resultSet.getString("phone");
-        int consumptionNumber=resultSet.getInt("consumptionNumber");
-        return  new Customer(id,firstName,lastName,email,address,address2,phone,consumptionNumber);
+        if (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String email = resultSet.getString("email");
+            String address = resultSet.getString("address");
+            String address2 = resultSet.getString("address2");
+            String phone = resultSet.getString("phone");
+            int consumptionNumber = resultSet.getInt("consumption_number");
+            return new Customer(id, firstName, lastName, email, address, address2, phone, consumptionNumber);
+        }
+        return null;
     }
 
     @Override

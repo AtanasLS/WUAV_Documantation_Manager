@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import main.java.gui.controllers.LoginPageController;
 import main.java.gui.controllers.createController.*;
 import main.java.gui.controllers.pageController.CustomerPageController;
+import main.java.gui.controllers.pageController.DocumentController;
 import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.MainModel;
 
@@ -115,7 +116,10 @@ public class AdminViewController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader((getClass().getResource("/view/pages/DocumentsPage.fxml")));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
+
                 painnnnn.getChildren().setAll((Node) loader.load());
+                DocumentController documentController = loader.getController();
+                documentController.setPnItems("Users");
                 selected = "Documents";
 
             } catch (IOException e) {
@@ -145,7 +149,7 @@ public class AdminViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 UserController controller = loader.getController();
-                selected = "Users";
+                selected = "User";
                 controller.setMainModel(selected);
 
             } catch (IOException e) {

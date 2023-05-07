@@ -10,11 +10,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.gui.controllers.pageController.CustomerPageController;
+import main.java.gui.controllers.pageController.ProjectController;
 import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class SellerViewController implements Initializable {
@@ -49,8 +51,12 @@ public class SellerViewController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
+                ProjectController projectController = loader.getController();
+                projectController.setMostSoldProduct();
                 selected = "Projects";
             } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         }else if (actionEvent.getSource() == btnCustomers){

@@ -134,6 +134,9 @@ public class DataManagerFacade {
         return this.projectDAO.getProjectWithMostSales();
     }
 
+    public ObservableList<Document> getEditedFromDatabase() throws SQLException, IOException {
+        return this.documentDAO.getEditedFromDatabase();
+    }
 
     public String deleteFromDatabase(int id, String type) throws SQLException{
         String output = "";
