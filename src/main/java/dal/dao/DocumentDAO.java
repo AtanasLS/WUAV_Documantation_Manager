@@ -111,7 +111,29 @@ public class DocumentDAO implements DAOInterface<Document> {
             output.write(buffer);
         }
 
-        return new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date);
+
+        String description = resultSet.getString("description");
+        int loginID = resultSet.getInt("login_id");
+        LocalDate date = resultSet.getDate("date").toLocalDate();
+        int userID = resultSet.getInt("userId");
+        int customerID = resultSet.getInt("customerId");
+        int projectID = resultSet.getInt("projectId");
+        String name = resultSet.getString("name");
+        int type= resultSet.getInt("type");
+
+
+        File file = new File(name+ ".png");
+        String layoutDrawing= name+ ".png";
+        FileOutputStream output = new FileOutputStream(file);
+
+        InputStream input = resultSet.getBinaryStream("layout_drawing");
+        byte[] buffer = new byte[1024];
+        while (input.read(buffer) > 0) {
+            output.write(buffer);
+        }
+
+        return new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type);
+
     }
 
     @Override
@@ -120,12 +142,7 @@ public class DocumentDAO implements DAOInterface<Document> {
 
         while (resultSet.next()) {
 
-            /*
-            javafx.scene.image.Image layoutDrawing= (javafx.scene.image.Image) resultSet.getObject("layout-drawing");
-            String description=resultSet.getString("description");
-            Date date=resultSet.getDate("date");
-
-             */
+ 
             String description = resultSet.getString("description");
             int loginID = resultSet.getInt("login_id");
             LocalDate date = resultSet.getDate("date").toLocalDate();
@@ -133,6 +150,8 @@ public class DocumentDAO implements DAOInterface<Document> {
             int customerID = resultSet.getInt("customerId");
             int projectID = resultSet.getInt("projectId");
             String name = resultSet.getString("name");
+            int type= resultSet.getInt("type");
+
             File file = new File(name+ ".png");
             String layoutDrawing= name+ ".png";
             FileOutputStream output = new FileOutputStream(file);
@@ -143,7 +162,9 @@ public class DocumentDAO implements DAOInterface<Document> {
                 output.write(buffer);
             }
 
-            listOfDocuments.add(new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date));
+            listOfDocuments.add(new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type));
+
+          
         }
 
         return listOfDocuments;

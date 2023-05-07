@@ -1,5 +1,6 @@
 package main.java.dal.dao;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.java.be.Project;
@@ -20,6 +21,15 @@ public class ProjectDAO implements DAOInterface<Project> {
         String query="SELECT * from project LEFT JOIN customer ON customer.id=project.customerId WHERE project.id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
+        ResultSet resultSet =stmt.executeQuery();
+
+        return this.getDataFromResultSet(resultSet);
+    }
+
+
+    public Project getProjectWithMostSales() throws SQLException {
+        String query= "SELECT *, COUNT(type) AS salesCount FROM project GROUP BY type ORDER BY salesCount DESC LIMIT 1";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
         return this.getDataFromResultSet(resultSet);

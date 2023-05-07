@@ -34,6 +34,10 @@ public class Document {
         //layoutDrawing,description, loginID, name, userID, customerID, projectID, date
     }
 
+
+    public Document(Image layoutDrawing, String description, Date date){
+        this.name="name";
+
     public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
         this.id = id;
         this.name = name;
@@ -49,11 +53,46 @@ public class Document {
         return id;
     }
 
+    public Image getLayoutDrawing() {}
+
+    private int type;
+
+    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
+        this.name = name;
+        this.project = project;
+        this.loginId = loginId;
+        this.customer = customer;
+        this.user = user;
+        this.layoutDrawing = layoutDrawing;
+        this.description = description;
+        this.date = date;
+        this.type=0;
+        //layoutDrawing,description, loginID, name, userID, customerID, projectID, date
+    }
+
+    public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date, int type) {
+        this.id = id;
+        this.name = name;
+        this.project = project;
+        this.customer = customer;
+        this.user = user;
+        this.layoutDrawing = layoutDrawing;
+        this.description = description;
+        this.date = date;
+        this.type=type;
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public int getUser() {
         return user;
     }
 
     public String getLayoutDrawing() {
+
         return layoutDrawing;
     }
 
@@ -108,8 +147,19 @@ public class Document {
         this.customer = customer;
     }
 
+
     @Override
     public String toString() {
         return name;
     }
+
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
 }

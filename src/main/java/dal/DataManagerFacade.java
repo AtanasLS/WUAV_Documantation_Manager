@@ -129,6 +129,12 @@ public class DataManagerFacade {
         return output;
     }
 
+
+    public  Project getTheMostSaledProject() throws SQLException {
+        return this.projectDAO.getProjectWithMostSales();
+    }
+
+
     public String deleteFromDatabase(int id, String type) throws SQLException{
         String output = "";
 

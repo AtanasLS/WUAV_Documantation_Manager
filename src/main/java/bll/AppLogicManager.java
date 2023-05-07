@@ -128,4 +128,8 @@ public class AppLogicManager {
             throw new RuntimeException();
         }
     }
-}
+
+
+public Project getMostSelledProject() throws SQLException {
+        return DataManagerFacade.getInstance().getTheMostSaledProject();
+}}

@@ -30,7 +30,10 @@ public class MainModel {
 
     private Order selectedOrder;
 
+
     private User selectedUser;
+
+    private Project mostSelled;
 
 
 
@@ -66,6 +69,10 @@ public class MainModel {
         this.allLogIns.clear();
         this.allLogIns.addAll(appLogicManager.getAllLogInsFromDatabase());
 
+    }
+
+    public void getTheMOstSelledProject() throws SQLException {
+        this.mostSelled=this.appLogicManager.getMostSelledProject();
     }
 
     public void loadOrders() throws SQLException {
