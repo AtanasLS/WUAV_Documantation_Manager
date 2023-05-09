@@ -9,52 +9,80 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="800.0" spacing="55.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.itemController.DocumentItemController">
+<HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="55.0" prefWidth="950.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.itemController.DocumentItemController">
     <children>
-        <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../images/docs.png" />
-            </image>
-            <HBox.margin>
-                <Insets left="10.0" />
-            </HBox.margin>
-        </ImageView>
-        <Label fx:id="documentName" text="Document  Name" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-         <HBox.margin>
-            <Insets />
-         </HBox.margin></Label>
-        <Label fx:id="creator" text="creator" textFill="WHITE">
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-        </Label>
-        <Label fx:id="date" text="date" textFill="WHITE">
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-        </Label>
-        <Label fx:id="project" text="project" textFill="WHITE">
-            <HBox.margin>
-                <Insets />
-            </HBox.margin>
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-        </Label>
-      <Label fx:id="customer" text="customer" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
+      <HBox prefHeight="55.0" prefWidth="52.0">
+         <children>
+              <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                      <Image url="@../../images/docs.png" />
+                  </image>
+                  <HBox.margin>
+                      <Insets left="10.0" top="15.0" />
+                  </HBox.margin>
+              </ImageView>
+         </children>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="175.0">
+         <children>
+              <Label fx:id="documentName" text="Document  Name" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="171.0">
+         <children>
+              <Label fx:id="creator" text="creator" textFill="WHITE">
+                  <HBox.margin>
+                      <Insets top="15.0" />
+                  </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+              </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="122.0">
+         <children>
+              <Label fx:id="date" text="date" textFill="WHITE">
+                  <HBox.margin>
+                      <Insets top="15.0" />
+                  </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+              </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="168.0">
+         <children>
+              <Label fx:id="project" text="project" textFill="WHITE">
+                  <HBox.margin>
+                      <Insets top="15.0" />
+                  </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+              </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="178.0">
+         <children>
+            <Label fx:id="customer" text="customer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="15.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
       <Button mnemonicParsing="false" onAction="#infoBtnHandle" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="View" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />

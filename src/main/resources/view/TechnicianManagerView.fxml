@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="576.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.mainDashboardsController.TechnicianManagerViewController">
+<AnchorPane prefHeight="670.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.mainDashboardsController.TechnicianManagerViewController">
     <children>
-        <VBox alignment="TOP_CENTER" layoutX="-4.0" prefHeight="588.0" prefWidth="270.0" style="-fx-background-color: #17273A;">
+        <VBox alignment="TOP_CENTER" prefHeight="670.0" prefWidth="270.0" style="-fx-background-color: #17273A;">
             <children>
                 <ImageView fitHeight="73.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
                     <VBox.margin>
@@ -140,11 +140,11 @@
                         <Font size="20.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="80.0" />
+                        <Insets top="130.0" />
                     </VBox.margin>
                 </Button>
             </children>
         </VBox>
-        <AnchorPane fx:id="painnnnn" layoutX="266.0" prefHeight="588.0" prefWidth="784.0" />
+        <AnchorPane fx:id="painnnnn" layoutX="266.0" prefHeight="670.0" prefWidth="966.0" />
     </children>
 </AnchorPane>
