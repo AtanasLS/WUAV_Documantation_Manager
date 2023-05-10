@@ -10,7 +10,9 @@ public class User {
     private String password;
     private String type;
 
-    public User(String username, String firstName, String lastName, String email, String password, String type){
+    private String img;
+
+    public User(String username, String firstName, String lastName, String email, String password, String type, String img){
 
         this.username = username;
         this.firstName = firstName;
@@ -18,10 +20,11 @@ public class User {
         this.email = email;
         this.password = password;
         this.type = type;
+        this.img=img;
 
     }
 
-    public User(int id, String username, String firstName, String lastName, String email, String password, String type) {
+    public User(int id, String username, String firstName, String lastName, String email, String password, String type, String img) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
@@ -29,6 +32,15 @@ public class User {
         this.email = email;
         this.password = password;
         this.type = type;
+        this.img=img;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getId() {

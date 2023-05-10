@@ -6,6 +6,7 @@ import main.java.be.User;
 import main.java.dal.DataAccessManager;
 import main.java.dal.interfaces.DAOInterface;
 
+import java.io.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ public class UserDAO implements DAOInterface<User> {
     DataAccessManager dataAccessManager = new DataAccessManager();
 
     @Override
-    public User getFromDatabase(int id) throws SQLException {
+    public User getFromDatabase(int id) throws SQLException, IOException {
         String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[users] WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
@@ -26,7 +27,7 @@ public class UserDAO implements DAOInterface<User> {
        return this.getDataFromResultSet(resultSet);
     }
 
-    public User getTechnicianFromDatabase(int id) throws SQLException {
+    public User getTechnicianFromDatabase(int id) throws SQLException, IOException {
         String query="SELECT * FROM users WHERE id=? AND type=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
@@ -38,7 +39,7 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     @Override
-    public ObservableList<User> getAllFromDatabase() throws SQLException {
+    public ObservableList<User> getAllFromDatabase() throws SQLException, IOException {
         String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[users];";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
@@ -47,7 +48,7 @@ public class UserDAO implements DAOInterface<User> {
 
     }
 
-    public ObservableList<User> getAllTechniciansFromDatabase() throws SQLException {
+    public ObservableList<User> getAllTechniciansFromDatabase() throws SQLException, IOException {
         String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[users] WHERE type=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,"Technician");
@@ -58,7 +59,7 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     @Override
-    public String insertIntoDatabase(User object) throws SQLException {
+    public String insertIntoDatabase(User object) throws SQLException, FileNotFoundException {
 
         String username=object.getUsername();
         String firstName=object.getFirstName();
@@ -67,7 +68,10 @@ public class UserDAO implements DAOInterface<User> {
         String password= object.getPassword();
         String type=object.getType();
 
-        String query="INSERT INTO [WUAV_Documentation_System].[dbo].[users] VALUES (?, ?, ?, ?, ?, ?);";
+        File file = new File(object.getImg());
+        FileInputStream input = new FileInputStream(file);
+
+        String query="INSERT INTO [WUAV_Documentation_System].[dbo].[users] VALUES (?, ?, ?, ?, ?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,firstName);
@@ -75,6 +79,8 @@ public class UserDAO implements DAOInterface<User> {
         stmt.setString(4,email);
         stmt.setString(5,password);
         stmt.setString(6,type);
+        stmt.setBinaryStream(7,input);
+
 
         try {
             ResultSet resultSet = stmt.executeQuery();
@@ -96,7 +102,7 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     @Override
-    public String updateDatabase(User object) throws SQLException {
+    public String updateDatabase(User object) throws SQLException, FileNotFoundException {
         int id=object.getId();
         String username=object.getUsername();
         String firstName=object.getFirstName();
@@ -105,7 +111,11 @@ public class UserDAO implements DAOInterface<User> {
         String password= object.getPassword();
         String type=object.getType();
 
-        String query="UPDATE users set username = ?,first_name = ?,last_name = ?,email = ?,password = ?,type = ? WHERE id = ?;";
+        File file = new File(object.getImg());
+        FileInputStream input = new FileInputStream(file);
+
+
+        String query="UPDATE users set username = ?,first_name = ?,last_name = ?,email = ?,password = ?,type = ?, img=? WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,firstName);
@@ -113,7 +123,9 @@ public class UserDAO implements DAOInterface<User> {
         stmt.setString(4,email);
         stmt.setString(5,password);
         stmt.setString(6,type);
-        stmt.setInt(7,id);
+        stmt.setBinaryStream(7,input);
+
+        stmt.setInt(8,id);
 
         try {
             ResultSet resultSet = stmt.executeQuery();
@@ -125,7 +137,7 @@ public class UserDAO implements DAOInterface<User> {
     }
 
     @Override
-    public User getDataFromResultSet(ResultSet resultSet) throws SQLException {
+    public User getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
 
 
         if (resultSet.next()) {
@@ -136,14 +148,24 @@ public class UserDAO implements DAOInterface<User> {
             String email = resultSet.getString("email");
             String password = resultSet.getString("password");
             String type = resultSet.getString("type");
-            return new User(id, username, firstName, lastName, email, password, type);
+
+            File file = new File(username+ ".png");
+            String img= username+ ".png";
+            FileOutputStream output = new FileOutputStream(file);
+
+            InputStream input = resultSet.getBinaryStream("img");
+            byte[] buffer = new byte[1024];
+            while (input.read(buffer) > 0) {
+                output.write(buffer);
+            }
+            return new User(id, username, firstName, lastName, email, password, type,img);
         }
         return null;
 
     }
 
     @Override
-    public ObservableList<User> getAllDataFromResultSet(ResultSet resultSet) throws SQLException {
+    public ObservableList<User> getAllDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
 
         ObservableList<User> listOfUsers= FXCollections.observableArrayList();
 
@@ -155,7 +177,21 @@ public class UserDAO implements DAOInterface<User> {
             String email = resultSet.getString("email");
             String password = resultSet.getString("password");
             String type = resultSet.getString("type");
-            listOfUsers.add(new User(id,username, firstName, lastName, email, password, type));
+
+
+            File file = new File(username+ ".png");
+            String img= username+ ".png";
+            FileOutputStream output = new FileOutputStream(file);
+
+
+            InputStream input = resultSet.getBinaryStream("img");
+            if (input!=null) {
+                byte[] buffer = new byte[1024];
+                while (input.read(buffer) > 0) {
+                    output.write(buffer);
+                }
+            }
+            listOfUsers.add(new User(id,username, firstName, lastName, email, password, type, img));
         }
 
         return listOfUsers;

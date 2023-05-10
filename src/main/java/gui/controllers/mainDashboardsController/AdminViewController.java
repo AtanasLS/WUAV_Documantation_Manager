@@ -8,15 +8,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import main.java.be.User;
 import main.java.gui.controllers.LoginPageController;
 import main.java.gui.controllers.createController.*;
+import main.java.gui.controllers.itemController.PhotoItemController;
 import main.java.gui.controllers.pageController.CustomerPageController;
 import main.java.gui.controllers.pageController.DocumentController;
 import main.java.gui.controllers.pageController.UserController;
+import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -25,11 +34,19 @@ import java.util.ResourceBundle;
 public class AdminViewController implements Initializable {
     @FXML
     public Button btnLogIns, btnOrders, btnDocuments, btnUsers, btnCustomers, btnProjects, btnSignout;
+    public Label usernameLogIN;
     @FXML
     AnchorPane painnnnn;
     @FXML
     private Stage primaryStage;
+;
     private String selected;
+
+    @FXML
+    private javafx.scene.image.Image avatar;
+    private String img;
+    private EditModel editModel;
+
 
 
     private MainModel model;
@@ -39,6 +56,11 @@ public class AdminViewController implements Initializable {
     }
     public void setMainModel(MainModel mvm){
         this.model = mvm ;
+        this.editModel=new EditModel(mvm);
+        this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
+
+        this.avatar=new Image("/images/"+this.model.getLogInUser().getUsername()+".png");
+
 
     }
     public void newObject(ActionEvent actionEvent) throws IOException, SQLException {
@@ -182,5 +204,22 @@ public class AdminViewController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+
+    public void setImage(javafx.scene.input.MouseEvent mouseEvent) throws SQLException, IOException {
+        FileChooser layoutDrawingChooser = new FileChooser();
+        Stage stage = new Stage();
+        File selectedFile = layoutDrawingChooser.showOpenDialog(stage);
+        Image layoutDrawing = new Image(selectedFile.getAbsolutePath());
+        this.img = layoutDrawing.getUrl();
+        User user=this.model.getLogInUser();
+        user.setImg(this.img);
+        this.editModel.updateDatabaseElement(user,"User",user.getId());
+
+        this.avatar=new Image(layoutDrawing.getUrl());
+
+
+
     }
 }

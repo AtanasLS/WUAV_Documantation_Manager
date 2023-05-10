@@ -34,7 +34,6 @@ public class Document {
         this.description = description;
         this.date = date;
         this.type=0;
-        //layoutDrawing,description, loginID, name, userID, customerID, projectID, date
     }
 
     public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date, int type) {

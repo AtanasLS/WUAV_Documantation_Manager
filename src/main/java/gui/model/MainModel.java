@@ -216,4 +216,12 @@ public class MainModel {
     public void setSelectedUser(User selectedUser) {
         this.selectedUser = selectedUser;
     }
+
+    public void setUser(String text) throws Exception {
+        this.loggedInUser=this.getUser(text);
+    }
+
+    public User getLogInUser(){
+        return this.loggedInUser;
+    }
 }

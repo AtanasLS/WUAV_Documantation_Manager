@@ -47,7 +47,7 @@ public class UserEditController implements Initializable {
 
     public void handleSave(ActionEvent actionEvent) throws SQLException {
         User editedCustomer = new User( username.getText(), firstName.getText(), lastName.getText(), email.getText()
-                ,password.getText(), type.getText());
+                ,password.getText(), type.getText(),"test");
 
         model.updateDatabaseElement(editedCustomer,"User", this.id );
 

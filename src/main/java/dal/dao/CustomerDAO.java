@@ -44,6 +44,7 @@ public class CustomerDAO implements DAOInterface<Customer> {
         String phone=object.getPhone();
         int consumptionNumber=object.getConsumptionNumber();
 
+
         String query="INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,firstName);
