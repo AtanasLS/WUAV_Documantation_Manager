@@ -129,6 +129,7 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public Document getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
+        int id=resultSet.getInt("id");
 
         String description = resultSet.getString("description");
         int loginID = resultSet.getInt("login_id");
@@ -150,7 +151,7 @@ public class DocumentDAO implements DAOInterface<Document> {
             output.write(buffer);
         }
 
-        return new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type);
+        return new Document(id,layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type);
 
     }
 
@@ -159,6 +160,7 @@ public class DocumentDAO implements DAOInterface<Document> {
         ObservableList<Document> listOfDocuments= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
+            int id=resultSet.getInt("id");
             String description = resultSet.getString("description");
             int loginID = resultSet.getInt("login_id");
             LocalDate date = resultSet.getDate("date").toLocalDate();
@@ -178,7 +180,7 @@ public class DocumentDAO implements DAOInterface<Document> {
                 output.write(buffer);
             }
 
-            listOfDocuments.add(new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type));
+            listOfDocuments.add(new Document(id,layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type));
 
           
         }

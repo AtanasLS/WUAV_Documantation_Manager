@@ -77,6 +77,10 @@ public class AppLogicManager {
 
     }
 
+    public ObservableList<Picture> getAllPicturesForProject(int id) throws SQLException, IOException {
+        return DataManagerFacade.getInstance().getAllPhotosForDocument(id);
+    }
+
     public String insertIntoDatabase(Object object, String type){
         try {
             return DataManagerFacade.getInstance().insertIntoDatabase(object, type);

@@ -1,5 +1,6 @@
 package main.java.dal.dao;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.java.be.Picture;
@@ -30,12 +31,23 @@ public class PictureDAO implements DAOInterface<Picture> {
 
     @Override
     public ObservableList<Picture> getAllFromDatabase() throws SQLException, IOException {
-        String query="SELECT * FROM picture;";
+        String query="SELECT * FROM pictures;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
         return (ObservableList<Picture>) this.getAllDataFromResultSet(resultSet);
 
+    }
+
+
+    public ObservableList<Picture> getAllPhotosForProject(int id) throws SQLException, IOException {
+        String query="SELECT * FROM pictures where documentation_id=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,id);
+
+        ResultSet resultSet =stmt.executeQuery();
+
+        return (ObservableList<Picture>) this.getAllDataFromResultSet(resultSet);
     }
 
     @Override
@@ -45,7 +57,7 @@ public class PictureDAO implements DAOInterface<Picture> {
         FileInputStream installationPhoto = new FileInputStream(file);
         int documentationID=object.getDocumentationID();
 
-        String query="INSERT INTO picture VALUES (?, ?, ?);";
+        String query="INSERT INTO pictures VALUES (?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,name);
         stmt.setBinaryStream(2,installationPhoto);
@@ -59,7 +71,7 @@ public class PictureDAO implements DAOInterface<Picture> {
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-        String query="DELETE FROM picture WHERE id=?;";
+        String query="DELETE FROM pictures WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
@@ -74,7 +86,7 @@ public class PictureDAO implements DAOInterface<Picture> {
         int documentationID=object.getDocumentationID();
         int id = object.getId();
 
-        String query="INSERT INTO picture VALUES (?, ?, ?) WHERE id = ?;";
+        String query="INSERT INTO pictures VALUES (?, ?, ?) WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,name);
         stmt.setBinaryStream(2,installationPhoto);
@@ -87,6 +99,7 @@ public class PictureDAO implements DAOInterface<Picture> {
 
     @Override
     public Picture getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
+        int id=resultSet.getInt("id");
         String name=resultSet.getString("name");
         int documentationID=resultSet.getInt("documentationID");
         File file = new File(name+ ".png");
@@ -99,7 +112,7 @@ public class PictureDAO implements DAOInterface<Picture> {
             output.write(buffer);
         }
 
-        return  new Picture(name,installationPhoto,documentationID);
+        return  new Picture(id,name,installationPhoto,documentationID);
     }
 
     @Override
@@ -107,6 +120,7 @@ public class PictureDAO implements DAOInterface<Picture> {
         ObservableList<Picture> listOfPicture= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
+            int id=resultSet.getInt("id");
 
             String name=resultSet.getString("name");
             int documentationID=resultSet.getInt("documentation_id");
@@ -119,8 +133,9 @@ public class PictureDAO implements DAOInterface<Picture> {
             while (input.read(buffer) > 0) {
                 output.write(buffer);
             }
-            listOfPicture.add(new Picture(name,installationPhoto,documentationID));
+            listOfPicture.add(new Picture(id,name,installationPhoto,documentationID));
         }
 
-        return listOfPicture;    }
+        return listOfPicture;
+    }
 }
