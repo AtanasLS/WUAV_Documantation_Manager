@@ -36,6 +36,11 @@ public class DataManagerFacade {
     }
 
 
+    public ObservableList<Picture> getAllPhotosForDocument(int id) throws SQLException, IOException {
+        return this.pictureDAO.getAllPhotosForProject(id);
+    }
+
+
     public Object getFromDatabase(int id, String type) throws SQLException, IOException {
         Object o = null;
 

@@ -81,8 +81,7 @@ public class DocumentEditController implements Initializable {
         node = loader.load();
         PhotoItemController controller = loader.getController();
         System.out.println(mvm.getSelectedDocument().getLayoutDrawing());
-         this.layoutDrawing = new Image("C:\\Users\\Atanas Stoyanov\\OneDrive - Erhvervsakademi Sydvest\\Dokumenter\\GitHub\\WUAV_Document_Manager\\src\\main\\resources\\images\\"+mvm.getSelectedDocument().getName()+".png");
-
+         this.layoutDrawing = new Image("/images/"+mvm.getSelectedDocument().getName()+".png");
         controller.setItems(
                 layoutDrawing, "photo");
         items.getChildren().add(node);
