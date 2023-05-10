@@ -40,18 +40,39 @@ public class DocumentDAO implements DAOInterface<Document> {
         return (ObservableList<Document>) this.getAllDataFromResultSet(resultSet);
     }
 
+    public ObservableList<Document> getEditedFromDatabase() throws SQLException, IOException {
+        String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[documentation] WHERE [type]=1;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        ResultSet resultSet =stmt.executeQuery();
+
+        return (ObservableList<Document>) this.getAllDataFromResultSet(resultSet);
+    }
+
     @Override
     public String insertIntoDatabase(Document object) throws SQLException, FileNotFoundException {
         File file = new File(object.getLayoutDrawing());
         FileInputStream input = new FileInputStream(file);
         String description=object.getDescription();
         LocalDate date =  object.getDate();
+        int loginId=object.getLoginId();
+        int customer=object.getCustomer();
+        int user=object.getUser();
+        int project=object.getProject();
+        String name=object.getName();
+        int type=object.getType();
 
-        String query="INSERT INTO document VALUES (?, ?, ?);";
+        String query="INSERT INTO documentation VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setBinaryStream(1,input);
         stmt.setString(2,description);
-        stmt.setObject(3,date);
+        stmt.setInt(3,loginId);
+        stmt.setObject(4,date);
+        stmt.setInt(5,user);
+        stmt.setInt(6,customer);
+        stmt.setInt(7,project);
+        stmt.setString(8,name);
+        stmt.setInt(9,type);
+
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -75,13 +96,29 @@ public class DocumentDAO implements DAOInterface<Document> {
         String description=object.getDescription();
         LocalDate date=  object.getDate();
         int id = object.getId();
+        int loginId=object.getLoginId();
+        int customer=object.getCustomer();
+        int user=object.getUser();
+        int project=object.getProject();
+        String name=object.getName();
+        int type=object.getType();
 
-        String query="INSERT INTO document VALUES (?, ?, ?) WHERE id = ?;;";
+        String query=
+                "UPDATE documentation set layout_drawing = ?,description = ?,login_id = ?,[date] = ?,userId = ?, customerId = ?, projectId = ?, [name] = ?, [type] = ? WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setBinaryStream(1,input);
         stmt.setString(2,description);
-        stmt.setObject(3,date);
-        stmt.setInt(4,id);
+        stmt.setInt(3,loginId);
+        stmt.setObject(4,date);
+        stmt.setInt(5,user);
+        stmt.setInt(6,customer);
+        stmt.setInt(7,project);
+        stmt.setString(8,name);
+        stmt.setInt(9,type);
+        stmt.setInt(10,id);
+
+        System.out.println(type);
+
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -92,6 +129,7 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public Document getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
+        int id=resultSet.getInt("id");
 
         String description = resultSet.getString("description");
         int loginID = resultSet.getInt("login_id");
@@ -100,6 +138,8 @@ public class DocumentDAO implements DAOInterface<Document> {
         int customerID = resultSet.getInt("customerId");
         int projectID = resultSet.getInt("projectId");
         String name = resultSet.getString("name");
+        int type= resultSet.getInt("type");
+
 
         File file = new File(name+ ".png");
         String layoutDrawing= name+ ".png";
@@ -111,7 +151,8 @@ public class DocumentDAO implements DAOInterface<Document> {
             output.write(buffer);
         }
 
-        return new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date);
+        return new Document(id,layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type);
+
     }
 
     @Override
@@ -119,13 +160,7 @@ public class DocumentDAO implements DAOInterface<Document> {
         ObservableList<Document> listOfDocuments= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
-
-            /*
-            javafx.scene.image.Image layoutDrawing= (javafx.scene.image.Image) resultSet.getObject("layout-drawing");
-            String description=resultSet.getString("description");
-            Date date=resultSet.getDate("date");
-
-             */
+            int id=resultSet.getInt("id");
             String description = resultSet.getString("description");
             int loginID = resultSet.getInt("login_id");
             LocalDate date = resultSet.getDate("date").toLocalDate();
@@ -133,7 +168,9 @@ public class DocumentDAO implements DAOInterface<Document> {
             int customerID = resultSet.getInt("customerId");
             int projectID = resultSet.getInt("projectId");
             String name = resultSet.getString("name");
-            File file = new File(name+ ".png");
+            int type= resultSet.getInt("type");
+
+            File file = new File("src/main/resources/images/"+name+ ".png");
             String layoutDrawing= name+ ".png";
             FileOutputStream output = new FileOutputStream(file);
 
@@ -143,9 +180,10 @@ public class DocumentDAO implements DAOInterface<Document> {
                 output.write(buffer);
             }
 
-            listOfDocuments.add(new Document(layoutDrawing,description, loginID, name, userID, customerID, projectID, date));
-        }
+            listOfDocuments.add(new Document(id,layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type));
 
+          
+        }
         return listOfDocuments;
     }
 }

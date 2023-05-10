@@ -28,22 +28,47 @@ public class DocumentController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
-        try {
-            model.loadDocument();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        //System.out.println(model.getAllCustomers());
-        Node[] nodes = new Node[model.getAllDocuments().size()];
-        for (int i = 0; i < nodes.length; i++) {
+    }
+    public void setPnItems(String type){
+        if (type.equals("Users")) {
+
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/DocumentItem.fxml"));
-                nodes[i] = loader.load();
-                DocumentItemController controller = loader.getController();
-               // controller.setLabels(i);
-                pnItems.getChildren().add(nodes[i]);
-            } catch (IOException e) {
-                e.printStackTrace();
+                model.loadDocument();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            //System.out.println(model.getAllCustomers());
+            Node[] nodes = new Node[model.getAllDocuments().size()];
+            for (int i = 0; i < nodes.length; i++) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/DocumentItem.fxml"));
+                    nodes[i] = loader.load();
+                    DocumentItemController controller = loader.getController();
+                    controller.setLabels(i);
+                    pnItems.getChildren().add(nodes[i]);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else if (type.equals("Technician")){
+
+            try {
+                model.loadEditedDocuments();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            //System.out.println(model.getAllCustomers());
+            Node[] nodes = new Node[model.getEditedDocuments().size()];
+            for (int i = 0; i < nodes.length; i++) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/DocumentItem.fxml"));
+                    nodes[i] = loader.load();
+                    DocumentItemController controller = loader.getController();
+                    controller.setLabels(i);
+                    pnItems.getChildren().add(nodes[i]);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }

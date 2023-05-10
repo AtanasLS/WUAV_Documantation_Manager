@@ -18,7 +18,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public LogIns getFromDatabase(int id) throws SQLException {
-        String query="SELECT * FROM log_ins LEFT JOIN project ON  log_ins.projectId=project.id WHERE id=?;";
+        String query="SELECT * FROM log_ins LEFT JOIN project ON  log_ins.projectId=project.id WHERE log_ins.id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
@@ -65,7 +65,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public String updateDatabase(LogIns object) throws SQLException {
-       // int id=object.getId();
+       int id=object.getId();
         String username=object.getUsername();
         String password=object.getPassword();
         int projectId=object.getProjectId();
@@ -75,7 +75,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
         stmt.setString(1,username);
         stmt.setString(2,password);
         stmt.setInt(3,projectId);
-        stmt.setInt(4,projectId);
+        stmt.setInt(4,id);
 
         ResultSet resultSet =stmt.executeQuery();
 
@@ -84,13 +84,16 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public LogIns getDataFromResultSet(ResultSet resultSet) throws SQLException {
-        int id=resultSet.getInt("id");
-        String username=resultSet.getString("username");
-        String password=resultSet.getString("password");
-        String project=resultSet.getString("type");
-        int projectId=resultSet.getInt("projectId");
+        if (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String username = resultSet.getString("username");
+            String password = resultSet.getString("password");
+            String project = resultSet.getString("type");
+            int projectId = resultSet.getInt("projectId");
 
-        return  new LogIns(id,username,password,project,projectId);
+            return new LogIns(id, username, password, project, projectId);
+        }
+        return null;
     }
 
     @Override

@@ -2,6 +2,7 @@ package main.java.bll;
 
 import javafx.collections.ObservableList;
 import main.java.be.*;
+import main.java.dal.DataAccessManager;
 import main.java.dal.DataManagerFacade;
 import main.java.dal.interfaces.DAOInterface;
 
@@ -76,6 +77,10 @@ public class AppLogicManager {
 
     }
 
+    public ObservableList<Picture> getAllPicturesForProject(int id) throws SQLException, IOException {
+        return DataManagerFacade.getInstance().getAllPhotosForDocument(id);
+    }
+
     public String insertIntoDatabase(Object object, String type){
         try {
             return DataManagerFacade.getInstance().insertIntoDatabase(object, type);
@@ -127,5 +132,13 @@ public class AppLogicManager {
         }catch (SQLException e){
             throw new RuntimeException();
         }
+    }
+
+
+public Project getMostSelledProject() throws SQLException {
+        return DataManagerFacade.getInstance().getTheMostSaledProject();
+}
+    public ObservableList<Document> getEditedFromDatabase() throws SQLException, IOException{
+        return DataManagerFacade.getInstance().getEditedFromDatabase();
     }
 }

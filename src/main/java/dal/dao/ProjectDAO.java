@@ -1,5 +1,6 @@
 package main.java.dal.dao;
 
+import com.microsoft.sqlserver.jdbc.SQLServerException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.java.be.Project;
@@ -23,6 +24,17 @@ public class ProjectDAO implements DAOInterface<Project> {
         ResultSet resultSet =stmt.executeQuery();
 
         return this.getDataFromResultSet(resultSet);
+    }
+
+
+    public Project getProjectWithMostSales() throws SQLException {
+        String query= "  SELECT top 1 project.type  , COUNT(project.type) AS salesCount FROM project GROUP BY type ORDER BY salesCount DESC;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        ResultSet resultSet =stmt.executeQuery();
+
+        if (resultSet.next()){
+        return new Project(resultSet.getString("type"),resultSet.getInt("salesCount"));}
+        return null;
     }
 
     @Override
@@ -88,14 +100,17 @@ public class ProjectDAO implements DAOInterface<Project> {
     @Override
     public Project getDataFromResultSet(ResultSet resultSet) throws SQLException {
 
-        int id=resultSet.getInt("[project]id");
+        if (resultSet.next()) {
+            int id = resultSet.getInt("id");
 
-        String type=resultSet.getString("type");
-        double price=resultSet.getDouble("price");
-        String customer=resultSet.getString("first_name");
-        int customerId=resultSet.getInt("[customer]id");
+            String type = resultSet.getString("type");
+            double price = resultSet.getDouble("price");
+            String customer = resultSet.getString("first_name");
+            int customerId = resultSet.getInt("id");
 
-        return  new Project(id,type,price,customer,customerId);
+            return new Project(id, type, price, customer, customerId);
+        }
+        return null;
 
     }
 

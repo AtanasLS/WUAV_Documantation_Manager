@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.controllers.itemController.ProjectItemController;
@@ -11,9 +12,11 @@ import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class ProjectController implements Initializable{
+    public Label mostSoldProduct;
     @FXML
     VBox pnItems = null;
 
@@ -41,5 +44,8 @@ public class ProjectController implements Initializable{
                 e.printStackTrace();
             }
         }
+    }
+    public void setMostSoldProduct() throws SQLException {
+        mostSoldProduct.setText("Most sold product: " + model.getTheMOstSelledProject().getType());
     }
 }

@@ -36,6 +36,11 @@ public class DataManagerFacade {
     }
 
 
+    public ObservableList<Picture> getAllPhotosForDocument(int id) throws SQLException, IOException {
+        return this.pictureDAO.getAllPhotosForProject(id);
+    }
+
+
     public Object getFromDatabase(int id, String type) throws SQLException, IOException {
         Object o = null;
 
@@ -127,6 +132,15 @@ public class DataManagerFacade {
             break;
         }
         return output;
+    }
+
+
+    public  Project getTheMostSaledProject() throws SQLException {
+        return this.projectDAO.getProjectWithMostSales();
+    }
+
+    public ObservableList<Document> getEditedFromDatabase() throws SQLException, IOException {
+        return this.documentDAO.getEditedFromDatabase();
     }
 
     public String deleteFromDatabase(int id, String type) throws SQLException{

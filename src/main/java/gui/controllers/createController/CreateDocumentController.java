@@ -1,6 +1,8 @@
 package main.java.gui.controllers.createController;
 
 import com.itextpdf.text.DocumentException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +16,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import main.java.be.Document;
-import main.java.be.LogIns;
+import main.java.be.*;
 import main.java.bll.AppLogicManager;
 import main.java.bll.PDFGenerator;
 import main.java.gui.controllers.itemController.CustomerItemController;
@@ -38,7 +39,7 @@ public class CreateDocumentController implements Initializable {
     public VBox items;
     public Button createBtn, cancelBtn;
 
-    public ArrayList<Image> allImages = new ArrayList<>();
+    public ArrayList<File> allImages = new ArrayList<>();
     @FXML
     public TextArea documentDescription;
     public DatePicker date;
@@ -46,26 +47,33 @@ public class CreateDocumentController implements Initializable {
     public ComboBox loginBox, customerBox, technicianBox, projectBox;
 
     private CreateModel createModel;
+    private String layoutDrawing;
 
-    private Image layoutDrawing;
+    private ObservableList<Document> allDocs;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         documentDescription.appendText("\n");
         documentDescription.setPrefColumnCount(20);
+        this.allDocs = FXCollections.observableArrayList();
     }
+
 
     public void setModel(MainModel mainModel) throws SQLException {
         createModel = new CreateModel(mainModel);
         mainModel.loadTech();
         mainModel.loadLogIns();
         mainModel.loadProjects();
+        mainModel.loadCustomers();
         loginBox.setItems(mainModel.getAllLogIns());
         customerBox.setItems(mainModel.getAllCustomers());
         technicianBox.setItems(mainModel.getAllTech());
-        System.out.println(mainModel.getAllTech().toString());
         projectBox.setItems(mainModel.getAllProjects());
 
+
+        allDocs.addAll(mainModel.getAllDocuments());
+        System.out.println(allDocs.size());
+        System.out.println(allDocs.get(allDocs.size() - 1).getId());
 
     }
     public void createDrawing(ActionEvent actionEvent) throws IOException {
@@ -79,7 +87,8 @@ public class CreateDocumentController implements Initializable {
         PhotoItemController controller = loader.getController();
         controller.setItems(layoutDrawing, selectedFile.getName());
         items.getChildren().add(node);
-        this.layoutDrawing = layoutDrawing;
+        this.layoutDrawing = layoutDrawing.getUrl();
+
 
     }
 
@@ -94,13 +103,15 @@ public class CreateDocumentController implements Initializable {
         PhotoItemController controller = loader.getController();
         controller.setItems(selectedImage, selectedFile.getName());
         items.getChildren().add(node);
-        allImages.add(selectedImage);
+        allImages.add(selectedFile);
+
+
 
     }
 
 
     public void createDocument(ActionEvent actionEvent) throws DocumentException, IOException {
-
+        /*
         DirectoryChooser directoryChooser = new DirectoryChooser();
        // directoryChooser.setInitialDirectory(new File("src"));
         Stage stage = new Stage();
@@ -109,8 +120,26 @@ public class CreateDocumentController implements Initializable {
         System.out.println(selectedDirectory.getPath());
         String path = selectedDirectory.getPath();
         pdfGenerator.generatePDF(path, documentName.getText(), documentDescription.getText(), layoutDrawing.getUrl());
-        //Document newDocument = new Document(allImages.get(0), documentDescription.getText(), date.getValue());
-        //createModel.createInDatabase(document, "Document");
+
+         */
+        LogIns selectedLogin = (LogIns) loginBox.getSelectionModel().getSelectedItem();
+        User selectedUser = (User) technicianBox.getSelectionModel().getSelectedItem();
+        Customer selectedCustomer = (Customer) customerBox.getSelectionModel().getSelectedItem();
+        Project selectedProject = (Project) projectBox.getSelectionModel().getSelectedItem();
+
+
+
+
+        Document newDocument = new Document(layoutDrawing, documentDescription.getText(), selectedLogin.getId(), documentName.getText(),
+               selectedUser.getId(), selectedCustomer.getId(), selectedProject.getProjectId(), date.getValue(), 0);
+        createModel.createInDatabase(newDocument, "Document");
+
+        for (File i: allImages) {
+            Picture picture = new Picture(i.getName(), i.getPath(), allDocs.get(allDocs.size()-1).getId() + 1);
+            
+            createModel.createInDatabase(picture, "Picture");
+        }
+
 
         Stage currentStage = (Stage) createBtn.getScene().getWindow();
         currentStage.close();

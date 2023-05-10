@@ -22,7 +22,9 @@ public class Document {
     private String description;
     private LocalDate date;
 
-    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
+    private int type;
+
+    public Document(String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date, int type) {
         this.name = name;
         this.project = project;
         this.loginId = loginId;
@@ -31,10 +33,11 @@ public class Document {
         this.layoutDrawing = layoutDrawing;
         this.description = description;
         this.date = date;
+        this.type=0;
         //layoutDrawing,description, loginID, name, userID, customerID, projectID, date
     }
 
-    public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date) {
+    public Document(int id,String layoutDrawing, String description, int loginId , String name,int user, int customer, int project, LocalDate date, int type) {
         this.id = id;
         this.name = name;
         this.project = project;
@@ -43,6 +46,8 @@ public class Document {
         this.layoutDrawing = layoutDrawing;
         this.description = description;
         this.date = date;
+        this.type=type;
+
     }
 
     public int getId() {
@@ -54,6 +59,7 @@ public class Document {
     }
 
     public String getLayoutDrawing() {
+
         return layoutDrawing;
     }
 
@@ -108,8 +114,26 @@ public class Document {
         this.customer = customer;
     }
 
+
     @Override
     public String toString() {
         return name;
+    }
+
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(int loginId) {
+        this.loginId = loginId;
     }
 }

@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import main.java.be.*;
 import main.java.bll.AppLogicManager;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class MainModel {
 
     private final ObservableList<Customer> allCustomers;
     private final ObservableList<Document> allDocuments;
+    private final ObservableList<Document> editedDocuments;
     private final ObservableList<LogIns> allLogIns;
     private final ObservableList<Order> allOrders;
 
@@ -27,10 +29,14 @@ public class MainModel {
     private User loggedInUser;
 
     private Customer selectedCustomer;
+    private Document selectedDocument;
 
     private Order selectedOrder;
 
+
     private User selectedUser;
+
+    private Project mostSelled;
 
 
 
@@ -45,6 +51,7 @@ public class MainModel {
         this.allProjects=FXCollections.observableArrayList();
         this.allUsers=FXCollections.observableArrayList();
         this.allTech=FXCollections.observableArrayList();
+        this.editedDocuments = FXCollections.observableArrayList();
         this.loggedInUser = null;
         this.selectedCustomer = null;
 
@@ -67,6 +74,20 @@ public class MainModel {
         this.allLogIns.addAll(appLogicManager.getAllLogInsFromDatabase());
 
     }
+
+    public ObservableList<Document> getEditedDocuments() {
+        return editedDocuments;
+    }
+
+    public void loadEditedDocuments() throws SQLException, IOException {
+        this.editedDocuments.clear();
+        this.editedDocuments.addAll(appLogicManager.getEditedFromDatabase());
+    }
+
+    public Project getTheMOstSelledProject() throws SQLException {
+       return this.mostSelled=this.appLogicManager.getMostSelledProject();
+    }
+
 
     public void loadOrders() throws SQLException {
         this.allOrders.clear();
@@ -132,7 +153,7 @@ public class MainModel {
     }
 
     public void updateUsers(Object selectedObject,int id)  {
-
+    /*
         User userToRemove = null;
         for (User u: getAllUsers()) {
             if (u.getId()==id){
@@ -141,6 +162,8 @@ public class MainModel {
         }
         this.allUsers.remove(userToRemove);
         this.allUsers.add((User) selectedObject);
+
+     */
     }
     public void addObject(Object selectedObject, String type) {
         switch (type.toLowerCase()) {
@@ -153,9 +176,20 @@ public class MainModel {
         }
 
     }
+    public Object getSelectedObject(int id, String type) {
+        return appLogicManager.getFromDatabase(id, type);
+    }
+
     public void setSelectedCustomer(Customer customer){
         this.selectedCustomer = customer;
     }
+    public void setSelectedDocument(Document document){
+        this.selectedDocument = document;
+    }
+    public Document getSelectedDocument(){
+        return selectedDocument;
+    }
+
 
     public Order getSelectedOrder() {
         return selectedOrder;

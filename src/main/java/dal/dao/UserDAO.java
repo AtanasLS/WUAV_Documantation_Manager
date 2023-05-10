@@ -17,16 +17,17 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public User getFromDatabase(int id) throws SQLException {
-        String query="SELECT * FROM user WHERE id=?;";
+        String query="SELECT * FROM [WUAV_Documentation_System].[dbo].[users] WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
+        System.out.println(id);
         ResultSet resultSet =stmt.executeQuery();
 
        return this.getDataFromResultSet(resultSet);
     }
 
     public User getTechnicianFromDatabase(int id) throws SQLException {
-        String query="SELECT * FROM user WHERE id=? AND type=?;";
+        String query="SELECT * FROM users WHERE id=? AND type=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         stmt.setString(2,"technician");
@@ -126,15 +127,18 @@ public class UserDAO implements DAOInterface<User> {
     @Override
     public User getDataFromResultSet(ResultSet resultSet) throws SQLException {
 
-        int id=resultSet.getInt("id");
-        String username=resultSet.getString("username");
-        String firstName=resultSet.getString("firstName");
-        String lastName=resultSet.getString("lastName");
-        String email=resultSet.getString("email");
-        String password=resultSet.getString("password");
-        String type=resultSet.getString("type");
-        String customer=resultSet.getString("type");
-        return  new User(id,username,firstName,lastName,email,password,type);
+
+        if (resultSet.next()) {
+            int id = Integer.parseInt(resultSet.getString("id"));
+            String username = resultSet.getString("username");
+            String firstName = resultSet.getString("first_name");
+            String lastName = resultSet.getString("last_name");
+            String email = resultSet.getString("email");
+            String password = resultSet.getString("password");
+            String type = resultSet.getString("type");
+            return new User(id, username, firstName, lastName, email, password, type);
+        }
+        return null;
 
     }
 
@@ -144,7 +148,7 @@ public class UserDAO implements DAOInterface<User> {
         ObservableList<User> listOfUsers= FXCollections.observableArrayList();
 
         while (resultSet.next()) {
-            int id = resultSet.getInt("id");
+            int id=Integer.parseInt(resultSet.getString("id"));
             String username = resultSet.getString("username");
             String firstName = resultSet.getString("first_name");
             String lastName = resultSet.getString("last_name");

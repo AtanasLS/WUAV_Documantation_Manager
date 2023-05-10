@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="95a2f632-40c1-4ada-8324-ea28b957e6ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bll/AppLogicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/AppLogicManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dal/DataManagerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/DataManagerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/interfaces/DAOInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/interfaces/DAOInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/TechnicianViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/TechnicianViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/SellerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/SellerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianManagerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianManagerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianManagerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianManagerView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateDocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/DocumentEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/DocumentEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/OrderItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/OrderItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/ProjectItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/ProjectItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/TechniciansItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/TechniciansItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,23 +26,43 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2PYrODeAm35X9XE35N4m75qywPu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Atanas Stoyanov\OneDrive - Erhvervsakademi Sydvest\Dokumenter\GitHub\WUAV_Document_Manager\src\main\resources\view\edit" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.Main" />
@@ -65,8 +83,20 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="95a2f632-40c1-4ada-8324-ea28b957e6ef" name="Changes" comment="" />
+      <created>1683644827236</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683644827236</updated>
+      <workItem from="1683644829665" duration="16948000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
