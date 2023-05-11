@@ -41,7 +41,7 @@ public class UserItemController implements Initializable {
             //System.out.println(model.getSelectedUser().getFirstName());
             username.setText(this.model.getSelectedUser().getUsername());
             firstName.setText(this.model.getSelectedUser().getFirstName());
-            password.setText(this.model.getSelectedUser().getPassword());
+            password.setText("**********");
         }else if (type.equals("Technician")){
             try {
                 this.model.loadTech();

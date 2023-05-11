@@ -12,6 +12,7 @@ import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
 import java.awt.*;
+import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -29,6 +30,7 @@ public class UserEditController implements Initializable {
     private int id;
     private int userID;
 
+    private String img;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -39,15 +41,16 @@ public class UserEditController implements Initializable {
         lastName.setText(mvm.getSelectedUser().getLastName());
         username.setText(mvm.getSelectedUser().getUsername());
         email.setText(mvm.getSelectedUser().getEmail());
-        password.setText(mvm.getSelectedUser().getPassword());
         type.setText(mvm.getSelectedUser().getType());
         this.id = mvm.getSelectedUser().getId();
         this.userID = mvm.getSelectedUser().getId();
+        this.img=mvm.getSelectedUser().getImg();
     }
 
     public void handleSave(ActionEvent actionEvent) throws SQLException {
-        User editedCustomer = new User( username.getText(), firstName.getText(), lastName.getText(), email.getText()
-                ,password.getText(), type.getText(),"test");
+        System.out.println(password.getText() +"  "+this.id);
+        User editedCustomer = new User( this.id,username.getText(), firstName.getText(), lastName.getText(), email.getText()
+                ,password.getText(), type.getText(),this.img);
 
         model.updateDatabaseElement(editedCustomer,"User", this.id );
 

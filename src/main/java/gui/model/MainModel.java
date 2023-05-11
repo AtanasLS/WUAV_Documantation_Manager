@@ -4,10 +4,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import main.java.be.*;
 import main.java.bll.AppLogicManager;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+
+import static org.mindrot.jbcrypt.BCrypt.checkpw;
 
 public class MainModel {
 
@@ -141,12 +144,21 @@ public class MainModel {
     public boolean checkIfUserExist(String username, String password){
         List<User> users = this.getAllUsers();
         for (User u: users ) {
-            if (u.getUsername().equals(username) && u.getPassword().equals(password)){
+            if (u.getUsername().equals(username) &&   this.checkPass(password,u.getPassword())){
                 loggedInUser = u;
                 return true;
             }
         }
             return false;
+    }
+
+    private boolean checkPass(String plainPassword, String hashedPassword) {
+        if (checkpw(plainPassword, hashedPassword)){
+            return true;
+        } else {
+            return false;
+
+        }
     }
     public Customer getSelectedCustomer(){
         return selectedCustomer;

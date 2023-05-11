@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import main.java.be.User;
 import main.java.dal.DataAccessManager;
 import main.java.dal.interfaces.DAOInterface;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.*;
 import java.sql.PreparedStatement;
@@ -66,6 +67,7 @@ public class UserDAO implements DAOInterface<User> {
         String lastName=object.getLastName();
         String email=object.getEmail();
         String password= object.getPassword();
+        password=hashPassword(password);
         String type=object.getType();
 
         File file = new File(object.getImg());
@@ -109,11 +111,15 @@ public class UserDAO implements DAOInterface<User> {
         String lastName=object.getLastName();
         String email=object.getEmail();
         String password= object.getPassword();
-        String type=object.getType();
+        password=hashPassword(password);
 
+        String type=object.getType();
         File file = new File(object.getImg());
         FileInputStream input = new FileInputStream(file);
 
+
+        System.out.println(password);
+        System.out.println(id);
 
         String query="UPDATE users set username = ?,first_name = ?,last_name = ?,email = ?,password = ?,type = ?, img=? WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
@@ -197,6 +203,10 @@ public class UserDAO implements DAOInterface<User> {
         return listOfUsers;
     }
 
+
+    private String hashPassword(String plainTextPassword){
+        return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
+    }
 
 
 }

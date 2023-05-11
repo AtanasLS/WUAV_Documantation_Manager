@@ -15,5 +15,6 @@
     <orderEntry type="library" name="openjfx-20.0.1_osx-x64_bin-sdk1" level="project" />
     <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="itextpdf" level="project" />
+    <orderEntry type="library" name="mindrot.jbcrypt" level="project" />
   </component>
 </module>
