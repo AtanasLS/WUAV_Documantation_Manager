@@ -136,7 +136,6 @@ public class CreateDocumentController implements Initializable {
 
         for (File i: allImages) {
             Picture picture = new Picture(i.getName(), i.getPath(), allDocs.get(allDocs.size()-1).getId() + 1);
-            
             createModel.createInDatabase(picture, "Picture");
         }
 

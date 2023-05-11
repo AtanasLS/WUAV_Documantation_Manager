@@ -1,4 +1,4 @@
-package main.java.gui;
+package main.java.gui.controllers.mainDashboardsController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -9,9 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import main.java.gui.controllers.pageController.CustomerPageController;
-import main.java.gui.controllers.pageController.DocumentController;
-import main.java.gui.controllers.pageController.UserController;
+import main.java.gui.controllers.pageController.*;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -40,6 +38,8 @@ public class TechnicianViewController implements Initializable {
         if (actionEvent.getSource() == btnLogIns) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/LogInsView.fxml"));
+                LogInsController controller = loader.getController();
+                controller.setModel();
                 painnnnn.getChildren().setAll((Node) loader.load());
                 selected = "LogIns";
             } catch (IOException e) {
@@ -63,7 +63,8 @@ public class TechnicianViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
-
+                OrderController controller = loader.getController();
+                controller.setModel();
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -72,6 +73,8 @@ public class TechnicianViewController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
+                ProjectController controller = loader.getController();
+                controller.setModel();
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);

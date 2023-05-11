@@ -8,13 +8,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import main.java.gui.controllers.LoginPageController;
 import main.java.gui.controllers.createController.*;
-import main.java.gui.controllers.pageController.CustomerPageController;
-import main.java.gui.controllers.pageController.DocumentController;
-import main.java.gui.controllers.pageController.UserController;
+import main.java.gui.controllers.pageController.*;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -108,6 +107,11 @@ public class AdminViewController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/LogInsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
+
+                LogInsController controller = loader.getController();
+                controller.setModel();
+
+
                 selected = "LogIns";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -128,9 +132,9 @@ public class AdminViewController implements Initializable {
         }else if (actionEvent.getSource() == btnOrders){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
-                // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
-
+                OrderController controller = loader.getController();
+                controller.setModel();
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -139,6 +143,8 @@ public class AdminViewController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
+                ProjectController controller = loader.getController();
+                controller.setModel();
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -182,5 +188,9 @@ public class AdminViewController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    public void handleClick(MouseEvent mouseEvent) {
+        System.out.println("Worrrrrrrk");
     }
 }

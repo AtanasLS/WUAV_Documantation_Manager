@@ -35,9 +35,9 @@ public class DocumentItemController implements Initializable {
 
 
     public void setLabels(int numberOfElement) {
-        System.out.println(model.getAllDocuments().get(numberOfElement).getUser());
+
         model.setSelectedDocument(model.getAllDocuments().get(numberOfElement));
-        System.out.println(model.getSelectedDocument());
+
         User selectedUser = (User) model.getSelectedObject(model.getAllDocuments().get(numberOfElement).getUser(), "User");
         Project selectedProject = (Project) model.getSelectedObject(model.getAllDocuments().get(numberOfElement).getProject(), "Project");
         Customer selectedCustomer = (Customer) model.getSelectedObject(model.getAllDocuments().get(numberOfElement).getCustomer(), "Customer");

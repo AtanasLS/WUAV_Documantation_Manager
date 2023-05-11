@@ -1,5 +1,6 @@
 package main.java.gui.controllers.itemController;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import main.java.be.Customer;
+import main.java.be.User;
 import main.java.gui.controllers.infoPageController.CustomerInfoController;
 import main.java.gui.model.MainModel;
 
@@ -38,6 +40,16 @@ public class CustomerItemController implements Initializable {
         lastNameLabel.setText(this.model.getSelectedCustomer().getLastName());
         emailLabel.setText(this.model.getSelectedCustomer().getEmail());
         adress1Label.setText(this.model.getSelectedCustomer().getAddress());
+    }
+    public void setSearchedItems(int numberOfElement, ObservableList<Customer> selectedCustomers){
+        this.model = new MainModel();
+        this.model.setSelectedCustomer(selectedCustomers.get(numberOfElement));
+        firstNameLabel.setText(model.getSelectedCustomer().getFirstName());
+        lastNameLabel.setText(model.getSelectedCustomer().getLastName());
+        emailLabel.setText(model.getSelectedCustomer().getEmail());
+        adress1Label.setText(model.getSelectedCustomer().getAddress());
+
+
     }
 
     public void infoBtnHandle(ActionEvent actionEvent) throws IOException {
