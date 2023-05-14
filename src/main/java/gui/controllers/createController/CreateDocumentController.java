@@ -39,7 +39,7 @@ public class CreateDocumentController implements Initializable {
     public VBox items;
     public Button createBtn, cancelBtn;
 
-    public ArrayList<File> allImages = new ArrayList<>();
+    public ArrayList<String> allImages = new ArrayList<>();
     @FXML
     public TextArea documentDescription;
     public DatePicker date;
@@ -103,7 +103,7 @@ public class CreateDocumentController implements Initializable {
         PhotoItemController controller = loader.getController();
         controller.setItems(selectedImage, selectedFile.getName());
         items.getChildren().add(node);
-        allImages.add(selectedFile);
+        allImages.add(selectedFile.getAbsolutePath());
 
 
 
@@ -111,7 +111,7 @@ public class CreateDocumentController implements Initializable {
 
 
     public void createDocument(ActionEvent actionEvent) throws DocumentException, IOException {
-        /*
+
         DirectoryChooser directoryChooser = new DirectoryChooser();
        // directoryChooser.setInitialDirectory(new File("src"));
         Stage stage = new Stage();
@@ -119,17 +119,18 @@ public class CreateDocumentController implements Initializable {
         PDFGenerator pdfGenerator = new PDFGenerator();
         System.out.println(selectedDirectory.getPath());
         String path = selectedDirectory.getPath();
-        pdfGenerator.generatePDF(path, documentName.getText(), documentDescription.getText(), layoutDrawing.getUrl());
+        System.out.println(layoutDrawing);
 
-         */
+
+
         LogIns selectedLogin = (LogIns) loginBox.getSelectionModel().getSelectedItem();
         User selectedUser = (User) technicianBox.getSelectionModel().getSelectedItem();
         Customer selectedCustomer = (Customer) customerBox.getSelectionModel().getSelectedItem();
         Project selectedProject = (Project) projectBox.getSelectionModel().getSelectedItem();
 
+        pdfGenerator.generatePDF(path, documentName.getText(),selectedCustomer, selectedProject, selectedLogin,documentDescription.getText(), allImages,layoutDrawing);
 
-
-
+        /*
         Document newDocument = new Document(layoutDrawing, documentDescription.getText(), selectedLogin.getId(), documentName.getText(),
                selectedUser.getId(), selectedCustomer.getId(), selectedProject.getProjectId(), date.getValue(), 0);
         createModel.createInDatabase(newDocument, "Document");
@@ -139,6 +140,8 @@ public class CreateDocumentController implements Initializable {
             createModel.createInDatabase(picture, "Picture");
         }
 
+
+         */
 
         Stage currentStage = (Stage) createBtn.getScene().getWindow();
         currentStage.close();

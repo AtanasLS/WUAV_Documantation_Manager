@@ -4,17 +4,18 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import main.java.be.Customer;
 import main.java.bll.Filter;
 import main.java.gui.controllers.itemController.CustomerItemController;
-import main.java.gui.controllers.itemController.UserItemController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -27,6 +28,8 @@ public class CustomerPageController implements Initializable {
     public TextField searchBar;
     @FXML
     VBox pnItems = null;
+    @FXML
+    private ProgressIndicator progressIndicator;
 
     MainModel model;
     private Filter filter;
@@ -41,21 +44,13 @@ public class CustomerPageController implements Initializable {
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                allCustomers.clear();
-                try {
-                    allCustomers.addAll(filter.searchCustomers(newValue));
-                    setPnItems(allCustomers);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-
+                loadCustomersAsync(newValue);
             }
         });
     }
 
     public void setPnItems(ObservableList<Customer> searchedCustomers) {
         pnItems.getChildren().clear();
-
 
         Node[] nodes = new Node[searchedCustomers.size()];
         for (int i = 0; i < nodes.length; i++) {
@@ -69,17 +64,20 @@ public class CustomerPageController implements Initializable {
                 e.printStackTrace();
             }
         }
-
-
     }
 
     public void setMainModel() {
         try {
             model.loadCustomers();
+            if (progressIndicator == null) {
+                progressIndicator = new ProgressIndicator();
+            }
 
+            progressIndicator.setVisible(false);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         Node[] nodes = new Node[model.getAllCustomers().size()];
         for (int i = 0; i < nodes.length; i++) {
             try{
@@ -93,5 +91,27 @@ public class CustomerPageController implements Initializable {
             }
         }
     }
-}
 
+    private void loadCustomersAsync(String searchValue) {
+        Task<ObservableList<Customer>> task = new Task<ObservableList<Customer>>() {
+            @Override
+            protected ObservableList<Customer> call() throws Exception {
+                return filter.searchCustomers(searchValue);
+            }
+        };
+
+        task.setOnSucceeded(event -> {
+            allCustomers = task.getValue();
+            setPnItems(allCustomers);
+            progressIndicator.setVisible(false);
+        });
+
+        task.setOnFailed(event -> {
+            Throwable e = task.getException();
+            e.printStackTrace();
+        });
+
+        progressIndicator.setVisible(true);
+        new Thread(task).start();
+    }
+}

@@ -53,7 +53,7 @@ public class AdminViewController implements Initializable {
                 loginStage.setScene(new Scene(loginsRoot));
                 loginStage.show();
                 break;
-            case "users":
+            case "user":
                 FXMLLoader userLoader = new FXMLLoader(getClass().getResource("/view/create/UserCreate.fxml"));
                 Parent root = userLoader.load();
                 UserCreateController controller = userLoader.getController();

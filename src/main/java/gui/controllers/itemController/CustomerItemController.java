@@ -1,6 +1,7 @@
 package main.java.gui.controllers.itemController;
 
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,21 +27,26 @@ public class CustomerItemController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
 
-
-
     public void setLabels(int numberOfElement) {
         this.model = new MainModel();
-        try {
-            this.model.loadCustomers();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        model.setSelectedCustomer(model.getAllCustomers().get(numberOfElement));
-        firstNameLabel.setText(this.model.getSelectedCustomer().getFirstName());
-        lastNameLabel.setText(this.model.getSelectedCustomer().getLastName());
-        emailLabel.setText(this.model.getSelectedCustomer().getEmail());
-        adress1Label.setText(this.model.getSelectedCustomer().getAddress());
+        Task<Void> loadTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                model.loadCustomers();
+                return null;
+            }
+        };
+        loadTask.setOnSucceeded(event -> {
+            model.setSelectedCustomer(model.getAllCustomers().get(numberOfElement));
+            firstNameLabel.setText(model.getSelectedCustomer().getFirstName());
+            lastNameLabel.setText(model.getSelectedCustomer().getLastName());
+            emailLabel.setText(model.getSelectedCustomer().getEmail());
+            adress1Label.setText(model.getSelectedCustomer().getAddress());
+        });
+        Thread loadThread = new Thread(loadTask);
+        loadThread.start();
     }
+
     public void setSearchedItems(int numberOfElement, ObservableList<Customer> selectedCustomers){
         this.model = new MainModel();
         this.model.setSelectedCustomer(selectedCustomers.get(numberOfElement));
@@ -48,8 +54,6 @@ public class CustomerItemController implements Initializable {
         lastNameLabel.setText(model.getSelectedCustomer().getLastName());
         emailLabel.setText(model.getSelectedCustomer().getEmail());
         adress1Label.setText(model.getSelectedCustomer().getAddress());
-
-
     }
 
     public void infoBtnHandle(ActionEvent actionEvent) throws IOException {
@@ -64,6 +68,4 @@ public class CustomerItemController implements Initializable {
         stage.setResizable(false);
         stage.show();
     }
-
-
 }
