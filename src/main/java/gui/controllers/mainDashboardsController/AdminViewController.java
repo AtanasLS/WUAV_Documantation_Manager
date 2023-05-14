@@ -8,6 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -16,6 +18,8 @@ import javafx.stage.Stage;
 import main.java.be.User;
 import main.java.gui.controllers.LoginPageController;
 import main.java.gui.controllers.createController.*;
+import main.java.gui.controllers.pageController.*;
+
 import main.java.gui.controllers.itemController.PhotoItemController;
 import main.java.gui.controllers.pageController.CustomerPageController;
 import main.java.gui.controllers.pageController.DocumentController;
@@ -24,7 +28,7 @@ import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
 import java.awt.*;
-import java.awt.event.MouseEvent;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -76,7 +80,7 @@ public class AdminViewController implements Initializable {
                 loginStage.setScene(new Scene(loginsRoot));
                 loginStage.show();
                 break;
-            case "users":
+            case "user":
                 FXMLLoader userLoader = new FXMLLoader(getClass().getResource("/view/create/UserCreate.fxml"));
                 Parent root = userLoader.load();
                 UserCreateController controller = userLoader.getController();
@@ -130,6 +134,11 @@ public class AdminViewController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/LogInsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
+
+                LogInsController controller = loader.getController();
+                controller.setModel();
+
+
                 selected = "LogIns";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -150,9 +159,9 @@ public class AdminViewController implements Initializable {
         }else if (actionEvent.getSource() == btnOrders){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
-                // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
-
+                OrderController controller = loader.getController();
+                controller.setModel();
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -161,6 +170,8 @@ public class AdminViewController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
+                ProjectController controller = loader.getController();
+                controller.setModel();
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -221,5 +232,8 @@ public class AdminViewController implements Initializable {
 
 
 
+    }
+
+    public void handleClick(MouseEvent mouseEvent) {
     }
 }

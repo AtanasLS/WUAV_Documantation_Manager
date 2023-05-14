@@ -1,7 +1,9 @@
 package main.java.gui.controllers.itemController;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import main.java.be.Order;
 import main.java.gui.model.MainModel;
 
 import java.net.URL;
@@ -28,8 +30,12 @@ public class OrderItemController implements Initializable {
         pName.setText(this.model.getAllOrders().get(numberOfElement).getProject());
         customer.setText(this.model.getAllOrders().get(numberOfElement ).getCustomer());
         date.setText(this.model.getAllOrders().get(numberOfElement ).getDate().toString());
-        price.setText(String.valueOf(this.model.getAllOrders().get(numberOfElement ).getPrice()));
-
-
+    }
+    public void setSearchedItems(int numberOfElement, ObservableList<Order> searchedOrders){
+        model.setSelectedOrder(searchedOrders.get(numberOfElement));
+        oName.setText(searchedOrders.get(numberOfElement).getName());
+        pName.setText(searchedOrders.get(numberOfElement).getProject());
+        customer.setText(searchedOrders.get(numberOfElement).getCustomer());
+        date.setText(searchedOrders.get(numberOfElement).getDate().toString());
     }
 }

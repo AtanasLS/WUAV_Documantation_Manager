@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import main.java.be.User;
 import main.java.gui.controllers.itemController.PhotoItemController;
 import main.java.gui.controllers.pageController.CustomerPageController;
+import main.java.gui.controllers.pageController.OrderController;
 import main.java.gui.controllers.pageController.ProjectController;
 import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.EditModel;
@@ -66,7 +67,8 @@ public class SellerViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
-
+                OrderController controller = loader.getController();
+                controller.setModel();
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -77,6 +79,7 @@ public class SellerViewController implements Initializable {
                 painnnnn.getChildren().setAll((Node) loader.load());
                 ProjectController projectController = loader.getController();
                 projectController.setMostSoldProduct();
+                projectController.setModel();
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);

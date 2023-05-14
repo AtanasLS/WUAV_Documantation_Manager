@@ -1,5 +1,6 @@
 package main.java.gui.controllers.itemController;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -54,6 +55,14 @@ public class UserItemController implements Initializable {
             firstName.setText(this.model.getSelectedUser().getFirstName());
             password.setText(this.model.getSelectedUser().getPassword());
         }
+    }
+    public void setSearchedItems(int numberOfElement, ObservableList<User> selectedUsers){
+        this.model = new MainModel();
+        this.model.setSelectedUser(selectedUsers.get(numberOfElement));
+        System.out.println(model.getSelectedUser().getFirstName());
+        username.setText(this.model.getSelectedUser().getUsername());
+        firstName.setText(this.model.getSelectedUser().getFirstName());
+        password.setText(this.model.getSelectedUser().getPassword());
     }
     public void infoBtnHandle(ActionEvent actionEvent) throws IOException {
 

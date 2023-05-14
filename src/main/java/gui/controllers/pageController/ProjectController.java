@@ -1,11 +1,18 @@
 package main.java.gui.controllers.pageController;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import main.java.be.Project;
+import main.java.bll.Filter;
 import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.controllers.itemController.ProjectItemController;
 import main.java.gui.model.MainModel;
@@ -17,14 +24,55 @@ import java.util.ResourceBundle;
 
 public class ProjectController implements Initializable{
     public Label mostSoldProduct;
+    public TextField searchBar;
     @FXML
     VBox pnItems = null;
 
     MainModel model;
 
+    private Filter filter;
+    private ObservableList<Project> allProjects;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
+        this.filter = new Filter();
+        this.allProjects = FXCollections.observableArrayList();
+
+        searchBar.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                allProjects.clear();
+                try {
+                    allProjects.addAll(filter.searchProject(newValue));
+                    setPnItems(allProjects);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+
+    public void setPnItems(ObservableList<Project> searchedProjects) {
+        pnItems.getChildren().clear();
+        Node[] nodes = new Node[searchedProjects.size()];
+        for (int i = 0; i < nodes.length; i++) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/ProjectItem.fxml"));
+                nodes[i] = loader.load();
+                ProjectItemController controller = loader.getController();
+
+                controller.setSearchedProjects(i, searchedProjects);
+
+                pnItems.getChildren().add(nodes[i]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void setModel(){
         try {
             model.loadProjects();
         } catch (Exception e) {

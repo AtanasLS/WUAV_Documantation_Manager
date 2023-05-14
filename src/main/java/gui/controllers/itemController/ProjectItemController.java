@@ -1,5 +1,6 @@
 package main.java.gui.controllers.itemController;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -39,13 +40,14 @@ public class ProjectItemController implements Initializable,Items {
 
     @Override
     public void setLabels(int numberOfElement, MainModel model) {
-        System.out.println(model.getAllProjects().size());
         this.currentProject=this.model.getAllProjects().get(numberOfElement);
         type.setText(this.model.getAllProjects().get(numberOfElement).getType());
         customer.setText(this.model.getAllProjects().get(numberOfElement).getCustomer());
-        price.setText(String.valueOf(this.model.getAllProjects().get(numberOfElement).getPrice()));
 
-
+    }
+    public void setSearchedProjects(int numberOfElement, ObservableList<Project> searchedProjects){
+        type.setText(searchedProjects.get(numberOfElement).getType());
+        customer.setText(searchedProjects.get(numberOfElement).getCustomer());
 
     }
 

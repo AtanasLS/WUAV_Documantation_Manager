@@ -1,5 +1,6 @@
 package main.java.gui.controllers.itemController;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -40,12 +41,17 @@ public class LogInsItemController implements Initializable,Items {
 
     @Override
     public void setLabels(int numberOfElement, MainModel model) {
-
         username.setText(this.model.getAllLogIns().get(numberOfElement).getUsername());
         password.setText(this.model.getAllLogIns().get(numberOfElement).getPassword());
         project.setText(this.model.getAllLogIns().get(numberOfElement).getProject());
         this.currentLogIn=this.model.getAllLogIns().get(numberOfElement);
 
+    }
+    public void  setSearchedItemLabel(int numberOfElement, ObservableList<LogIns> searchedLogins){
+        username.setText(searchedLogins.get(numberOfElement).getUsername());
+        password.setText(searchedLogins.get(numberOfElement).getPassword());
+        project.setText(searchedLogins.get(numberOfElement).getProject());
+        this.currentLogIn=searchedLogins.get(numberOfElement);
     }
 
     public void editLogIN(ActionEvent actionEvent) throws SQLException {
