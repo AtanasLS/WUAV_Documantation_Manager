@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import javafx.scene.control.Label;
@@ -39,6 +40,7 @@ public class AdminViewController implements Initializable {
     @FXML
     public Button btnLogIns, btnOrders, btnDocuments, btnUsers, btnCustomers, btnProjects, btnSignout;
     public Label usernameLogIN;
+    public ImageView avatarImage;
     @FXML
     AnchorPane painnnnn;
     @FXML
@@ -62,8 +64,10 @@ public class AdminViewController implements Initializable {
         this.model = mvm ;
         this.editModel=new EditModel(mvm);
         this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
-
-        this.avatar=new Image("/images/"+this.model.getLogInUser().getUsername()+".png");
+        System.out.println(this.model.getLogInUser().getUsername());
+        System.out.println(this.model.getLogInUser().getImg());
+        this.avatar=new Image("/images/"+this.model.getLogInUser().getImg());
+        this.avatarImage.setImage(avatar);
 
 
     }
@@ -224,12 +228,13 @@ public class AdminViewController implements Initializable {
         File selectedFile = layoutDrawingChooser.showOpenDialog(stage);
         Image layoutDrawing = new Image(selectedFile.getAbsolutePath());
         this.img = layoutDrawing.getUrl();
+        System.out.println(layoutDrawing.getUrl());
         User user=this.model.getLogInUser();
         user.setImg(this.img);
         this.editModel.updateDatabaseElement(user,"User",user.getId());
 
         this.avatar=new Image(layoutDrawing.getUrl());
-
+        this.avatarImage.setImage(avatar);
 
 
     }

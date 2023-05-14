@@ -164,4 +164,7 @@ public class TechnicianManagerViewController implements Initializable {
 
 
     }
+
+    public void createDrawing(javafx.scene.input.MouseEvent mouseEvent) {
+    }
 }
