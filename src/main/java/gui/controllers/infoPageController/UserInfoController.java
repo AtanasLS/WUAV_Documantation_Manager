@@ -43,7 +43,7 @@ public class UserInfoController implements Initializable, Info {
         lastName.setText(this.model.getSelectedUser().getLastName());
         username.setText(this.model.getSelectedUser().getUsername());
         email.setText(this.model.getSelectedUser().getEmail());
-        password.setText(this.model.getSelectedUser().getPassword());
+        password.setText("**********");
         type.setText(this.model.getSelectedUser().getType());
 
 

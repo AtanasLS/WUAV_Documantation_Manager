@@ -1,29 +1,51 @@
 package main.java.gui.controllers.mainDashboardsController;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.gui.controllers.pageController.*;
+import main.java.be.User;
+import main.java.gui.controllers.itemController.PhotoItemController;
+import main.java.gui.controllers.pageController.CustomerPageController;
+import main.java.gui.controllers.pageController.DocumentController;
+import main.java.gui.controllers.pageController.UserController;
+import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class TechnicianViewController implements Initializable {
     public Button btnOrders, btnCustomers, btnProjects, btnLogIns, btnSignout, btnDocuments;
     public AnchorPane painnnnn;
+    public Label usernameLogIN;
 
     private String selected;
 
     private MainModel model;
 
+    private EditModel editModel;
+
+    @FXML
+    private Image avatar;
+
+    private String img;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -31,6 +53,10 @@ public class TechnicianViewController implements Initializable {
 
     public void setMainModel(MainModel mvm){
         this.model = mvm ;
+        this.editModel=new EditModel(mvm);
+        this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
+
+        this.avatar=new Image("/images/"+this.model.getLogInUser().getUsername()+".png");
 
     }
 
@@ -108,4 +134,27 @@ public class TechnicianViewController implements Initializable {
             }
         }
     }
+
+    public void createDrawing(MouseEvent actionEvent) throws IOException, SQLException {
+        FileChooser layoutDrawingChooser = new FileChooser();
+        Stage stage = new Stage();
+        File selectedFile = layoutDrawingChooser.showOpenDialog(stage);
+        Image layoutDrawing = new Image(selectedFile.getPath());
+        Node node;
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/PhotoItem.fxml"));
+        node = loader.load();
+        PhotoItemController controller = loader.getController();
+        controller.setItems(layoutDrawing, selectedFile.getName());
+        this.img = layoutDrawing.getUrl();
+        User user=this.model.getLogInUser();
+        user.setImg(this.img);
+        this.editModel.updateDatabaseElement(user,"User",user.getId());
+
+        this.avatar=new Image(layoutDrawing.getUrl());
+
+
+
+    }
+
+
 }

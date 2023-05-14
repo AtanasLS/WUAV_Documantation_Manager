@@ -39,6 +39,7 @@ public class LoginPageController implements Initializable {
 
     public void logIn(ActionEvent actionEvent) throws Exception {
         if (model.checkIfUserExist(usernameField.getText(), passwordField.getText())) {
+            model.setUser(usernameField.getText());
             User loggedInUser = model.getUser(usernameField.getText());
             if (loggedInUser.getType().equals("Admin")) {
                 try {

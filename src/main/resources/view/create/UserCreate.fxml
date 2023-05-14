@@ -46,6 +46,7 @@
         <TextField fx:id="email" layoutX="310.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
         <TextField fx:id="username" layoutX="15.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
         <TextField fx:id="password" layoutX="15.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
+      <Button layoutX="12.0" layoutY="275.0" mnemonicParsing="false" onAction="#createDrawing" prefHeight="46.0" prefWidth="101.0" text="Add Photo" />
       <ComboBox fx:id="typeBox" layoutX="310.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
     </children>
 </AnchorPane>

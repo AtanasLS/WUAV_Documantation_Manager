@@ -37,6 +37,8 @@ public class AppLogicManager {
             return DataManagerFacade.getInstance().getAllUsersFromDatabase();
         }catch (SQLException e){
             throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     //getting all the documents
@@ -114,6 +116,8 @@ public class AppLogicManager {
             return DataManagerFacade.getInstance().getAllTechniciansFromDatabase();
         }catch (SQLException e){
             throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -122,6 +126,8 @@ public class AppLogicManager {
             return DataManagerFacade.getInstance().getTechnicianFromDatabase(id);
         }catch (SQLException e){
             throw new RuntimeException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
