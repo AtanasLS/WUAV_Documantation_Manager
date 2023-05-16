@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -33,6 +35,10 @@ public class DocumentController implements Initializable {
 
     MainModel model;
 
+    @FXML
+    private ProgressIndicator progressIndicator;
+
+
     private Filter filter;
 
     private ObservableList<Document> allDocs;
@@ -46,14 +52,7 @@ public class DocumentController implements Initializable {
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                allDocs.clear();
-                try {
-                    allDocs.addAll(filter.searchDocument(newValue));
-                    setPnItemsSearched(allDocs);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-
+             loadDocumentsAsync(newValue);
             }
         });
 
@@ -68,7 +67,7 @@ public class DocumentController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/DocumentItem.fxml"));
                 nodes[i] = loader.load();
                 DocumentItemController controller = loader.getController();
-                controller.setLabels(i);
+                controller.setSearchedItems(i, searchedDocuments);
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -79,6 +78,11 @@ public class DocumentController implements Initializable {
         if (type.equals("Users")) {
             try {
                 model.loadDocument();
+                if (progressIndicator == null) {
+                    progressIndicator = new ProgressIndicator();
+                }
+
+                progressIndicator.setVisible(false);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -99,6 +103,11 @@ public class DocumentController implements Initializable {
 
             try {
                 model.loadEditedDocuments();
+                if (progressIndicator == null) {
+                    progressIndicator = new ProgressIndicator();
+                }
+
+                progressIndicator.setVisible(false);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -127,5 +136,28 @@ public class DocumentController implements Initializable {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    private void loadDocumentsAsync(String searchValue) {
+        Task<ObservableList<Document>> task = new Task<ObservableList<Document>>() {
+            @Override
+            protected ObservableList<Document> call() throws Exception {
+                return filter.searchDocument(searchValue);
+            }
+        };
+
+        task.setOnSucceeded(event -> {
+            allDocs = task.getValue();
+            setPnItemsSearched(allDocs);
+            progressIndicator.setVisible(false);
+        });
+
+        task.setOnFailed(event -> {
+            Throwable e = task.getException();
+            e.printStackTrace();
+        });
+
+        progressIndicator.setVisible(true);
+        new Thread(task).start();
     }
 }

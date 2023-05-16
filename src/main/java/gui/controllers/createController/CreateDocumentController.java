@@ -69,11 +69,8 @@ public class CreateDocumentController implements Initializable {
         customerBox.setItems(mainModel.getAllCustomers());
         technicianBox.setItems(mainModel.getAllTech());
         projectBox.setItems(mainModel.getAllProjects());
-
-
         allDocs.addAll(mainModel.getAllDocuments());
-        System.out.println(allDocs.size());
-        System.out.println(allDocs.get(allDocs.size() - 1).getId());
+
 
     }
     public void createDrawing(ActionEvent actionEvent) throws IOException {

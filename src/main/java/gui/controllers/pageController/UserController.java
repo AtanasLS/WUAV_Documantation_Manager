@@ -4,18 +4,17 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import main.java.be.User;
 import main.java.bll.Filter;
-import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.controllers.itemController.UserItemController;
 import main.java.gui.model.MainModel;
 
@@ -34,6 +33,10 @@ public class UserController implements Initializable {
 
     private ObservableList<User> allUsers;
 
+    @FXML
+    private ProgressIndicator progressIndicator;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         filter = new Filter();
@@ -41,14 +44,7 @@ public class UserController implements Initializable {
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                allUsers.clear();
-                try {
-                    allUsers.addAll(filter.searchUsers(newValue));
-                    setPnItems(allUsers);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
-
+               loadUsersAsync(newValue);
             }
         });
     }
@@ -58,6 +54,10 @@ public class UserController implements Initializable {
         if (type.equals("User")) {
             try {
                 model.loadUsers();
+                if (progressIndicator == null) {
+                    progressIndicator = new ProgressIndicator();
+                }
+                progressIndicator.setVisible(false);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
@@ -80,11 +80,14 @@ public class UserController implements Initializable {
         }else if (type.equals("Technician")){
             try {
                 model.loadTech();
-                System.out.println(model.getAllTech());
+                if (progressIndicator == null) {
+                    progressIndicator = new ProgressIndicator();
+                }
+                progressIndicator.setVisible(false);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            System.out.println(model.getAllTech());
+
             Node[] nodes = new Node[model.getAllTech().size()];
             for (int i = 0; i < nodes.length; i++) {
                 try {
@@ -116,7 +119,29 @@ public class UserController implements Initializable {
                 e.printStackTrace();
             }
         }
-        System.out.println(selectedUsers);
+
+    }
+    private void loadUsersAsync(String searchValue) {
+        Task<ObservableList<User>> task = new Task<ObservableList<User>>() {
+            @Override
+            protected ObservableList<User> call() throws Exception {
+                return filter.searchUsers(searchValue);
+            }
+        };
+
+        task.setOnSucceeded(event -> {
+            allUsers = task.getValue();
+            setPnItems(allUsers);
+            progressIndicator.setVisible(false);
+        });
+
+        task.setOnFailed(event -> {
+            Throwable e = task.getException();
+            e.printStackTrace();
+        });
+
+        progressIndicator.setVisible(true);
+        new Thread(task).start();
     }
 
 

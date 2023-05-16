@@ -1,9 +1,12 @@
 package main.java.gui.controllers.itemController;
 
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import main.java.be.Customer;
 import main.java.be.LogIns;
 import main.java.gui.model.DeleteModel;
@@ -23,6 +26,9 @@ public class LogInsItemController implements Initializable,Items {
 
     private EditModel editModel;
 
+    @FXML
+    private ProgressIndicator progressIndicator;
+
 
     private LogIns currentLogIn;
 
@@ -32,26 +38,35 @@ public class LogInsItemController implements Initializable,Items {
         this.model = new MainModel();
         this.deleteModel=new DeleteModel();
         this.editModel=new EditModel(model);
-        try {
-            this.model.loadLogIns();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     @Override
     public void setLabels(int numberOfElement, MainModel model) {
-        username.setText(this.model.getAllLogIns().get(numberOfElement).getUsername());
-        password.setText(this.model.getAllLogIns().get(numberOfElement).getPassword());
-        project.setText(this.model.getAllLogIns().get(numberOfElement).getProject());
-        this.currentLogIn=this.model.getAllLogIns().get(numberOfElement);
+        this.model = model;
+        Task<Void> loadTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                model.loadLogIns();
+                return null;
+            }
+        };
+        loadTask.setOnSucceeded(event -> {
+            this.currentLogIn=this.model.getAllLogIns().get(numberOfElement);
+            username.setText(this.model.getAllLogIns().get(numberOfElement).getUsername());
+            password.setText(this.model.getAllLogIns().get(numberOfElement).getPassword());
+            project.setText(this.model.getAllLogIns().get(numberOfElement).getProject());
 
+        });
+        Thread loadThread = new Thread(loadTask);
+        loadThread.start();
     }
     public void  setSearchedItemLabel(int numberOfElement, ObservableList<LogIns> searchedLogins){
+        this.currentLogIn=searchedLogins.get(numberOfElement);
         username.setText(searchedLogins.get(numberOfElement).getUsername());
         password.setText(searchedLogins.get(numberOfElement).getPassword());
         project.setText(searchedLogins.get(numberOfElement).getProject());
-        this.currentLogIn=searchedLogins.get(numberOfElement);
+
     }
 
     public void editLogIN(ActionEvent actionEvent) throws SQLException {

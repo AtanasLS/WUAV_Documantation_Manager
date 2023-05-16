@@ -150,7 +150,6 @@ public class AdminViewController implements Initializable {
         }else if (actionEvent.getSource() == btnDocuments){
             try {
                 FXMLLoader loader = new FXMLLoader((getClass().getResource("/view/pages/DocumentsPage.fxml")));
-                // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
 
                 painnnnn.getChildren().setAll((Node) loader.load());
                 DocumentController documentController = loader.getController();
