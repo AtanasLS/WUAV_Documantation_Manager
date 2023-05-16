@@ -60,7 +60,7 @@ public class AdminViewController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-    public void setMainModel(MainModel mvm){
+    public void setMainModel(MainModel mvm) throws IOException {
         this.model = mvm ;
         this.editModel=new EditModel(mvm);
         this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
@@ -68,6 +68,10 @@ public class AdminViewController implements Initializable {
         System.out.println(this.model.getLogInUser().getImg());
         this.avatar=new Image("/images/"+this.model.getLogInUser().getImg());
         this.avatarImage.setImage(avatar);
+
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/MainDashboardView.fxml"));
+        painnnnn.getChildren().setAll((Node) loader.load());
 
 
     }
