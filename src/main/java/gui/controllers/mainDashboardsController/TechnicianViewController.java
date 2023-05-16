@@ -63,10 +63,12 @@ public class TechnicianViewController implements Initializable {
     public void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnLogIns) {
             try {
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/LogInsView.fxml"));
+                painnnnn.getChildren().setAll((Node) loader.load());
                 LogInsController controller = loader.getController();
                 controller.setModel();
-                painnnnn.getChildren().setAll((Node) loader.load());
+
                 selected = "LogIns";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -157,4 +159,7 @@ public class TechnicianViewController implements Initializable {
     }
 
 
+    public void createDrawing(javafx.scene.input.MouseEvent mouseEvent) {
+
+    }
 }
