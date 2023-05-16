@@ -73,8 +73,13 @@ public class ProjectDAO implements DAOInterface<Project> {
         String query="DELETE FROM project WHERE id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
-        ResultSet resultSet =stmt.executeQuery();
-        return resultSet.toString();
+        try {
+            ResultSet resultSet = stmt.executeQuery();
+            //System.out.println(resultSet.toString());
+        }catch (RuntimeException e){
+            System.out.println(e);
+        }
+        return "work!";
     }
 
     @Override

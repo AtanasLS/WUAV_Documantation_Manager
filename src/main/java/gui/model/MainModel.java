@@ -202,6 +202,10 @@ public class MainModel {
         return appLogicManager.getFromDatabase(id, type);
     }
 
+    public ObservableList<Picture> getAllPhotosForSelectedDocument(int documentId) throws SQLException, IOException {
+        return appLogicManager.getAllPicturesForProject(documentId);
+    }
+
     public void setSelectedCustomer(Customer customer){
         this.selectedCustomer = customer;
     }

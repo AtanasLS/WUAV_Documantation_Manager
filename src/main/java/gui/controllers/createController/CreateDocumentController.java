@@ -1,6 +1,7 @@
 package main.java.gui.controllers.createController;
 
 import com.itextpdf.text.DocumentException;
+import javafx.beans.binding.ObjectExpression;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,7 +40,7 @@ public class CreateDocumentController implements Initializable {
     public VBox items;
     public Button createBtn, cancelBtn;
 
-    public ArrayList<String> allImages = new ArrayList<>();
+    public ArrayList<File> allImages = new ArrayList<>();
     @FXML
     public TextArea documentDescription;
     public DatePicker date;
@@ -50,6 +51,7 @@ public class CreateDocumentController implements Initializable {
     private String layoutDrawing;
 
     private ObservableList<Document> allDocs;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -100,7 +102,8 @@ public class CreateDocumentController implements Initializable {
         PhotoItemController controller = loader.getController();
         controller.setItems(selectedImage, selectedFile.getName());
         items.getChildren().add(node);
-        allImages.add(selectedFile.getAbsolutePath());
+
+        allImages.add(selectedFile);
 
 
 
@@ -127,18 +130,18 @@ public class CreateDocumentController implements Initializable {
 
         pdfGenerator.generatePDF(path, documentName.getText(),selectedCustomer, selectedProject, selectedLogin,documentDescription.getText(), allImages,layoutDrawing);
 
-        /*
+
         Document newDocument = new Document(layoutDrawing, documentDescription.getText(), selectedLogin.getId(), documentName.getText(),
                selectedUser.getId(), selectedCustomer.getId(), selectedProject.getProjectId(), date.getValue(), 0);
         createModel.createInDatabase(newDocument, "Document");
 
-        for (File i: allImages) {
-            Picture picture = new Picture(i.getName(), i.getPath(), allDocs.get(allDocs.size()-1).getId() + 1);
+        for (File file: allImages) {
+            Picture picture = new Picture( file.getName(), file.getAbsolutePath(), allDocs.get(allDocs.size()-1).getId() + 1);
             createModel.createInDatabase(picture, "Picture");
         }
 
 
-         */
+
 
         Stage currentStage = (Stage) createBtn.getScene().getWindow();
         currentStage.close();

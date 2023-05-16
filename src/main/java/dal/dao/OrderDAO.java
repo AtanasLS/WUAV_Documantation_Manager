@@ -79,7 +79,8 @@ public class OrderDAO implements DAOInterface<Order> {
         LocalDate date= object.getDate();
         Double price=object.getPrice();
 
-        String query="INSERT INTO [order] VALUES (?, ?, ?, ?, ?, ?) WHERE id = ?;";
+        String query="UPDATE [order] set UserId = ?,ProjectId = ?,name = ?,customerId = ?, [date] = ?, price = ? WHERE id = ?;";
+
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,userId);
         stmt.setInt(2,projectID);

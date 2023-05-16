@@ -63,6 +63,9 @@ public class DataManagerFacade {
             case "Project":
                 o = this.projectDAO.getFromDatabase(id);
                 break;
+            case "Order":
+                o = this.orderDAO.getFromDatabase(id);
+                break;
         }
 
         return o;
@@ -130,6 +133,9 @@ public class DataManagerFacade {
             case "Project":
                 output = projectDAO.insertIntoDatabase((Project) object);
             break;
+            case "Order":
+                output = orderDAO.insertIntoDatabase((Order) object);
+                break;
         }
         return output;
     }
@@ -165,6 +171,9 @@ public class DataManagerFacade {
             case "Project":
                 output = projectDAO.deleteFromDatabase(id);
                 break;
+            case "Order":
+                output = orderDAO.deleteFromDatabase(id);
+                break;
         }
         return output;
     }
@@ -190,6 +199,9 @@ public class DataManagerFacade {
                 break;
             case "Project":
                 output = projectDAO.updateDatabase((Project) object);
+                break;
+            case "Order":
+                output = orderDAO.updateDatabase((Order) object);
                 break;
         }
         return output;

@@ -30,11 +30,7 @@ public class DropdownController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         dropdown.getItems().addAll("Users", "Documents", "Logins", "Projects", "Customers");
-
-
-
 
     }
 

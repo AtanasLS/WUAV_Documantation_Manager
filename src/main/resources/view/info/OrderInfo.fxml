@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="362.0" prefWidth="786.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.createController.CreateOrderController">
+    <children>
+        <Label fx:id="infoFirstNameLabel52" layoutX="25.0" layoutY="18.0" prefHeight="36.0" prefWidth="94.0" text="Name">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoFirstNameLabel521" layoutX="25.0" layoutY="80.0" prefHeight="36.0" prefWidth="94.0" text="Date">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoFirstNameLabel522" layoutX="313.0" layoutY="18.0" prefHeight="36.0" prefWidth="94.0" text="Customer">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoAddress1Label" layoutX="25.0" layoutY="156.0" prefHeight="36.0" prefWidth="94.0" text="User">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="infoAddress2Label" layoutX="313.0" layoutY="82.0" prefHeight="36.0" prefWidth="94.0" text="Project">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+        <Button fx:id="saveBtn" layoutX="526.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleSave" prefHeight="46.0" prefWidth="87.0" text="Save" />
+        <Button fx:id="cancelBtn" layoutX="652.0" layoutY="285.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="46.0" prefWidth="87.0" text="Cancel" />
+        <ComboBox fx:id="project" layoutX="313.0" layoutY="118.0" prefHeight="30.0" prefWidth="235.0" />
+        <ComboBox fx:id="customerField" layoutX="313.0" layoutY="50.0" prefHeight="30.0" prefWidth="235.0" />
+        <ComboBox fx:id="user" layoutX="25.0" layoutY="192.0" prefHeight="30.0" prefWidth="235.0" />
+        <DatePicker fx:id="date" layoutX="26.0" layoutY="118.0" prefHeight="30.0" prefWidth="235.0" />
+      <TextField fx:id="nameField" layoutX="25.0" layoutY="50.0" prefHeight="30.0" prefWidth="235.0" />
+    </children>
+</AnchorPane>

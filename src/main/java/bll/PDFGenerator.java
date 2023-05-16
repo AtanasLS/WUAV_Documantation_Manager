@@ -5,19 +5,12 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfContentByte;
 
 import com.itextpdf.text.pdf.PdfWriter;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 import main.java.be.Customer;
 import main.java.be.LogIns;
 import main.java.be.Project;
 
-import javax.print.attribute.standard.Destination;
 import java.io.*;
 import java.util.ArrayList;
-
-import static com.itextpdf.text.Annotation.FILE;
 
 public class PDFGenerator {
 
@@ -41,7 +34,7 @@ public class PDFGenerator {
     }
 
 
-    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<String> selectedPhotos, String  layoutDrawing) throws DocumentException, IOException {
+    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<File> selectedPhotos, String  layoutDrawing) throws DocumentException, IOException {
         try {
 
             //Create Document instance.
@@ -103,7 +96,7 @@ public class PDFGenerator {
 
 
             for (int i = 0; i < selectedPhotos.size(); i++) {
-                Image photo = Image.getInstance(selectedPhotos.get(i));
+                Image photo = Image.getInstance(selectedPhotos.get(i).getAbsolutePath());
                 System.out.println(selectedPhotos.get(i));
                 int pivot =  200 * i;
 
