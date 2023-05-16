@@ -4,16 +4,17 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import main.java.be.Project;
 import main.java.bll.Filter;
-import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.controllers.itemController.ProjectItemController;
 import main.java.gui.model.MainModel;
 
@@ -27,8 +28,12 @@ public class ProjectController implements Initializable{
     public TextField searchBar;
     @FXML
     VBox pnItems = null;
+    @FXML
+    private ProgressIndicator progressIndicator;
 
     MainModel model;
+
+
 
     private Filter filter;
     private ObservableList<Project> allProjects;
@@ -42,13 +47,7 @@ public class ProjectController implements Initializable{
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                allProjects.clear();
-                try {
-                    allProjects.addAll(filter.searchProject(newValue));
-                    setPnItems(allProjects);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+               loadProjectAsync(newValue);
             }
         });
     }
@@ -75,6 +74,10 @@ public class ProjectController implements Initializable{
     public void setModel(){
         try {
             model.loadProjects();
+            if (progressIndicator == null){
+                progressIndicator = new ProgressIndicator();
+            }
+             progressIndicator.setVisible(false);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -92,6 +95,29 @@ public class ProjectController implements Initializable{
                 e.printStackTrace();
             }
         }
+    }
+
+    private void loadProjectAsync(String searchValue) {
+        Task<ObservableList<Project>> task = new Task<ObservableList<Project>>() {
+            @Override
+            protected ObservableList<Project> call() throws Exception {
+                return filter.searchProject(searchValue);
+            }
+        };
+
+        task.setOnSucceeded(event -> {
+            allProjects = task.getValue();
+            setPnItems(allProjects);
+            progressIndicator.setVisible(false);
+        });
+
+        task.setOnFailed(event -> {
+            Throwable e = task.getException();
+            e.printStackTrace();
+        });
+
+        progressIndicator.setVisible(true);
+        new Thread(task).start();
     }
     public void setMostSoldProduct() throws SQLException {
         mostSoldProduct.setText("Most sold product: " + model.getTheMOstSelledProject().getType());

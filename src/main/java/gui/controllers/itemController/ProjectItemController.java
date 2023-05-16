@@ -1,6 +1,7 @@
 package main.java.gui.controllers.itemController;
 
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -30,20 +31,27 @@ public class ProjectItemController implements Initializable,Items {
         this.model = new MainModel();
         this.deleteModel=new DeleteModel();
         this.editModel=new EditModel(model);
-        try {
-            this.model.loadProjects();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
 
     }
 
     @Override
     public void setLabels(int numberOfElement, MainModel model) {
-        this.currentProject=this.model.getAllProjects().get(numberOfElement);
-        type.setText(this.model.getAllProjects().get(numberOfElement).getType());
-        customer.setText(this.model.getAllProjects().get(numberOfElement).getCustomer());
-
+        this.model = model;
+        Task<Void> loadTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                model.loadProjects();
+                return null;
+            }
+        };
+        loadTask.setOnSucceeded(event -> {
+            this.currentProject=this.model.getAllProjects().get(numberOfElement);
+            type.setText(this.model.getAllProjects().get(numberOfElement).getType());
+            customer.setText(this.model.getAllProjects().get(numberOfElement).getCustomer());
+        });
+       Thread thread = new Thread(loadTask);
+       thread.start();
     }
     public void setSearchedProjects(int numberOfElement, ObservableList<Project> searchedProjects){
         type.setText(searchedProjects.get(numberOfElement).getType());
