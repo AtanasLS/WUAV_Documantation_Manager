@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import main.java.be.Document;
 import main.java.be.Project;
 import main.java.gui.controllers.editController.DocumentEditController;
+import main.java.gui.model.DeleteModel;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -20,12 +21,15 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class DocumentItemController implements Initializable {
-    public Label documentName, creator, date, project, customer;
+    public Label documentName,  date, project;
     private MainModel model;
+
+    private DeleteModel deleteModel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
+        this.deleteModel = new DeleteModel();
     }
 
     public void setLabels(int numberOfElement) {
@@ -80,5 +84,10 @@ public class DocumentItemController implements Initializable {
         stage.setFullScreen(false);
         stage.setResizable(false);
         stage.show();
+    }
+
+    public void handleDelete(ActionEvent actionEvent) {
+        deleteModel.deleteFromDatabase(model.getSelectedDocument().getId(), "Document");
+
     }
 }

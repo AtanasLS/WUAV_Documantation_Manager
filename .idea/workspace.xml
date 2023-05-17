@@ -3,12 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="95a2f632-40c1-4ada-8324-ea28b957e6ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin.png" beforeDir="false" afterPath="$PROJECT_DIR$/Admin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/UserEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/UserEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/DocumentEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/DocumentEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/infoPageController/CustomerInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/infoPageController/CustomerInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/infoPageController/OrderINfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/infoPageController/OrderINfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/DocumentItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/DocumentItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/UserItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/UserItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/create/CreateProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/create/CreateProject.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/DocumentItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/DocumentItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/UserItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/UserItem.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684099576437</updated>
-      <workItem from="1684099581489" duration="30977000" />
+      <workItem from="1684099581489" duration="36408000" />
     </task>
     <servers />
   </component>

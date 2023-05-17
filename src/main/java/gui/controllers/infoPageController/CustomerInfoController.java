@@ -27,11 +27,9 @@ public class CustomerInfoController implements Initializable , Info{
     private EditModel editModel;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        /*
-        this.editModel=new EditModel(model);
-        this.deleteModel=new DeleteModel();
 
-         */
+      //  this.editModel=new EditModel(model);
+        this.deleteModel=new DeleteModel();
         this.model = new MainModel();
 
     }
@@ -64,6 +62,7 @@ public class CustomerInfoController implements Initializable , Info{
     }
 
     public void handleDelete(ActionEvent actionEvent) {
+       delete(model.getSelectedCustomer().getId());
     }
 
     @Override

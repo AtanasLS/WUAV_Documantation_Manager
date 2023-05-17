@@ -57,12 +57,13 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-        String query="DELETE FROM log_ins WHERE id=?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
-        ResultSet resultSet =stmt.executeQuery();
-        return resultSet.toString();    }
-
+        String query = "DELETE FROM log_ins WHERE id = ?";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, id);
+        int affectedRows = stmt.executeUpdate();
+        System.out.println("Rows affected: " + affectedRows);
+        return "Rows affected: " + affectedRows;
+    }
     @Override
     public String updateDatabase(LogIns object) throws SQLException {
        int id=object.getId();
@@ -107,9 +108,6 @@ public class LogInDAO implements DAOInterface<LogIns> {
             String password=resultSet.getString("password");
             String project=resultSet.getString("type");
             int projectId=resultSet.getInt("projectId");
-
-
-
 
             listOfLogIns.add(new LogIns(id,username,password,project,projectId));
         }

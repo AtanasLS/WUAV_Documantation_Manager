@@ -55,7 +55,7 @@ public class OrderINfoController implements Initializable,Info
 
     @Override
     public void setInfoLabels() {
-
+        System.out.println(model.getSelectedOrder());
         this.customer.setItems(model.getAllCustomers());
         this.customer.setValue(model.getSelectedObject(model.getSelectedOrder().getCustomerID(), "Customer"));
         this.user.setItems(model.getAllUsers());
@@ -110,7 +110,7 @@ public class OrderINfoController implements Initializable,Info
                 0.0
         );
         System.out.println(date.getValue() + "etooo");
-
+        System.out.println("here is the ID:  " + model.getSelectedOrder().getId());
         editModel.updateDatabaseElement(editedOrder, "Order", model.getSelectedOrder().getId());
     }
 
@@ -119,6 +119,7 @@ public class OrderINfoController implements Initializable,Info
     }
 
     public void handleDelete(javafx.event.ActionEvent actionEvent) {
+        System.out.println(model.getSelectedOrder().getId());
         delete(model.getSelectedOrder().getId());
     }
 }
