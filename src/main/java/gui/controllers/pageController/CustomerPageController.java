@@ -10,8 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import main.java.be.Customer;
 import main.java.bll.Filter;
@@ -30,17 +32,20 @@ public class CustomerPageController implements Initializable {
     VBox pnItems = null;
     @FXML
     private ProgressIndicator progressIndicator;
+    @FXML
+    public Label lastNameLabel, firstNameLabel, emailLabel, addressLabel;
 
     MainModel model;
     private Filter filter;
     private ObservableList<Customer> allCustomers;
+    private String searchedType;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel() ;
         this.allCustomers = FXCollections.observableArrayList();
         filter = new Filter();
-
+        searchedType = "first name";
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -96,7 +101,7 @@ public class CustomerPageController implements Initializable {
         Task<ObservableList<Customer>> task = new Task<ObservableList<Customer>>() {
             @Override
             protected ObservableList<Customer> call() throws Exception {
-                return filter.searchCustomers(searchValue);
+                return filter.searchCustomers(searchValue, searchedType);
             }
         };
 
@@ -113,5 +118,17 @@ public class CustomerPageController implements Initializable {
 
         progressIndicator.setVisible(true);
         new Thread(task).start();
+    }
+
+    public void handleClicks(MouseEvent mouseEvent) {
+        if (mouseEvent.getSource() == firstNameLabel){
+            searchedType = "first name";
+        }else if (mouseEvent.getSource() == lastNameLabel){
+            searchedType = "last name";
+        }else if (mouseEvent.getSource() == emailLabel){
+            searchedType = "email";
+        }else if (mouseEvent.getSource() == addressLabel){
+            searchedType = "address";
+        }
     }
 }

@@ -18,7 +18,8 @@ public class OrderDAO implements DAOInterface<Order> {
 
     @Override
     public Order getFromDatabase(int id) throws SQLException {
-        String query="SELECT * from [order] LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId WHERE order.id=?;";
+        String query="SELECT * from [order] LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId LEFT JOIN project ON " +
+                "project.id=[order].ProjectId WHERE order.id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
@@ -28,7 +29,7 @@ public class OrderDAO implements DAOInterface<Order> {
 
     @Override
     public ObservableList<Order> getAllFromDatabase() throws SQLException {
-        String query="SELECT * from [order] LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId;";
+        String query="SELECT * from [order] LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId LEFT JOIN project ON project.id=[order].ProjectId;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
 
@@ -110,7 +111,7 @@ public class OrderDAO implements DAOInterface<Order> {
         int projectID=resultSet.getInt("ProjectId");
         String name=resultSet.getString("name");
         String user=resultSet.getString("username");
-        String project=resultSet.getString("name");
+        String project=resultSet.getString("project_type");
         String customer=resultSet.getString("first_name");
         int customerId=resultSet.getInt("customerId");
         Date date=resultSet.getDate("date");
@@ -133,7 +134,7 @@ public class OrderDAO implements DAOInterface<Order> {
             int projectID=resultSet.getInt("ProjectId");
             String name=resultSet.getString("name");
             String user=resultSet.getString("username");
-            String project=resultSet.getString("name");
+            String project=resultSet.getString("project_type");
             String customer=resultSet.getString("first_name");
             int customerId=resultSet.getInt("customerId");
             Date date=resultSet.getDate("date");

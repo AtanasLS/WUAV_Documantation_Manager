@@ -12,8 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Document;
@@ -30,6 +32,7 @@ import java.util.ResourceBundle;
 public class DocumentController implements Initializable {
 
     public TextField searchBar;
+    public Label projectLabel, nameLabel;
     @FXML
     VBox pnItems = null;
 
@@ -42,6 +45,7 @@ public class DocumentController implements Initializable {
     private Filter filter;
 
     private ObservableList<Document> allDocs;
+    private String searchType;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -55,6 +59,8 @@ public class DocumentController implements Initializable {
              loadDocumentsAsync(newValue);
             }
         });
+
+        searchType = "name";
 
     }
     public void setPnItemsSearched(ObservableList<Document> searchedDocuments){
@@ -142,7 +148,7 @@ public class DocumentController implements Initializable {
         Task<ObservableList<Document>> task = new Task<ObservableList<Document>>() {
             @Override
             protected ObservableList<Document> call() throws Exception {
-                return filter.searchDocument(searchValue);
+                return filter.searchDocument(searchValue, searchType);
             }
         };
 
@@ -159,5 +165,13 @@ public class DocumentController implements Initializable {
 
         progressIndicator.setVisible(true);
         new Thread(task).start();
+    }
+
+    public void handleClicks(MouseEvent mouseEvent) {
+        if (mouseEvent.getSource() == nameLabel){
+            searchType = "name";
+        }else if (mouseEvent.getSource() == projectLabel){
+            searchType = "project";
+        }
     }
 }

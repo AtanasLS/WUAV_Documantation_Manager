@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -35,5 +36,25 @@
             </VBox>
          </content>
       </ScrollPane>
+      <Label fx:id="nameLabel" alignment="CENTER" layoutX="82.0" layoutY="147.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Name">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="projectLabel" alignment="CENTER" layoutX="264.0" layoutY="147.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Project">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="customerLabel" alignment="CENTER" layoutX="447.0" layoutY="147.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Customer">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateLabel" alignment="CENTER" layoutX="707.0" layoutY="147.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Date">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

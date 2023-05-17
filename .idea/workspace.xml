@@ -3,13 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="95a2f632-40c1-4ada-8324-ea28b957e6ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/UserEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/UserEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/infoPageController/OrderINfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/infoPageController/OrderINfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bll/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/Filter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/LogInsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/LogInsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/LogIns.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/LogIns.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1684099576437</updated>
-      <workItem from="1684099581489" duration="40994000" />
+      <workItem from="1684099581489" duration="52308000" />
     </task>
     <servers />
   </component>

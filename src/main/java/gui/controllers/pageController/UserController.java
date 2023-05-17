@@ -9,8 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import main.java.be.User;
@@ -26,6 +28,8 @@ import java.util.ResourceBundle;
 public class UserController implements Initializable {
     public TextField searchBar;
     @FXML
+    Label usernameLabel, firstNameLabel;
+    @FXML
     VBox pnItems = null;
     MainModel model;
 
@@ -35,6 +39,8 @@ public class UserController implements Initializable {
 
     @FXML
     private ProgressIndicator progressIndicator;
+
+    private String searchType;
 
 
     @Override
@@ -47,6 +53,7 @@ public class UserController implements Initializable {
                loadUsersAsync(newValue);
             }
         });
+        searchType = "username";
     }
 
     public void setMainModel(String type) {
@@ -125,7 +132,7 @@ public class UserController implements Initializable {
         Task<ObservableList<User>> task = new Task<ObservableList<User>>() {
             @Override
             protected ObservableList<User> call() throws Exception {
-                return filter.searchUsers(searchValue);
+                return filter.searchUsers(searchValue,searchType);
             }
         };
 
@@ -144,8 +151,13 @@ public class UserController implements Initializable {
         new Thread(task).start();
     }
 
+    public void handleClicks(MouseEvent mouseEvent) {
+        if (mouseEvent.getSource() == usernameLabel){
+            System.out.println("work!!!");
+            searchType = "username";
+        }else if (mouseEvent.getSource() == firstNameLabel){
+            searchType = "first name";
+        }
 
-    public void searchHandle(MouseEvent mouseEvent) throws SQLException {
-        setPnItems(filter.searchUsers(searchBar.getText()));
     }
 }

@@ -89,7 +89,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
             int id = resultSet.getInt("id");
             String username = resultSet.getString("username");
             String password = resultSet.getString("password");
-            String project = resultSet.getString("type");
+            String project = resultSet.getString("project_type");
             int projectId = resultSet.getInt("projectId");
 
             return new LogIns(id, username, password, project, projectId);
@@ -106,7 +106,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
             String username=resultSet.getString("username");
             String password=resultSet.getString("password");
-            String project=resultSet.getString("type");
+            String project=resultSet.getString("project_type");
             int projectId=resultSet.getInt("projectId");
 
             listOfLogIns.add(new LogIns(id,username,password,project,projectId));
