@@ -45,14 +45,15 @@ public class UserEditController implements Initializable {
         this.id = mvm.getSelectedUser().getId();
         this.userID = mvm.getSelectedUser().getId();
         this.img=mvm.getSelectedUser().getImg();
+        this.password.setText(mvm.getSelectedUser().getPassword());
     }
 
     public void handleSave(ActionEvent actionEvent) throws SQLException {
-        System.out.println(password.getText() +"  "+this.id);
-        User editedCustomer = new User( this.id,username.getText(), firstName.getText(), lastName.getText(), email.getText()
+
+        User editedUser = new User( this.id,username.getText(), firstName.getText(), lastName.getText(), email.getText()
                 ,password.getText(), type.getText(),this.img);
 
-        model.updateDatabaseElement(editedCustomer,"User", this.id );
+        model.updateDatabaseElement(editedUser,"User", this.id );
 
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         stage.close();
