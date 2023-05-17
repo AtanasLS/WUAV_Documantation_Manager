@@ -17,7 +17,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <ImageView fitHeight="23.0" fitWidth="17.0" layoutX="396.0" layoutY="43.0" onMousePressed="#searchHandle" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="23.0" fitWidth="17.0" layoutX="396.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/search.png" />
          </image>
@@ -36,12 +36,12 @@
             </VBox>
          </content>
       </ScrollPane>
-      <Label alignment="CENTER" layoutX="50.0" layoutY="159.0" prefHeight="31.0" prefWidth="154.0" text="Username">
+      <Label fx:id="usernameLabel" alignment="CENTER" layoutX="50.0" layoutY="159.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Username">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="280.0" layoutY="159.0" prefHeight="31.0" prefWidth="154.0" text="First Name">
+      <Label fx:id="firstNameLabel" alignment="CENTER" layoutX="280.0" layoutY="159.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="First Name">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

@@ -1,6 +1,7 @@
 package main.java.gui.controllers.itemController;
 
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,20 +29,29 @@ public class OrderItemController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
-        try {
-            this.model.loadOrders();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
     }
 
     //@Override
     public void setLabels(int numberOfElement) {
-        model.setSelectedOrder(this.model.getAllOrders().get(numberOfElement));
-        oName.setText(this.model.getAllOrders().get(numberOfElement).getName());
-        pName.setText(this.model.getAllOrders().get(numberOfElement).getProject());
-        customer.setText(this.model.getAllOrders().get(numberOfElement ).getCustomer());
-        date.setText(this.model.getAllOrders().get(numberOfElement ).getDate().toString());
+        Task<Void> loadTask = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                model.loadOrders();
+                return null;
+            }
+        };
+        loadTask.setOnSucceeded(event -> {
+            model.setSelectedOrder(this.model.getAllOrders().get(numberOfElement));
+            oName.setText(this.model.getSelectedOrder().getName());
+            pName.setText(this.model.getSelectedOrder().getProject());
+            System.out.println( "Project Name: !!! "+model.getSelectedOrder().getProject());
+            customer.setText(this.model.getSelectedOrder().getCustomer());
+            date.setText(this.model.getSelectedOrder().getDate().toString());
+        });
+        Thread loadThread = new Thread(loadTask);
+        loadThread.start();
+
     }
     public void setSearchedItems(int numberOfElement, ObservableList<Order> searchedOrders){
         model.setSelectedOrder(searchedOrders.get(numberOfElement));

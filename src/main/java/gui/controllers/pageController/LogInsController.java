@@ -9,8 +9,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import main.java.be.LogIns;
 import main.java.bll.Filter;
@@ -23,11 +25,13 @@ import java.util.ResourceBundle;
 
 public class LogInsController implements Initializable {
     public TextField searchBar;
+    public Label usernameLabel, passwordLabel, projectLabel;
     @FXML
     VBox pnItems = null;
     @FXML
     ProgressIndicator progressIndicator;
 
+    private String searchType;
 
 
         MainModel model;
@@ -39,7 +43,7 @@ public class LogInsController implements Initializable {
             this.model = new MainModel();
             this.filter = new Filter();
             this.allLogins = FXCollections.observableArrayList();
-
+            searchType = "username";
             searchBar.textProperty().addListener(new ChangeListener<String>() {
                 @Override
                 public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -95,7 +99,7 @@ public class LogInsController implements Initializable {
         Task<ObservableList<LogIns>> task = new Task<ObservableList<LogIns>>() {
             @Override
             protected ObservableList<LogIns> call() throws Exception {
-                return filter.searchLogIns(searchValue);
+                return filter.searchLogIns(searchValue, searchType);
             }
         };
 
@@ -112,5 +116,15 @@ public class LogInsController implements Initializable {
 
         progressIndicator.setVisible(true);
         new Thread(task).start();
+    }
+
+    public void handleClicks(MouseEvent mouseEvent) {
+        if (mouseEvent.getSource() == usernameLabel){
+            searchType = "username";
+        }else if (mouseEvent.getSource() == passwordLabel){
+            searchType = "password";
+        }else if (mouseEvent.getSource() == projectLabel){
+            searchType = "project";
+        }
     }
 }

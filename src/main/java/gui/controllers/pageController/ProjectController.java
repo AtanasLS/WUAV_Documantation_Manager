@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import main.java.be.Project;
 import main.java.bll.Filter;
@@ -29,9 +30,13 @@ public class ProjectController implements Initializable{
     @FXML
     VBox pnItems = null;
     @FXML
+    public Label customerLabel, typeLabel;
+    @FXML
     private ProgressIndicator progressIndicator;
 
     MainModel model;
+
+    private String searchType;
 
 
 
@@ -43,7 +48,7 @@ public class ProjectController implements Initializable{
         this.model = new MainModel();
         this.filter = new Filter();
         this.allProjects = FXCollections.observableArrayList();
-
+        searchType = "type";
         searchBar.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -101,7 +106,7 @@ public class ProjectController implements Initializable{
         Task<ObservableList<Project>> task = new Task<ObservableList<Project>>() {
             @Override
             protected ObservableList<Project> call() throws Exception {
-                return filter.searchProject(searchValue);
+                return filter.searchProject(searchValue, searchType);
             }
         };
 
@@ -121,5 +126,13 @@ public class ProjectController implements Initializable{
     }
     public void setMostSoldProduct() throws SQLException {
         mostSoldProduct.setText("Most sold product: " + model.getTheMOstSelledProject().getType());
+    }
+
+    public void handleClicks(MouseEvent mouseEvent) {
+        if (mouseEvent.getSource() == typeLabel){
+            searchType = "type";
+        }else if (mouseEvent.getSource() == customerLabel){
+            searchType = "customer";
+        }
     }
 }
