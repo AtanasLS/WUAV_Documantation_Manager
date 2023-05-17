@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -34,6 +35,7 @@ public class TechnicianViewController implements Initializable {
     public Button btnOrders, btnCustomers, btnProjects, btnLogIns, btnSignout, btnDocuments;
     public AnchorPane painnnnn;
     public Label usernameLogIN;
+    public ImageView profileImage;
 
     private String selected;
 
@@ -56,7 +58,10 @@ public class TechnicianViewController implements Initializable {
         this.editModel=new EditModel(mvm);
         this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
 
-        this.avatar=new Image("/images/"+this.model.getLogInUser().getUsername()+".png");
+        this.avatar=new Image("/images/"+this.model.getLogInUser().getImg());
+        this.profileImage.setImage(avatar);
+        System.out.println("/images/" + this.model.getLogInUser().getUsername()+".png");
+        System.out.println(model.getLogInUser().getImg());
 
     }
 

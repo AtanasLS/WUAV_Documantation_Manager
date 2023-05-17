@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import main.java.be.User;
 import main.java.gui.controllers.mainDashboardsController.AdminViewController;
 import main.java.gui.controllers.mainDashboardsController.SellerViewController;
+import main.java.gui.controllers.mainDashboardsController.TechnicianViewController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -70,7 +71,8 @@ public class LoginPageController implements Initializable {
                     Parent root = loader.load();
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
-                    // controller.setLoggedInUser(loggedInUser.getUsername(), loggedInUser.getType());
+                    TechnicianViewController controller = loader.getController();
+                    controller.setMainModel(this.model);
                     stage.setFullScreen(false);
                     stage.setResizable(false);
                     stage.show();
