@@ -114,7 +114,14 @@ public class UserDAO implements DAOInterface<User> {
         password=hashPassword(password);
 
         String type=object.getType();
-        File file = new File(object.getImg());
+        System.out.println(object.getImg());
+        File file;
+        if (object.getImg().length()<15){
+             file = new File("src/main/resources/images/"+object.getImg());
+        }
+        else {
+         file = new File(object.getImg());}
+
         FileInputStream input = new FileInputStream(file);
 
 
@@ -155,7 +162,7 @@ public class UserDAO implements DAOInterface<User> {
             String password = resultSet.getString("password");
             String type = resultSet.getString("type");
 
-            File file = new File(username+ ".png");
+            File file = new File("src/main/resources/images/"+username+ ".png");
             String img= username+ ".png";
             FileOutputStream output = new FileOutputStream(file);
 
