@@ -18,7 +18,7 @@ public class OrderDAO implements DAOInterface<Order> {
 
     @Override
     public Order getFromDatabase(int id) throws SQLException {
-        String query="SELECT * from order LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId WHERE order.id=?;";
+        String query="SELECT * from [order] LEFT JOIN customer ON customer.id=[order].customerId LEFT JOIN users ON users.id=[order].UserId WHERE order.id=?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
@@ -41,7 +41,8 @@ public class OrderDAO implements DAOInterface<Order> {
         int projectID=object.getProjectID();
         String name=object.getName();
         int customer=object.getCustomerID();
-        Date date= Date.valueOf(object.getDate());
+        Date date= (Date) object.getDate();
+
         Double price=object.getPrice();
 
 
@@ -53,6 +54,7 @@ public class OrderDAO implements DAOInterface<Order> {
         stmt.setInt(4,customer);
         stmt.setDate(5,date);
         stmt.setDouble(6,price);
+        System.out.println(date);
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -71,29 +73,33 @@ public class OrderDAO implements DAOInterface<Order> {
 
     @Override
     public String updateDatabase(Order object) throws SQLException {
-        int id=object.getId();
-        int userId=object.getUserID();
-        int projectID=object.getProjectID();
-        String name=object.getName();
-        int customer=object.getCustomerID();
-        LocalDate date= object.getDate();
-        Double price=object.getPrice();
+        int id = object.getId();
+        int userId = object.getUserID();
+        int projectID = object.getProjectID();
+        String name = object.getName();
+        int customer = object.getCustomerID();
+        Date date = object.getDate();
+        System.out.println(object.getDate());
+        Double price = object.getPrice();
 
-        String query="UPDATE [order] set UserId = ?,ProjectId = ?,name = ?,customerId = ?, [date] = ?, price = ? WHERE id = ?;";
+        String query = "UPDATE [order] SET UserId = ?, ProjectId = ?, name = ?, customerId = ?, date = ?, price = ? WHERE id = ?;";
 
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,userId);
-        stmt.setInt(2,projectID);
-        stmt.setString(3,name);
-        stmt.setInt(4,customer);
-        stmt.setDate(5, Date.valueOf(date));
-        stmt.setDouble(6,price);
-        stmt.setInt(7,id);
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, userId);
+        stmt.setInt(2, projectID);
+        stmt.setString(3, name);
+        stmt.setInt(4, customer);
+        stmt.setDate(5, date);
+        stmt.setDouble(6, price);
+        stmt.setInt(7, id);
 
-
-        ResultSet resultSet =stmt.executeQuery();
-
-        return resultSet.toString();
+        try {
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println(rowsAffected + " row(s) updated.");
+        } catch (SQLException e) {
+            System.out.println("Error occurred: " + e.getMessage());
+        }
+        return "Work!";
     }
 
     @Override
@@ -110,7 +116,7 @@ public class OrderDAO implements DAOInterface<Order> {
         double price=resultSet.getDouble("price");
 
 
-        return new Order(userID,projectID,name,user,project,customer,customerId, date.toLocalDate(),price);
+        return new Order(userID,projectID,name,user,project,customer,customerId, date,price);
 
 
     }
@@ -132,7 +138,7 @@ public class OrderDAO implements DAOInterface<Order> {
             Date date=resultSet.getDate("date");
             double price=resultSet.getDouble("price");
 
-            listOfOrders.add(new Order(userID,projectID,name,user,project,customer,customerId, date.toLocalDate(),price));
+            listOfOrders.add(new Order(userID,projectID,name,user,project,customer,customerId, date,price));
         }
 
         return listOfOrders;    }

@@ -15,8 +15,11 @@ import main.java.gui.model.MainModel;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class OrderINfoController implements Initializable,Info
@@ -62,8 +65,14 @@ public class OrderINfoController implements Initializable,Info
         this.nameField.setText(model.getSelectedOrder().getName());
 
 
+        Date selectedDate = model.getSelectedOrder().getDate();
+        LocalDate localDate = selectedDate.toLocalDate();
 
-        this.date.setValue((model.getSelectedOrder().getDate()));
+        this.date.setValue(localDate);
+
+
+
+
 
         System.out.println(model.getSelectedOrder().getCustomer() +" " + model.getSelectedOrder().getUserName() +" " +model.getSelectedOrder().getProject());
 
@@ -85,6 +94,10 @@ public class OrderINfoController implements Initializable,Info
         Project selectedProject = (Project) project.getSelectionModel().getSelectedItem();
         Customer selectedCustomer = (Customer) customer.getSelectionModel().getSelectedItem();
 
+
+        LocalDate selectedDate = date.getValue();
+        Date sqlDate = Date.valueOf(selectedDate);
+
         Order editedOrder = new Order(
                 selectedUser.getId(),
                 selectedProject.getProjectId(),
@@ -93,9 +106,10 @@ public class OrderINfoController implements Initializable,Info
                 selectedProject.toString(),
                 selectedCustomer.getFirstName() + " " + selectedCustomer.getLastName(),
                 selectedCustomer.getId(),
-                date.getValue(),
+                sqlDate,
                 0.0
         );
+        System.out.println(date.getValue() + "etooo");
 
         editModel.updateDatabaseElement(editedOrder, "Order", model.getSelectedOrder().getId());
     }
