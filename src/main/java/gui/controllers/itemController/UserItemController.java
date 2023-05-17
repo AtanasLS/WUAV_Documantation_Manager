@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import main.java.be.User;
 import main.java.gui.controllers.infoPageController.CustomerInfoController;
 import main.java.gui.controllers.infoPageController.UserInfoController;
+import main.java.gui.model.DeleteModel;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -24,9 +25,12 @@ public class UserItemController implements Initializable {
     public Label username, firstName, password;
     private MainModel model ;
 
+    private DeleteModel deleteModel;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.deleteModel = new DeleteModel();
     }
 
     //@Override
@@ -84,5 +88,10 @@ public class UserItemController implements Initializable {
         stage.setFullScreen(false);
         stage.setResizable(false);
         stage.show();
+    }
+
+    public void deleteHandle(ActionEvent actionEvent) {
+        deleteModel.deleteFromDatabase(model.getSelectedUser().getId(), "User");
+
     }
 }

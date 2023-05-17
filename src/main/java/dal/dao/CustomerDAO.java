@@ -67,11 +67,12 @@ public class CustomerDAO implements DAOInterface<Customer> {
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
 
-        String query="DELETE FROM customer WHERE id=?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
-        ResultSet resultSet =stmt.executeQuery();
-        return resultSet.toString();
+        String query = "DELETE FROM customer WHERE id = ?";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, id);
+        int affectedRows = stmt.executeUpdate();
+        System.out.println("Rows affected: " + affectedRows);
+        return null; // or any other appropriate return value
     }
 
     @Override

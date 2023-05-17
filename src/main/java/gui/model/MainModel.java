@@ -201,7 +201,7 @@ public class MainModel {
     public Object getSelectedObject(int id, String type) {
         return appLogicManager.getFromDatabase(id, type);
     }
-
+    
     public ObservableList<Picture> getAllPhotosForSelectedDocument(int documentId) throws SQLException, IOException {
         return appLogicManager.getAllPicturesForProject(documentId);
     }

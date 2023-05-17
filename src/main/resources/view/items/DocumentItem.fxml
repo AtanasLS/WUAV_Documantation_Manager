@@ -23,9 +23,9 @@
               </ImageView>
          </children>
       </HBox>
-      <HBox prefHeight="55.0" prefWidth="175.0">
+      <HBox prefHeight="55.0" prefWidth="190.0">
          <children>
-              <Label fx:id="documentName" text="Document  Name" textFill="WHITE">
+              <Label fx:id="documentName" alignment="CENTER" prefHeight="22.0" prefWidth="169.0" text="Document  Name" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -33,11 +33,23 @@
                   <Insets top="15.0" />
                </HBox.margin>
             </Label>
+         </children>
+      </HBox>
+      <HBox prefHeight="55.0" prefWidth="253.0">
+         <children>
+              <Label fx:id="project" alignment="CENTER" prefHeight="22.0" prefWidth="259.0" text="project" textFill="WHITE">
+                  <HBox.margin>
+                      <Insets top="15.0" />
+                  </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+              </Label>
          </children>
       </HBox>
       <HBox prefHeight="55.0" prefWidth="171.0">
          <children>
-              <Label fx:id="creator" text="creator" textFill="WHITE">
+              <Label fx:id="date" alignment="CENTER" prefHeight="22.0" prefWidth="165.0" text="date" textFill="WHITE">
                   <HBox.margin>
                       <Insets top="15.0" />
                   </HBox.margin>
@@ -47,46 +59,25 @@
               </Label>
          </children>
       </HBox>
-      <HBox prefHeight="55.0" prefWidth="122.0">
+      <HBox prefHeight="55.0" prefWidth="160.0">
          <children>
-              <Label fx:id="date" text="date" textFill="WHITE">
-                  <HBox.margin>
-                      <Insets top="15.0" />
-                  </HBox.margin>
+            <Button mnemonicParsing="false" onAction="#handleDelete" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="Delete" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-              </Label>
-         </children>
-      </HBox>
-      <HBox prefHeight="55.0" prefWidth="168.0">
-         <children>
-              <Label fx:id="project" text="project" textFill="WHITE">
-                  <HBox.margin>
-                      <Insets top="15.0" />
-                  </HBox.margin>
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-              </Label>
-         </children>
-      </HBox>
-      <HBox prefHeight="55.0" prefWidth="178.0">
-         <children>
-            <Label fx:id="customer" text="customer" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
                <HBox.margin>
-                  <Insets top="15.0" />
+                  <Insets left="65.0" top="12.0" />
                </HBox.margin>
-            </Label>
+            </Button>
          </children>
       </HBox>
       <Button mnemonicParsing="false" onAction="#infoBtnHandle" prefHeight="10.0" prefWidth="60.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="View" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
+         <HBox.margin>
+            <Insets left="40.0" />
+         </HBox.margin>
       </Button>
     </children>
     <effect>

@@ -70,14 +70,15 @@ public class ProjectDAO implements DAOInterface<Project> {
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-        String query="DELETE FROM project WHERE id=?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
+        String query = "DELETE FROM project WHERE id = ?";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, id);
         try {
-            ResultSet resultSet = stmt.executeQuery();
-            //System.out.println(resultSet.toString());
-        }catch (RuntimeException e){
-            System.out.println(e);
+            int affectedRows = stmt.executeUpdate();
+            System.out.println("Rows affected: " + affectedRows);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the SQLException appropriately
         }
         return "work!";
     }

@@ -64,11 +64,12 @@ public class OrderDAO implements DAOInterface<Order> {
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-        String query="DELETE FROM [order] WHERE id=?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
-        ResultSet resultSet =stmt.executeQuery();
-        return resultSet.toString();
+        String query = "DELETE FROM [order] WHERE id = ?";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, id);
+        int affectedRows = stmt.executeUpdate();
+        System.out.println("Rows affected: " + affectedRows);
+        return "Rows affected: " + affectedRows;
     }
 
     @Override
@@ -116,7 +117,7 @@ public class OrderDAO implements DAOInterface<Order> {
         double price=resultSet.getDouble("price");
 
 
-        return new Order(userID,projectID,name,user,project,customer,customerId, date,price);
+        return new Order(id,userID,projectID,name,user,project,customer,customerId, date,price);
 
 
     }
@@ -138,7 +139,7 @@ public class OrderDAO implements DAOInterface<Order> {
             Date date=resultSet.getDate("date");
             double price=resultSet.getDouble("price");
 
-            listOfOrders.add(new Order(userID,projectID,name,user,project,customer,customerId, date,price));
+            listOfOrders.add(new Order(id,userID,projectID,name,user,project,customer,customerId, date,price));
         }
 
         return listOfOrders;    }
