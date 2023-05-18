@@ -77,6 +77,8 @@ public class DocumentDAO implements DAOInterface<Document> {
 
         ResultSet resultSet =stmt.executeQuery();
 
+
+
         return resultSet.toString();
     }
 
@@ -186,4 +188,7 @@ public class DocumentDAO implements DAOInterface<Document> {
         }
         return listOfDocuments;
     }
+
+
+
 }

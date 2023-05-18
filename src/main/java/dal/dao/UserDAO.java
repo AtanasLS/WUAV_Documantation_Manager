@@ -100,6 +100,7 @@ public class UserDAO implements DAOInterface<User> {
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
+        this.deleteProjectToUser(id);
         return resultSet.toString();
     }
 
@@ -206,6 +207,13 @@ public class UserDAO implements DAOInterface<User> {
 
     private String hashPassword(String plainTextPassword){
         return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
+    }
+
+    private void deleteProjectToUser(int userId) throws SQLException {
+        String query="DELETE FROM projectToUser WHERE userId=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,userId);
+        ResultSet resultSet =stmt.executeQuery();
     }
 
 

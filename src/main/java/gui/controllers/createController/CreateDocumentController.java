@@ -30,8 +30,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
-public class CreateDocumentController implements Initializable {
+public class CreateDocumentController implements Initializable, CreateController {
 
 
     public AnchorPane mainPane;
@@ -56,6 +57,8 @@ public class CreateDocumentController implements Initializable {
         documentDescription.appendText("\n");
         documentDescription.setPrefColumnCount(20);
         this.allDocs = FXCollections.observableArrayList();
+        this.checkData();
+
     }
 
 
@@ -76,6 +79,12 @@ public class CreateDocumentController implements Initializable {
         System.out.println(allDocs.get(allDocs.size() - 1).getId());
 
     }
+
+    @Override
+    public void handleSave(ActionEvent actionEvent) {
+
+    }
+
     public void createDrawing(ActionEvent actionEvent) throws IOException {
         FileChooser layoutDrawingChooser = new FileChooser();
         Stage stage = new Stage();
@@ -150,5 +159,80 @@ public class CreateDocumentController implements Initializable {
     public void handleCancel(ActionEvent actionEvent) {
         Stage currentStage = (Stage) cancelBtn.getScene().getWindow();
         currentStage.close();
+    }
+
+    @Override
+    public void checkData(){
+        Pattern name = Pattern.compile("[A-Za-z\\s]{2,}");
+        TextFormatter<?> formatter = new TextFormatter<>(change -> {
+            if (name.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        TextFormatter<?> formatter1 = new TextFormatter<>(change -> {
+            if (name.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        TextFormatter<?> formatter2 = new TextFormatter<>(change -> {
+            if (name.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern mail = Pattern.compile("[A-Za-z1-9]{2,}@[A-Za-z1-9].{2,}");
+        TextFormatter<?> formatterMail = new TextFormatter<>(change -> {
+            if (mail.matcher(change.getControlNewText()).matches()) {
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern phone = Pattern.compile("\\+?\\d[\\d-\\s]{8,}");
+        TextFormatter<?> formatterPhone = new TextFormatter<>(change -> {
+            if (phone.matcher(change.getControlNewText()).matches()) {
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern address = Pattern.compile("[A-Za-z0-9\\s,.]+");
+        TextFormatter<?> formatterAddress = new TextFormatter<>(change -> {
+            if (address.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern pass = Pattern.compile("[A-Za-z\\s1-9\\s]{2,}");
+        TextFormatter<?> formatterPass = new TextFormatter<>(change -> {
+            if (pass.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        documentName.setTextFormatter(formatterMail);
+
+
+
+
     }
 }

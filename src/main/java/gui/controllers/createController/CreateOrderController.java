@@ -4,10 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import main.java.be.Customer;
 import main.java.be.Order;
@@ -19,9 +16,10 @@ import main.java.gui.model.MainModel;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.regex.Pattern;
 
 public class CreateOrderController implements Initializable,CreateController {
-    public TextField name, price;
+    public TextField name,price;
     public ComboBox customer,project,user;
     public DatePicker date;
     public Button cancelBtn, saveBtn;
@@ -37,6 +35,8 @@ public class CreateOrderController implements Initializable,CreateController {
         this.customers = FXCollections.observableArrayList();
         this.projects = FXCollections.observableArrayList();
         this.users =  FXCollections.observableArrayList();
+        this.checkData();
+
 
         try {
             model.loadProjects();
@@ -81,5 +81,61 @@ public class CreateOrderController implements Initializable,CreateController {
     public void handleCancel(ActionEvent actionEvent) {
         Stage stage = (Stage) cancelBtn.getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void checkData(){
+        Pattern name = Pattern.compile("\\^(?!\\s)([a-z ,.'-]+)$");
+        TextFormatter<?> formatter = new TextFormatter<>(change -> {
+            if (name.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern mail = Pattern.compile("\\^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        TextFormatter<?> formatterMail = new TextFormatter<>(change -> {
+            if (mail.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern phone = Pattern.compile("\\^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$");
+        TextFormatter<?> formatterPhone = new TextFormatter<>(change -> {
+            if (phone.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern address = Pattern.compile("\\^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        TextFormatter<?> formatterAddress = new TextFormatter<>(change -> {
+            if (address.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern pass = Pattern.compile("\\^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.* ).{8,16}$");
+        TextFormatter<?> formatterPass = new TextFormatter<>(change -> {
+            if (pass.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+
+
     }
 }

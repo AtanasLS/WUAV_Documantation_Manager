@@ -64,6 +64,7 @@ public class ProjectDAO implements DAOInterface<Project> {
 
 
         ResultSet resultSet =stmt.executeQuery();
+        this.addProjectToUser(object.getProjectId(),customerId);
 
         return resultSet.toString();
     }
@@ -74,6 +75,7 @@ public class ProjectDAO implements DAOInterface<Project> {
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,id);
         ResultSet resultSet =stmt.executeQuery();
+        this.deleteProjectToUser(id);
         return resultSet.toString();
     }
 
@@ -93,6 +95,8 @@ public class ProjectDAO implements DAOInterface<Project> {
 
 
         ResultSet resultSet =stmt.executeQuery();
+
+        this.addProjectToUser(id,customerId);
 
         return resultSet.toString();
     }
@@ -130,4 +134,23 @@ public class ProjectDAO implements DAOInterface<Project> {
         }
 
         return listOfProjects;    }
+
+
+    private void addProjectToUser(int projectId, int userId) throws SQLException {
+
+        String query="INSERT INTO projectToUser VALUES (?, ?);";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,projectId);
+        stmt.setInt(2,userId);
+        ResultSet resultSet =stmt.executeQuery();
+
+
+    }
+
+    private void deleteProjectToUser(int projectId) throws SQLException {
+        String query="DELETE FROM projectToUser WHERE projectId=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,projectId);
+        ResultSet resultSet =stmt.executeQuery();
+    }
 }

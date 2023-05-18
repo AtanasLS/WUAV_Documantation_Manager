@@ -1,13 +1,20 @@
 package main.java.gui.controllers.itemController;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import main.java.be.Project;
+import main.java.gui.controllers.editController.AddUserController;
+import main.java.gui.controllers.editController.DocumentEditController;
 import main.java.gui.model.DeleteModel;
 import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -43,7 +50,7 @@ public class ProjectItemController implements Initializable,Items {
         this.currentProject=this.model.getAllProjects().get(numberOfElement);
         type.setText(this.model.getAllProjects().get(numberOfElement).getType());
         customer.setText(this.model.getAllProjects().get(numberOfElement).getCustomer());
-        price.setText(String.valueOf(this.model.getAllProjects().get(numberOfElement).getPrice()));
+       // price.setText(String.valueOf(10.10));
 
 
 
@@ -54,6 +61,19 @@ public class ProjectItemController implements Initializable,Items {
 
     }
 
+    public void addUser(ActionEvent actionEvent) throws IOException, SQLException {
+        model.setSelectedProject(currentProject);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/edit/AddUser.fxml"));
+        Parent root = loader.load();
+        AddUserController controller = loader.getController();
+        controller.setMainModel(this.model);
+        //  controller.setInfoLabels();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setFullScreen(false);
+        stage.setResizable(false);
+        stage.show();
+    }
     public void deleteProject(ActionEvent actionEvent){
         this.deleteModel.deleteFromDatabase(this.currentProject.getProjectId(),"Project");
 
