@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="966.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.pageController.CustomerPageController">
    <children>
-      <TextField layoutX="109.0" layoutY="36.0" prefHeight="31.0" prefWidth="326.0" promptText="SEARCH" style="-fx-border-radius: 20px; -fx-border-color: black; -fx-background-color: white;">
+      <TextField fx:id="searchBar" layoutX="109.0" layoutY="36.0" prefHeight="31.0" prefWidth="326.0" promptText="SEARCH" style="-fx-border-radius: 20px; -fx-border-color: black; -fx-background-color: white;">
          <font>
             <Font size="14.0" />
          </font>
@@ -36,22 +36,22 @@
             </VBox>
          </content>
       </ScrollPane>
-      <Label alignment="CENTER" layoutX="57.0" layoutY="187.0" prefHeight="31.0" prefWidth="137.0" text="First Name">
+      <Label fx:id="firstNameLabel" alignment="CENTER" layoutX="57.0" layoutY="187.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="137.0" text="First Name">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="226.0" layoutY="187.0" prefHeight="31.0" prefWidth="137.0" text="Last Name">
+      <Label fx:id="lastNameLabel" alignment="CENTER" layoutX="226.0" layoutY="187.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="137.0" text="Last Name">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="413.0" layoutY="187.0" prefHeight="31.0" prefWidth="137.0" text="Email">
+      <Label fx:id="emailLabel" alignment="CENTER" layoutX="413.0" layoutY="187.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="137.0" text="Email">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="648.0" layoutY="187.0" prefHeight="31.0" prefWidth="137.0" text="Address 1">
+      <Label fx:id="addressLabel" alignment="CENTER" layoutX="648.0" layoutY="187.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="137.0" text="Address 1">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

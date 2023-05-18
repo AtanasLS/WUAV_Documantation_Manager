@@ -1,5 +1,7 @@
 package main.java.gui.controllers.itemController;
 
+import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +13,7 @@ import javafx.stage.Stage;
 import main.java.be.User;
 import main.java.gui.controllers.infoPageController.CustomerInfoController;
 import main.java.gui.controllers.infoPageController.UserInfoController;
+import main.java.gui.model.DeleteModel;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -22,38 +25,56 @@ public class UserItemController implements Initializable {
     public Label username, firstName, password;
     private MainModel model ;
 
+    private DeleteModel deleteModel;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.deleteModel = new DeleteModel();
     }
 
     //@Override
     public void setLabels(int numberOfElement,String type) {
         this.model = new MainModel();
         if (type.equals("User")) {
-
-            try {
-                this.model.loadUsers();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            this.model.setSelectedUser(this.model.getAllUsers().get(numberOfElement));
-            //System.out.println(model.getSelectedUser().getFirstName());
-            username.setText(this.model.getSelectedUser().getUsername());
-            firstName.setText(this.model.getSelectedUser().getFirstName());
-            password.setText("**********");
+            Task<Void> loadTask = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    model.loadUsers();
+                    return null;
+                }
+            };
+            loadTask.setOnSucceeded(event -> {
+                this.model.setSelectedUser(this.model.getAllUsers().get(numberOfElement));
+                username.setText(this.model.getSelectedUser().getUsername());
+                firstName.setText(this.model.getSelectedUser().getFirstName());
+                password.setText("**********");
+            });
+           Thread loadThread = new Thread(loadTask);
+           loadThread.start();
         }else if (type.equals("Technician")){
-            try {
-                this.model.loadTech();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-            this.model.setSelectedUser(this.model.getAllTech().get(numberOfElement));
-            //System.out.println(model.getSelectedUser().getFirstName());
-            username.setText(this.model.getSelectedUser().getUsername());
-            firstName.setText(this.model.getSelectedUser().getFirstName());
-            password.setText(this.model.getSelectedUser().getPassword());
+            Task<Void> loadTask = new Task<Void>() {
+                @Override
+                protected Void call() throws Exception {
+                    model.loadTech();
+                    return null;
+                }
+            };
+            loadTask.setOnSucceeded(event -> {
+                this.model.setSelectedUser(this.model.getAllTech().get(numberOfElement));
+                username.setText(this.model.getSelectedUser().getUsername());
+                firstName.setText(this.model.getSelectedUser().getFirstName());
+                password.setText(this.model.getSelectedUser().getPassword());
+            });
         }
+    }
+    public void setSearchedItems(int numberOfElement, ObservableList<User> selectedUsers){
+        this.model = new MainModel();
+        this.model.setSelectedUser(selectedUsers.get(numberOfElement));
+
+        username.setText(this.model.getSelectedUser().getUsername());
+        firstName.setText(this.model.getSelectedUser().getFirstName());
+        password.setText(this.model.getSelectedUser().getPassword());
     }
     public void infoBtnHandle(ActionEvent actionEvent) throws IOException {
 
@@ -67,5 +88,10 @@ public class UserItemController implements Initializable {
         stage.setFullScreen(false);
         stage.setResizable(false);
         stage.show();
+    }
+
+    public void deleteHandle(ActionEvent actionEvent) {
+        deleteModel.deleteFromDatabase(model.getSelectedUser().getId(), "User");
+
     }
 }

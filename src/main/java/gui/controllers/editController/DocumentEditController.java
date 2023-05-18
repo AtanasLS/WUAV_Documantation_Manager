@@ -66,6 +66,7 @@ public class DocumentEditController implements Initializable {
         mvm.loadProjects();
         mvm.loadTech();
         mvm.loadLogIns();
+
         documentDescription.setText(mvm.getSelectedDocument().getDescription());
         documentName.setText(mvm.getSelectedDocument().getName());
         date.setValue(mvm.getSelectedDocument().getDate());
@@ -77,15 +78,27 @@ public class DocumentEditController implements Initializable {
         technicianBox.setItems(mvm.getAllTech());
         customerBox.setItems(mvm.getAllCustomers());
         projectBox.setItems(mvm.getAllProjects());
+
+
         Node node;
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/PhotoItem.fxml"));
         node = loader.load();
         PhotoItemController controller = loader.getController();
         System.out.println(mvm.getSelectedDocument().getLayoutDrawing());
-         this.layoutDrawing = new Image("/images/"+mvm.getSelectedDocument().getName()+".png");
-        controller.setItems(
-                layoutDrawing, "photo");
+        this.layoutDrawing = new Image("/images/" + mvm.getSelectedDocument().getName() + ".png");
+        controller.setItems(layoutDrawing, "Layout Image");
         items.getChildren().add(node);
+
+        for (Picture p : mvm.getAllPhotosForSelectedDocument(id)) {
+            loader = new FXMLLoader(getClass().getResource("/view/items/PhotoItem.fxml"));
+            node = loader.load();
+            controller = loader.getController();
+            System.out.println(p.getInstallationPhoto());
+            Image selectedImage = new Image("/images/" + p.getInstallationPhoto() + ".png" );
+            controller.setItems(selectedImage, p.getName());
+            items.getChildren().add(node);
+        }
+
         //allImages.add(selectedImage0);
     }
 
@@ -123,6 +136,8 @@ public class DocumentEditController implements Initializable {
     }
 
     public void createDrawing(ActionEvent actionEvent) {
+
+
     }
 
     public void checkData(){

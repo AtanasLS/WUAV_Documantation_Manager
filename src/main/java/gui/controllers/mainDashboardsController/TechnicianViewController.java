@@ -1,4 +1,4 @@
-package main.java.gui;
+package main.java.gui.controllers.mainDashboardsController;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,9 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import main.java.gui.controllers.pageController.*;
 import main.java.be.User;
 import main.java.gui.controllers.itemController.PhotoItemController;
 import main.java.gui.controllers.pageController.CustomerPageController;
@@ -33,6 +35,7 @@ public class TechnicianViewController implements Initializable {
     public Button btnOrders, btnCustomers, btnProjects, btnLogIns, btnSignout, btnDocuments;
     public AnchorPane painnnnn;
     public Label usernameLogIN;
+    public ImageView profileImage;
 
     private String selected;
 
@@ -55,15 +58,22 @@ public class TechnicianViewController implements Initializable {
         this.editModel=new EditModel(mvm);
         this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
 
-        this.avatar=new Image("/images/"+this.model.getLogInUser().getUsername()+".png");
+        this.avatar=new Image("/images/"+this.model.getLogInUser().getImg());
+        this.profileImage.setImage(avatar);
+        System.out.println("/images/" + this.model.getLogInUser().getUsername()+".png");
+        System.out.println(model.getLogInUser().getImg());
 
     }
 
     public void handleClicks(ActionEvent actionEvent) {
         if (actionEvent.getSource() == btnLogIns) {
             try {
+
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/LogInsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
+                LogInsController controller = loader.getController();
+                controller.setModel();
+
                 selected = "LogIns";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -86,7 +96,8 @@ public class TechnicianViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
-
+                OrderController controller = loader.getController();
+                controller.setModel();
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -95,6 +106,8 @@ public class TechnicianViewController implements Initializable {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
+                ProjectController controller = loader.getController();
+                controller.setModel();
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -151,4 +164,7 @@ public class TechnicianViewController implements Initializable {
     }
 
 
+    public void createDrawing(javafx.scene.input.MouseEvent mouseEvent) {
+
+    }
 }

@@ -14,7 +14,9 @@ import main.java.gui.model.CreateModel;
 import main.java.gui.model.MainModel;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -67,9 +69,12 @@ public class CreateOrderController implements Initializable,CreateController {
         Customer customer1= (Customer) this.customer.getSelectionModel().getSelectedItem();
         double price= Double.parseDouble(this.price.getText());
 
+        LocalDate selectedDate = date.getValue();
+        Date sqlDate = Date.valueOf(selectedDate);
+
         Order order=new Order(user1.getId(),project1.getProjectId(),
                 this.name.getText(),user1.getUsername(),project1.getType(),
-                customer1.getFirstName(),customer1.getId(),this.date.getValue(),price);
+                customer1.getFirstName(),customer1.getId(),sqlDate,price);
         createModel.createInDatabase(order, "Order");
 
         Stage stage = (Stage) saveBtn.getScene().getWindow();

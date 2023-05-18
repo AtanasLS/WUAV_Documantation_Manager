@@ -1,25 +1,48 @@
 package main.java.bll;
 
 import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.PdfWriter;
-import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.stage.Window;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfContentByte;
 
-import javax.print.attribute.standard.Destination;
+import com.itextpdf.text.pdf.PdfWriter;
+import main.java.be.Customer;
+import main.java.be.LogIns;
+import main.java.be.Project;
+
 import java.io.*;
+import java.util.ArrayList;
 
 public class PDFGenerator {
 
-    public void generatePDF(String selectedDirectory, String name,String description, String  layoutDrawing) throws DocumentException, IOException {
+    private static void absText( PdfWriter writer,String text, int x, int y, int size) {
+        try {
+
+            PdfContentByte cb = writer.getDirectContent();
+            BaseFont bf = BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+            cb.saveState();
+            cb.beginText();
+            cb.moveText(x, y);
+            cb.setFontAndSize(bf, size);
+            cb.showText(String.valueOf(text));
+            cb.endText();
+            cb.restoreState();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<File> selectedPhotos, String  layoutDrawing) throws DocumentException, IOException {
         try {
 
             //Create Document instance.
-            Document document = new Document();
+            Document document = new Document(PageSize.A4);
 
             //Create OutputStream instance.
-            OutputStream outputStream;
+            FileOutputStream outputStream;
+
 
             /*
             DirectoryChooser directoryChooser = new DirectoryChooser();
@@ -35,26 +58,74 @@ public class PDFGenerator {
             }
 
             //Create PDFWriter instance.
-            PdfWriter.getInstance(document, outputStream);
+          PdfWriter writer =  PdfWriter.getInstance(document, outputStream);
 
             //Open the document.
-            document.open();
+          //  document.open();
 
-            //Add content to the document.
-            document.add(new Paragraph(description));
-            document.add(new Paragraph("Layout Drawing"));
+
+            document.open();
+            absText(writer, name, 235, 800, 20);
+            String customerAndProjectInfo = selectedCustomer.getFirstName() + " " + selectedCustomer.getLastName() + " "+
+                    selectedProject.getType();
+            absText(writer, customerAndProjectInfo, 20, 755, 12);
+
+
+            absText(writer, "Installaton Drawing:", 20, 730, 12);
 
             Image image1 =  Image.getInstance(layoutDrawing);
 
             //Fixed Positioning
-            image1.setAbsolutePosition(20f, 700f);
+            image1.setAbsolutePosition(25, 530);
+
 
             //Scale to new height and new width of image
-            image1.scaleAbsolute(200, 200);
+            image1.scaleAbsolute(450, 200);
 
             //Add to document
             document.add(image1);
 
+            Paragraph text = new Paragraph(description);
+            text.setSpacingBefore(270);
+            document.add(text);
+
+            String loginCred = "Login Credentials: Username: " + selectedLogIns.getUsername() + " Password: " + selectedLogIns.getPassword();
+            absText(writer, loginCred, 20, 220, 12);
+
+            absText(writer, "Photos of the Installation: ", 20, 200, 12);
+
+
+            for (int i = 0; i < selectedPhotos.size(); i++) {
+                Image photo = Image.getInstance(selectedPhotos.get(i).getAbsolutePath());
+                System.out.println(selectedPhotos.get(i));
+                int pivot =  200 * i;
+
+                photo.setAbsolutePosition(pivot, 35);
+                photo.scaleAbsolute(200, 150);
+                document.add(photo);
+            }
+
+            /*
+            Paragraph textParagraph = new Paragraph(description);
+            Paragraph layoutDrawingHeading = new Paragraph("Layout Drawing:");
+            //Add content to the document.
+            document.add(textParagraph);
+            document.add(layoutDrawingHeading);
+
+            Image image1 =  Image.getInstance(layoutDrawing);
+
+            //Fixed Positioning
+            //image1.setAbsolutePosition(300f, 300f);
+            image1.setAbsolutePosition(layoutDrawingHeading.getAlignment(), layoutDrawingHeading.getAlignment());
+
+            //Scale to new height and new width of image
+            image1.scaleAbsolute(200, 200);
+
+
+
+            //Add to document
+            document.add(image1);
+*/
 
             //Close document and outputStream.
             document.close();

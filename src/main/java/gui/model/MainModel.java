@@ -146,7 +146,10 @@ public class MainModel {
     public boolean checkIfUserExist(String username, String password){
         List<User> users = this.getAllUsers();
         for (User u: users ) {
-            if (u.getUsername().equals(username) &&   this.checkPass(password,u.getPassword())){
+            if (u.getUsername().equals(username)  &&   this.checkPass(password,u.getPassword()  )
+
+            ){
+                u.setPassword(password);
                 loggedInUser = u;
                 return true;
             }
@@ -155,12 +158,19 @@ public class MainModel {
     }
 
     private boolean checkPass(String plainPassword, String hashedPassword) {
+        System.out.println(hashedPassword);
         if (checkpw(plainPassword, hashedPassword)){
+
             return true;
         } else {
             return false;
 
         }
+
+      //  $2a$10$KEUpz1B59J9TZfv02xUtQuWENsjBLA/4wGmJGlYiv2/RnO2RkSQfC
+        //$2a$10$KEUpz1B59J9TZfv02xUtQuWENsjBLA/4wGmJGlYiv2/RnO2RkSQfC
+        //$2a$10$KEUpz1B59J9TZfv02xUtQuWENsjBLA/4wGmJGlYiv2/RnO2RkSQfC
+        // $2a$10$KEUpz1B59J9TZfv02xUtQuWENsjBLA/4wGmJGlYiv2/RnO2RkSQfC
     }
     public Customer getSelectedCustomer(){
         return selectedCustomer;
@@ -192,6 +202,10 @@ public class MainModel {
     }
     public Object getSelectedObject(int id, String type) {
         return appLogicManager.getFromDatabase(id, type);
+    }
+
+    public ObservableList<Picture> getAllPhotosForSelectedDocument(int documentId) throws SQLException, IOException {
+        return appLogicManager.getAllPicturesForProject(documentId);
     }
 
     public void setSelectedCustomer(Customer customer){

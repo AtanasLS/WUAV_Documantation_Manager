@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -9,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="554.0" prefWidth="793.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.pageController.LogInsController">
+<AnchorPane prefHeight="670.0" prefWidth="966.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.pageController.LogInsController">
    <children>
-      <TextField layoutX="109.0" layoutY="36.0" prefHeight="31.0" prefWidth="326.0" promptText="SEARCH" style="-fx-border-radius: 20px; -fx-border-color: black; -fx-background-color: white;">
+      <TextField fx:id="searchBar" layoutX="109.0" layoutY="36.0" prefHeight="31.0" prefWidth="326.0" promptText="SEARCH" style="-fx-border-radius: 20px; -fx-border-color: black; -fx-background-color: white;">
          <font>
             <Font size="14.0" />
          </font>
@@ -26,14 +27,29 @@
             <Image url="@../../images/wuavLogo.png" />
          </image>
       </ImageView>
-      <ScrollPane layoutX="23.0" layoutY="198.0" prefHeight="320.0" prefWidth="746.0" stylesheets="@../../css/stylesheet.css">
+      <ScrollPane layoutX="1.0" layoutY="198.0" prefHeight="476.0" prefWidth="966.0" stylesheets="@../../css/stylesheet.css">
          <content>
-            <VBox fx:id="pnItems" prefHeight="318.0" prefWidth="744.0" spacing="5.0" >
+            <VBox fx:id="pnItems" prefHeight="475.0" prefWidth="940.0" spacing="5.0">
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
          </content>
       </ScrollPane>
+      <Label fx:id="usernameLabel" alignment="CENTER" layoutX="78.0" layoutY="157.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Username">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="passwordLabel" alignment="CENTER" layoutX="288.0" layoutY="157.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Password">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="projectLabel" alignment="CENTER" layoutX="500.0" layoutY="157.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Project">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

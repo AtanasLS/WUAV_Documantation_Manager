@@ -84,11 +84,11 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-        String query="DELETE FROM document WHERE id=?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
-        ResultSet resultSet =stmt.executeQuery();
-        return resultSet.toString();
+        String query = "DELETE FROM documentation WHERE id = ?";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, id);
+        int affectedRows = stmt.executeUpdate();
+        return "Rows affected: " + affectedRows;
     }
 
     @Override

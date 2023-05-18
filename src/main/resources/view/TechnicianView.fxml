@@ -9,19 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="670.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.TechnicianViewController">
+<AnchorPane prefHeight="670.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.mainDashboardsController.TechnicianViewController">
     <children>
         <VBox alignment="TOP_CENTER" layoutX="-4.0" prefHeight="670.0" prefWidth="270.0" style="-fx-background-color: #17273A;">
             <children>
-                <ImageView fitHeight="73.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#createDrawing">
+                <ImageView fx:id="profileImage" fitHeight="73.0" fitWidth="142.0" onMouseClicked="#createDrawing" pickOnBounds="true" preserveRatio="true">
                     <VBox.margin>
                         <Insets bottom="10.0" top="50.0" />
                     </VBox.margin>
-                    <image>
-                        <Image url="@../images/Screenshot_2023-04-26_210446-removebg-preview.png" fx:id="avatar" />
-                    </image>
                 </ImageView>
-                <Label text="Name Name" fx:id="usernameLogIN" textFill="#e7e5e5">
+                <Label fx:id="usernameLogIN" text="Name Name" textFill="#e7e5e5">
                     <VBox.margin>
                         <Insets bottom="20.0" />
                     </VBox.margin>

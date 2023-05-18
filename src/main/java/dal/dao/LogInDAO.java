@@ -57,12 +57,13 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-        String query="DELETE FROM logIns WHERE id=?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
-        ResultSet resultSet =stmt.executeQuery();
-        return resultSet.toString();    }
-
+        String query = "DELETE FROM log_ins WHERE id = ?";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, id);
+        int affectedRows = stmt.executeUpdate();
+        System.out.println("Rows affected: " + affectedRows);
+        return "Rows affected: " + affectedRows;
+    }
     @Override
     public String updateDatabase(LogIns object) throws SQLException {
        int id=object.getId();
@@ -70,7 +71,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
         String password=object.getPassword();
         int projectId=object.getProjectId();
 
-        String query="INSERT INTO logIns VALUES (?, ?, ?) WHERE id = ?;";
+        String query="INSERT INTO log_ins VALUES (?, ?, ?) WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,username);
         stmt.setString(2,password);
@@ -88,7 +89,7 @@ public class LogInDAO implements DAOInterface<LogIns> {
             int id = resultSet.getInt("id");
             String username = resultSet.getString("username");
             String password = resultSet.getString("password");
-            String project = resultSet.getString("type");
+            String project = resultSet.getString("project_type");
             int projectId = resultSet.getInt("projectId");
 
             return new LogIns(id, username, password, project, projectId);
@@ -105,11 +106,8 @@ public class LogInDAO implements DAOInterface<LogIns> {
 
             String username=resultSet.getString("username");
             String password=resultSet.getString("password");
-            String project=resultSet.getString("type");
+            String project=resultSet.getString("project_type");
             int projectId=resultSet.getInt("projectId");
-
-
-
 
             listOfLogIns.add(new LogIns(id,username,password,project,projectId));
         }

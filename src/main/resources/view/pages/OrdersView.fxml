@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,7 +12,7 @@
 
 <AnchorPane prefHeight="670.0" prefWidth="966.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.pageController.OrderController">
    <children>
-      <TextField layoutX="109.0" layoutY="36.0" prefHeight="31.0" prefWidth="326.0" promptText="SEARCH" style="-fx-border-radius: 20px; -fx-border-color: black; -fx-background-color: white;">
+      <TextField fx:id="searchBar" layoutX="109.0" layoutY="36.0" prefHeight="31.0" prefWidth="326.0" promptText="SEARCH" style="-fx-border-radius: 20px; -fx-border-color: black; -fx-background-color: white;">
          <font>
             <Font size="14.0" />
          </font>
@@ -35,5 +36,25 @@
             </VBox>
          </content>
       </ScrollPane>
+      <Label fx:id="nameLabel" alignment="CENTER" layoutX="82.0" layoutY="147.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Name">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="projectLabel" alignment="CENTER" layoutX="264.0" layoutY="147.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Project">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="customerLabel" alignment="CENTER" layoutX="447.0" layoutY="147.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Customer">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="dateLabel" alignment="CENTER" layoutX="707.0" layoutY="147.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Date">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
