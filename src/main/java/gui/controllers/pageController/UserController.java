@@ -56,8 +56,8 @@ public class UserController implements Initializable {
         searchType = "username";
     }
 
-    public void setMainModel(String type) {
-        this.model = new MainModel();
+    public void setMainModel(String type, MainModel model) {
+        this.model = model ;
         if (type.equals("User")) {
             try {
                 model.loadUsers();

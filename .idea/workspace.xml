@@ -3,24 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="95a2f632-40c1-4ada-8324-ea28b957e6ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bll/Filter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/Filter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/LogInDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/OrderItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/LogInsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/LogInsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/be/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/UserCreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/UserCreateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/UserEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/UserEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianManagerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianManagerViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/LogIns.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/LogIns.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,18 +36,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Atanas Stoyanov/OneDrive - Erhvervsakademi Sydvest/Dokumenter/GitHub/WUAV_Document_Manager/src/main/resources/view/info",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Atanas Stoyanov/OneDrive - Erhvervsakademi Sydvest/Dokumenter/GitHub/WUAV_Document_Manager/src/main/resources/view/info&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Atanas Stoyanov\OneDrive - Erhvervsakademi Sydvest\Dokumenter\GitHub\WUAV_Document_Manager\src\main\resources\view\info" />
@@ -96,6 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684099576437</updated>
       <workItem from="1684099581489" duration="52308000" />
+      <workItem from="1684596848529" duration="6425000" />
     </task>
     <servers />
   </component>

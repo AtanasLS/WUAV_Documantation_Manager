@@ -110,7 +110,7 @@ public class TechnicianManagerViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 UserController controller = loader.getController();
-                controller.setMainModel("Technician");
+                controller.setMainModel("Technician", this.model);
                 //controller
                 selected = "Users";
             } catch (IOException e) {

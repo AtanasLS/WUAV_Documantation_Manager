@@ -26,6 +26,7 @@ public class UserEditController implements Initializable {
     public TextField firstName, lastName, email, username, password, type;
 
     private EditModel model;
+    private MainModel mainModel;
 
     private int id;
     private int userID;
@@ -36,6 +37,7 @@ public class UserEditController implements Initializable {
 
     }
     public void setMainModel(MainModel mvm){
+        this.mainModel = mvm;
         model = new EditModel(mvm);
         firstName.setText(mvm.getSelectedUser().getFirstName());
         lastName.setText(mvm.getSelectedUser().getLastName());
@@ -54,6 +56,7 @@ public class UserEditController implements Initializable {
                 ,password.getText(), type.getText(),this.img);
 
         model.updateDatabaseElement(editedUser,"User", this.id );
+
 
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         stage.close();

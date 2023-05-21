@@ -154,7 +154,10 @@ public class MainModel {
         }
             return false;
     }
+    public void addUser(User userToAdd){
+        allUsers.add(userToAdd);
 
+    }
     private boolean checkPass(String plainPassword, String hashedPassword) {
         System.out.println(hashedPassword);
         if (checkpw(plainPassword, hashedPassword)){
