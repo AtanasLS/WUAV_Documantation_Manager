@@ -190,7 +190,7 @@ public class AdminViewController implements Initializable {
                 painnnnn.getChildren().setAll((Node) loader.load());
                 UserController controller = loader.getController();
                 selected = "User";
-                controller.setMainModel(selected);
+                controller.setMainModel(selected, this.model);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
