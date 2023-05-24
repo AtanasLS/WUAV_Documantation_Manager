@@ -106,8 +106,7 @@ public class ProjectDAO implements DAOInterface<Project> {
 
         if (resultSet.next()) {
             int id = resultSet.getInt("id");
-
-            String type = resultSet.getString("type");
+            String type = resultSet.getString("project_type");
             double price = resultSet.getDouble("price");
             String customer = resultSet.getString("first_name");
             int customerId = resultSet.getInt("id");
@@ -125,7 +124,7 @@ public class ProjectDAO implements DAOInterface<Project> {
         while (resultSet.next()) {
 
             int id=resultSet.getInt("id");
-            String type=resultSet.getString("type");
+            String type=resultSet.getString("project_type");
             double price=resultSet.getDouble("price");
             String customer=resultSet.getString("first_name");
             int customerId=resultSet.getInt("customerId");

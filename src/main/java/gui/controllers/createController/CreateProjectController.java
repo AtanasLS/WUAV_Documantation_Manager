@@ -64,5 +64,10 @@ public class CreateProjectController implements Initializable, CreateController{
         stage.close();
     }
 
+    @Override
+    public void checkData() {
+
+    }
+
 
 }

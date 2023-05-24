@@ -81,7 +81,7 @@ public class AppLogicManager {
         try {
             return DataManagerFacade.getInstance().getAllProjectsFromDatabase();
         }catch (SQLException e){
-            throw new RuntimeException();
+            throw new RuntimeException( e);
         }
 
     }

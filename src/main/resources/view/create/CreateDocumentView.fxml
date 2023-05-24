@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -49,5 +50,12 @@
       <ComboBox fx:id="projectBox" layoutX="14.0" layoutY="361.0" prefHeight="34.0" prefWidth="170.0" promptText="Set Project" />
       <Button fx:id="createBtn" layoutX="7.0" layoutY="535.0" mnemonicParsing="false" onAction="#createDocument" prefHeight="46.0" prefWidth="101.0" text="Create" />
       <Button fx:id="cancelBtn" layoutX="133.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="46.0" prefWidth="101.0" text="Cancel" />
+      <CheckBox fx:id="includeDate" layoutX="192.0" layoutY="119.0" mnemonicParsing="false" />
+      <CheckBox fx:id="includeProject" layoutX="193.0" layoutY="369.0" mnemonicParsing="false" />
+      <CheckBox fx:id="includeTechnicians" layoutX="193.0" layoutY="306.0" mnemonicParsing="false" />
+      <CheckBox fx:id="includeCustomer" layoutX="192.0" layoutY="241.0" mnemonicParsing="false" />
+      <CheckBox fx:id="includeLogin" layoutX="192.0" layoutY="181.0" mnemonicParsing="false" />
+      <CheckBox fx:id="includeDescription" layoutX="252.0" layoutY="240.0" mnemonicParsing="false" />
+      <CheckBox fx:id="includePhotos" layoutX="252.0" layoutY="194.0" mnemonicParsing="false" />
    </children>
 </AnchorPane>

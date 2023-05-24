@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -45,6 +46,9 @@ public class CreateDocumentController implements Initializable, CreateController
     @FXML
     public TextArea documentDescription;
     public DatePicker date;
+
+    @FXML
+    public CheckBox includeDate, includeLogin, includeCustomer, includeTechnicians, includeProject, includePhotos, includeDescription;
     public TextField documentName;
     public ComboBox loginBox, customerBox, technicianBox, projectBox;
 
@@ -53,6 +57,7 @@ public class CreateDocumentController implements Initializable, CreateController
 
     private ObservableList<Document> allDocs;
 
+    private ArrayList<boolean> includes;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -121,6 +126,16 @@ public class CreateDocumentController implements Initializable, CreateController
 
     public void createDocument(ActionEvent actionEvent) throws DocumentException, IOException {
 
+        this.includes.add(this.includeDate.isSelected());
+        this.includes.add(this.includeLogin.isSelected());
+        this.includes.add(this.includeCustomer.isSelected());
+        this.includes.add(this.includeTechnicians.isSelected());
+        this.includes.add(this.includeProject.isSelected());
+        this.includes.add(this.includePhotos.isSelected());
+        this.includes.add(this.includeDescription.isSelected());
+
+
+
         DirectoryChooser directoryChooser = new DirectoryChooser();
        // directoryChooser.setInitialDirectory(new File("src"));
         Stage stage = new Stage();
@@ -137,7 +152,7 @@ public class CreateDocumentController implements Initializable, CreateController
         Customer selectedCustomer = (Customer) customerBox.getSelectionModel().getSelectedItem();
         Project selectedProject = (Project) projectBox.getSelectionModel().getSelectedItem();
 
-        pdfGenerator.generatePDF(path, documentName.getText(),selectedCustomer, selectedProject, selectedLogin,documentDescription.getText(), allImages,layoutDrawing);
+        pdfGenerator.generatePDF(path, documentName.getText(),selectedCustomer, selectedProject, selectedLogin,documentDescription.getText(), allImages,layoutDrawing,this.includes);
 
 
         Document newDocument = new Document(layoutDrawing, documentDescription.getText(), selectedLogin.getId(), documentName.getText(),

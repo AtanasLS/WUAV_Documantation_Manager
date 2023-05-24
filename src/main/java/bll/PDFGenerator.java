@@ -34,7 +34,7 @@ public class PDFGenerator {
     }
 
 
-    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<File> selectedPhotos, String  layoutDrawing) throws DocumentException, IOException {
+    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<File> selectedPhotos, String  layoutDrawing,ArrayList<boolean> includes) throws DocumentException, IOException {
         try {
 
             //Create Document instance.
@@ -66,8 +66,15 @@ public class PDFGenerator {
 
             document.open();
             absText(writer, name, 235, 800, 20);
-            String customerAndProjectInfo = selectedCustomer.getFirstName() + " " + selectedCustomer.getLastName() + " "+
-                    selectedProject.getType();
+
+            String customerAndProjectInfo=" ";
+            if (includes.get(2)) {
+                customerAndProjectInfo+=  selectedCustomer.getFirstName()+" ";
+                customerAndProjectInfo+= selectedCustomer.getLastName() + " ";
+            }
+            if (includes.get(4)){
+                customerAndProjectInfo+= selectedProject.getType();
+            }
             absText(writer, customerAndProjectInfo, 20, 755, 12);
 
 
@@ -87,12 +94,20 @@ public class PDFGenerator {
 
             Paragraph text = new Paragraph(description);
             text.setSpacingBefore(270);
-            document.add(text);
+            if (includes.get(6)) {
+                document.add(text);
+            }
+
 
             String loginCred = "Login Credentials: Username: " + selectedLogIns.getUsername() + " Password: " + selectedLogIns.getPassword();
-            absText(writer, loginCred, 20, 220, 12);
 
-            absText(writer, "Photos of the Installation: ", 20, 200, 12);
+            if (includes.get(1)) {
+                absText(writer, loginCred, 20, 220, 12);
+            }
+
+            if (includes.get(5)) {
+                absText(writer, "Photos of the Installation: ", 20, 200, 12);
+
 
 
             for (int i = 0; i < selectedPhotos.size(); i++) {
@@ -103,6 +118,7 @@ public class PDFGenerator {
                 photo.setAbsolutePosition(pivot, 35);
                 photo.scaleAbsolute(200, 150);
                 document.add(photo);
+            }
             }
 
             /*
@@ -134,4 +150,8 @@ public class PDFGenerator {
             e.printStackTrace();
         }
     }
+
+
+
+
 }
