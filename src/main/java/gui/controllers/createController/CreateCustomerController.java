@@ -1,19 +1,15 @@
 package main.java.gui.controllers.createController;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.stage.Stage;
 import main.java.be.Customer;
-import main.java.be.User;
 import main.java.gui.model.CreateModel;
 import main.java.gui.model.MainModel;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;

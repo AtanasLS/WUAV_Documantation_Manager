@@ -64,15 +64,10 @@ public class OrderINfoController implements Initializable,Info
         this.project.setValue(model.getSelectedObject(model.getSelectedOrder().getProjectID(), "Project"));
         this.nameField.setText(model.getSelectedOrder().getName());
 
-
         Date selectedDate = model.getSelectedOrder().getDate();
         LocalDate localDate = selectedDate.toLocalDate();
 
         this.date.setValue(localDate);
-
-
-
-
 
         System.out.println(model.getSelectedOrder().getCustomer() +" " + model.getSelectedOrder().getUserName() +" " +model.getSelectedOrder().getProject());
 
@@ -83,10 +78,7 @@ public class OrderINfoController implements Initializable,Info
         return this.deleteModel.deleteFromDatabase(id,"Order");
     }
 
-    @Override
-    public void edit(ActionEvent actionEvent) {
 
-    }
 
 
     public void handleSave(javafx.event.ActionEvent actionEvent) throws SQLException {

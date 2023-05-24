@@ -56,10 +56,6 @@ public class UserInfoController implements Initializable, Info {
 
     }
 
-    @Override
-    public void edit(ActionEvent actionEvent) {
-
-    }
 
     public void edit(javafx.event.ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/edit/UserEdit.fxml"));
@@ -73,7 +69,4 @@ public class UserInfoController implements Initializable, Info {
         ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void delete(javafx.event.ActionEvent actionEvent) {
-
-    }
 }
