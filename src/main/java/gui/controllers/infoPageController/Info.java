@@ -1,18 +1,14 @@
 package main.java.gui.controllers.infoPageController;
 
+import javafx.event.ActionEvent;
 import main.java.gui.model.MainModel;
 
-import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-
 public interface Info {
 
 
-    public void setMainModel(MainModel mvm) throws SQLException;
-    public void setInfoLabels();
-
-    public String delete(int id);
-
-    public void edit(ActionEvent actionEvent);
+    void setMainModel(MainModel mvm) throws SQLException;
+    void setInfoLabels();
+    String delete(int id);
 
 }

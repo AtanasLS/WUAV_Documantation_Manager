@@ -49,7 +49,6 @@ public class CustomerInfoController implements Initializable , Info{
 
 
     public void handleEdit(ActionEvent actionEvent) throws IOException {
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/edit/CustomerEdit.fxml"));
         Parent root = loader.load();
         CustomerEditController controller = loader.getController();
@@ -69,11 +68,5 @@ public class CustomerInfoController implements Initializable , Info{
     public String delete(int id) {
         return this.deleteModel.deleteFromDatabase(id,"Customer");
     }
-
-    @Override
-    public void edit(java.awt.event.ActionEvent actionEvent) {
-
-    }
-
 
 }
