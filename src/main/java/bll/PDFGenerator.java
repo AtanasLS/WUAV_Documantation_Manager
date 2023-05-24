@@ -34,7 +34,8 @@ public class PDFGenerator {
     }
 
 
-    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<File> selectedPhotos, String  layoutDrawing,ArrayList<boolean> includes) throws DocumentException, IOException {
+    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<File> selectedPhotos, String  layoutDrawing,
+                            ArrayList<Boolean> includes) throws DocumentException, IOException {
         try {
 
             //Create Document instance.
@@ -44,12 +45,6 @@ public class PDFGenerator {
             FileOutputStream outputStream;
 
 
-            /*
-            DirectoryChooser directoryChooser = new DirectoryChooser();
-            directoryChooser.setInitialDirectory(new File("src"));
-            Stage stage = new Stage();
-            File selectedDirectory = directoryChooser.showDialog(stage);
-             */
 
             try {
                 outputStream = new FileOutputStream(new File(selectedDirectory + "\\" +name+ ".pdf") );
@@ -59,10 +54,6 @@ public class PDFGenerator {
 
             //Create PDFWriter instance.
           PdfWriter writer =  PdfWriter.getInstance(document, outputStream);
-
-            //Open the document.
-          //  document.open();
-
 
             document.open();
             absText(writer, name, 235, 800, 20);
@@ -121,27 +112,6 @@ public class PDFGenerator {
             }
             }
 
-            /*
-            Paragraph textParagraph = new Paragraph(description);
-            Paragraph layoutDrawingHeading = new Paragraph("Layout Drawing:");
-            //Add content to the document.
-            document.add(textParagraph);
-            document.add(layoutDrawingHeading);
-
-            Image image1 =  Image.getInstance(layoutDrawing);
-
-            //Fixed Positioning
-            //image1.setAbsolutePosition(300f, 300f);
-            image1.setAbsolutePosition(layoutDrawingHeading.getAlignment(), layoutDrawingHeading.getAlignment());
-
-            //Scale to new height and new width of image
-            image1.scaleAbsolute(200, 200);
-
-
-
-            //Add to document
-            document.add(image1);
-*/
 
             //Close document and outputStream.
             document.close();

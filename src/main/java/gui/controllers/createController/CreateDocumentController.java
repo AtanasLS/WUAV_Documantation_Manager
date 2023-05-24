@@ -1,7 +1,7 @@
 package main.java.gui.controllers.createController;
 
 import com.itextpdf.text.DocumentException;
-import javafx.beans.binding.ObjectExpression;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,26 +11,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.be.*;
-import main.java.bll.AppLogicManager;
 import main.java.bll.PDFGenerator;
-import main.java.gui.controllers.itemController.CustomerItemController;
 import main.java.gui.controllers.itemController.PhotoItemController;
 import main.java.gui.model.CreateModel;
 import main.java.gui.model.MainModel;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -38,7 +34,6 @@ public class CreateDocumentController implements Initializable, CreateController
 
 
     public AnchorPane mainPane;
-    public ImageView imageView;
     public VBox items;
     public Button createBtn, cancelBtn;
 
@@ -50,14 +45,18 @@ public class CreateDocumentController implements Initializable, CreateController
     @FXML
     public CheckBox includeDate, includeLogin, includeCustomer, includeTechnicians, includeProject, includePhotos, includeDescription;
     public TextField documentName;
-    public ComboBox loginBox, customerBox, technicianBox, projectBox;
-
+    public ComboBox<LogIns> loginBox;
+    public ComboBox<Customer> customerBox;
+    public ComboBox<User> technicianBox;
+    public ComboBox<Project> projectBox;
     private CreateModel createModel;
     private String layoutDrawing;
 
     private ObservableList<Document> allDocs;
 
-    private ArrayList<boolean> includes;
+    private ArrayList<Boolean> includes;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -81,12 +80,49 @@ public class CreateDocumentController implements Initializable, CreateController
         projectBox.setItems(mainModel.getAllProjects());
         allDocs.addAll(mainModel.getAllDocuments());
 
-
     }
 
     @Override
-    public void handleSave(ActionEvent actionEvent) {
+    public void handleSave(ActionEvent actionEvent) throws DocumentException, IOException {
 
+        includes.add(includeDate.isSelected());
+        includes.add(includeLogin.isSelected());
+        includes.add(includeCustomer.isSelected());
+        includes.add(includeTechnicians.isSelected());
+        includes.add(includeProject.isSelected());
+        includes.add(includePhotos.isSelected());
+        includes.add(includeDescription.isSelected());
+
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        Stage stage = new Stage();
+        File selectedDirectory = directoryChooser.showDialog(stage);
+        String path = selectedDirectory.getPath();
+
+        LogIns selectedLogin = loginBox.getValue();
+        User selectedUser = technicianBox.getValue();
+        Customer selectedCustomer = customerBox.getValue();
+        Project selectedProject = projectBox.getValue();
+
+        //generating the .pdf file
+        PDFGenerator pdfGenerator = new PDFGenerator();
+        pdfGenerator.generatePDF(path, documentName.getText(), selectedCustomer, selectedProject, selectedLogin,
+                documentDescription.getText(), allImages, layoutDrawing, includes);
+        //creating a new Document in the Database
+        Document newDocument = new Document(layoutDrawing, documentDescription.getText(), selectedLogin.getId(),
+                documentName.getText(), selectedUser.getId(), selectedCustomer.getId(), selectedProject.getProjectId(),
+                date.getValue(), 0);
+        createModel.createInDatabase(newDocument, "Document");
+
+        //creating new Picture connected to the Document in the Database
+        for (File file : allImages) {
+            int docId = (allDocs.size() > 0) ? allDocs.get(allDocs.size() - 1).getId() + 1 : 1;
+            Picture picture = new Picture(file.getName(), file.getAbsolutePath(), docId);
+            createModel.createInDatabase(picture, "Picture");
+        }
+
+        Stage currentStage = (Stage) createBtn.getScene().getWindow();
+        currentStage.close();
     }
 
     public void createDrawing(ActionEvent actionEvent) throws IOException {
@@ -119,62 +155,6 @@ public class CreateDocumentController implements Initializable, CreateController
 
         allImages.add(selectedFile);
 
-
-
-    }
-
-
-    public void createDocument(ActionEvent actionEvent) throws DocumentException, IOException {
-
-        this.includes.add(this.includeDate.isSelected());
-        this.includes.add(this.includeLogin.isSelected());
-        this.includes.add(this.includeCustomer.isSelected());
-        this.includes.add(this.includeTechnicians.isSelected());
-        this.includes.add(this.includeProject.isSelected());
-        this.includes.add(this.includePhotos.isSelected());
-        this.includes.add(this.includeDescription.isSelected());
-
-
-
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-       // directoryChooser.setInitialDirectory(new File("src"));
-        Stage stage = new Stage();
-        File selectedDirectory = directoryChooser.showDialog(stage);
-        PDFGenerator pdfGenerator = new PDFGenerator();
-        System.out.println(selectedDirectory.getPath());
-        String path = selectedDirectory.getPath();
-        System.out.println(layoutDrawing);
-
-
-
-        LogIns selectedLogin = (LogIns) loginBox.getSelectionModel().getSelectedItem();
-        User selectedUser = (User) technicianBox.getSelectionModel().getSelectedItem();
-        Customer selectedCustomer = (Customer) customerBox.getSelectionModel().getSelectedItem();
-        Project selectedProject = (Project) projectBox.getSelectionModel().getSelectedItem();
-
-        pdfGenerator.generatePDF(path, documentName.getText(),selectedCustomer, selectedProject, selectedLogin,documentDescription.getText(), allImages,layoutDrawing,this.includes);
-
-
-        Document newDocument = new Document(layoutDrawing, documentDescription.getText(), selectedLogin.getId(), documentName.getText(),
-               selectedUser.getId(), selectedCustomer.getId(), selectedProject.getProjectId(), date.getValue(), 0);
-        createModel.createInDatabase(newDocument, "Document");
-
-        for (File file: allImages) {
-            if (allDocs.size() > 0){
-                Picture picture = new Picture( file.getName(), file.getAbsolutePath(), allDocs.get(allDocs.size()-1).getId() + 1);
-                createModel.createInDatabase(picture, "Picture");
-            } else  {
-                Picture picture = new Picture( file.getName(), file.getAbsolutePath(), 1);
-                createModel.createInDatabase(picture, "Picture");
-            }
-
-        }
-
-
-
-
-        Stage currentStage = (Stage) createBtn.getScene().getWindow();
-        currentStage.close();
 
 
     }
