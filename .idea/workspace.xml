@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95a2f632-40c1-4ada-8324-ea28b957e6ef" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/123.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/janTheManager.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/jesperTheTechnician.png" afterDir="false" />
@@ -74,7 +75,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" afterDir="false" />>>>>>>> development
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +152,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684099576437</updated>
       <workItem from="1684099581489" duration="52308000" />
-      <workItem from="1684596848529" duration="30980000" />
+      <workItem from="1684596848529" duration="31907000" />
     </task>
     <servers />
   </component>
