@@ -33,7 +33,7 @@ public class ProjectDAO implements DAOInterface<Project> {
         ResultSet resultSet =stmt.executeQuery();
 
         if (resultSet.next()){
-        return new Project(resultSet.getString("project_type"),resultSet.getInt("salesCount"));}
+        return new Project(resultSet.getString("type"),resultSet.getInt("salesCount"));}
         return null;
     }
 
@@ -64,23 +64,19 @@ public class ProjectDAO implements DAOInterface<Project> {
 
 
         ResultSet resultSet =stmt.executeQuery();
+        this.addProjectToUser(object.getProjectId(),customerId);
 
         return resultSet.toString();
     }
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-        String query = "DELETE FROM project WHERE id = ?";
-        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1, id);
-        try {
-            int affectedRows = stmt.executeUpdate();
-            System.out.println("Rows affected: " + affectedRows);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle the SQLException appropriately
-        }
-        return "work!";
+        String query="DELETE FROM project WHERE id=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,id);
+        ResultSet resultSet =stmt.executeQuery();
+        this.deleteProjectToUser(id);
+        return resultSet.toString();
     }
 
     @Override
@@ -100,6 +96,8 @@ public class ProjectDAO implements DAOInterface<Project> {
 
         ResultSet resultSet =stmt.executeQuery();
 
+        this.addProjectToUser(id,customerId);
+
         return resultSet.toString();
     }
 
@@ -108,7 +106,6 @@ public class ProjectDAO implements DAOInterface<Project> {
 
         if (resultSet.next()) {
             int id = resultSet.getInt("id");
-
             String type = resultSet.getString("project_type");
             double price = resultSet.getDouble("price");
             String customer = resultSet.getString("first_name");
@@ -136,4 +133,23 @@ public class ProjectDAO implements DAOInterface<Project> {
         }
 
         return listOfProjects;    }
+
+
+    private void addProjectToUser(int projectId, int userId) throws SQLException {
+
+        String query="INSERT INTO projectToUser VALUES (?, ?);";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,projectId);
+        stmt.setInt(2,userId);
+        ResultSet resultSet =stmt.executeQuery();
+
+
+    }
+
+    private void deleteProjectToUser(int projectId) throws SQLException {
+        String query="DELETE FROM projectToUser WHERE projectId=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,projectId);
+        ResultSet resultSet =stmt.executeQuery();
+    }
 }

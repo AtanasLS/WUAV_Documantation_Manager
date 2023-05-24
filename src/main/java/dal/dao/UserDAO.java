@@ -95,11 +95,13 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-        String query = "DELETE FROM [WUAV_Documentation_System].[dbo].[users] WHERE id = ?";
-        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1, id);
-        int affectedRows = stmt.executeUpdate();
-        return "Rows affected: " + affectedRows;
+
+        String query="DELETE FROM user WHERE id=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,id);
+        ResultSet resultSet =stmt.executeQuery();
+        this.deleteProjectToUser(id);
+        return resultSet.toString();
     }
 
     @Override
@@ -110,18 +112,10 @@ public class UserDAO implements DAOInterface<User> {
         String lastName=object.getLastName();
         String email=object.getEmail();
         String password= object.getPassword();
-
         password=hashPassword(password);
 
         String type=object.getType();
-        System.out.println(object.getImg());
-        File file;
-        if (object.getImg().length()<15){
-             file = new File("src/main/resources/images/"+object.getImg());
-        }
-        else {
-         file = new File(object.getImg());}
-
+        File file = new File(object.getImg());
         FileInputStream input = new FileInputStream(file);
 
 
@@ -171,7 +165,7 @@ public class UserDAO implements DAOInterface<User> {
             String password = resultSet.getString("password");
             String type = resultSet.getString("type");
 
-            File file = new File("src/main/resources/images/"+username+ ".png");
+            File file = new File(username+ ".png");
             String img= username+ ".png";
             FileOutputStream output = new FileOutputStream(file);
 
@@ -201,8 +195,8 @@ public class UserDAO implements DAOInterface<User> {
             String type = resultSet.getString("type");
 
 
-            File file = new File("src/main/resources/images/"+username+ ".png");
-            String img=username+ ".png";
+            File file = new File(username+ ".png");
+            String img= username+ ".png";
             FileOutputStream output = new FileOutputStream(file);
 
 
@@ -222,6 +216,13 @@ public class UserDAO implements DAOInterface<User> {
 
     private String hashPassword(String plainTextPassword){
         return BCrypt.hashpw(plainTextPassword, BCrypt.gensalt());
+    }
+
+    private void deleteProjectToUser(int userId) throws SQLException {
+        String query="DELETE FROM projectToUser WHERE userId=?;";
+        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1,userId);
+        ResultSet resultSet =stmt.executeQuery();
     }
 
 

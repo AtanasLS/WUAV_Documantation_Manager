@@ -11,7 +11,7 @@
 
 <HBox fx:id="itemC" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="53.0" prefWidth="965.0" style="-fx-background-color: grey; -fx-background-radius: 5; -fx-background-insets: 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.itemController.ProjectItemController">
     <children>
-      <HBox prefHeight="54.0" prefWidth="103.0">
+      <HBox prefHeight="54.0" prefWidth="56.0">
          <children>
               <ImageView fitHeight="31.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                   <image>
@@ -26,22 +26,21 @@
             <Insets left="12.0" />
          </HBox.margin>
       </HBox>
-      <HBox prefHeight="54.0" prefWidth="284.0">
+      <HBox prefHeight="54.0" prefWidth="214.0">
          <children>
-              <Label fx:id="type" alignment="CENTER" text="Type" textFill="WHITE">
+              <Label fx:id="type" text="Type" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
                <HBox.margin>
-                  <Insets left="100.0" top="15.0" />
+                  <Insets left="80.0" top="15.0" />
                </HBox.margin>
             </Label>
          </children>
       </HBox>
-      <HBox prefHeight="54.0" prefWidth="130.0" />
-      <HBox prefHeight="54.0" prefWidth="230.0">
+      <HBox prefHeight="54.0" prefWidth="218.0">
          <children>
-              <Label fx:id="customer" alignment="CENTER" text="Customer" textFill="WHITE">
+              <Label fx:id="customer" text="Customer" textFill="WHITE">
                   <HBox.margin>
                       <Insets left="80.0" top="15.0" />
                   </HBox.margin>
@@ -51,6 +50,30 @@
               </Label>
          </children>
       </HBox>
+      <HBox prefHeight="54.0" prefWidth="230.0">
+         <children>
+              <Button mnemonicParsing="false" onAction="#editProject" prefHeight="30.0" prefWidth="93.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="Edit" textFill="WHITE">
+                  <HBox.margin>
+                      <Insets left="60.0" top="12.0" />
+                  </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+              </Button>
+         </children>
+      </HBox>
+        <HBox prefHeight="54.0" prefWidth="230.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#addUser" prefHeight="30.0" prefWidth="93.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="Add user" textFill="WHITE">
+                    <HBox.margin>
+                        <Insets left="60.0" top="12.0" />
+                    </HBox.margin>
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button mnemonicParsing="false" onAction="#deleteProject" prefHeight="30.0" prefWidth="93.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="Delete" textFill="WHITE">

@@ -34,6 +34,8 @@ public class MainModel {
     private Customer selectedCustomer;
     private Document selectedDocument;
 
+    private Project selectedProject;
+
     private Order selectedOrder;
 
 
@@ -276,5 +278,13 @@ public class MainModel {
 
     public User getLogInUser(){
         return this.loggedInUser;
+    }
+
+    public Project getSelectedProject() {
+        return selectedProject;
+    }
+
+    public void setSelectedProject(Project selectedProject) {
+        this.selectedProject = selectedProject;
     }
 }

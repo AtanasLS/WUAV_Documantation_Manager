@@ -42,7 +42,7 @@
         <Button fx:id="cancelBtn" layoutX="642.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="46.0" prefWidth="87.0" text="Cancel" />
         <TextField fx:id="firstName" layoutX="15.0" layoutY="40.0" prefHeight="30.0" prefWidth="235.0" />
         <TextField fx:id="lastName" layoutX="310.0" layoutY="40.0" prefHeight="30.0" prefWidth="235.0" />
-        <TextField fx:id="email" layoutX="310.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
+        <TextField fx:id="email"  layoutX="310.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
         <TextField fx:id="username" layoutX="15.0" layoutY="110.0" prefHeight="30.0" prefWidth="235.0" />
         <TextField fx:id="password" layoutX="15.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
         <TextField fx:id="type" layoutX="310.0" layoutY="185.0" prefHeight="30.0" prefWidth="235.0" />
