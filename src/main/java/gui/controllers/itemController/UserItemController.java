@@ -53,10 +53,13 @@ public class UserItemController implements Initializable {
            Thread loadThread = new Thread(loadTask);
            loadThread.start();
         }else if (type.equals("Technician")){
+            System.out.println("look");
             Task<Void> loadTask = new Task<Void>() {
                 @Override
                 protected Void call() throws Exception {
                     model.loadTech();
+                    System.out.println(model.getAllTech());
+                    System.out.println("maybe here");
                     return null;
                 }
             };
@@ -66,6 +69,8 @@ public class UserItemController implements Initializable {
                 firstName.setText(this.model.getSelectedUser().getFirstName());
                 password.setText(this.model.getSelectedUser().getPassword());
             });
+            Thread loadThread = new Thread(loadTask);
+            loadThread.start();
         }
     }
     public void setSearchedItems(int numberOfElement, ObservableList<User> selectedUsers){

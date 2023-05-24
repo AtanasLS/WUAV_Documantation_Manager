@@ -40,6 +40,9 @@ public class MainModel {
     private User selectedUser;
 
     private Project mostSelled;
+    private final ObservableList<Project> projectToUserList;
+    private final  ObservableList<ProjectToUser> projectToUsers;
+
 
 
 
@@ -55,6 +58,8 @@ public class MainModel {
         this.allUsers=FXCollections.observableArrayList();
         this.allTech=FXCollections.observableArrayList();
         this.editedDocuments = FXCollections.observableArrayList();
+        this.projectToUserList = FXCollections.observableArrayList();
+        this.projectToUsers = FXCollections.observableArrayList();
         this.loggedInUser = null;
         this.selectedCustomer = null;
 
@@ -111,6 +116,25 @@ public class MainModel {
         this.allTech.clear();
         this.allTech.addAll(appLogicManager.getAllTechnicians());
 
+    }
+    public void loadProjectToUser() throws SQLException{
+        this.projectToUsers.clear();
+        this.projectToUsers.addAll(appLogicManager.getAllProjectToUsers());
+    }
+    public ObservableList<ProjectToUser> getAllProjectToUser(){
+        return projectToUsers;
+    }
+    public ObservableList<Project> getAllProjectToUser(User selectedUser) {
+        this.projectToUserList.clear();
+        for (Project project : getAllProjects()) {
+            for ( ProjectToUser projectToUser : getAllProjectToUser()) {
+                if (selectedUser.getId() == projectToUser.getUserId() && project.getProjectId() == projectToUser.getProjectId()) {
+                    this.projectToUserList.add(project);
+                }
+            }
+        }
+
+        return this.projectToUserList;
     }
 
     public ObservableList<Customer> getAllCustomers(){

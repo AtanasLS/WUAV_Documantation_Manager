@@ -99,6 +99,6 @@ public class User {
 
     @Override
     public String toString() {
-        return username + " Type: " + type;
+        return username.get() + " Type: " + type.get();
     }
 }

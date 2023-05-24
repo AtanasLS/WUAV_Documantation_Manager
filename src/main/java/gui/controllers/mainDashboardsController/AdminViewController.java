@@ -41,6 +41,7 @@ public class AdminViewController implements Initializable {
     public Button btnLogIns, btnOrders, btnDocuments, btnUsers, btnCustomers, btnProjects, btnSignout;
     public Label usernameLogIN;
     public ImageView avatarImage;
+    public Button mainDashBtn;
     @FXML
     AnchorPane painnnnn;
     @FXML
@@ -79,42 +80,23 @@ public class AdminViewController implements Initializable {
 
         switch (selected.toLowerCase()){
             case "logins":
-                FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("/view/create/CreateLogin.fxml"));
-                Parent loginsRoot = loginLoader.load();
-                CreateLoginController loginController = loginLoader.getController();
-                loginController.setModel(model);
-                //
-                Stage loginStage = new Stage();
-                loginStage.setScene(new Scene(loginsRoot));
-                loginStage.show();
+
                 break;
             case "user":
                 FXMLLoader userLoader = new FXMLLoader(getClass().getResource("/view/create/UserCreate.fxml"));
                 Parent root = userLoader.load();
                 UserCreateController controller = userLoader.getController();
                 controller.setModel(model);
-                //
                 Stage userStage = new Stage();
                 userStage.setScene(new Scene(root));
                 userStage.show();
                 break;
             case "orders":
-                FXMLLoader ordersLoader = new FXMLLoader(getClass().getResource("/view/create/CreateOrder.fxml"));
-                Parent ordersRoot = ordersLoader.load();
-                CreateOrderController createOrderController = ordersLoader.getController();
-                createOrderController.setModel(model);
-                Stage orderStage = new Stage();
-                orderStage.setScene(new Scene(ordersRoot));
-                orderStage.show();                break;
+
+                break;
             case "customers":
 
-                FXMLLoader customerLoader = new FXMLLoader(getClass().getResource("/view/create/CustomerCreate.fxml"));
-                Parent customerRoot = customerLoader.load();
-                CreateCustomerController createCustomerController = customerLoader.getController();
-                createCustomerController.setModel(model);
-                Stage customerStage = new Stage();
-                customerStage.setScene(new Scene(customerRoot));
-                customerStage.show();
+
                 break;
             case "projects":
                 FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/view/create/CreateProject.fxml"));
@@ -137,7 +119,7 @@ public class AdminViewController implements Initializable {
                 break;
         }
     }
-    public void handleClicks(ActionEvent actionEvent) {
+    public void handleClicks(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == btnLogIns) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/LogInsView.fxml"));
@@ -151,7 +133,12 @@ public class AdminViewController implements Initializable {
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-        }else if (actionEvent.getSource() == btnDocuments){
+        }else if (actionEvent.getSource() == mainDashBtn){
+            FXMLLoader loader = new FXMLLoader((getClass().getResource("/view/pages/MainDashboardView.fxml")));
+            painnnnn.getChildren().setAll((Node) loader.load());
+            selected = "Documents";
+        }
+        else if (actionEvent.getSource() == btnDocuments){
             try {
                 FXMLLoader loader = new FXMLLoader((getClass().getResource("/view/pages/DocumentsPage.fxml")));
 
@@ -168,7 +155,7 @@ public class AdminViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
                 OrderController controller = loader.getController();
-                controller.setModel();
+                controller.setModel("Admin");
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -178,7 +165,7 @@ public class AdminViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
                 ProjectController controller = loader.getController();
-                controller.setModel();
+                controller.setModel(model.getLogInUser());
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -201,7 +188,7 @@ public class AdminViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 CustomerPageController controller = loader.getController();
-                controller.setMainModel();
+                controller.setMainModel("admin");
                 selected = "Customers";
             } catch (IOException e) {
                 throw new RuntimeException(e);

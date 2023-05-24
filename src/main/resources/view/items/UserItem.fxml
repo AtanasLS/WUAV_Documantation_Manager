@@ -23,7 +23,7 @@
               </ImageView>
          </children>
       </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox prefHeight="54.0" prefWidth="298.0">
          <children>
               <Label fx:id="username" alignment="CENTER" prefHeight="22.0" prefWidth="209.0" text="Username" textFill="WHITE">
                <font>
@@ -38,7 +38,7 @@
             <Insets />
          </HBox.margin>
       </HBox>
-      <HBox prefHeight="54.0" prefWidth="216.0">
+      <HBox prefHeight="54.0" prefWidth="266.0">
          <children>
             <Label fx:id="firstName" alignment="CENTER" prefHeight="22.0" prefWidth="214.0" text="First Name" textFill="WHITE">
                <font>
@@ -50,7 +50,7 @@
             </Label>
          </children>
       </HBox>
-      <HBox prefHeight="54.0" prefWidth="228.0">
+      <HBox prefHeight="54.0" prefWidth="250.0">
          <children>
               <Label fx:id="password" alignment="CENTER" prefHeight="22.0" prefWidth="230.0" text="password" textFill="WHITE">
                   <HBox.margin>
@@ -62,30 +62,19 @@
               </Label>
          </children>
       </HBox>
-      <HBox prefHeight="54.0" prefWidth="151.0">
-         <children>
-              <Button mnemonicParsing="false" onAction="#infoBtnHandle" prefHeight="30.0" prefWidth="93.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="more info" textFill="WHITE">
-                  <HBox.margin>
-                      <Insets left="30.0" top="12.0" />
-                  </HBox.margin>
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-              </Button>
-         </children>
-      </HBox>
-      <HBox prefHeight="54.0" prefWidth="115.0">
+      <HBox prefHeight="54.0" prefWidth="222.0">
          <children>
             <Button mnemonicParsing="false" onAction="#deleteHandle" prefHeight="30.0" prefWidth="93.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="Delete" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
                <HBox.margin>
-                  <Insets left="5.0" top="12.0" />
+                  <Insets left="50.0" top="12.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
+      <HBox prefHeight="54.0" prefWidth="115.0" />
     </children>
     <effect>
         <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />

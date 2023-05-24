@@ -37,7 +37,7 @@
             </VBox>
          </content>
       </ScrollPane>
-      <Button layoutX="549.0" layoutY="36.0" mnemonicParsing="false" onAction="#createDocument" prefHeight="31.0" prefWidth="127.0" text="Create document" />
+      <Button layoutX="824.0" layoutY="141.0" mnemonicParsing="false" onAction="#createDocument" prefHeight="31.0" prefWidth="127.0" text="Create document" />
       <Label fx:id="nameLabel" alignment="CENTER" layoutX="71.0" layoutY="157.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Document Name">
          <font>
             <Font name="System Bold" size="17.0" />

@@ -19,7 +19,7 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </MFXComboBox>
-      <Label fx:id="infoLabel" alignment="TOP_LEFT" layoutX="44.0" layoutY="225.0" prefHeight="227.0" prefWidth="430.0" text="Label">
+      <Label fx:id="infoLabel" alignment="TOP_LEFT" layoutX="44.0" layoutY="225.0" prefHeight="419.0" prefWidth="618.0">
          <font>
             <Font name="System Bold Italic" size="21.0" />
          </font>
