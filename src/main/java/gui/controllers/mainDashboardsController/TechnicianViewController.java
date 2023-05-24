@@ -97,7 +97,7 @@ public class TechnicianViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 OrderController controller = loader.getController();
-                controller.setModel();
+                controller.setModel("Technician");
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -107,7 +107,7 @@ public class TechnicianViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
                 ProjectController controller = loader.getController();
-                controller.setModel();
+                controller.setModel(model.getLogInUser());
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -119,7 +119,7 @@ public class TechnicianViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 CustomerPageController controller = loader.getController();
-                controller.setMainModel();
+                controller.setMainModel("Technician");
                 selected = "Customers";
             } catch (IOException e) {
                 throw new RuntimeException(e);

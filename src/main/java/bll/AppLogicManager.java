@@ -41,6 +41,13 @@ public class AppLogicManager {
             throw new RuntimeException(e);
         }
     }
+    public ObservableList<ProjectToUser> getAllProjectToUsers() throws SQLException {
+        try {
+            return DataManagerFacade.getInstance().getAllProjectToUser();
+        }catch (SQLException e){
+            throw new RuntimeException();
+        }
+    }
     //getting all the documents
     public ObservableList<Document> getAllDocumentsFromDatabase() throws SQLException {
         try {

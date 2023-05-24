@@ -70,6 +70,7 @@ public class DocumentEditController implements Initializable {
         documentName.setText(mvm.getSelectedDocument().getName());
         date.setValue(mvm.getSelectedDocument().getDate());
         loginBox.setValue(mvm.getSelectedObject(mvm.getSelectedDocument().getLoginId(), "LogIn"));
+        System.out.println(mvm.getSelectedObject(mvm.getSelectedDocument().getLoginId(), "LogIn") + " LoginIfno?????");
         customerBox.setValue(mvm.getSelectedObject(mvm.getSelectedDocument().getCustomer(), "Customer"));
         technicianBox.setValue(mvm.getSelectedObject(mvm.getSelectedDocument().getUser(), "User"));
         projectBox.setValue(mvm.getSelectedObject(mvm.getSelectedDocument().getProject(), "Project"));
@@ -77,6 +78,8 @@ public class DocumentEditController implements Initializable {
         technicianBox.setItems(mvm.getAllTech());
         customerBox.setItems(mvm.getAllCustomers());
         projectBox.setItems(mvm.getAllProjects());
+        System.out.println("check it " + mvm.getSelectedDocument().getLayoutDrawing());
+        this.layoutDrawing = new Image("/images/" + mvm.getSelectedDocument().getLayoutDrawing());
 
 
         Node node;
@@ -84,16 +87,16 @@ public class DocumentEditController implements Initializable {
         node = loader.load();
         PhotoItemController controller = loader.getController();
         System.out.println(mvm.getSelectedDocument().getLayoutDrawing());
-        this.layoutDrawing = new Image("/images/" + mvm.getSelectedDocument().getName() + ".png");
+        System.out.println(mvm.getSelectedDocument().getLayoutDrawing());
         controller.setItems(layoutDrawing, "Layout Image");
         items.getChildren().add(node);
 
         for (Picture p : mvm.getAllPhotosForSelectedDocument(id)) {
+            Image selectedImage = new Image("/images/" + p.getInstallationPhoto() + ".png");
             loader = new FXMLLoader(getClass().getResource("/view/items/PhotoItem.fxml"));
             node = loader.load();
             controller = loader.getController();
             System.out.println(p.getInstallationPhoto());
-            Image selectedImage = new Image("/images/" + p.getInstallationPhoto() + ".png" );
             controller.setItems(selectedImage, p.getName());
             items.getChildren().add(node);
         }
@@ -124,13 +127,17 @@ public class DocumentEditController implements Initializable {
         Customer selectedCustomer = (Customer) customerBox.getSelectionModel().getSelectedItem();
         Project selectedProject = (Project) projectBox.getSelectionModel().getSelectedItem();
 
+
         Document editedDocument = new Document(this.id,layoutDrawing.getUrl(), documentDescription.getText(), selectedLogin.getId(),
                 documentName.getText(),selectedUser.getId(), selectedCustomer.getId() ,selectedProject.getProjectId(),
                 date.getValue(), 1);
+
+        editedDocument.setLoginId(selectedLogin.getId());
         model.updateDatabaseElement(editedDocument, "Document", this.id);
     }
 
     public void handleCancel(ActionEvent actionEvent) {
+
 
     }
 

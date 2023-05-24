@@ -5,18 +5,23 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import main.java.be.Customer;
 import main.java.bll.Filter;
+import main.java.gui.controllers.createController.CreateCustomerController;
 import main.java.gui.controllers.itemController.CustomerItemController;
 import main.java.gui.model.MainModel;
 
@@ -28,6 +33,7 @@ import java.util.ResourceBundle;
 public class CustomerPageController implements Initializable {
 
     public TextField searchBar;
+    public Button createBtn;
     @FXML
     VBox pnItems = null;
     @FXML
@@ -71,7 +77,10 @@ public class CustomerPageController implements Initializable {
         }
     }
 
-    public void setMainModel() {
+    public void setMainModel(String type) {
+        if (type.equals("Seller") || type.equals("Technician")){
+            createBtn.setVisible(false);
+        }
         try {
             model.loadCustomers();
             if (progressIndicator == null) {
@@ -130,5 +139,15 @@ public class CustomerPageController implements Initializable {
         }else if (mouseEvent.getSource() == addressLabel){
             searchedType = "address";
         }
+    }
+
+    public void createHandle(ActionEvent actionEvent) throws IOException {
+        FXMLLoader customerLoader = new FXMLLoader(getClass().getResource("/view/create/CustomerCreate.fxml"));
+        Parent customerRoot = customerLoader.load();
+        CreateCustomerController createCustomerController = customerLoader.getController();
+        createCustomerController.setModel(model);
+        Stage customerStage = new Stage();
+        customerStage.setScene(new Scene(customerRoot));
+        customerStage.show();
     }
 }

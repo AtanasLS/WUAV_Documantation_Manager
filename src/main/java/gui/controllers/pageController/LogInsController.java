@@ -5,17 +5,22 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import main.java.be.LogIns;
 import main.java.bll.Filter;
+import main.java.gui.controllers.createController.CreateLoginController;
 import main.java.gui.controllers.itemController.LogInsItemController;
 import main.java.gui.model.MainModel;
 
@@ -126,5 +131,15 @@ public class LogInsController implements Initializable {
         }else if (mouseEvent.getSource() == projectLabel){
             searchType = "project";
         }
+    }
+
+    public void createHandle(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loginLoader = new FXMLLoader(getClass().getResource("/view/create/CreateLogin.fxml"));
+        Parent loginsRoot = loginLoader.load();
+        CreateLoginController loginController = loginLoader.getController();
+        loginController.setModel(model);
+        Stage loginStage = new Stage();
+        loginStage.setScene(new Scene(loginsRoot));
+        loginStage.show();
     }
 }

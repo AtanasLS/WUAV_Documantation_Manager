@@ -5,18 +5,23 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import main.java.be.User;
 import main.java.bll.Filter;
+import main.java.gui.controllers.createController.UserCreateController;
 import main.java.gui.controllers.itemController.UserItemController;
 import main.java.gui.model.MainModel;
 
@@ -58,7 +63,7 @@ public class UserController implements Initializable {
 
     public void setMainModel(String type, MainModel model) {
         this.model = model ;
-        if (type.equals("User")) {
+
             try {
                 model.loadUsers();
                 if (progressIndicator == null) {
@@ -84,34 +89,8 @@ public class UserController implements Initializable {
                     e.printStackTrace();
                 }
             }
-        }else if (type.equals("Technician")){
-            try {
-                model.loadTech();
-                if (progressIndicator == null) {
-                    progressIndicator = new ProgressIndicator();
-                }
-                progressIndicator.setVisible(false);
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-
-            Node[] nodes = new Node[model.getAllTech().size()];
-            for (int i = 0; i < nodes.length; i++) {
-                try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/UserItem.fxml"));
-                    nodes[i] = loader.load();
-
-                    UserItemController controller = loader.getController();
-                    controller.setLabels(i, "Technician");
-
-
-                    pnItems.getChildren().add(nodes[i]);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
         }
-    }
+
     public void setPnItems(ObservableList<User> selectedUsers) {
         pnItems.getChildren().clear();
         Node[] nodes = new Node[selectedUsers.size()];
@@ -159,5 +138,15 @@ public class UserController implements Initializable {
             searchType = "first name";
         }
 
+    }
+
+    public void createHandle(ActionEvent actionEvent) throws IOException {
+        FXMLLoader userLoader = new FXMLLoader(getClass().getResource("/view/create/UserCreate.fxml"));
+        Parent root = userLoader.load();
+        UserCreateController controller = userLoader.getController();
+        controller.setModel(model);
+        Stage userStage = new Stage();
+        userStage.setScene(new Scene(root));
+        userStage.show();
     }
 }

@@ -143,5 +143,6 @@ public class OrderDAO implements DAOInterface<Order> {
             listOfOrders.add(new Order(id,userID,projectID,name,user,project,customer,customerId, date,price));
         }
 
-        return listOfOrders;    }
+        return listOfOrders;
+    }
 }
