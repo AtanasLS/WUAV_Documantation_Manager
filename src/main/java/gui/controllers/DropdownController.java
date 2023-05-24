@@ -39,11 +39,11 @@ public class DropdownController implements Initializable {
         category = dropdown.getSelectedItem().toString();
 
         if (category.equals("Users")) {
-            information = "Information about users: " +
-                    "User can be created only by the admin or the project manager.\n(Keep in mind that the project manager can't create seller " +
-                    "or another project manager, he is allowed only to create users of type technicians.";
+            information = "Information about users:\n" +
+                    "User can be created only by the admin or the project manager.\n(Keep in mind that the project manager can't create seller\n " +
+                    "or another project manager, he is allowed only to create users\nof type technicians.";
         } else if (category.equals("Documents")) {
-            information = "Information about documents:" +
+            information = "Information about documents:\n"+
                     "For the creating of a document you need first to create\n" +
             "1. Create a customer.\n" +
                     "2. Created project that is assigned to that customer.\n" +
@@ -52,11 +52,11 @@ public class DropdownController implements Initializable {
         } else if (category.equals("Logins")) {
             information = "Information about logins:\n" +
                     "To create login you need a created project first,\n" +
-                    " because this login credentials need to be assigned to a certain project.";
+                    " because this login credentials need to be assigned\nto a certain project.";
         } else if (category.equals("Projects")) {
-            information = "Information about projects:" +
-                    "To create a project you must have an already created customer to which to assign the project. " +
-                    "The project includes the type of the project and the client for whom this project is being made. ";
+            information = "Information about projects:\n"+
+                    "To create a project you must have an already created customer to which to assign the project.\n" +
+                    "The project includes the type of the project and the client\nfor whom this project is being made. ";
         } else if (category.equals("Customers")) {
             information = "Information about customers:\n " +
                     "A customer can be created only by admin or a technician manager. He needs to have the following credentials:\n" +

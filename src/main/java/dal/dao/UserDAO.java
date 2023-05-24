@@ -134,6 +134,15 @@ public class UserDAO implements DAOInterface<User> {
 
         stmt.setInt(8,id);
 
+
+        object.setUsername(username);
+        object.setFirstName(firstName);
+        object.setLastName(lastName);
+        object.setEmail(email);
+        object.setType(type);
+
+
+
         try {
             ResultSet resultSet = stmt.executeQuery();
             //System.out.println(resultSet.toString());

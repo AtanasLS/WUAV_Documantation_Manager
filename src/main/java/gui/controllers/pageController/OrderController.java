@@ -5,18 +5,24 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import main.java.be.LogIns;
 import main.java.be.Order;
 import main.java.bll.Filter;
+import main.java.gui.controllers.createController.CreateOrderController;
 import main.java.gui.controllers.itemController.DocumentItemController;
 import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.model.MainModel;
@@ -30,6 +36,7 @@ public class OrderController implements Initializable {
 
     public TextField searchBar;
     public Label nameLabel, projectLabel, customerLabel, dateLabel;
+    public Button createBtn;
     @FXML
     VBox pnItems = null;
 
@@ -71,7 +78,10 @@ public class OrderController implements Initializable {
             }
         }
     }
-    public void setModel(){
+    public void setModel(String type){
+        if (type.equals("Seller") || type.equals("Technician")){
+            createBtn.setVisible(false);
+        }
         try {
             model.loadOrders();
             if (progressIndicator == null){
@@ -127,5 +137,15 @@ public class OrderController implements Initializable {
         }else if (mouseEvent.getSource() == customerLabel){
             searchType = "customer";
         }
+    }
+
+    public void createHandle(ActionEvent actionEvent) throws IOException {
+        FXMLLoader ordersLoader = new FXMLLoader(getClass().getResource("/view/create/CreateOrder.fxml"));
+        Parent ordersRoot = ordersLoader.load();
+        CreateOrderController createOrderController = ordersLoader.getController();
+        createOrderController.setModel(model);
+        Stage orderStage = new Stage();
+        orderStage.setScene(new Scene(ordersRoot));
+        orderStage.show();
     }
 }

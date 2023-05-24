@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPane" depthTest="ENABLE" pickOnBounds="false" prefHeight="596.0" prefWidth="922.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.createController.CreateDocumentController">
+<AnchorPane fx:id="mainPane" depthTest="ENABLE" pickOnBounds="false" prefHeight="596.0" prefWidth="922.0" stylesheets="@../../css/stylesheet.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.createController.CreateDocumentController">
    <children>
       <TextArea fx:id="documentDescription" blendMode="SRC_ATOP" depthTest="ENABLE" layoutX="252.0" layoutY="258.0" nodeOrientation="LEFT_TO_RIGHT" pickOnBounds="false" prefHeight="326.0" prefWidth="654.0" promptText="Add your description" />
       <Label layoutX="250.0" layoutY="209.0" prefHeight="34.0" prefWidth="120.0" text="Description:">
@@ -19,7 +19,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="664.0" layoutY="203.0" mnemonicParsing="false" onAction="#createDrawing" prefHeight="46.0" prefWidth="101.0" text="Create Drawing" />
+      <Button layoutX="664.0" layoutY="203.0" mnemonicParsing="false" onAction="#createDrawing" prefHeight="46.0" prefWidth="101.0" text="Insert Drawing" />
       <DatePicker fx:id="date" layoutX="14.0" layoutY="111.0" prefHeight="34.0" prefWidth="170.0" />
       <Label layoutX="14.0" layoutY="70.0" prefHeight="34.0" prefWidth="120.0" text="Date:">
          <font>

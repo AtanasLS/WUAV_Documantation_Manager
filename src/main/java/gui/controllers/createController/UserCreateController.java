@@ -15,6 +15,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.be.User;
 import main.java.gui.controllers.itemController.PhotoItemController;
+import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.CreateModel;
 import main.java.gui.model.MainModel;
 
@@ -34,6 +35,7 @@ public class UserCreateController implements Initializable, CreateController {
     public Button saveBtn, cancelBtn;
 
     private CreateModel createModel;
+    private MainModel model;
     private ObservableList<String> types;
 
     private String img="images/avatar-icon.png";
@@ -51,6 +53,7 @@ public class UserCreateController implements Initializable, CreateController {
     }
 
     public void setModel(MainModel model){
+        this.model = model;
         this.createModel = new CreateModel(model);
     }
 
@@ -58,8 +61,22 @@ public class UserCreateController implements Initializable, CreateController {
         User newUser = new User(username.getText(), firstName.getText(), lastName.getText(),
                 email.getText(), password.getText(), (String) typeBox.getSelectionModel().getSelectedItem(),this.img);
         createModel.createInDatabase(newUser, "User");
+        this.model.addUser(newUser);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/UsersView.fxml"));
+        try {
+            Node newNode = loader.load();
+
+            UserController controller = loader.getController();
+            controller.setPnItems(this.model.getAllUsers());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         stage.close();
+
+
+
     }
 
     public void handleCancel(ActionEvent actionEvent) {

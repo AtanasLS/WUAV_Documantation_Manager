@@ -20,6 +20,7 @@ public class DataManagerFacade {
     ProjectDAO projectDAO;
     UserDAO userDAO;
     OrderDAO orderDAO;
+    ProjectToUserDAO projectToUserDAO;
 
     private DataManagerFacade() {
         userDAO = new UserDAO();
@@ -29,6 +30,7 @@ public class DataManagerFacade {
         pictureDAO = new PictureDAO();
         projectDAO = new ProjectDAO();
         this.orderDAO = new OrderDAO();
+        this.projectToUserDAO = new ProjectToUserDAO();
     }
 
     public static DataManagerFacade getInstance() {
@@ -65,6 +67,9 @@ public class DataManagerFacade {
                 break;
             case "Order":
                 o = this.orderDAO.getFromDatabase(id);
+                break;
+            case "ProjectToUser":
+                o = this.projectToUserDAO.getFromDatabase(id);
                 break;
         }
 
@@ -108,6 +113,9 @@ public class DataManagerFacade {
     public ObservableList<Order> getAllOrderFromDatabase() throws SQLException {
         return orderDAO.getAllFromDatabase();
     }
+    public ObservableList<ProjectToUser> getAllProjectToUser() throws SQLException {
+        return projectToUserDAO.getAllFromDatabase();
+    }
 
 
 
@@ -135,6 +143,9 @@ public class DataManagerFacade {
             break;
             case "Order":
                 output = orderDAO.insertIntoDatabase((Order) object);
+                break;
+            case "ProjectToUser":
+                output = projectToUserDAO.insertIntoDatabase((ProjectToUser) object);
                 break;
         }
         return output;

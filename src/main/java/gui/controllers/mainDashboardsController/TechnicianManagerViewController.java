@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -37,6 +38,7 @@ public class TechnicianManagerViewController implements Initializable {
 
     public AnchorPane painnnnn;
     public Label usernameLogIN;
+    public ImageView avatarImage;
     private MainModel model;
     private String selected;
 
@@ -56,7 +58,12 @@ public class TechnicianManagerViewController implements Initializable {
         this.editModel=new EditModel(mvm);
         this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
 
-        this.avatar=new Image("/images/"+this.model.getLogInUser().getUsername()+".png");
+        this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
+        System.out.println(this.model.getLogInUser().getUsername());
+        System.out.println(this.model.getLogInUser().getImg());
+        this.avatar=new Image("/images/"+this.model.getLogInUser().getImg());
+        this.avatarImage.setImage(avatar);
+
 
 
     }
@@ -65,9 +72,10 @@ public class TechnicianManagerViewController implements Initializable {
         if (actionEvent.getSource() == btnLogIns) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/LogInsView.fxml"));
+                painnnnn.getChildren().setAll((Node) loader.load());
                 LogInsController controller = loader.getController();
                 controller.setModel();
-                painnnnn.getChildren().setAll((Node) loader.load());
+
                 selected = "LogIns";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -89,7 +97,7 @@ public class TechnicianManagerViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 OrderController controller = loader.getController();
-                controller.setModel();
+                controller.setModel("tech man");
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -99,18 +107,18 @@ public class TechnicianManagerViewController implements Initializable {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
                 painnnnn.getChildren().setAll((Node) loader.load());
                 ProjectController controller = loader.getController();
-                controller.setModel();
+                controller.setModel(model.getLogInUser());
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }else if (actionEvent.getSource() == btnTechnicians){
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/UsersView.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/TechnicianPageView.fxml"));
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
-                UserController controller = loader.getController();
-                controller.setMainModel("Technician");
+                TechniciansController controller = loader.getController();
+                controller.setMainModel( "Technician",this.model);
                 //controller
                 selected = "Users";
             } catch (IOException e) {
@@ -122,7 +130,7 @@ public class TechnicianManagerViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 CustomerPageController controller = loader.getController();
-                controller.setMainModel();
+                controller.setMainModel("tech man");
                 selected = "Customers";
             } catch (IOException e) {
                 throw new RuntimeException(e);

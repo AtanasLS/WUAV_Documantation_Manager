@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -36,6 +37,7 @@ public class SellerViewController implements Initializable {
     public Button btnSignout;
     public AnchorPane painnnnn;
     public Label usernameLogIN;
+    public ImageView avatarImage;
     private String img;
     private EditModel editModel;
 
@@ -55,9 +57,10 @@ public class SellerViewController implements Initializable {
         this.model = mvm ;
         this.editModel=new EditModel(mvm);
         this.usernameLogIN.setText(this.model.getLogInUser().getFirstName()+ "  "+this.model.getLogInUser().getLastName() );
-
-
-        this.avatar=new Image("/images/"+this.model.getLogInUser().getUsername()+".png");
+        System.out.println(this.model.getLogInUser().getUsername());
+        System.out.println(this.model.getLogInUser().getImg());
+        this.avatar=new Image("/images/"+this.model.getLogInUser().getImg());
+        this.avatarImage.setImage(avatar);
 
     }
 
@@ -68,7 +71,7 @@ public class SellerViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 OrderController controller = loader.getController();
-                controller.setModel();
+                controller.setModel("Seller");
                 selected = "Orders";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -79,7 +82,7 @@ public class SellerViewController implements Initializable {
                 painnnnn.getChildren().setAll((Node) loader.load());
                 ProjectController projectController = loader.getController();
                 projectController.setMostSoldProduct();
-                projectController.setModel();
+                projectController.setModel(model.getLogInUser());
                 selected = "Projects";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -92,7 +95,7 @@ public class SellerViewController implements Initializable {
                 // loader.setLocation(Main.class.getResource("/view/LoginPageView.fxml"));;
                 painnnnn.getChildren().setAll((Node) loader.load());
                 CustomerPageController controller = loader.getController();
-                controller.setMainModel();
+                controller.setMainModel("Seller");
                 selected = "Customers";
             } catch (IOException e) {
                 throw new RuntimeException(e);
@@ -133,6 +136,10 @@ public class SellerViewController implements Initializable {
         this.avatar=new Image(layoutDrawing.getUrl());
 
 
+
+    }
+
+    public void createDrawing(javafx.scene.input.MouseEvent mouseEvent) {
 
     }
 }
