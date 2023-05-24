@@ -6,76 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="95a2f632-40c1-4ada-8324-ea28b957e6ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/123.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/janTheManager.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jesperTheTechnician.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perTheTechnician.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/peterTheSeller.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateTechController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Last Minute Doc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Meeting.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/New Document.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/Pizza Installation.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin.png" beforeDir="false" afterPath="$PROJECT_DIR$/Admin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/be/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/be/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bll/AppLogicManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/AppLogicManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bll/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/PDFGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/DataManagerFacade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/DataManagerFacade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/DocumentDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/OrderDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/ProjectDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/DropdownController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/DropdownController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateDocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/DocumentEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/DocumentEditController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/ProjectItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/ProjectItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/UserItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/UserItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/AdminViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/SellerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/SellerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianManagerViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianManagerViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/TechnicianViewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/LogInsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/LogInsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/TechniciansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/TechniciansController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/TestPhotos.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/TestPhotos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/admin.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/admin.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/AdminMainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AdminMainView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/SellerView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianManagerView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianManagerView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/TechnicianView.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/create/CreateDocumentView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/create/CreateDocumentView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/create/CreateLogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/create/CreateLogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/create/CreateOrder.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/create/CreateOrder.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/create/CreateProject.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/create/CreateProject.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/create/CustomerCreate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/create/CustomerCreate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/create/UserCreate.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/create/UserCreate.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/edit/CustomerEdit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/edit/CustomerEdit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/edit/DocumentEdit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/edit/DocumentEdit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/edit/OrderEdit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/edit/OrderEdit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/edit/UserEdit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/edit/UserEdit.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/info/CustomerInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/info/CustomerInfoView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/info/OrderInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/info/OrderInfo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/info/UserInfoView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/info/UserInfoView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/PhotoItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/PhotoItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/ProjectItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/ProjectItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/UserItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/UserItem.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/CustomersVIew.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/DocumentsPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/LogInsView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/MainDashboardView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/MainDashboardView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/OrdersView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/ProjectsView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/TechnicianPageView.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/UsersView.fxml" afterDir="false" />>>>>>>> development
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1684099576437</updated>
       <workItem from="1684099581489" duration="52308000" />
-      <workItem from="1684596848529" duration="31907000" />
+      <workItem from="1684596848529" duration="34659000" />
     </task>
     <servers />
   </component>
