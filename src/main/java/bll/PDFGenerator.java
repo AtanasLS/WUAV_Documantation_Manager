@@ -34,7 +34,7 @@ public class PDFGenerator {
     }
 
 
-    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<File> selectedPhotos, String  layoutDrawing,ArrayList<boolean> includes) throws DocumentException, IOException {
+    public void generatePDF(String selectedDirectory, String name, Customer selectedCustomer, Project selectedProject, LogIns selectedLogIns, String description, ArrayList<File> selectedPhotos, String  layoutDrawing,ArrayList<Boolean> includes) throws DocumentException, IOException {
         try {
 
             //Create Document instance.

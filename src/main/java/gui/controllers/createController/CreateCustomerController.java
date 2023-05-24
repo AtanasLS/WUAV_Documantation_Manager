@@ -50,8 +50,18 @@ public class CreateCustomerController implements Initializable, CreateController
     }
 
     public void checkData(){
-        Pattern name = Pattern.compile("[A-Za-z\\s]{2,}");
-        TextFormatter<?> formatter = new TextFormatter<>(change -> {
+        Pattern name = Pattern.compile("[A-Za-z\\s]{1,}");
+        TextFormatter<String> formatter = new TextFormatter<>( change -> {
+            System.out.println(change.getControlNewText().matches("[A-Za-z\\s]{1,}"));
+            if (change.getControlNewText().matches(name.pattern())) {
+                System.out.println("work");
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        TextFormatter<String> formatter1 = new TextFormatter<>(change -> {
             if (name.matcher(change.getControlNewText()).matches()) {
                 // todo: remove error message/markup
                 return change; // allow this change to happen
@@ -60,7 +70,7 @@ public class CreateCustomerController implements Initializable, CreateController
             }
         });
 
-        TextFormatter<?> formatter1 = new TextFormatter<>(change -> {
+        TextFormatter<String> formatter2 = new TextFormatter<>(change -> {
             if (name.matcher(change.getControlNewText()).matches()) {
                 // todo: remove error message/markup
                 return change; // allow this change to happen
@@ -69,10 +79,8 @@ public class CreateCustomerController implements Initializable, CreateController
             }
         });
 
-
-
-        Pattern mail = Pattern.compile("[A-Za-z1-9]{2,}@[A-Za-z1-9].{2,}");
-        TextFormatter<?> formatterMail = new TextFormatter<>(change -> {
+        Pattern mail = Pattern.compile("[A-Za-z1-9]{1,}@[A-Za-z1-9].{1,}");
+        TextFormatter<String> formatterMail = new TextFormatter<>(change -> {
             if (mail.matcher(change.getControlNewText()).matches()) {
                 return change; // allow this change to happen
             } else {
@@ -80,8 +88,8 @@ public class CreateCustomerController implements Initializable, CreateController
             }
         });
 
-        Pattern phone = Pattern.compile("\\+?\\d[\\d-\\s]{8,}");
-        TextFormatter<?> formatterPhone = new TextFormatter<>(change -> {
+        Pattern phone = Pattern.compile("\\+?\\d[\\d-\\s]{1,}");
+        TextFormatter<String> formatterPhone = new TextFormatter<>(change -> {
             if (phone.matcher(change.getControlNewText()).matches()) {
                 return change; // allow this change to happen
             } else {
@@ -90,7 +98,7 @@ public class CreateCustomerController implements Initializable, CreateController
         });
 
         Pattern address = Pattern.compile("[A-Za-z0-9\\s,.]+");
-        TextFormatter<?> formatterAddress = new TextFormatter<>(change -> {
+        TextFormatter<String> formatterAddress = new TextFormatter<>(change -> {
             if (address.matcher(change.getControlNewText()).matches()) {
                 // todo: remove error message/markup
                 return change; // allow this change to happen
@@ -99,17 +107,8 @@ public class CreateCustomerController implements Initializable, CreateController
             }
         });
 
-        TextFormatter<?> formatter2 = new TextFormatter<>(change -> {
-            if (address.matcher(change.getControlNewText()).matches()) {
-                // todo: remove error message/markup
-                return change; // allow this change to happen
-            } else {
-                return null; // prevent change
-            }
-        });
-
-        Pattern pass = Pattern.compile("[A-Za-z\\s1-9\\s]{2,}");
-        TextFormatter<?> formatterPass = new TextFormatter<>(change -> {
+        Pattern pass = Pattern.compile("[A-Za-z\\s1-9\\s]{1,}");
+        TextFormatter<String> formatterPass = new TextFormatter<>(change -> {
             if (pass.matcher(change.getControlNewText()).matches()) {
                 // todo: remove error message/markup
                 return change; // allow this change to happen
@@ -117,6 +116,7 @@ public class CreateCustomerController implements Initializable, CreateController
                 return null; // prevent change
             }
         });
+
 
         email.setTextFormatter(formatterMail);
         firstName.setTextFormatter(formatter);

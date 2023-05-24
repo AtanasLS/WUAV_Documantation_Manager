@@ -68,8 +68,18 @@ public class CreateLoginController implements Initializable, CreateController {
 
     @Override
     public void checkData(){
-        Pattern name = Pattern.compile("\\^(?!\\s)([a-z ,.'-]+)$");
-        TextFormatter<?> formatter = new TextFormatter<>(change -> {
+        Pattern name = Pattern.compile("[A-Za-z\\s]{1,}");
+        TextFormatter<String> formatter = new TextFormatter<>( change -> {
+            System.out.println(change.getControlNewText().matches("[A-Za-z\\s]{1,}"));
+            if (change.getControlNewText().matches(name.pattern())) {
+                System.out.println("work");
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        TextFormatter<String> formatter1 = new TextFormatter<>(change -> {
             if (name.matcher(change.getControlNewText()).matches()) {
                 // todo: remove error message/markup
                 return change; // allow this change to happen
@@ -78,28 +88,35 @@ public class CreateLoginController implements Initializable, CreateController {
             }
         });
 
-        Pattern mail = Pattern.compile("\\^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        TextFormatter<?> formatterMail = new TextFormatter<>(change -> {
+        TextFormatter<String> formatter2 = new TextFormatter<>(change -> {
+            if (name.matcher(change.getControlNewText()).matches()) {
+                // todo: remove error message/markup
+                return change; // allow this change to happen
+            } else {
+                return null; // prevent change
+            }
+        });
+
+        Pattern mail = Pattern.compile("[A-Za-z1-9]{2,}@[A-Za-z1-9].{1,}");
+        TextFormatter<String> formatterMail = new TextFormatter<>(change -> {
             if (mail.matcher(change.getControlNewText()).matches()) {
-                // todo: remove error message/markup
                 return change; // allow this change to happen
             } else {
                 return null; // prevent change
             }
         });
 
-        Pattern phone = Pattern.compile("\\^[\\+]?[(]?[0-9]{3}[)]?[-\\s\\.]?[0-9]{3}[-\\s\\.]?[0-9]{4,6}$");
-        TextFormatter<?> formatterPhone = new TextFormatter<>(change -> {
+        Pattern phone = Pattern.compile("\\+?\\d[\\d-\\s]{1,}");
+        TextFormatter<String> formatterPhone = new TextFormatter<>(change -> {
             if (phone.matcher(change.getControlNewText()).matches()) {
-                // todo: remove error message/markup
                 return change; // allow this change to happen
             } else {
                 return null; // prevent change
             }
         });
 
-        Pattern address = Pattern.compile("\\^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-        TextFormatter<?> formatterAddress = new TextFormatter<>(change -> {
+        Pattern address = Pattern.compile("[A-Za-z0-9\\s,.]+");
+        TextFormatter<String> formatterAddress = new TextFormatter<>(change -> {
             if (address.matcher(change.getControlNewText()).matches()) {
                 // todo: remove error message/markup
                 return change; // allow this change to happen
@@ -108,8 +125,8 @@ public class CreateLoginController implements Initializable, CreateController {
             }
         });
 
-        Pattern pass = Pattern.compile("\\^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\\W)(?!.* ).{8,16}$");
-        TextFormatter<?> formatterPass = new TextFormatter<>(change -> {
+        Pattern pass = Pattern.compile("[A-Za-z\\s1-9\\s]{1,}");
+        TextFormatter<String> formatterPass = new TextFormatter<>(change -> {
             if (pass.matcher(change.getControlNewText()).matches()) {
                 // todo: remove error message/markup
                 return change; // allow this change to happen
@@ -117,6 +134,8 @@ public class CreateLoginController implements Initializable, CreateController {
                 return null; // prevent change
             }
         });
+
+
 
         username.setTextFormatter(formatter);
         password.setTextFormatter(formatterPass);
