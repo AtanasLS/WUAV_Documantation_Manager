@@ -16,20 +16,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import main.java.be.Customer;
 import main.java.be.Document;
 import main.java.be.User;
-import main.java.bll.Filter;
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.UserCreateController;
 import main.java.gui.controllers.itemController.UserItemController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
@@ -61,6 +60,14 @@ public class UserController implements Initializable {
             }
         });
         searchType = "username";
+        this.model = new MainModel();
+        model.getAllUsers().addListener((ListChangeListener.Change<? extends User> change) -> {
+            while (change.next()) {
+                if (change.wasAdded() || change.wasRemoved() || change.wasUpdated()) {
+                    allUsers.setAll(model.getAllUsers());
+                    setPnItems(allUsers);
+                }
+            }
 
         this.allUsers.addListener((ListChangeListener<User>) ch -> {
             this.setPnItems(this.allUsers);

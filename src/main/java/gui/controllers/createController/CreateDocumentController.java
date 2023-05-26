@@ -17,8 +17,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.converter.DoubleStringConverter;
 import main.java.be.*;
+import main.java.bll.utilties.PDFGenerator;
+
 import main.java.bll.AppLogicManager;
 import main.java.bll.PDFGenerator;
 import main.java.gui.controllers.itemController.CustomerItemController;
@@ -65,6 +66,8 @@ public class CreateDocumentController implements Initializable, CreateController
         documentDescription.appendText("\n");
         documentDescription.setPrefColumnCount(20);
         this.allDocs = FXCollections.observableArrayList();
+        this.includes = new ArrayList<>();
+
         this.checkData();
 
     }

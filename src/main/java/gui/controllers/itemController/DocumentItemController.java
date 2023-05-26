@@ -20,7 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class DocumentItemController implements Initializable {
+public class DocumentItemController implements Initializable, Items {
     public Label documentName,  date, project;
     private MainModel model;
 

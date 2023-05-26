@@ -53,7 +53,7 @@ public class UserItemController implements Initializable {
            Thread loadThread = new Thread(loadTask);
            loadThread.start();
         }else if (type.equals("Technician")){
-            System.out.println("look");
+
             Task<Void> loadTask = new Task<Void>() {
                 @Override
                 protected Void call() throws Exception {

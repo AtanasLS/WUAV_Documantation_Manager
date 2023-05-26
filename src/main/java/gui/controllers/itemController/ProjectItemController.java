@@ -91,4 +91,6 @@ public class ProjectItemController implements Initializable {
         this.deleteModel.deleteFromDatabase(this.currentProject.getProjectId(),"Project");
 
     }
+
+
 }

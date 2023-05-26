@@ -62,19 +62,29 @@
               </Label>
          </children>
       </HBox>
-      <HBox prefHeight="54.0" prefWidth="222.0">
+      <HBox prefHeight="54.0" prefWidth="150.0">
          <children>
-            <Button mnemonicParsing="false" onAction="#deleteHandle" prefHeight="30.0" prefWidth="93.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="Delete" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#infoBtnHandle" prefHeight="30.0" prefWidth="90.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="Info" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
                <HBox.margin>
-                  <Insets left="50.0" top="12.0" />
+                  <Insets top="12.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
-      <HBox prefHeight="54.0" prefWidth="115.0" />
+      <HBox prefHeight="54.0" prefWidth="149.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#deleteHandle" prefHeight="30.0" prefWidth="90.0" style="-fx-border-color: white; -fx-border-radius: 20; -fx-background-color: transparent;" text="Delete" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="12.0" />
+               </HBox.margin>
+            </Button>
+         </children></HBox>
     </children>
     <effect>
         <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />

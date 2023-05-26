@@ -1,5 +1,6 @@
 package main.java.gui.controllers.infoPageController;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -12,7 +13,6 @@ import main.java.gui.model.DeleteModel;
 import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -69,4 +69,8 @@ public class UserInfoController implements Initializable, Info {
         ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
     }
 
+    public void delete(ActionEvent actionEvent) {
+
+        delete(model.getSelectedUser().getId());
+    }
 }

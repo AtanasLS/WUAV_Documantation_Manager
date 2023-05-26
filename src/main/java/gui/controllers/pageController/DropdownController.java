@@ -1,4 +1,4 @@
-package main.java.gui.controllers;
+package main.java.gui.controllers.pageController;
 
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.application.Application;

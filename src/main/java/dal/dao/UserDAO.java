@@ -95,13 +95,14 @@ public class UserDAO implements DAOInterface<User> {
 
     @Override
     public String deleteFromDatabase(int id) throws SQLException {
-
-        String query="DELETE FROM user WHERE id=?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
-        ResultSet resultSet =stmt.executeQuery();
+        String query = "DELETE FROM users WHERE id=?;";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, id);
+        int affectedRows = stmt.executeUpdate();
+        stmt.close();
         this.deleteProjectToUser(id);
-        return resultSet.toString();
+        return "Number of affected rows: " + affectedRows;
+
     }
 
     @Override

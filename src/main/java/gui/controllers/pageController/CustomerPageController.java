@@ -21,14 +21,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Customer;
-import main.java.bll.Filter;
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateCustomerController;
 import main.java.gui.controllers.itemController.CustomerItemController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CustomerPageController implements Initializable {
@@ -59,6 +58,15 @@ public class CustomerPageController implements Initializable {
                 loadCustomersAsync(newValue);
             }
         });
+
+        model.getAllCustomers().addListener((ListChangeListener.Change<? extends Customer> change) -> {
+            while (change.next()) {
+                if (change.wasAdded() || change.wasRemoved() || change.wasUpdated()) {
+                    allCustomers.setAll(model.getAllCustomers());
+                    setPnItems(allCustomers);
+                }
+            }
+  
 
         this.allCustomers.addListener((ListChangeListener<Customer>) ch -> {
            this.setPnItems(allCustomers);

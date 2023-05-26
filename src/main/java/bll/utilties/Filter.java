@@ -1,9 +1,10 @@
-package main.java.bll;
+package main.java.bll.utilties;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import main.java.be.*;
+import main.java.bll.AppLogicManager;
 
 import java.sql.SQLException;
 import java.util.concurrent.CompletableFuture;
