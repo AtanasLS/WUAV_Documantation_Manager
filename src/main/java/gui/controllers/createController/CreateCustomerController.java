@@ -58,6 +58,7 @@ public class CreateCustomerController implements Initializable, CreateController
         });
 
         TextFormatter<String> formatter1 = new TextFormatter<>(change -> {
+            System.out.println(change);
             if (name.matcher(change.getControlNewText()).matches()) {
                 // todo: remove error message/markup
                 return change; // allow this change to happen
@@ -75,8 +76,9 @@ public class CreateCustomerController implements Initializable, CreateController
             }
         });
 
-        Pattern mail = Pattern.compile("[A-Za-z1-9]{1,}@[A-Za-z1-9].{1,}");
+        Pattern mail = Pattern.compile("[a-zA-Z0-9._%+-@]{1,}");
         TextFormatter<String> formatterMail = new TextFormatter<>(change -> {
+            System.out.println(change.getControlNewText().matches(mail.pattern()));
             if (mail.matcher(change.getControlNewText()).matches()) {
                 return change; // allow this change to happen
             } else {
@@ -84,8 +86,9 @@ public class CreateCustomerController implements Initializable, CreateController
             }
         });
 
-        Pattern phone = Pattern.compile("\\+?\\d[\\d-\\s]{1,}");
-        TextFormatter<String> formatterPhone = new TextFormatter<>(change -> {
+        Pattern phone = Pattern.compile("[\\d-\\s]{1,}");
+        TextFormatter<Integer> formatterPhone = new TextFormatter<>(change -> {
+            System.out.println(change.getControlNewText().matches(phone.pattern()));
             if (phone.matcher(change.getControlNewText()).matches()) {
                 return change; // allow this change to happen
             } else {
