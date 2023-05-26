@@ -3,6 +3,7 @@ package main.java.gui.controllers.pageController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -57,6 +58,10 @@ public class CustomerPageController implements Initializable {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 loadCustomersAsync(newValue);
             }
+        });
+
+        this.allCustomers.addListener((ListChangeListener<Customer>) ch -> {
+           this.setPnItems(allCustomers);
         });
     }
 

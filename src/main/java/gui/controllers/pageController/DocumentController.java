@@ -3,6 +3,7 @@ package main.java.gui.controllers.pageController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -18,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import main.java.be.Customer;
 import main.java.be.Document;
 import main.java.bll.Filter;
 import main.java.gui.controllers.createController.CreateDocumentController;
@@ -61,6 +63,10 @@ public class DocumentController implements Initializable {
         });
 
         searchType = "name";
+
+        this.allDocs.addListener((ListChangeListener<Document>) ch -> {
+            this.setPnItemsSearched(this.allDocs);
+        });
 
     }
     public void setPnItemsSearched(ObservableList<Document> searchedDocuments){

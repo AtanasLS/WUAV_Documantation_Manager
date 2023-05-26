@@ -3,6 +3,7 @@ package main.java.gui.controllers.pageController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import main.java.be.Document;
 import main.java.be.User;
 import main.java.bll.Filter;
 import main.java.gui.controllers.createController.UserCreateController;
@@ -59,6 +61,10 @@ public class UserController implements Initializable {
             }
         });
         searchType = "username";
+
+        this.allUsers.addListener((ListChangeListener<User>) ch -> {
+            this.setPnItems(this.allUsers);
+        });
     }
 
     public void setMainModel(String type, MainModel model) {

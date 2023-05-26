@@ -162,7 +162,14 @@ public class CreateDocumentController implements Initializable, CreateController
 
         for (File file: allImages) {
             if (allDocs.size() > 0){
-                Picture picture = new Picture( file.getName(), file.getAbsolutePath(), allDocs.get(allDocs.size()-1).getId() + 1);
+                String[] namePhoto=file.getName().split("\\.");
+                namePhoto[namePhoto.length-1]="";
+                String saveName="";
+                for (int i = 0; i <namePhoto.length-1 ; i++) {
+                    saveName+=namePhoto[i];
+
+                }
+                Picture picture = new Picture( saveName, file.getAbsolutePath(), allDocs.get(allDocs.size()-1).getId() + 1);
                 createModel.createInDatabase(picture, "Picture");
             } else  {
                 Picture picture = new Picture( file.getName(), file.getAbsolutePath(), 1);
