@@ -23,12 +23,16 @@ public class DocumentDAO implements DAOInterface<Document> {
 
     @Override
     public Document getFromDatabase(int id) throws SQLException, IOException {
-        String query="SELECT * FROM document WHERE id=?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setInt(1,id);
-        ResultSet resultSet =stmt.executeQuery();
+        String query = "SELECT * FROM documentation WHERE id=?";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setInt(1, id);
+        ResultSet resultSet = stmt.executeQuery();
 
-        return this.getDataFromResultSet(resultSet);
+        if (resultSet.next()) {
+            return this.getDataFromResultSet(resultSet);
+        } else {
+            throw new SQLException("No document found with the specified ID: " + id);
+        }
     }
 
     @Override
@@ -73,13 +77,12 @@ public class DocumentDAO implements DAOInterface<Document> {
         stmt.setString(8,name);
         stmt.setInt(9,type);
 
-
-
-        ResultSet resultSet =stmt.executeQuery();
-
-
-
-        return resultSet.toString();
+        int affectedRows = stmt.executeUpdate();
+        if (affectedRows > 0) {
+            return "Success";
+        } else {
+            return "Failure";
+        }
     }
 
     @Override
@@ -92,47 +95,42 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
     @Override
-    public String updateDatabase(Document object) throws SQLException, FileNotFoundException {
+   public String updateDatabase(Document object) throws SQLException, FileNotFoundException {
         File file = new File(object.getLayoutDrawing());
         FileInputStream input = new FileInputStream(file);
-        String description=object.getDescription();
-        LocalDate date=  object.getDate();
+        String description = object.getDescription();
+        LocalDate date = object.getDate();
         int id = object.getId();
-        int loginId=object.getLoginId();
-        int customer=object.getCustomer();
-        int user=object.getUser();
-        int project=object.getProject();
-        String name=object.getName();
-        int type=object.getType();
+        int loginId = object.getLoginId();
+        int customer = object.getCustomer();
+        int user = object.getUser();
+        int project = object.getProject();
+        String name = object.getName();
+        int type = object.getType();
 
-        String query=
-                "UPDATE documentation set layout_drawing = ?,description = ?,login_id = ?,[date] = ?,userId = ?, customerId = ?, projectId = ?, [name] = ?, [type] = ? WHERE id = ?;";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setBinaryStream(1,input);
-        stmt.setString(2,description);
-        stmt.setInt(3,loginId);
-        stmt.setObject(4,date);
-        stmt.setInt(5,user);
-        stmt.setInt(6,customer);
-        stmt.setInt(7,project);
-        stmt.setString(8,name);
-        stmt.setInt(9,type);
-        stmt.setInt(10,id);
+        String query = "UPDATE documentation SET layout_drawing=?, description=?, login_id=?, [date]=?, userId=?, customerId=?, projectId=?, [name]=?, [type]=? WHERE id=?";
+        PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
+        stmt.setBinaryStream(1, input);
+        stmt.setString(2, description);
+        stmt.setInt(3, loginId);
+        stmt.setObject(4, date);
+        stmt.setInt(5, user);
+        stmt.setInt(6, customer);
+        stmt.setInt(7, project);
+        stmt.setString(8, name);
+        stmt.setInt(9, type);
+        stmt.setInt(10, id);
 
-        System.out.println(type);
+        int affectedRows = stmt.executeUpdate();
 
-
-
-        ResultSet resultSet =stmt.executeQuery();
-
-        return resultSet.toString();
+        return "Rows affected: " + affectedRows;
     }
+
 
 
     @Override
     public Document getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException {
-        int id=resultSet.getInt("id");
-
+        int id = resultSet.getInt("id");
         String description = resultSet.getString("description");
         int loginID = resultSet.getInt("login_id");
         LocalDate date = resultSet.getDate("date").toLocalDate();
@@ -140,11 +138,10 @@ public class DocumentDAO implements DAOInterface<Document> {
         int customerID = resultSet.getInt("customerId");
         int projectID = resultSet.getInt("projectId");
         String name = resultSet.getString("name");
-        int type= resultSet.getInt("type");
+        int type = resultSet.getInt("type");
 
-
-        File file = new File(name+ ".png");
-        String layoutDrawing= name+ ".png";
+        File file = new File("src/main/resources/images/" + name + ".png");
+        String layoutDrawing = name + ".png";
         FileOutputStream output = new FileOutputStream(file);
 
         InputStream input = resultSet.getBinaryStream("layout_drawing");
@@ -152,8 +149,7 @@ public class DocumentDAO implements DAOInterface<Document> {
         while (input.read(buffer) > 0) {
             output.write(buffer);
         }
-
-        return new Document(id,layoutDrawing,description, loginID, name, userID, customerID, projectID, date,type);
+        return new Document(id, layoutDrawing, description, loginID, name, userID, customerID, projectID, date, type);
 
     }
 

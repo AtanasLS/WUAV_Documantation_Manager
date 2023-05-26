@@ -17,18 +17,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.be.User;
-import main.java.gui.controllers.LoginPageController;
 import main.java.gui.controllers.createController.*;
 import main.java.gui.controllers.pageController.*;
 
-import main.java.gui.controllers.itemController.PhotoItemController;
 import main.java.gui.controllers.pageController.CustomerPageController;
 import main.java.gui.controllers.pageController.DocumentController;
 import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
-
-import java.awt.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -75,49 +71,6 @@ public class AdminViewController implements Initializable {
         painnnnn.getChildren().setAll((Node) loader.load());
 
 
-    }
-    public void newObject(ActionEvent actionEvent) throws IOException, SQLException {
-
-        switch (selected.toLowerCase()){
-            case "logins":
-
-                break;
-            case "user":
-                FXMLLoader userLoader = new FXMLLoader(getClass().getResource("/view/create/UserCreate.fxml"));
-                Parent root = userLoader.load();
-                UserCreateController controller = userLoader.getController();
-                controller.setModel(model);
-                Stage userStage = new Stage();
-                userStage.setScene(new Scene(root));
-                userStage.show();
-                break;
-            case "orders":
-
-                break;
-            case "customers":
-
-
-                break;
-            case "projects":
-                FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/view/create/CreateProject.fxml"));
-                Parent projectsRoot = projectLoader.load();
-                CreateProjectController createProjectController = projectLoader.getController();
-                createProjectController.setModel(model);
-                Stage projectStage = new Stage();
-                projectStage.setScene(new Scene(projectsRoot));
-                projectStage.show();
-                break;
-            case "documents":
-                FXMLLoader documentsLoader = new FXMLLoader(getClass().getResource("/view/create/CreateDocumentView.fxml"));
-                Parent documentsRoot = documentsLoader.load();
-                CreateDocumentController createDocumentController = documentsLoader.getController();
-                createDocumentController.setModel(model);
-                //controller.setInformation();
-                Stage documentsStage = new Stage();
-                documentsStage.setScene(new Scene(documentsRoot));
-                documentsStage.show();
-                break;
-        }
     }
     public void handleClicks(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == btnLogIns) {

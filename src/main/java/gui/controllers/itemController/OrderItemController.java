@@ -20,7 +20,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-public class OrderItemController implements Initializable {
+public class OrderItemController implements Initializable, Items {
 
     public Label oName, pName, customer,date,price;
 

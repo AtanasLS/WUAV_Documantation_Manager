@@ -19,7 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Document;
-import main.java.bll.Filter;
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateDocumentController;
 import main.java.gui.controllers.itemController.DocumentItemController;
 import main.java.gui.model.MainModel;

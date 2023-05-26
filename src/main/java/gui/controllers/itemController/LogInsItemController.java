@@ -42,8 +42,8 @@ public class LogInsItemController implements Initializable,Items {
     }
 
     @Override
-    public void setLabels(int numberOfElement, MainModel model) {
-        this.model = model;
+    public void setLabels(int numberOfElement) {
+
         Task<Void> loadTask = new Task<Void>() {
             @Override
             protected Void call() throws Exception {

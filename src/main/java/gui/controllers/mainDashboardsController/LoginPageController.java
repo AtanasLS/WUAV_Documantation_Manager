@@ -1,4 +1,4 @@
-package main.java.gui.controllers;
+package main.java.gui.controllers.mainDashboardsController;
 
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;

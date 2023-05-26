@@ -19,17 +19,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import main.java.be.LogIns;
 import main.java.be.Order;
-import main.java.bll.Filter;
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateOrderController;
-import main.java.gui.controllers.itemController.DocumentItemController;
 import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class OrderController implements Initializable {

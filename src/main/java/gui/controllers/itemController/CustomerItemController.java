@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerItemController implements Initializable {
+public class CustomerItemController implements Initializable, Items {
     public Label firstNameLabel, lastNameLabel, emailLabel, adress1Label;
     public Label infoNameLabel;
     private MainModel model ;

@@ -19,7 +19,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.LogIns;
-import main.java.bll.Filter;
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateLoginController;
 import main.java.gui.controllers.itemController.LogInsItemController;
 import main.java.gui.model.MainModel;
@@ -91,7 +91,7 @@ public class LogInsController implements Initializable {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/LogIns.fxml"));
                     nodes[i] = loader.load();
                     LogInsItemController controller = loader.getController();
-                    controller.setLabels(i, model);
+                    controller.setLabels(i);
 
                     pnItems.getChildren().add(nodes[i]);
                 } catch (IOException e) {

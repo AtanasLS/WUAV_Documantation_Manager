@@ -21,7 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Project;
 import main.java.be.User;
-import main.java.bll.Filter;
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateProjectController;
 import main.java.gui.controllers.itemController.ProjectItemController;
 import main.java.gui.model.MainModel;
