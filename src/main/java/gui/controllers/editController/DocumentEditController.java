@@ -93,7 +93,14 @@ public class DocumentEditController implements Initializable {
         items.getChildren().add(node);
 
         for (Picture p : mvm.getAllPhotosForSelectedDocument(id)) {
-            Image selectedImage = new Image("/images/" + p.getInstallationPhoto() + ".png");
+            String[] namePhoto=p.getInstallationPhoto().split("\\.");
+            namePhoto[namePhoto.length-1]="";
+            String saveName="";
+            for (int i = 0; i <namePhoto.length-1 ; i++) {
+                saveName+=namePhoto[i];
+
+            }
+            Image selectedImage = new Image("/images/" + saveName + ".png");
             loader = new FXMLLoader(getClass().getResource("/view/items/PhotoItem.fxml"));
             node = loader.load();
             controller = loader.getController();
