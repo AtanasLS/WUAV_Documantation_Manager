@@ -37,6 +37,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/ProjectItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/ProjectItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/items/UserItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/items/UserItem.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/pages/MainDashboardView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/pages/MainDashboardView.fxml" afterDir="false" />
+
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateCustomerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +187,7 @@
       <updated>1684099576437</updated>
       <workItem from="1684099581489" duration="52308000" />
       <workItem from="1684596848529" duration="47558000" />
+
     </task>
     <servers />
   </component>

@@ -66,6 +66,10 @@ public class CustomerPageController implements Initializable {
                     setPnItems(allCustomers);
                 }
             }
+  
+
+        this.allCustomers.addListener((ListChangeListener<Customer>) ch -> {
+           this.setPnItems(allCustomers);
         });
     }
 

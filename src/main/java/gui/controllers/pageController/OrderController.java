@@ -3,6 +3,7 @@ package main.java.gui.controllers.pageController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -19,6 +20,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import main.java.be.Document;
+import main.java.be.LogIns;
 import main.java.be.Order;
 import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateOrderController;
@@ -56,6 +60,10 @@ public class OrderController implements Initializable {
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
                 loadOrdersAsync(newValue);
             }
+        });
+
+        this.allOrders.addListener((ListChangeListener<Order>) ch -> {
+            this.setPnItems(this.allOrders);
         });
 
     }

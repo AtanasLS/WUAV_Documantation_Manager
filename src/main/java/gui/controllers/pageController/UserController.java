@@ -20,6 +20,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Customer;
+import main.java.be.Document;
 import main.java.be.User;
 import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.UserCreateController;
@@ -67,6 +68,9 @@ public class UserController implements Initializable {
                     setPnItems(allUsers);
                 }
             }
+
+        this.allUsers.addListener((ListChangeListener<User>) ch -> {
+            this.setPnItems(this.allUsers);
         });
     }
 

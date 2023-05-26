@@ -119,7 +119,7 @@ public class UserCreateController implements Initializable, CreateController {
             }
         });
 
-        Pattern mail = Pattern.compile("[A-Za-z1-9]{1,}@[A-Za-z1-9].{1,}");
+        Pattern mail = Pattern.compile("[a-zA-Z0-9._%+-@]{1,}");
         TextFormatter<String> formatterMail = new TextFormatter<>(change -> {
             if (mail.matcher(change.getControlNewText()).matches()) {
                 return change; // allow this change to happen
