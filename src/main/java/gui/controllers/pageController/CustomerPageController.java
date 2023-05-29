@@ -13,6 +13,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
@@ -21,6 +23,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Customer;
+import main.java.bll.Filter;
+
 import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateCustomerController;
 import main.java.gui.controllers.itemController.CustomerItemController;
@@ -28,6 +32,7 @@ import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class CustomerPageController implements Initializable {
@@ -74,7 +79,9 @@ public class CustomerPageController implements Initializable {
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }
     }
 
@@ -89,9 +96,12 @@ public class CustomerPageController implements Initializable {
             }
 
             progressIndicator.setVisible(false);
+
         } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            alert.showAndWait();          }
+
 
                 Node[] nodes = new Node[model.getAllUsers().size()];
 
@@ -104,7 +114,9 @@ public class CustomerPageController implements Initializable {
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }
 
 

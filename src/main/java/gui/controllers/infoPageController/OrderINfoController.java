@@ -99,14 +99,13 @@ public class OrderINfoController implements Initializable,Info
                 selectedProject.toString(),
                 selectedCustomer.getFirstName() + " " + selectedCustomer.getLastName(),
                 selectedCustomer.getId(),
-                sqlDate,
-                0.0
+                sqlDate
         );
         System.out.println(date.getValue() + "etooo");
         System.out.println("here is the ID:  " + model.getSelectedOrder().getId());
         editModel.updateDatabaseElement(editedOrder, "Order", model.getSelectedOrder().getId());
         System.out.println(editedOrder.getId() + " " +   editedOrder.getProjectID()+ " " + editedOrder.getName()+ " " +  editedOrder.getCustomerID()
-                + " " +  editedOrder.getUserID()+ " " +  editedOrder.getPrice()+ " " +  editedOrder.getDate());
+                + " " +  editedOrder.getUserID()+ " " + " " +  editedOrder.getDate());
     }
 
     public void handleCancel(javafx.event.ActionEvent actionEvent) {

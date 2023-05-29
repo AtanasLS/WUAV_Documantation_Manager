@@ -13,6 +13,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import main.java.be.Document;
+import main.java.be.LogIns;
+import main.java.be.Order;
+import main.java.bll.Filter;
+import main.java.gui.controllers.createController.CreateOrderController;
+import main.java.gui.controllers.itemController.DocumentItemController;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
@@ -31,6 +41,8 @@ import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+
 import java.util.ResourceBundle;
 
 public class OrderController implements Initializable {
@@ -80,7 +92,9 @@ public class OrderController implements Initializable {
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }
     }
     public void setModel(String type){
@@ -95,8 +109,10 @@ public class OrderController implements Initializable {
             progressIndicator.setVisible(false);
             System.out.println(model.getAllOrders());
         } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            alert.showAndWait();          }
+
         Node[] nodes = new Node[model.getAllOrders().size()];
         for (int i = 0; i < nodes.length; i++) {
             try {
@@ -108,7 +124,9 @@ public class OrderController implements Initializable {
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }
     }
     private void loadOrdersAsync(String searchValue) {

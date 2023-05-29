@@ -13,6 +13,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import main.java.be.Document;
+import main.java.be.User;
+import main.java.bll.Filter;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
@@ -29,6 +40,7 @@ import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
@@ -63,6 +75,19 @@ public class UserController implements Initializable {
         searchType = "username";
 
 
+        this.model = new MainModel();
+        model.getAllUsers().addListener((ListChangeListener.Change<? extends User> change) -> {
+            while (change.next()) {
+                if (change.wasAdded() || change.wasRemoved() || change.wasUpdated()) {
+                    allUsers.setAll(model.getAllUsers());
+                    setPnItems(allUsers);
+                }
+            }
+
+
+        this.allUsers.addListener((ListChangeListener<User>) ch -> {
+            this.setPnItems(this.allUsers);
+        });
     }
 
     public void setMainModel(String type, MainModel model) {
@@ -74,10 +99,13 @@ public class UserController implements Initializable {
                 }
                 progressIndicator.setVisible(false);
             } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
 
-            Node[] nodes = new Node[model.getAllUsers().size()];
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
+            this.allUsers = model.getAllUsers();
+            Node[] nodes = new Node[allUsers.size()];
             for (int i = 0; i < nodes.length; i++) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/UserItem.fxml"));
@@ -90,7 +118,9 @@ public class UserController implements Initializable {
                     pnItems.getChildren().add(nodes[i]);
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                    Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                    alert.showAndWait();                  }
+
             }
         }
 
@@ -107,7 +137,9 @@ public class UserController implements Initializable {
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }
 
     }

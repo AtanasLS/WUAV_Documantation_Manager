@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
@@ -23,6 +24,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Customer;
 import main.java.be.Document;
+import main.java.bll.Filter;
 import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateDocumentController;
 import main.java.gui.controllers.itemController.DocumentItemController;
@@ -84,7 +86,9 @@ public class DocumentController implements Initializable {
                 pnItems.getChildren().add(nodes[i]);
             } catch (IOException e) {
                 e.printStackTrace();
-            }
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }
     }
 
@@ -98,8 +102,10 @@ public class DocumentController implements Initializable {
 
                 progressIndicator.setVisible(false);
             } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
 
 
             Node[] nodes = new Node[model.getAllDocuments().size()];
@@ -112,11 +118,11 @@ public class DocumentController implements Initializable {
                     pnItems.getChildren().add(nodes[i]);
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
-               }
 
-
-        } else if (type.equals("Technician")) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                    alert.showAndWait();                  }
+            }
+        }else if (type.equals("Technician")){
 
             try {
                 model.loadEditedDocuments();
@@ -126,8 +132,10 @@ public class DocumentController implements Initializable {
 
                 progressIndicator.setVisible(false);
             } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
 
             Node[] nodes = new Node[model.getEditedDocuments().size()];
             for (int i = 0; i < nodes.length; i++) {
@@ -139,7 +147,9 @@ public class DocumentController implements Initializable {
                     pnItems.getChildren().add(nodes[i]);
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                    Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                    alert.showAndWait();                  }
+
             }
         }
 

@@ -19,10 +19,9 @@ public class Order {
 
 
     private java.sql.Date date;
-    private double price;
 
 
-    public Order(int userID, int projectID, String name, String userName, String project, String customer, int customerID, java.sql.Date date, double price) {
+    public Order(int userID, int projectID, String name, String userName, String project, String customer, int customerID, java.sql.Date date) {
         this.userID = userID;
         this.projectID = projectID;
         this.name = name;
@@ -31,11 +30,10 @@ public class Order {
         this.customer = customer;
         this.customerID = customerID;
         this.date = date;
-        this.price = price;
     }
 
     public Order(int id, int userID, int projectID, String name, String userName,
-                 String project, String customer, int customerID, java.sql.Date date, double price) {
+                 String project, String customer, int customerID, java.sql.Date date) {
         this.id = id;
         this.userID = userID;
         this.projectID = projectID;
@@ -45,7 +43,6 @@ public class Order {
         this.customer = customer;
         this.customerID = customerID;
         this.date = date;
-        this.price = price;
     }
 
     public int getId() {
@@ -100,13 +97,7 @@ public class Order {
         this.date = date;
     }
 
-    public double getPrice() {
-        return price;
-    }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
     public String getUserName() {
         return userName;
     }

@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class ProjectItemController implements Initializable {
 
-    public Label type, customer, price;
+    public Label type, customer;
     private MainModel model ;
 
     private DeleteModel deleteModel;

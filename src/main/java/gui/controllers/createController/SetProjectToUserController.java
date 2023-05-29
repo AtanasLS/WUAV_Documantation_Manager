@@ -3,6 +3,7 @@ package main.java.gui.controllers.createController;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import main.java.be.Project;
 import main.java.be.ProjectToUser;
 import main.java.be.User;
@@ -27,7 +28,9 @@ public class SetProjectToUserController implements Initializable {
             model.loadTech();
             model.loadProjects();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            alert.showAndWait();
         }
         projects.setItems(model.getAllProjects());
         technicians.setItems(model.getAllTech());
