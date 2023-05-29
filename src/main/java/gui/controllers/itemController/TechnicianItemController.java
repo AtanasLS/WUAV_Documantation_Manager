@@ -1,6 +1,7 @@
 package main.java.gui.controllers.itemController;
 
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import main.java.gui.model.MainModel;
 
@@ -17,11 +18,15 @@ public class TechnicianItemController implements Initializable,Items {
         try {
             this.model.loadUsers();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            alert.showAndWait();
+
         }
     }
 
     @Override
+ 
     public void setLabels(int numberOfElement) {
         username.setText(this.model.getAllTech().get(numberOfElement).getUsername());
         firstName.setText(this.model.getAllTech().get(numberOfElement).getFirstName());

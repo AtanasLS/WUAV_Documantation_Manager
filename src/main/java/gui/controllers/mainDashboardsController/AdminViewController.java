@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -17,15 +18,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.be.User;
+import main.java.gui.controllers.LoginPageController;
 import main.java.gui.controllers.createController.*;
 import main.java.gui.controllers.pageController.*;
-
+import main.java.gui.controllers.itemController.PhotoItemController;
+import main.java.gui.controllers.createController.*;
+import main.java.gui.controllers.pageController.*;
 import main.java.gui.controllers.pageController.CustomerPageController;
 import main.java.gui.controllers.pageController.DocumentController;
 import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -72,6 +75,50 @@ public class AdminViewController implements Initializable {
 
 
     }
+    public void newObject(ActionEvent actionEvent) throws IOException, SQLException {
+
+        switch (selected.toLowerCase()){
+            case "logins":
+
+                break;
+            case "user":
+                FXMLLoader userLoader = new FXMLLoader(getClass().getResource("/view/create/UserCreate.fxml"));
+                Parent root = userLoader.load();
+                UserCreateController controller = userLoader.getController();
+                controller.setModel(model);
+                Stage userStage = new Stage();
+                userStage.setScene(new Scene(root));
+                userStage.show();
+                break;
+            case "orders":
+
+                break;
+            case "customers":
+
+
+                break;
+            case "projects":
+                FXMLLoader projectLoader = new FXMLLoader(getClass().getResource("/view/create/CreateProject.fxml"));
+                Parent projectsRoot = projectLoader.load();
+                CreateProjectController createProjectController = projectLoader.getController();
+                createProjectController.setModel(model);
+                Stage projectStage = new Stage();
+                projectStage.setScene(new Scene(projectsRoot));
+                projectStage.show();
+                break;
+            case "documents":
+                FXMLLoader documentsLoader = new FXMLLoader(getClass().getResource("/view/create/CreateDocumentView.fxml"));
+                Parent documentsRoot = documentsLoader.load();
+                CreateDocumentController createDocumentController = documentsLoader.getController();
+                createDocumentController.setModel(model);
+                //controller.setInformation();
+                Stage documentsStage = new Stage();
+                documentsStage.setScene(new Scene(documentsRoot));
+                documentsStage.show();
+                break;
+        }
+    }
+
     public void handleClicks(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == btnLogIns) {
             try {
@@ -84,7 +131,10 @@ public class AdminViewController implements Initializable {
 
                 selected = "LogIns";
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == mainDashBtn){
             FXMLLoader loader = new FXMLLoader((getClass().getResource("/view/pages/MainDashboardView.fxml")));
@@ -101,7 +151,10 @@ public class AdminViewController implements Initializable {
                 selected = "Documents";
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnOrders){
             try {
@@ -111,7 +164,10 @@ public class AdminViewController implements Initializable {
                 controller.setModel("Admin");
                 selected = "Orders";
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnProjects){
             try {
@@ -121,7 +177,10 @@ public class AdminViewController implements Initializable {
                 controller.setModel(model.getLogInUser());
                 selected = "Projects";
             } catch (IOException e) {
-                throw new RuntimeException(e);
+]                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnUsers){
             try {
@@ -133,7 +192,10 @@ public class AdminViewController implements Initializable {
                 controller.setMainModel(selected, this.model);
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnCustomers){
             try {
@@ -144,7 +206,10 @@ public class AdminViewController implements Initializable {
                 controller.setMainModel("admin");
                 selected = "Customers";
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();
+
             }
         }
         else if (actionEvent.getSource() == btnSignout){
@@ -159,8 +224,10 @@ public class AdminViewController implements Initializable {
                 stage.show();
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }
     }
 

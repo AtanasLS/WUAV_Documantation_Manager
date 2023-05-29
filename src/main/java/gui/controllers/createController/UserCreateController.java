@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -70,6 +71,8 @@ public class UserCreateController implements Initializable, CreateController {
             controller.setPnItems(this.model.getAllUsers());
         } catch (IOException e) {
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            alert.showAndWait();
         }
 
         Stage stage = (Stage) saveBtn.getScene().getWindow();

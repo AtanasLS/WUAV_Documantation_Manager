@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -34,7 +35,9 @@ public class CreateLoginController implements Initializable, CreateController {
         try {
             model.loadProjects();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            alert.showAndWait();
         }
         this.projects.addAll(model.getAllProjects());
         this.project.setItems(projects);

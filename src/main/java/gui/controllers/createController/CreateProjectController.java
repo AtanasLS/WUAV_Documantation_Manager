@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -21,6 +22,7 @@ import java.util.regex.Pattern;
 
 public class CreateProjectController implements Initializable, CreateController{
 
+
     public TextField type;
     public ComboBox customer;
     public Button saveBtn;
@@ -36,7 +38,10 @@ public class CreateProjectController implements Initializable, CreateController{
         try {
             model.loadCustomers();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+            alert.showAndWait();           }
+
         }
         this.customers.addAll(model.getAllCustomers());
         this.customer.setItems(customers);

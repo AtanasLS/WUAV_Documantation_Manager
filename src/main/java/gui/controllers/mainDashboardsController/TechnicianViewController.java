@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -76,8 +78,9 @@ public class TechnicianViewController implements Initializable {
 
                 selected = "LogIns";
             } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
 
         }else if (actionEvent.getSource() == btnDocuments){
             try {
@@ -89,8 +92,10 @@ public class TechnicianViewController implements Initializable {
                 selected = "Documents";
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }else if (actionEvent.getSource() == btnOrders){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
@@ -100,8 +105,10 @@ public class TechnicianViewController implements Initializable {
                 controller.setModel("Technician");
                 selected = "Orders";
             } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }else if (actionEvent.getSource() == btnProjects){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
@@ -110,8 +117,10 @@ public class TechnicianViewController implements Initializable {
                 controller.setModel(model.getLogInUser());
                 selected = "Projects";
             } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
 
         }else if (actionEvent.getSource() == btnCustomers){
             try {
@@ -122,8 +131,10 @@ public class TechnicianViewController implements Initializable {
                 controller.setMainModel("Technician");
                 selected = "Customers";
             } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
+
         }
         else if (actionEvent.getSource() == btnSignout){
             try {
@@ -137,8 +148,9 @@ public class TechnicianViewController implements Initializable {
                 stage.show();
 
             } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
+                alert.showAndWait();              }
         }
     }
 
