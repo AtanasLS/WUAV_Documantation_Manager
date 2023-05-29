@@ -23,7 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Customer;
-import main.java.bll.Filter;
+
 
 import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateCustomerController;
@@ -103,7 +103,8 @@ public class CustomerPageController implements Initializable {
             alert.showAndWait();          }
 
 
-                Node[] nodes = new Node[model.getAllUsers().size()];
+        Node[] nodes = new Node[model.getAllCustomers().size()];
+
 
         for (int i = 0; i < nodes.length; i++) {
             try{

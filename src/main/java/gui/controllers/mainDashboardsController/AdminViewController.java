@@ -177,7 +177,7 @@ public class AdminViewController implements Initializable {
                 controller.setModel(model.getLogInUser());
                 selected = "Projects";
             } catch (IOException e) {
-]                e.printStackTrace();
+               e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
 
