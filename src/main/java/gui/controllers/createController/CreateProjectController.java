@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class CreateProjectController implements Initializable, CreateController{
 
-    public TextField type, price;
+    public TextField type;
     public ComboBox customer;
     public Button saveBtn;
     public Button cancelBtn;
@@ -52,7 +52,7 @@ public class CreateProjectController implements Initializable, CreateController{
     public void handleSave(ActionEvent actionEvent) {
 
         Customer customer1= (Customer) this.customer.getSelectionModel().getSelectedItem();
-        Project project= new Project(this.type.getText(),0,customer1.getId());
+        Project project= new Project(this.type.getText(),customer1.getId());
         this.createModel.createInDatabase(project,"Project");
         Stage stage = (Stage) saveBtn.getScene().getWindow();
         stage.close();

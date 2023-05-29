@@ -44,17 +44,15 @@ public class OrderDAO implements DAOInterface<Order> {
         int customer=object.getCustomerID();
         Date date= (Date) object.getDate();
 
-        Double price=object.getPrice();
 
 
-        String query="INSERT INTO [order] VALUES (?, ?, ?, ?, ?, ?);";
+        String query="INSERT INTO [order] VALUES (?, ?, ?, ?, ? );";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1,userId);
         stmt.setInt(2,projectID);
         stmt.setString(3,name);
         stmt.setInt(4,customer);
         stmt.setDate(5,date);
-        stmt.setDouble(6,price);
         System.out.println(date);
 
 
@@ -82,9 +80,8 @@ public class OrderDAO implements DAOInterface<Order> {
         int customer = object.getCustomerID();
         Date date = object.getDate();
         System.out.println(object.getDate());
-        Double price = object.getPrice();
 
-        String query = "UPDATE [order] SET UserId = ?, ProjectId = ?, name = ?, customerId = ?, date = ?, price = ? WHERE id = ?;";
+        String query = "UPDATE [order] SET UserId = ?, ProjectId = ?, name = ?, customerId = ?, date = ? WHERE id = ?;";
 
         PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query);
         stmt.setInt(1, userId);
@@ -92,8 +89,7 @@ public class OrderDAO implements DAOInterface<Order> {
         stmt.setString(3, name);
         stmt.setInt(4, customer);
         stmt.setDate(5, date);
-        stmt.setDouble(6, price);
-        stmt.setInt(7, id);
+        stmt.setInt(6, id);
 
         try {
             int rowsAffected = stmt.executeUpdate();
@@ -115,10 +111,9 @@ public class OrderDAO implements DAOInterface<Order> {
         String customer=resultSet.getString("first_name");
         int customerId=resultSet.getInt("customerId");
         Date date=resultSet.getDate("date");
-        double price=resultSet.getDouble("price");
 
 
-        return new Order(id,userID,projectID,name,user,project,customer,customerId, date,price);
+        return new Order(id,userID,projectID,name,user,project,customer,customerId, date);
 
 
     }
@@ -138,9 +133,8 @@ public class OrderDAO implements DAOInterface<Order> {
             String customer=resultSet.getString("first_name");
             int customerId=resultSet.getInt("customerId");
             Date date=resultSet.getDate("date");
-            double price=resultSet.getDouble("price");
 
-            listOfOrders.add(new Order(id,userID,projectID,name,user,project,customer,customerId, date,price));
+            listOfOrders.add(new Order(id,userID,projectID,name,user,project,customer,customerId, date));
         }
 
         return listOfOrders;

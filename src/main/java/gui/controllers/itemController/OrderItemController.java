@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class OrderItemController implements Initializable, Items {
 
-    public Label oName, pName, customer,date,price;
+    public Label oName, pName, customer,date;
 
 
     private MainModel model ;

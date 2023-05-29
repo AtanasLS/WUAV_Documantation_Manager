@@ -39,7 +39,6 @@ public class ProjectDAO implements DAOInterface<Project> {
 
     @Override
     public ObservableList<Project> getAllFromDatabase() throws SQLException {
-        //String query="SELECT * FROM project LEFT JOIN projectToUser ON  projectToUser.projectId=project.id LEFT JOIN users ON users.id=projectToUser.userId;";
         String query="SELECT * from project LEFT JOIN customer ON customer.id=project.customerId;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         ResultSet resultSet =stmt.executeQuery();
@@ -51,15 +50,13 @@ public class ProjectDAO implements DAOInterface<Project> {
     public String insertIntoDatabase(Project object) throws SQLException {
 
         String type=object.getType();
-        double price=object.getPrice();
         int customerId=object.getCustomerId();
 
 
-        String query="INSERT INTO project VALUES (?, ?, ?);";
+        String query="INSERT INTO project VALUES (?, ?);";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,type);
-        stmt.setDouble(2,price);
-        stmt.setInt(3,customerId);
+        stmt.setInt(2,customerId);
 
 
 
@@ -83,15 +80,13 @@ public class ProjectDAO implements DAOInterface<Project> {
     public String updateDatabase(Project object) throws SQLException {
         int id=object.getProjectId();
         String type=object.getType();
-        double price=object.getPrice();
         int customerId=object.getCustomerId();
 
-        String query="INSERT INTO project VALUES (?, ?, ?) WHERE id = ?;";
+        String query="INSERT INTO project VALUES (?, ?) WHERE id = ?;";
         PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
         stmt.setString(1,type);
-        stmt.setDouble(2,price);
-        stmt.setInt(3,customerId);
-        stmt.setInt(4,id);
+        stmt.setInt(2,customerId);
+        stmt.setInt(3,id);
 
 
         ResultSet resultSet =stmt.executeQuery();
@@ -107,11 +102,10 @@ public class ProjectDAO implements DAOInterface<Project> {
         if (resultSet.next()) {
             int id = resultSet.getInt("id");
             String type = resultSet.getString("project_type");
-            double price = resultSet.getDouble("price");
             String customer = resultSet.getString("first_name");
             int customerId = resultSet.getInt("id");
 
-            return new Project(id, type, price, customer, customerId);
+            return new Project(id, type, customer, customerId);
         }
         return null;
 
@@ -125,11 +119,10 @@ public class ProjectDAO implements DAOInterface<Project> {
 
             int id=resultSet.getInt("id");
             String type=resultSet.getString("project_type");
-            double price=resultSet.getDouble("price");
             String customer=resultSet.getString("first_name");
             int customerId=resultSet.getInt("customerId");
 
-            listOfProjects.add(new Project(id,type,price,customer,customerId));
+            listOfProjects.add(new Project(id,type,customer,customerId));
         }
 
         return listOfProjects;    }
