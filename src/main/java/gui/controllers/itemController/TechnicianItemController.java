@@ -21,12 +21,13 @@ public class TechnicianItemController implements Initializable,Items {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             alert.showAndWait();
+
         }
     }
 
     @Override
-    public void setLabels(int numberOfElement, MainModel model) {
-        this.model = model;
+ 
+    public void setLabels(int numberOfElement) {
         username.setText(this.model.getAllTech().get(numberOfElement).getUsername());
         firstName.setText(this.model.getAllTech().get(numberOfElement).getFirstName());
         lastName.setText(this.model.getAllTech().get(numberOfElement).getLastName());

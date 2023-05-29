@@ -14,11 +14,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Customer;
 import main.java.bll.Filter;
+
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateCustomerController;
 import main.java.gui.controllers.itemController.CustomerItemController;
 import main.java.gui.model.MainModel;
@@ -57,6 +64,15 @@ public class CustomerPageController implements Initializable {
             }
         });
 
+        model.getAllCustomers().addListener((ListChangeListener.Change<? extends Customer> change) -> {
+            while (change.next()) {
+                if (change.wasAdded() || change.wasRemoved() || change.wasUpdated()) {
+                    allCustomers.setAll(model.getAllCustomers());
+                    setPnItems(allCustomers);
+                }
+            }
+  
+
         this.allCustomers.addListener((ListChangeListener<Customer>) ch -> {
            this.setPnItems(allCustomers);
         });
@@ -77,6 +93,7 @@ public class CustomerPageController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
     }
 
@@ -91,12 +108,12 @@ public class CustomerPageController implements Initializable {
             }
 
             progressIndicator.setVisible(false);
-            throw new Exception("Test");
 
         } catch (Exception e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             alert.showAndWait();          }
+
 
         Node[] nodes = new Node[model.getAllCustomers().size()];
         for (int i = 0; i < nodes.length; i++) {
@@ -110,6 +127,7 @@ public class CustomerPageController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
     }
 

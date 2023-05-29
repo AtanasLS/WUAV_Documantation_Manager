@@ -23,12 +23,26 @@ import main.java.be.Order;
 import main.java.bll.Filter;
 import main.java.gui.controllers.createController.CreateOrderController;
 import main.java.gui.controllers.itemController.DocumentItemController;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import main.java.be.Document;
+import main.java.be.LogIns;
+import main.java.be.Order;
+import main.java.bll.utilties.Filter;
+import main.java.gui.controllers.createController.CreateOrderController;
 import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+
 import java.util.ResourceBundle;
 
 public class OrderController implements Initializable {
@@ -80,6 +94,7 @@ public class OrderController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
     }
     public void setModel(String type){
@@ -97,6 +112,7 @@ public class OrderController implements Initializable {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             alert.showAndWait();          }
+
         Node[] nodes = new Node[model.getAllOrders().size()];
         for (int i = 0; i < nodes.length; i++) {
             try {
@@ -110,6 +126,7 @@ public class OrderController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
     }
     private void loadOrdersAsync(String searchValue) {

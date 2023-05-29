@@ -21,16 +21,14 @@ import main.java.be.User;
 import main.java.gui.controllers.LoginPageController;
 import main.java.gui.controllers.createController.*;
 import main.java.gui.controllers.pageController.*;
-
 import main.java.gui.controllers.itemController.PhotoItemController;
+import main.java.gui.controllers.createController.*;
+import main.java.gui.controllers.pageController.*;
 import main.java.gui.controllers.pageController.CustomerPageController;
 import main.java.gui.controllers.pageController.DocumentController;
 import main.java.gui.controllers.pageController.UserController;
 import main.java.gui.model.EditModel;
 import main.java.gui.model.MainModel;
-
-import java.awt.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -120,6 +118,7 @@ public class AdminViewController implements Initializable {
                 break;
         }
     }
+
     public void handleClicks(ActionEvent actionEvent) throws IOException {
         if (actionEvent.getSource() == btnLogIns) {
             try {
@@ -135,6 +134,7 @@ public class AdminViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == mainDashBtn){
             FXMLLoader loader = new FXMLLoader((getClass().getResource("/view/pages/MainDashboardView.fxml")));
@@ -154,6 +154,7 @@ public class AdminViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnOrders){
             try {
@@ -166,6 +167,7 @@ public class AdminViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnProjects){
             try {
@@ -175,9 +177,10 @@ public class AdminViewController implements Initializable {
                 controller.setModel(model.getLogInUser());
                 selected = "Projects";
             } catch (IOException e) {
-                e.printStackTrace();
+]                e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnUsers){
             try {
@@ -192,6 +195,7 @@ public class AdminViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnCustomers){
             try {
@@ -205,6 +209,7 @@ public class AdminViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }
         else if (actionEvent.getSource() == btnSignout){
@@ -222,6 +227,7 @@ public class AdminViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
     }
 

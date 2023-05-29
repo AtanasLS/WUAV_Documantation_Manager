@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="670.0" prefWidth="966.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.gui.controllers.pageController.DropdownController">
+   <children>
+      <ImageView fitHeight="104.0" fitWidth="200.0" layoutX="762.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/wuavLogo.png" />
+         </image>
+      </ImageView>
+      <MFXComboBox fx:id="dropdown" alignment="CENTER" borderGap="0.0" floatMode="ABOVE" layoutX="44.0" layoutY="56.0" onAction="#showInformation" prefHeight="72.0" prefWidth="354.0" promptText="Conditions of use:">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </MFXComboBox>
+      <Label fx:id="infoLabel" alignment="TOP_LEFT" layoutX="44.0" layoutY="225.0" prefHeight="419.0" prefWidth="618.0">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

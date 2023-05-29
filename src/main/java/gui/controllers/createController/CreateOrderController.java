@@ -21,7 +21,8 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 public class CreateOrderController implements Initializable,CreateController {
-    public TextField name,price;
+
+    public TextField name;
     public ComboBox customer,project,user;
     public DatePicker date;
     public Button cancelBtn, saveBtn;
@@ -47,9 +48,14 @@ public class CreateOrderController implements Initializable,CreateController {
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
-            alert.showAndWait();
-        }
 
+        }
+        this.customers.addAll(model.getAllCustomers());
+        this.projects.addAll(model.getAllProjects());
+        this.users.addAll(model.getAllUsers());
+        this.user.setItems(users);
+        this.customer.setItems(customers);
+        this.project.setItems(projects);
     }
 
     @Override
@@ -64,14 +70,13 @@ public class CreateOrderController implements Initializable,CreateController {
         User user1= (User) this.user.getSelectionModel().getSelectedItem();
         Project project1= (Project) this.project.getSelectionModel().getSelectedItem();
         Customer customer1= (Customer) this.customer.getSelectionModel().getSelectedItem();
-        double price= Double.parseDouble(this.price.getText());
-
         LocalDate selectedDate = date.getValue();
         Date sqlDate = Date.valueOf(selectedDate);
 
         Order order=new Order(user1.getId(),project1.getProjectId(),
                 this.name.getText(),user1.getUsername(),project1.getType(),
-                customer1.getFirstName(),customer1.getId(),sqlDate,price);
+
+                customer1.getFirstName(),customer1.getId(),sqlDate);
         createModel.createInDatabase(order, "Order");
 
         Stage stage = (Stage) saveBtn.getScene().getWindow();

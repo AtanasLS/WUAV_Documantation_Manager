@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -94,6 +95,7 @@ public class TechnicianViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }else if (actionEvent.getSource() == btnOrders){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/OrdersView.fxml"));
@@ -106,6 +108,7 @@ public class TechnicianViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }else if (actionEvent.getSource() == btnProjects){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/pages/ProjectsView.fxml"));
@@ -117,6 +120,7 @@ public class TechnicianViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
 
         }else if (actionEvent.getSource() == btnCustomers){
             try {
@@ -130,6 +134,7 @@ public class TechnicianViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
         else if (actionEvent.getSource() == btnSignout){
             try {

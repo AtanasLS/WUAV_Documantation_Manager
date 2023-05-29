@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import main.java.be.Customer;
 import main.java.be.Document;
 import main.java.bll.Filter;
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateDocumentController;
 import main.java.gui.controllers.itemController.DocumentItemController;
 import main.java.gui.model.MainModel;
@@ -86,6 +87,7 @@ public class DocumentController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
     }
     public void setPnItems(String type){
@@ -101,6 +103,7 @@ public class DocumentController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
 
             Node[] nodes = new Node[model.getAllDocuments().size()];
             for (int i = 0; i < nodes.length; i++) {
@@ -129,6 +132,7 @@ public class DocumentController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
 
+
             Node[] nodes = new Node[model.getEditedDocuments().size()];
             for (int i = 0; i < nodes.length; i++) {
                 try {
@@ -141,6 +145,7 @@ public class DocumentController implements Initializable {
                     e.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                     alert.showAndWait();                  }
+
             }
         }
     }

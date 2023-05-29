@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -82,6 +83,7 @@ public class TechnicianManagerViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnDocuments){
             try {
@@ -95,6 +97,7 @@ public class TechnicianManagerViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnOrders){
             try {
@@ -120,6 +123,7 @@ public class TechnicianManagerViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnTechnicians){
             try {
@@ -134,6 +138,7 @@ public class TechnicianManagerViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }else if (actionEvent.getSource() == btnCustomers){
             try {
@@ -147,6 +152,7 @@ public class TechnicianManagerViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
         else if (actionEvent.getSource() == btnSignout){
             try {
@@ -163,6 +169,7 @@ public class TechnicianManagerViewController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
     }
     public void createDrawing(MouseEvent actionEvent) throws IOException, SQLException {

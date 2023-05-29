@@ -14,6 +14,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -21,6 +26,7 @@ import main.java.be.Document;
 import main.java.be.Project;
 import main.java.be.User;
 import main.java.bll.Filter;
+import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateProjectController;
 import main.java.gui.controllers.itemController.ProjectItemController;
 import main.java.gui.model.MainModel;
@@ -84,6 +90,7 @@ public class ProjectController implements Initializable{
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
         }
 
     }
@@ -104,6 +111,7 @@ public class ProjectController implements Initializable{
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
             Node[] nodes = new Node[model.getAllProjects().size()];
             for (int i = 0; i < nodes.length; i++) {
                 try {
@@ -118,6 +126,7 @@ public class ProjectController implements Initializable{
                     e.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                     alert.showAndWait();                  }
+
             }
         }else {
             try {
@@ -133,6 +142,7 @@ public class ProjectController implements Initializable{
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
+
             Node[] nodes = new Node[model.getAllProjectToUser(loggedUser).size()];
             for (int i = 0; i < nodes.length; i++) {
                 try {
@@ -147,6 +157,7 @@ public class ProjectController implements Initializable{
                     e.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                     alert.showAndWait();                  }
+
             }
         }
     }

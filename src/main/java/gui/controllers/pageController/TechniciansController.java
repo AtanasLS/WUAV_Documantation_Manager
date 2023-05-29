@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
@@ -27,6 +28,8 @@ import main.java.gui.controllers.createController.CreateTechController;
 import main.java.gui.controllers.createController.UserCreateController;
 import main.java.gui.controllers.itemController.OrderItemController;
 import main.java.gui.controllers.itemController.TechnicianItemController;
+import main.java.bll.utilties.Filter;
+import main.java.gui.controllers.createController.CreateTechController;
 import main.java.gui.controllers.itemController.UserItemController;
 import main.java.gui.model.MainModel;
 
@@ -84,6 +87,7 @@ public class TechniciansController implements Initializable {
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
 
+
             Node[] nodes = new Node[model.getAllTech().size()];
             for (int i = 0; i < nodes.length; i++) {
                 try {
@@ -99,6 +103,7 @@ public class TechniciansController implements Initializable {
                     e.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                     alert.showAndWait();                  }
+
             }
         }
 
@@ -116,6 +121,7 @@ public class TechniciansController implements Initializable {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();
+
             }
         }
 
