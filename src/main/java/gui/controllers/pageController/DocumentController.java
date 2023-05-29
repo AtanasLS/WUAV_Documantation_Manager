@@ -1,5 +1,7 @@
 package main.java.gui.controllers.pageController;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -31,6 +33,7 @@ import main.java.gui.model.MainModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class DocumentController implements Initializable {
@@ -51,6 +54,8 @@ public class DocumentController implements Initializable {
     private ObservableList<Document> allDocs;
     private String searchType;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.model = new MainModel();
@@ -66,14 +71,10 @@ public class DocumentController implements Initializable {
 
         searchType = "name";
 
-        this.allDocs.addListener((ListChangeListener<Document>) ch -> {
-            this.setPnItemsSearched(this.allDocs);
-        });
 
     }
-    public void setPnItemsSearched(ObservableList<Document> searchedDocuments){
+    public void setPnItemsSearched(ObservableList<Document> searchedDocuments) {
         pnItems.getChildren().clear();
-
 
         Node[] nodes = new Node[searchedDocuments.size()];
         for (int i = 0; i < nodes.length; i++) {
@@ -90,7 +91,8 @@ public class DocumentController implements Initializable {
 
         }
     }
-    public void setPnItems(String type){
+
+        public void setPnItems(String type) {
         if (type.equals("Users")) {
             try {
                 model.loadDocument();
@@ -105,6 +107,7 @@ public class DocumentController implements Initializable {
                 alert.showAndWait();              }
 
 
+
             Node[] nodes = new Node[model.getAllDocuments().size()];
             for (int i = 0; i < nodes.length; i++) {
                 try {
@@ -115,6 +118,7 @@ public class DocumentController implements Initializable {
                     pnItems.getChildren().add(nodes[i]);
                 } catch (IOException e) {
                     e.printStackTrace();
+
                     Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                     alert.showAndWait();                  }
             }
@@ -148,7 +152,10 @@ public class DocumentController implements Initializable {
 
             }
         }
-    }
+
+
+        }
+
 
     public void createDocument(ActionEvent actionEvent) throws IOException, SQLException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/create/CreateDocumentView.fxml"));

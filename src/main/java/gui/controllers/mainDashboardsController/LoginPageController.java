@@ -12,10 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import main.java.be.User;
-import main.java.gui.controllers.mainDashboardsController.AdminViewController;
-import main.java.gui.controllers.mainDashboardsController.SellerViewController;
-import main.java.gui.controllers.mainDashboardsController.TechnicianManagerViewController;
-import main.java.gui.controllers.mainDashboardsController.TechnicianViewController;
+
 import main.java.gui.model.MainModel;
 
 import java.io.IOException;
@@ -56,9 +53,7 @@ public class LoginPageController implements Initializable {
 
                     stage.show();
 
-                    ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();                   //w ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
-
-
+                    ((Node) actionEvent.getSource()).getScene().getWindow().hide();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
@@ -78,7 +73,7 @@ public class LoginPageController implements Initializable {
                     stage.setResizable(false);
                     stage.show();
 
-                    ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
+                    ((Node) actionEvent.getSource()).getScene().getWindow().hide();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
@@ -98,7 +93,7 @@ public class LoginPageController implements Initializable {
 
                     stage.show();
 
-                    ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
+                    ((Node) actionEvent.getSource()).getScene().getWindow().hide();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
@@ -117,7 +112,7 @@ public class LoginPageController implements Initializable {
                     stage.setResizable(false);
                     stage.show();
 
-                    ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
+                    ((Node) actionEvent.getSource()).getScene().getWindow().hide();
                 } catch (IOException e) {
                     e.printStackTrace();
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");

@@ -7,6 +7,13 @@
 
     <list default="true" id="95a2f632-40c1-4ada-8324-ea28b957e6ef" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bll/utilties/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/utilties/PDFGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/CustomerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateDocumentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/CustomerItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/CustomerItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/UserItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/itemController/UserItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/mainDashboardsController/LoginPageController.java" afterDir="false" />
+
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateLoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/createController/CreateOrderController.java" afterDir="false" />
@@ -21,10 +28,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/CustomerPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/DocumentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/LogInsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/LogInsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/ProjectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/TechniciansController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/TechniciansController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/pageController/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/model/MainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/DocumentDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/DocumentDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/PDFGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/PDFGeneratorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/images/jdajdjad.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/jdajdjad.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/images/test.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/test.png" afterDir="false" />
 
@@ -66,6 +73,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Atanas Stoyanov/OneDrive - Erhvervsakademi Sydvest/Dokumenter/GitHub/WUAV_Document_Manager/src/main/resources/view/create",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default"
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
@@ -188,6 +212,10 @@
       <option name="presentableId" value="Default" />
       <updated>1684099576437</updated>
       <workItem from="1684099581489" duration="52308000" />
+
+      <workItem from="1684596848529" duration="54027000" />
+      <workItem from="1685360815341" duration="5432000" />
+
       <workItem from="1684596848529" duration="47558000" />
     </task>
     <servers />

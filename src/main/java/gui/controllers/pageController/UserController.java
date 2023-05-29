@@ -63,6 +63,7 @@ public class UserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.model = new MainModel();
         filter = new Filter();
         this.allUsers = FXCollections.observableArrayList();
         searchBar.textProperty().addListener(new ChangeListener<String>() {
@@ -72,6 +73,7 @@ public class UserController implements Initializable {
             }
         });
         searchType = "username";
+
 
         this.model = new MainModel();
         model.getAllUsers().addListener((ListChangeListener.Change<? extends User> change) -> {
@@ -89,7 +91,6 @@ public class UserController implements Initializable {
     }
 
     public void setMainModel(String type, MainModel model) {
-        this.model = model ;
 
             try {
                 model.loadUsers();
@@ -98,6 +99,7 @@ public class UserController implements Initializable {
                 }
                 progressIndicator.setVisible(false);
             } catch (Exception e) {
+
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
@@ -124,6 +126,7 @@ public class UserController implements Initializable {
 
     public void setPnItems(ObservableList<User> selectedUsers) {
         pnItems.getChildren().clear();
+
         Node[] nodes = new Node[selectedUsers.size()];
         for (int i = 0; i < nodes.length; i++) {
             try {

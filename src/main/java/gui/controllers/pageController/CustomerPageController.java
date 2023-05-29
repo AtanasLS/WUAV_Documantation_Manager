@@ -64,18 +64,6 @@ public class CustomerPageController implements Initializable {
             }
         });
 
-        model.getAllCustomers().addListener((ListChangeListener.Change<? extends Customer> change) -> {
-            while (change.next()) {
-                if (change.wasAdded() || change.wasRemoved() || change.wasUpdated()) {
-                    allCustomers.setAll(model.getAllCustomers());
-                    setPnItems(allCustomers);
-                }
-            }
-  
-
-        this.allCustomers.addListener((ListChangeListener<Customer>) ch -> {
-           this.setPnItems(allCustomers);
-        });
     }
 
     public void setPnItems(ObservableList<Customer> searchedCustomers) {
@@ -115,7 +103,8 @@ public class CustomerPageController implements Initializable {
             alert.showAndWait();          }
 
 
-        Node[] nodes = new Node[model.getAllCustomers().size()];
+                Node[] nodes = new Node[model.getAllUsers().size()];
+
         for (int i = 0; i < nodes.length; i++) {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/CustomerItem.fxml"));
@@ -129,6 +118,8 @@ public class CustomerPageController implements Initializable {
                 alert.showAndWait();              }
 
         }
+
+
     }
 
     private void loadCustomersAsync(String searchValue) {

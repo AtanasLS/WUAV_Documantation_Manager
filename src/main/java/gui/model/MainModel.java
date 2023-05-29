@@ -185,19 +185,13 @@ public class MainModel {
 
     }
     private boolean checkPass(String plainPassword, String hashedPassword) {
-        System.out.println(hashedPassword);
-        if (checkpw(plainPassword, hashedPassword)){
 
+        if (checkpw(plainPassword, hashedPassword)){
             return true;
         } else {
             return false;
-
         }
 
-      //  $2a$10$KEUpz1B59J9TZfv02xUtQuWENsjBLA/4wGmJGlYiv2/RnO2RkSQfC
-        //$2a$10$KEUpz1B59J9TZfv02xUtQuWENsjBLA/4wGmJGlYiv2/RnO2RkSQfC
-        //$2a$10$KEUpz1B59J9TZfv02xUtQuWENsjBLA/4wGmJGlYiv2/RnO2RkSQfC
-        // $2a$10$KEUpz1B59J9TZfv02xUtQuWENsjBLA/4wGmJGlYiv2/RnO2RkSQfC
     }
     public Customer getSelectedCustomer(){
         return selectedCustomer;

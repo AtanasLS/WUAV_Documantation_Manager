@@ -59,12 +59,6 @@ public class LogInsController implements Initializable {
                     loadLoginsAsync(newValue);
                 }
             });
-
-
-            this.allLogins.addListener((ListChangeListener<LogIns>) ch -> {
-                this.setPnItems(this.allLogins);
-            });
-
         }
         public void setPnItems(ObservableList<LogIns> searchedLogIns){
             pnItems.getChildren().clear();
