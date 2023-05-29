@@ -102,8 +102,8 @@ public class PictureDAO implements DAOInterface<Picture> {
         int id=resultSet.getInt("id");
         String name=resultSet.getString("name");
         int documentationID=resultSet.getInt("documentationID");
-        File file = new File("src/main/resources/images/"+name+ ".png");
-        String installationPhoto= name+ ".png";
+        File file = new File("src/main/resources/images/"+name);
+        String installationPhoto= name;
         FileOutputStream output = new FileOutputStream(file);
 
         InputStream input = resultSet.getBinaryStream("img");
