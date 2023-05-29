@@ -35,33 +35,35 @@ public class CustomerDAO implements DAOInterface<Customer> {
     }
 
     @Override
-    public String insertIntoDatabase(Customer object) throws SQLException {
-        String firstName=object.getFirstName();
-        String lastName=object.getLastName();
-        String email=object.getEmail();
-        String address=object.getAddress();
-        String address2=object.getAddress2();
-        String phone=object.getPhone();
-        int consumptionNumber=object.getConsumptionNumber();
+    public String insertIntoDatabase(Customer object) {
+        String firstName = object.getFirstName();
+        String lastName = object.getLastName();
+        String email = object.getEmail();
+        String address = object.getAddress();
+        String address2 = object.getAddress2();
+        String phone = object.getPhone();
+        int consumptionNumber = object.getConsumptionNumber();
 
+        String query = "INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?);";
 
-        String query="INSERT INTO customer VALUES (?, ?, ?, ?, ?, ?, ?);";
-        PreparedStatement stmt=dataAccessManager.getConnection().prepareStatement(query);
-        stmt.setString(1,firstName);
-        stmt.setString(2,lastName);
-        stmt.setString(3,email);
-        stmt.setString(4,address);
-        stmt.setString(5,address2);
-        stmt.setString(6,phone);
-        stmt.setInt(7,consumptionNumber);
+        try (PreparedStatement stmt = dataAccessManager.getConnection().prepareStatement(query)) {
+            stmt.setString(1, firstName);
+            stmt.setString(2, lastName);
+            stmt.setString(3, email);
+            stmt.setString(4, address);
+            stmt.setString(5, address2);
+            stmt.setString(6, phone);
+            stmt.setInt(7, consumptionNumber);
 
-        try {
-            ResultSet resultSet = stmt.executeQuery();
-            //System.out.println(resultSet.toString());
-        }catch (RuntimeException e){
-            System.out.println(e);
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected > 0) {
+                return "Customer inserted successfully!";
+            } else {
+                return "Failed to insert customer.";
+            }
+        } catch (SQLException e) {
+            return "Failed to insert customer: " + e.getMessage();
         }
-        return "Work!";
     }
 
     @Override

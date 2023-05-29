@@ -41,8 +41,7 @@ public class PDFGeneratorTest {
 
         try {
             pdfGenerator.generatePDF(selectedDirectory, name, selectedCustomer, selectedProject, selectedLogIns, description, selectedPhotos, layoutDrawing, includes);
-            // Add assertions based on your expected results
-            // For example, you can assert that the PDF file was successfully generated:
+
             File pdfFile = new File(selectedDirectory + "\\" + name + ".pdf");
             Assertions.assertTrue(pdfFile.exists());
 

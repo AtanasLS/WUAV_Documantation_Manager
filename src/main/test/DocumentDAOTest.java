@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -26,9 +25,7 @@ class DocumentDAOTest {
         int documentId = 28; // Provide an existing document ID from the database
         try {
             Document document = documentDAO.getFromDatabase(documentId);
-
             Assertions.assertNotNull(document);
-
             Assertions.assertEquals(documentId, document.getId(), "Document ID should match");
             Assertions.assertNotNull(document.getName(), "Document name should not be null");
             Assertions.assertNotNull(document.getDescription(), "Document description should not be null");
@@ -49,7 +46,6 @@ class DocumentDAOTest {
             Assertions.fail("Exception occurred: " + e.getMessage());
         }
     }
-
     @Test
     void testGetEditedFromDatabase() {
         try {
@@ -74,44 +70,30 @@ class DocumentDAOTest {
                 LocalDate.now(),
                 0
         );
-
         try {
             String result = documentDAO.insertIntoDatabase(document);
             Assertions.assertNotNull(result);
-
             Assertions.assertEquals("Success", result);
-
-
         } catch (SQLException | FileNotFoundException e) {
             Assertions.fail("Exception occurred: " + e.getMessage());
         }
     }
-
     @Test
     void testDeleteFromDatabase() {
         int documentId = 32; // Provide an existing document ID from the database
         try {
             String result = documentDAO.deleteFromDatabase(documentId);
             Assertions.assertNotNull(result);
-
             // Assert that the result contains the expected success message
             Assertions.assertTrue(result.contains("Rows affected"), "Delete operation should have affected rows");
-
-
 
         } catch (SQLException e) {
             Assertions.fail("Exception occurred: " + e.getMessage());
         }
     }
-
-
-
-
     @Test
     void testUpdateDatabase() throws SQLException, IOException {
-
         Document document = documentDAO.getFromDatabase(22);
-
         try {
             String result = documentDAO.updateDatabase(document);
             Assertions.assertNotNull(result);

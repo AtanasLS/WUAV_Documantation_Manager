@@ -75,6 +75,7 @@ public class UserItemController implements Initializable {
     }
     public void setSearchedItems(int numberOfElement, ObservableList<User> selectedUsers){
         this.model = new MainModel();
+        System.out.println(selectedUsers.size());
         this.model.setSelectedUser(selectedUsers.get(numberOfElement));
 
         username.setText(this.model.getSelectedUser().getUsername());

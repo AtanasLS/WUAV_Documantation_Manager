@@ -53,7 +53,7 @@ public class PDFGenerator {
             }
 
             //Create PDFWriter instance.
-          PdfWriter writer =  PdfWriter.getInstance(document, outputStream);
+            PdfWriter writer =  PdfWriter.getInstance(document, outputStream);
 
             document.open();
             absText(writer, name, 235, 800, 20);

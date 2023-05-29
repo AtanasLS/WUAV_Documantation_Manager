@@ -50,6 +50,7 @@ public class CustomerItemController implements Initializable, Items {
     public void setSearchedItems(int numberOfElement, ObservableList<Customer> selectedCustomers){
         this.model = new MainModel();
         this.model.setSelectedCustomer(selectedCustomers.get(numberOfElement));
+
         firstNameLabel.setText(model.getSelectedCustomer().getFirstName());
         lastNameLabel.setText(model.getSelectedCustomer().getLastName());
         emailLabel.setText(model.getSelectedCustomer().getEmail());

@@ -21,7 +21,6 @@ import main.java.be.*;
 import main.java.bll.utilties.PDFGenerator;
 
 import main.java.bll.AppLogicManager;
-import main.java.bll.PDFGenerator;
 import main.java.gui.controllers.itemController.CustomerItemController;
 import main.java.gui.controllers.itemController.PhotoItemController;
 import main.java.gui.model.CreateModel;
@@ -89,7 +88,61 @@ public class CreateDocumentController implements Initializable, CreateController
     }
 
     @Override
-    public void handleSave(ActionEvent actionEvent) {
+    public void handleSave(ActionEvent actionEvent) throws DocumentException, IOException {
+        this.includes.add(this.includeDate.isSelected());
+        this.includes.add(this.includeLogin.isSelected());
+        this.includes.add(this.includeCustomer.isSelected());
+        this.includes.add(this.includeTechnicians.isSelected());
+        this.includes.add(this.includeProject.isSelected());
+        this.includes.add(this.includePhotos.isSelected());
+        this.includes.add(this.includeDescription.isSelected());
+
+
+
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        // directoryChooser.setInitialDirectory(new File("src"));
+        Stage stage = new Stage();
+        File selectedDirectory = directoryChooser.showDialog(stage);
+        PDFGenerator pdfGenerator = new PDFGenerator();
+        System.out.println(selectedDirectory.getPath());
+        String path = selectedDirectory.getPath();
+        System.out.println(layoutDrawing);
+
+
+
+        LogIns selectedLogin = (LogIns) loginBox.getSelectionModel().getSelectedItem();
+        User selectedUser = (User) technicianBox.getSelectionModel().getSelectedItem();
+        Customer selectedCustomer = (Customer) customerBox.getSelectionModel().getSelectedItem();
+        Project selectedProject = (Project) projectBox.getSelectionModel().getSelectedItem();
+
+        pdfGenerator.generatePDF(path, documentName.getText(),selectedCustomer, selectedProject, selectedLogin,documentDescription.getText(), allImages,layoutDrawing,this.includes);
+
+
+        Document newDocument = new Document(layoutDrawing, documentDescription.getText(), selectedLogin.getId(), documentName.getText(),
+                selectedUser.getId(), selectedCustomer.getId(), selectedProject.getProjectId(), date.getValue(), 0);
+        createModel.createInDatabase(newDocument, "Document");
+
+        for (File file: allImages) {
+            if (allDocs.size() > 0){
+                String[] namePhoto=file.getName().split("\\.");
+                namePhoto[namePhoto.length-1]="";
+                String saveName="";
+                for (int i = 0; i <namePhoto.length-1 ; i++) {
+                    saveName+=namePhoto[i];
+
+                }
+                Picture picture = new Picture( saveName, file.getAbsolutePath(), allDocs.get(allDocs.size()-1).getId() + 1);
+                createModel.createInDatabase(picture, "Picture");
+            } else  {
+                Picture picture = new Picture( file.getName(), file.getAbsolutePath(), 1);
+                createModel.createInDatabase(picture, "Picture");
+            }
+
+        }
+
+        Stage currentStage = (Stage) createBtn.getScene().getWindow();
+        currentStage.close();
+
 
     }
 
@@ -130,62 +183,6 @@ public class CreateDocumentController implements Initializable, CreateController
 
     public void createDocument(ActionEvent actionEvent) throws DocumentException, IOException {
 
-        this.includes.add(this.includeDate.isSelected());
-        this.includes.add(this.includeLogin.isSelected());
-        this.includes.add(this.includeCustomer.isSelected());
-        this.includes.add(this.includeTechnicians.isSelected());
-        this.includes.add(this.includeProject.isSelected());
-        this.includes.add(this.includePhotos.isSelected());
-        this.includes.add(this.includeDescription.isSelected());
-
-
-
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-       // directoryChooser.setInitialDirectory(new File("src"));
-        Stage stage = new Stage();
-        File selectedDirectory = directoryChooser.showDialog(stage);
-        PDFGenerator pdfGenerator = new PDFGenerator();
-        System.out.println(selectedDirectory.getPath());
-        String path = selectedDirectory.getPath();
-        System.out.println(layoutDrawing);
-
-
-
-        LogIns selectedLogin = (LogIns) loginBox.getSelectionModel().getSelectedItem();
-        User selectedUser = (User) technicianBox.getSelectionModel().getSelectedItem();
-        Customer selectedCustomer = (Customer) customerBox.getSelectionModel().getSelectedItem();
-        Project selectedProject = (Project) projectBox.getSelectionModel().getSelectedItem();
-
-        pdfGenerator.generatePDF(path, documentName.getText(),selectedCustomer, selectedProject, selectedLogin,documentDescription.getText(), allImages,layoutDrawing,this.includes);
-
-
-        Document newDocument = new Document(layoutDrawing, documentDescription.getText(), selectedLogin.getId(), documentName.getText(),
-               selectedUser.getId(), selectedCustomer.getId(), selectedProject.getProjectId(), date.getValue(), 0);
-        createModel.createInDatabase(newDocument, "Document");
-
-        for (File file: allImages) {
-            if (allDocs.size() > 0){
-                String[] namePhoto=file.getName().split("\\.");
-                namePhoto[namePhoto.length-1]="";
-                String saveName="";
-                for (int i = 0; i <namePhoto.length-1 ; i++) {
-                    saveName+=namePhoto[i];
-
-                }
-                Picture picture = new Picture( saveName, file.getAbsolutePath(), allDocs.get(allDocs.size()-1).getId() + 1);
-                createModel.createInDatabase(picture, "Picture");
-            } else  {
-                Picture picture = new Picture( file.getName(), file.getAbsolutePath(), 1);
-                createModel.createInDatabase(picture, "Picture");
-            }
-
-        }
-
-
-
-
-        Stage currentStage = (Stage) createBtn.getScene().getWindow();
-        currentStage.close();
 
 
     }
