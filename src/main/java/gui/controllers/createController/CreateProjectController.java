@@ -43,9 +43,8 @@ public class CreateProjectController implements Initializable, CreateController{
             alert.showAndWait();           }
 
         }
-        this.customers.addAll(model.getAllCustomers());
-        this.customer.setItems(customers);
-    }
+
+
 
    @Override
     public void setModel(MainModel model){

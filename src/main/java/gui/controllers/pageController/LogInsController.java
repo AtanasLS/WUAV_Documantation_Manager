@@ -22,7 +22,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Document;
 import main.java.be.LogIns;
-import main.java.bll.Filter;
+
 import main.java.bll.utilties.Filter;
 import main.java.gui.controllers.createController.CreateLoginController;
 import main.java.gui.controllers.itemController.LogInsItemController;

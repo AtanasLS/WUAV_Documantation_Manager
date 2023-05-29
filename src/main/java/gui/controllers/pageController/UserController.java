@@ -23,7 +23,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import main.java.be.Document;
 import main.java.be.User;
-import main.java.bll.Filter;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
@@ -88,6 +87,8 @@ public class UserController implements Initializable {
         this.allUsers.addListener((ListChangeListener<User>) ch -> {
             this.setPnItems(this.allUsers);
         });
+    });
+
     }
 
     public void setMainModel(String type, MainModel model) {
