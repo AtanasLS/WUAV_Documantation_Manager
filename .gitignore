@@ -27,3 +27,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+.idea/libraries/microsoft_sqlserver_mssql_jdbc.xml

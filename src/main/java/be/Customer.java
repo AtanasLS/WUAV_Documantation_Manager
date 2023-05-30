@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class Customer {
 
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -22,6 +23,21 @@ public class Customer {
         this.phone = phone;
         this.consumptionNumber = consumptionNumber;
 
+    }
+
+    public Customer(int id, String firstName, String lastName, String email, String address, String address2, String phone, int consumptionNumber) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.address2 = address2;
+        this.phone = phone;
+        this.consumptionNumber = consumptionNumber;
+    }
+
+    public int getId() {//
+        return id;
     }
 
     public String getFirstName() {
@@ -78,5 +94,11 @@ public class Customer {
 
     public void setConsumptionNumber(int consumptionNumber) {
         this.consumptionNumber = consumptionNumber;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName;
+
     }
 }
