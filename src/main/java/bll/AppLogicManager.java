@@ -13,6 +13,8 @@ import java.sql.SQLException;
 public class AppLogicManager {
 
 
+
+
     public Object getFromDatabase(int id, String type){
         try {
             return DataManagerFacade.getInstance().getFromDatabase(id,type);

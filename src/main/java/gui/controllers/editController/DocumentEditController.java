@@ -80,6 +80,7 @@ public class DocumentEditController implements Initializable {
         customerBox.setItems(mvm.getAllCustomers());
         projectBox.setItems(mvm.getAllProjects());
         System.out.println("check it " + mvm.getSelectedDocument().getLayoutDrawing());
+        System.out.println(mvm.getSelectedDocument().getLayoutDrawing() +" -Test");
         this.layoutDrawing = new Image("/images/" + mvm.getSelectedDocument().getLayoutDrawing());
 
 
@@ -93,7 +94,8 @@ public class DocumentEditController implements Initializable {
         items.getChildren().add(node);
 
         for (Picture p : mvm.getAllPhotosForSelectedDocument(id)) {
-            System.out.println(p.getName()+ "testtt");
+            System.out.println("Number:::: "+ mvm.getAllPhotosForSelectedDocument(id) );
+            System.out.println(p.getName()+ " testtt");
             Image selectedImage = new Image("/images/" + p.getName());
             loader = new FXMLLoader(getClass().getResource("/view/items/PhotoItem.fxml"));
             node = loader.load();
