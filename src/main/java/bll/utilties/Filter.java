@@ -183,12 +183,10 @@ public class Filter {
         projectThread.start();
 
         try {
-            // Wait for the future to complete and return the project
             return future.join();
         } catch (CompletionException e) {
             e.printStackTrace();
-            // Handle any exceptions that occurred during the task execution
-            return null; // or throw an exception, depending on your requirement
+            return null;
         }
     }
 }

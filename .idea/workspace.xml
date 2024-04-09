@@ -2,24 +2,115 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ff3181a-aa8f-4b76-a67d-c4b003e8a5f2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Test/CreatingDocumentPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/Documents Page.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/LogInsPage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/OrdersPage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ a a aaamam.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bll/utilties/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bll/utilties/PDFGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dal/dao/PictureDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/DocumentEditController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/editController/DocumentEditController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/123.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ARADADA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Addada.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Last Minute Doc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Meeting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/New Document.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pizza Installation.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot 2023-04-20 214339.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot 2023-04-20 214412.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Screenshot 2023-04-20 214447.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Seller321.png" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test .png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestPhotos.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestPhotos1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TestUserName.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/aamma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amama.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/amammama.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/atanas21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dg21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/djadajdja.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/file" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/janTheManager.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jdajdjad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jesperTheTechnician.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kakka.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/kakkkaka.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lallallala.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mamammmma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mlqkoto.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/naskoto3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/perTheTechnician.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/peterTheSeller.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/peterson2023.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller123.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/controllers/LoginPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcdaeaea" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tech.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/techManager.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/technicians.png.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testerr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users.png.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2QZg0iqHc1znWUdFnA1ZlNBAVO6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "last_opened_file_path": "C:/Users/Atanas Stoyanov/OneDrive - Erhvervsakademi Sydvest/Dokumenter/GitHub/WUAV_Document_Manager/Test",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Atanas Stoyanov\OneDrive - Erhvervsakademi Sydvest\Dokumenter\GitHub\WUAV_Document_Manager\Test" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Atanas Stoyanov\OneDrive - Erhvervsakademi Sydvest\Dokumenter\GitHub\WUAV_Document_Manager\Test" />
+      <recent name="C:\Users\Atanas Stoyanov\OneDrive - Erhvervsakademi Sydvest\Dokumenter\GitHub\WUAV_Document_Manager" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="main.java.dal.dao" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.Main" />
@@ -40,8 +131,23 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ff3181a-aa8f-4b76-a67d-c4b003e8a5f2" name="Changes" comment="" />
+      <created>1685566302544</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1685566302544</updated>
+      <workItem from="1685566305340" duration="10503000" />
+      <workItem from="1686762937352" duration="9524000" />
+      <workItem from="1700601945098" duration="3335000" />
+      <workItem from="1712703736125" duration="1664000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">

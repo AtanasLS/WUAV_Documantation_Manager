@@ -1,11 +1,11 @@
 package main.java.gui.controllers.pageController;
 
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
+
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
+
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -17,12 +17,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressIndicator;
+
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import main.java.be.Customer;
+
 import main.java.be.Document;
 
 import main.java.bll.utilties.Filter;
@@ -33,7 +33,7 @@ import main.java.gui.model.MainModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
+
 import java.util.ResourceBundle;
 
 public class DocumentController implements Initializable {
@@ -44,10 +44,6 @@ public class DocumentController implements Initializable {
     VBox pnItems = null;
 
     MainModel model;
-
-    @FXML
-    private ProgressIndicator progressIndicator;
-
 
     private Filter filter;
 
@@ -96,17 +92,11 @@ public class DocumentController implements Initializable {
         if (type.equals("Users")) {
             try {
                 model.loadDocument();
-                if (progressIndicator == null) {
-                    progressIndicator = new ProgressIndicator();
-                }
-
-                progressIndicator.setVisible(false);
             } catch (Exception e) {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
-                alert.showAndWait();              }
-
-
+                alert.showAndWait();
+            }
 
             Node[] nodes = new Node[model.getAllDocuments().size()];
             for (int i = 0; i < nodes.length; i++) {
@@ -118,26 +108,21 @@ public class DocumentController implements Initializable {
                     pnItems.getChildren().add(nodes[i]);
                 } catch (IOException e) {
                     e.printStackTrace();
-
                     Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                     alert.showAndWait();                  }
             }
         }else if (type.equals("Technician")){
 
             try {
-                model.loadEditedDocuments();
-                if (progressIndicator == null) {
-                    progressIndicator = new ProgressIndicator();
-                }
+                model.loadDocument();
 
-                progressIndicator.setVisible(false);
             } catch (Exception e) {
                 e.printStackTrace();
                 Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
                 alert.showAndWait();              }
 
 
-            Node[] nodes = new Node[model.getEditedDocuments().size()];
+            Node[] nodes = new Node[model.getAllDocuments().size()];
             for (int i = 0; i < nodes.length; i++) {
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/items/DocumentItem.fxml"));
@@ -162,7 +147,6 @@ public class DocumentController implements Initializable {
         Parent root = loader.load();
         CreateDocumentController controller = loader.getController();
         controller.setModel(model);
-        //controller.setInformation();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.show();
@@ -179,7 +163,7 @@ public class DocumentController implements Initializable {
         task.setOnSucceeded(event -> {
             allDocs = task.getValue();
             setPnItemsSearched(allDocs);
-            progressIndicator.setVisible(false);
+
         });
 
         task.setOnFailed(event -> {
@@ -187,7 +171,7 @@ public class DocumentController implements Initializable {
             e.printStackTrace();
         });
 
-        progressIndicator.setVisible(true);
+
         new Thread(task).start();
     }
 

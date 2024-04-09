@@ -42,12 +42,12 @@
             <Font name="System Bold" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="typeLabel" alignment="CENTER" layoutX="195.0" layoutY="158.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Type">
+      <Label fx:id="typeLabel" alignment="CENTER" layoutX="117.0" layoutY="158.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Type">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="customerLabel" alignment="CENTER" layoutX="568.0" layoutY="158.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Customer">
+      <Label fx:id="customerLabel" alignment="CENTER" layoutX="414.0" layoutY="157.0" onMouseClicked="#handleClicks" prefHeight="31.0" prefWidth="154.0" text="Customer">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

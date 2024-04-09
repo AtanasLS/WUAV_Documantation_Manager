@@ -20,4 +20,6 @@ public interface DAOInterface<T> {
     T getDataFromResultSet(ResultSet resultSet) throws SQLException, IOException;
 
     ObservableList<T> getAllDataFromResultSet(ResultSet resultSet) throws SQLException, IOException;
+
+
 }

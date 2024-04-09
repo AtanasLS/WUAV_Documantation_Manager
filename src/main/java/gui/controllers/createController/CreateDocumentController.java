@@ -194,7 +194,7 @@ public class CreateDocumentController implements Initializable, CreateController
 
     @Override
     public void checkData(){
-        Pattern name = Pattern.compile("[A-Za-z\\s]{1,}");
+        Pattern name = Pattern.compile("[A-Za-z\\s]{0,}");
         TextFormatter<String> formatter = new TextFormatter<>( change -> {
             System.out.println(change.getControlNewText().matches("[A-Za-z\\s]{1,}"));
             if (change.getControlNewText().matches(name.pattern())) {
