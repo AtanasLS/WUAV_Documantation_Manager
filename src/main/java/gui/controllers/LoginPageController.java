@@ -58,7 +58,7 @@ public class LoginPageController implements Initializable {
 
                     stage.show();
 
-                    ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();                   //w ((Stage)(((Button)actionEvent.getSource()).getScene().getWindow())).close();
+                    ((Node) ((javafx.scene.control.Button) actionEvent.getSource())).getScene().getWindow().hide();
 
 
                 } catch (IOException e) {
